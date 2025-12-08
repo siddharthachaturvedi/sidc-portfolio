@@ -1,0 +1,4 @@
+## Source of truth
+
+The latest, canonical description of ventures, investigations, advisory, and availability
+is maintained in Confluence: https://sidc.atlassian.net/wiki/x/DIC_AQ 
