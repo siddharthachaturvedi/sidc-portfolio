@@ -1,52 +1,1043 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>sidc.ai Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siddhartha Chaturvedi | Post-Agentic Systems</title>
+
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts: Inter (Geometric/Bauhaus) & JetBrains Mono (Technical) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-washi: #F2F0E9;
+      --ink: #1A1A1A;
+      --vermilion: #D93025;
+      --paper-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    }
+
+    body {
+      background-color: var(--bg-washi);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      scroll-behavior: smooth;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: var(--paper-texture);
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.4;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Strict Grid Lines */
+    .border-ink {
+      border-color: var(--ink);
+    }
+
+    /* Bauhaus Typography */
+    h1,
+    h2,
+    h3,
+    h4 {
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-washi);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--ink);
+    }
+
+    /* Logo hover effect */
+    .logo-container {
+      position: relative;
+      width: 32px;
+      height: 32px;
+    }
+
+    .logo-dot {
+      width: 32px;
+      height: 32px;
+      background-color: var(--vermilion);
+      border-radius: 50%;
+      transition: opacity 0.3s ease;
+    }
+
+    .logo-pic {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      filter: grayscale(100%) contrast(1.3) brightness(0.9);
+    }
+
+    .logo-container:hover .logo-dot {
+      opacity: 0;
+    }
+
+    .logo-container:hover .logo-pic {
+      opacity: 1;
+    }
+
+    .vertical-text {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+    }
+
+    /* Ticker Animation */
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .ticker-wrapper {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-content {
+      display: inline-block;
+      animation: scroll 40s linear infinite;
+    }
+
+    /* Image Filters */
+    .img-ink-filter {
+      filter: grayscale(100%) contrast(1.2) brightness(0.95);
+      mix-blend-mode: multiply;
+    }
+
+    /* Scroll animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-in;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    // --- ICONS ---
+    const IconWrapper = ({ children, size = 20, className = "" }) => (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+        className={className}
+      >
+        {children}
+      </svg>
+    );
+
+    const ArrowRight = (props) => (
+      <IconWrapper {...props}><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></IconWrapper>
+    );
+    const ArrowUpRight = (props) => (
+      <IconWrapper {...props}><path d="M7 17L17 7" /><path d="M7 7h10v10" /></IconWrapper>
+    );
+    const MenuIcon = (props) => (
+      <IconWrapper {...props}><line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" /></IconWrapper>
+    );
+    const XIcon = (props) => (
+      <IconWrapper {...props}><path d="M18 6 6 18" /><path d="m6 6 18 12" /></IconWrapper>
+    );
+
+    // --- COMPONENTS ---
+
+    const Nav = () => {
+      const [isOpen, setIsOpen] = useState(false);
+
+      return (
+        <nav className="fixed top-0 w-full z-40 bg-[#F2F0E9] border-b border-black">
+          <div className="flex justify-between items-stretch h-16">
+            {/* Logo Section - Vermilion Dot with Pic on Hover */}
+            <div className="flex items-center px-6 border-r border-black w-20 justify-center group cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
+              <div className="logo-container">
+                <div className="logo-dot"></div>
+                <img src="sidc.jpeg" alt="SC" className="logo-pic" />
+              </div>
+            </div>
+
+            {/* Links - Desktop */}
+            <div className="hidden md:flex flex-1 justify-end">
+              {['About', 'Recognition', 'Ventures', 'Current', 'Connect'].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="flex items-center px-8 text-sm font-medium border-l border-black hover:bg-black hover:text-[#F2F0E9] transition-colors duration-200"
+                >
+                  {item}
+                </a>
+              ))}
+              <a
+                href="https://linkedin.com/in/siddharth"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-8 text-sm font-medium border-l border-black bg-[#D93025] text-white hover:bg-black hover:text-white transition-colors duration-200"
+              >
+                LINKEDIN <ArrowUpRight size={14} />
+              </a>
+            </div>
+
+            {/* Mobile Menu Icon */}
+            <div className="md:hidden flex items-center px-6 border-l border-black cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? <XIcon /> : <MenuIcon />}
+            </div>
+          </div>
+
+          {/* Mobile Menu - Full Screen Overlay */}
+          {isOpen && (
+            <div className="md:hidden fixed inset-0 top-16 bg-[#F2F0E9] z-50 flex flex-col animate-fade-in">
+              <div className="flex-1 flex flex-col justify-center px-12">
+                {['About', 'Recognition', 'Ventures', 'Current', 'Connect'].map((item, index) => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    className="py-6 border-b border-black text-4xl font-bold hover:text-[#D93025] transition-colors"
+                    onClick={() => setIsOpen(false)}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span>{item}</span>
+                      <ArrowRight size={32} className="text-[#D93025]" />
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+              <div className="border-t border-black p-12">
+                <a
+                  href="https://linkedin.com/in/siddharth"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between w-full py-6 bg-[#D93025] text-white px-8 text-2xl font-bold"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <span>LinkedIn Profile</span>
+                  <ArrowUpRight size={24} />
+                </a>
+                <p className="font-mono text-xs uppercase tracking-widest mt-6 opacity-60 text-center">
+                  Post-Agentic Systems // MMXXV
+                </p>
+              </div>
+            </div>
+          )}
+        </nav>
+      );
+    };
+
+    const Hero = () => {
+      return (
+        <section id="home" className="relative pt-32 pb-20 min-h-[90vh] flex flex-col justify-between border-b border-black">
+          <div className="max-w-[1600px] mx-auto w-full px-6 grid grid-cols-12 gap-6 h-full">
+
+            {/* Vertical Label */}
+            <div className="hidden md:block col-span-1 h-full relative">
+              <div className="vertical-text font-mono text-xs tracking-widest absolute top-0 left-2 text-[#D93025]">
+                POST-AGENTIC SYSTEMS // MMXXV
+              </div>
+            </div>
+
+            {/* Main Typography & Image */}
+            <div className="col-span-12 md:col-span-11 flex flex-col justify-center">
+
+              <div className="flex flex-col lg:flex-row gap-12 lg:items-end mb-12">
+                <h1 className="text-6xl md:text-[7rem] lg:text-[9rem] font-bold uppercase leading-[0.9] tracking-tighter break-words">
+                  Siddhartha<br />
+                  <span className="lg:ml-32">Chaturvedi</span>
+                  <span className="text-[#D93025]">.</span>
+                </h1>
+
+                {/* Image Integration: Seamless with name */}
+                <div className="w-32 h-32 md:w-48 md:h-48 border border-black overflow-hidden relative grayscale contrast-125 mb-2 lg:mb-8 lg:-ml-12 shrink-0">
+                  <img
+                    src="sidc.jpeg"
+                    alt="Siddhartha Chaturvedi"
+                    className="w-full h-full object-cover img-ink-filter hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-[#F2F0E9] opacity-10 mix-blend-overlay"></div>
+                </div>
+              </div>
+
+              <div className="mb-8">
+                <p className="font-mono text-xs uppercase tracking-widest text-[#D93025] ml-1">AI that acts, not just answers</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-black pt-12 mt-12">
+                <p className="text-xl md:text-2xl font-medium leading-snug max-w-lg">
+                  Systems of Truth. <span className="underline decoration-[#D93025] decoration-2 underline-offset-4">Scaled Responsibly</span>.
+                </p>
+
+                <div className="space-y-6 font-mono text-sm opacity-80">
+                  <p>
+                    Moving beyond chatbots to reasoning engines. Building the infrastructure for scientific autonomy and equitable truth.
+                  </p>
+                  <div className="flex gap-2 items-center text-[#D93025]">
+                    <div className="w-2 h-2 bg-[#D93025] rounded-full"></div>
+                    <span>Based between US, UK & India</span>
+                  </div>
+                  <a href="#connect" className="inline-flex items-center gap-2 px-6 py-3 bg-[#1A1A1A] text-white hover:bg-[#D93025] transition-colors">
+                    Let's Connect <ArrowRight size={16} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const QuoteSection = () => (
+      <section className="border-b border-black py-32 px-6 relative overflow-hidden">
+        {/* Layered background with texture */}
+        <div className="absolute inset-0 bg-[#1A1A1A] opacity-95"></div>
+        <div className="absolute inset-0" style={{ backgroundImage: 'var(--paper-texture)', opacity: 0.15 }}></div>
+
+        {/* Large decorative quote mark */}
+        <div className="absolute top-12 left-12 text-[#D93025] opacity-20 text-[200px] font-serif leading-none pointer-events-none">"</div>
+
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-serif italic leading-tight mb-8 text-[#F2F0E9]">
+            Strategy without execution is hallucination.<br />
+            Execution without strategy is chaos.
+          </h2>
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-12 h-[1px] bg-[#D93025]"></div>
+            <p className="font-mono text-xs tracking-widest opacity-60 uppercase text-[#F2F0E9]">Overheard at INSEAD</p>
+            <div className="w-12 h-[1px] bg-[#D93025]"></div>
+          </div>
+        </div>
+      </section>
+    );
+
+    const BioSection = () => {
+      return (
+        <section id="about" className="grid grid-cols-1 md:grid-cols-2 border-b border-black">
+          <div className="p-12 md:p-20 border-b md:border-b-0 md:border-r border-black relative group hover:bg-white transition-colors">
+            <div className="font-mono text-xs text-[#D93025] mb-6 uppercase tracking-widest">Previous Chapter</div>
+            <h3 className="text-3xl font-bold mb-2">Planetary Scale</h3>
+            <p className="text-lg font-medium mb-6 opacity-60">Director of Product Management</p>
+            <p className="leading-relaxed max-w-md">
+              Directed the intersection of AI and Global Security. From tracking pathogens with Premonition to deploying Gen AI systems - from LLMs to Agents - for the US Federal Government (Civilian). 300+ use cases.
+            </p>
+          </div>
+
+          <div className="p-12 md:p-20 relative group hover:bg-white transition-colors">
+            <div className="font-mono text-xs text-[#D93025] mb-6 uppercase tracking-widest">Current Focus</div>
+            <h3 className="text-3xl font-bold mb-2">Precision Truth</h3>
+            <p className="text-lg font-medium mb-6 opacity-60">Under-represented Disease Research</p>
+            <p className="leading-relaxed max-w-md">
+              Decoupling intelligence from human bottlenecks. Solving data swamps in scientific research, starting with the underserved landscape of Endometriosis. Evidence-grade. Autonomous.
+            </p>
+          </div>
+        </section>
+      );
+    };
+
+    // --- NEW SECTION: THE VALUE FUNCTION ---
+    const ValueFunction = () => {
+      const [active, setActive] = useState('equilibrium');
+
+      const content = {
+        resonance: {
+          title: "Resonance",
+          subtitle: "The Vibe",
+          desc: "Anchors the model in organizational voice and brand aesthetics to prevent generic, robotic outputs.",
+          example: "A healthcare AI that speaks with clinical precision while maintaining patient-centered warmth."
+        },
+        relevance: {
+          title: "Relevance",
+          subtitle: "The Truth",
+          desc: "Grounds responses in proprietary knowledge and verified data sources to eliminate hallucination.",
+          example: "Research synthesis that cites only peer-reviewed sources from your institutional database."
+        },
+        response: {
+          title: "Response",
+          subtitle: "The Action",
+          desc: "Ensures outputs are actionable, deterministic, and directly useful to the end user's workflow.",
+          example: "Generating structured clinical protocols, not just answering questions about treatment options."
+        },
+        equilibrium: {
+          title: "The Value Function",
+          subtitle: "Resonance + Relevance + Response",
+          desc: "Alignment is a three-body problem. Truth without voice feels robotic. Voice without truth hallucinates. Both without utility waste compute.",
+          example: "Download this framework to apply it to your AI systems."
+        }
+      };
+
+      const downloadFramework = () => {
+        // Create a new window for PDF generation
+        const printWindow = window.open('', '_blank');
+
+        const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>The Value Function Framework - SIDC.AI</title>
+  <style>
+    @page { size: landscape; margin: 0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #F2F0E9;
+      width: 297mm;
+      height: 210mm;
+      padding: 40px;
+      position: relative;
+    }
+    .header {
+      margin-bottom: 30px;
+    }
+    .title {
+      font-size: 42px;
+      font-weight: 800;
+      color: #1A1A1A;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 18px;
+      color: #D93025;
+      font-weight: 500;
+    }
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 400px 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .diagram {
+      text-align: center;
+    }
+    svg {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+    .workbook {
+      background: white;
+      border: 2px solid #1A1A1A;
+      padding: 24px;
+      height: 100%;
+      min-height: 400px;
+    }
+    .workbook h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #1A1A1A;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .workbook-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .workbook-line {
+      border-bottom: 1px dotted #CCCCCC;
+      padding-bottom: 8px;
+      min-height: 32px;
+    }
+    .workbook-label {
+      font-size: 11px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+    .footer {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      right: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid #1A1A1A;
+    }
+    .attribution {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1A1A1A;
+    }
+    .attribution-sub {
+      font-size: 11px;
+      color: #666;
+      margin-top: 4px;
+    }
+    .framework-note {
+      font-size: 10px;
+      color: #999;
+      font-style: italic;
+      max-width: 400px;
+      text-align: right;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <div class="nav-title">sidc.ai portfolio</div>
-      <nav class="nav-links">
-        <a href="#hero">Home</a>
-        <a href="#ventures">Ventures</a>
-        <a href="#availability">Availability</a>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <section id="hero">
-      <div class="eyebrow">Siddhartha Chaturvedi</div>
-      <h1>Strategic advisor and founder working across AI, science, and public impact.</h1>
-      <p>Building ventures and advising organizations at the intersection of artificial intelligence, science, and societal impact.</p>
-    </section>
-
-    <section id="ventures">
-      <h2>Ventures</h2>
-      <div class="venture-list">
-        <div class="venture">
-          <h3>Samvidhaan.AI · Co-Founder</h3>
-          <a href="https://samvidhaan.ai">Visit →</a>
+  <div class="header">
+    <div class="title">The Value Function</div>
+    <div class="subtitle">Resonance + Relevance + Response</div>
+  </div>
+  
+  <div class="content">
+    <div class="workbook">
+      <h3>Your Resonance</h3>
+      <div class="workbook-lines">
+        <div>
+          <div class="workbook-label">Organizational Voice</div>
+          <div class="workbook-line"></div>
         </div>
-        <div class="venture">
-          <h3>Unfreeze.org · Co-Founder</h3>
-          <a href="https://unfreeze.org">Visit →</a>
+        <div>
+          <div class="workbook-label">Brand Aesthetics</div>
+          <div class="workbook-line"></div>
         </div>
-        <div class="venture">
-          <h3>Stratified Advisory · Founding Partner</h3>
-          <a href="https://stratcorp.ai">Visit →</a>
+        <div>
+          <div class="workbook-label">Tone & Style</div>
+          <div class="workbook-line"></div>
         </div>
       </div>
-    </section>
-
-    <section id="availability">
-      <h2>Availability</h2>
-      <p class="availability-note">Available for strategic advisory and AI systems work with a focus on science and public impact. Open to short-term advisory and strategic engagements.</p>
-    </section>
-  </main>
-  <script src="script.js" defer></script>
+    </div>
+    
+    <div class="diagram">
+      <svg viewBox="0 0 400 350">
+        <path d="M200 50 L50 300 L350 300 Z" fill="none" stroke="#1A1A1A" stroke-width="2" opacity="0.3" />
+        <line x1="200" y1="50" x2="200" y2="200" stroke="#D93025" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5" />
+        <line x1="50" y1="300" x2="200" y2="200" stroke="#D93025" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5" />
+        <line x1="350" y1="300" x2="200" y2="200" stroke="#D93025" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5" />
+        
+        <circle cx="200" cy="50" r="30" fill="#F2F0E9" stroke="#1A1A1A" stroke-width="2" />
+        <circle cx="200" cy="50" r="5" fill="#D93025" />
+        <text x="200" y="10" text-anchor="middle" font-size="10" fill="#1A1A1A" font-weight="bold">RESONANCE</text>
+        
+        <circle cx="50" cy="300" r="30" fill="#F2F0E9" stroke="#1A1A1A" stroke-width="2" />
+        <circle cx="50" cy="300" r="5" fill="#D93025" />
+        <text x="50" y="345" text-anchor="middle" font-size="10" fill="#1A1A1A" font-weight="bold">RELEVANCE</text>
+        
+        <circle cx="350" cy="300" r="30" fill="#F2F0E9" stroke="#1A1A1A" stroke-width="2" />
+        <circle cx="350" cy="300" r="5" fill="#D93025" />
+        <text x="350" y="345" text-anchor="middle" font-size="10" fill="#1A1A1A" font-weight="bold">RESPONSE</text>
+        
+        <circle cx="200" cy="200" r="45" fill="none" stroke="#D93025" stroke-width="1.5" />
+        <circle cx="200" cy="200" r="5" fill="#1A1A1A" />
+      </svg>
+    </div>
+    
+    <div class="workbook">
+      <h3>Your Implementation</h3>
+      <div class="workbook-lines">
+        <div>
+          <div class="workbook-label">Data Sources (Relevance)</div>
+          <div class="workbook-line"></div>
+        </div>
+        <div>
+          <div class="workbook-label">Action Outputs (Response)</div>
+          <div class="workbook-line"></div>
+        </div>
+        <div>
+          <div class="workbook-label">Success Metrics</div>
+          <div class="workbook-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <div>
+      <div class="attribution">SIDC.AI</div>
+      <div class="attribution-sub">Siddhartha Chaturvedi • Post-Agentic Systems</div>
+    </div>
+    <div class="framework-note">
+      Alignment is a three-body problem. Truth without voice feels robotic.<br>
+      Voice without truth hallucinates. Both without utility waste compute.
+    </div>
+  </div>
 </body>
+</html>
+        `;
+
+        printWindow.document.write(htmlContent);
+        printWindow.document.close();
+
+        // Wait for content to load, then trigger print
+        setTimeout(() => {
+          printWindow.print();
+        }, 500);
+      };
+
+      return (
+        <section className="py-24 px-6 border-b border-black bg-[#F2F0E9] overflow-hidden">
+          <div className="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+            {/* Text Side */}
+            <div className="lg:col-span-5 space-y-8">
+              <div>
+                <h2 className="text-4xl font-bold mb-2">The Value Function</h2>
+                <p className="font-mono text-xs uppercase tracking-widest text-[#D93025]">Framework // MMXXV</p>
+              </div>
+
+              <div className="min-h-[240px]">
+                <h3 className="text-2xl font-bold mb-2 transition-all duration-300">
+                  {content[active].title} <span className="text-[#D93025] text-lg font-mono font-normal">/ {content[active].subtitle}</span>
+                </h3>
+                <p className="text-base leading-relaxed mb-4 transition-all duration-300">
+                  {content[active].desc}
+                </p>
+                <p className="font-mono text-xs opacity-60 italic transition-all duration-300">
+                  Example: {content[active].example}
+                </p>
+              </div>
+
+              <button
+                onClick={downloadFramework}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#1A1A1A] text-white hover:bg-[#D93025] transition-colors font-mono text-sm"
+              >
+                Download Framework <ArrowUpRight size={16} />
+              </button>
+            </div>
+
+            {/* Diagram Side */}
+            <div className="lg:col-span-7 flex justify-center items-center relative h-[500px]">
+              <svg id="value-function-svg" viewBox="0 0 400 350" className="w-full max-w-[500px] h-auto drop-shadow-xl">
+                {/* Triangle Lines */}
+                <path d="M200 50 L50 300 L350 300 Z" fill="none" stroke="#1A1A1A" strokeWidth="2" className="opacity-30" />
+
+                {/* Center Connector Lines */}
+                <line x1="200" y1="50" x2="200" y2="200" stroke="#D93025" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-50" />
+                <line x1="50" y1="300" x2="200" y2="200" stroke="#D93025" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-50" />
+                <line x1="350" y1="300" x2="200" y2="200" stroke="#D93025" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-50" />
+
+                {/* Resonance (Top) */}
+                <g
+                  className="cursor-pointer group"
+                  onMouseEnter={() => setActive('resonance')}
+                  onMouseLeave={() => setActive('equilibrium')}
+                >
+                  <circle cx="200" cy="50" r="30" fill="#F2F0E9" stroke="#1A1A1A" strokeWidth="2" className="group-hover:fill-[#1A1A1A] transition-colors duration-300" />
+                  <circle cx="200" cy="50" r="5" fill="#D93025" />
+                  <text x="200" y="10" textAnchor="middle" className="font-mono text-[10px] fill-[#1A1A1A] group-hover:fill-[#1A1A1A] transition-colors tracking-widest uppercase font-bold">Resonance</text>
+                </g>
+
+                {/* Relevance (Bottom Left) */}
+                <g
+                  className="cursor-pointer group"
+                  onMouseEnter={() => setActive('relevance')}
+                  onMouseLeave={() => setActive('equilibrium')}
+                >
+                  <circle cx="50" cy="300" r="30" fill="#F2F0E9" stroke="#1A1A1A" strokeWidth="2" className="group-hover:fill-[#1A1A1A] transition-colors duration-300" />
+                  <circle cx="50" cy="300" r="5" fill="#D93025" />
+                  <text x="50" y="345" textAnchor="middle" className="font-mono text-[10px] fill-[#1A1A1A] tracking-widest uppercase font-bold">Relevance</text>
+                </g>
+
+                {/* Response (Bottom Right) */}
+                <g
+                  className="cursor-pointer group"
+                  onMouseEnter={() => setActive('response')}
+                  onMouseLeave={() => setActive('equilibrium')}
+                >
+                  <circle cx="350" cy="300" r="30" fill="#F2F0E9" stroke="#1A1A1A" strokeWidth="2" className="group-hover:fill-[#1A1A1A] transition-colors duration-300" />
+                  <circle cx="350" cy="300" r="5" fill="#D93025" />
+                  <text x="350" y="345" textAnchor="middle" className="font-mono text-[10px] fill-[#1A1A1A] tracking-widest uppercase font-bold">Response</text>
+                </g>
+
+                {/* Equilibrium (Center) */}
+                <g
+                  className="cursor-pointer"
+                  onMouseEnter={() => setActive('equilibrium')}
+                >
+                  <circle cx="200" cy="200" r="45" fill="none" stroke="#D93025" strokeWidth="1.5" className="animate-pulse" />
+                  <circle cx="200" cy="200" r="5" fill="#1A1A1A" />
+                </g>
+              </svg>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const ThemeTicker = () => {
+      const themes = [
+        "17 YEARS TO ENDOMETRIOSIS DIAGNOSIS IS UNACCEPTABLE",
+        "SCIENCE MOVES AT THE SPEED OF TRUST, NOT COMPUTE",
+        "INFORMATION AS THERAPY",
+        "INTERDEPENDENCE OVER INDEPENDENCE",
+        "BREAKING INTERGENERATIONAL DISADVANTAGE",
+        "SUCCESS GIVES NAME, FAILURE WISDOM"
+      ];
+
+      return (
+        <div className="border-b border-black py-4 bg-[#F2F0E9] text-[#1A1A1A] ticker-wrapper">
+          <div className="ticker-content">
+            {[...themes, ...themes].map((theme, i) => (
+              <span key={i} className="inline-flex items-center gap-4 mx-8 font-mono text-xs tracking-widest">
+                <span className="w-2 h-2 bg-[#D93025] rounded-full inline-block"></span>
+                <span>{theme}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    const RecognitionItem = ({ year, title, desc }) => (
+      <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-8 border-t border-black first:border-t-0 items-start group">
+        <div className="font-mono text-xs pt-1 w-24 opacity-60">{year}</div>
+        <div className="flex-1">
+          <h4 className="text-xl font-bold mb-2 hover-red-accent transition-colors">{title}</h4>
+          <p className="opacity-80 max-w-lg leading-relaxed">{desc}</p>
+        </div>
+        <div className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity text-[#D93025]">
+          <ArrowUpRight size={20} />
+        </div>
+      </div>
+    );
+
+    const Recognition = () => (
+      <section id="recognition" className="py-24 px-6 border-b border-black">
+        <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
+          <div className="md:col-span-4">
+            <h2 className="text-4xl font-bold mb-6">Recognition</h2>
+            <p className="font-mono text-sm opacity-60 max-w-xs">
+              Milestones in bridging the gap between advanced technology and human need.
+            </p>
+          </div>
+          <div className="md:col-span-8">
+            <a href="https://www.fastcompany.com/91453733/snowflake-anthropic-agent-partnership" target="_blank" rel="noopener noreferrer" className="block">
+              <RecognitionItem
+                year="2021"
+                title="Fast Company's World Changing Idea"
+                desc="Microsoft Premonition: A biothreat detection platform securing multi-million government contracts. Early warning systems for disease outbreaks."
+              />
+            </a>
+            <a href="https://blogs.microsoft.com/on-the-issues/2020/01/29/ai-for-health-child-mortality/" target="_blank" rel="noopener noreferrer" className="block">
+              <RecognitionItem
+                year="2020"
+                title="AI for Health: $60M Impact Investment"
+                desc="Architected a global program addressing the barriers I faced as a first-time founder in rural India. Tackling child mortality, infectious disease, and health equity through accessible AI."
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+    );
+
+    // --- NEW SECTION: PEER REVIEW ---
+    const PeerReview = () => {
+      const reviews = [
+        {
+          archetype: "The Technologist",
+          quote: "Technical depth leading to incredible storytelling agility. Nuanced stories grounded in science truth.",
+          author: "Ethan Jackson",
+          role: "Senior Director"
+        },
+        {
+          archetype: "The Humanist",
+          quote: "Understanding complex problems and finding an easy way to explain in lay terms. Cares for what is good for society.",
+          author: "Juan Lavista Ferres",
+          role: "Corporate Vice President"
+        },
+        {
+          archetype: "The Strategist",
+          quote: "Compelling stories to share vision, shift perception, and accelerate adoption. Envisioning long-term outcomes.",
+          author: "Sara Nagy",
+          role: "Senior Director"
+        }
+      ];
+
+      return (
+        <section className="border-b border-black py-24 px-6 bg-[#F2F0E9]">
+          <div className="max-w-[1600px] mx-auto">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+              <h2 className="text-4xl font-bold">Peer Review</h2>
+              <p className="font-mono text-xs uppercase tracking-widest text-[#D93025] mt-4 md:mt-0">Select Perspectives</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-black pt-12">
+              {reviews.map((review, index) => (
+                <div key={index} className="group flex flex-col">
+                  <div className="font-mono text-xs text-[#D93025] mb-4 uppercase tracking-widest">{review.archetype}</div>
+                  <p className="text-lg font-medium leading-relaxed mb-8 flex-grow">
+                    "{review.quote}"
+                  </p>
+                  <div className="mt-auto">
+                    <div className="font-bold text-sm">{review.author}</div>
+                    <div className="font-mono text-xs opacity-60 mt-1">{review.role}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const VentureCard = ({ role, name, desc, link = "#" }) => (
+      <a href={link} target="_blank" rel="noopener noreferrer" className="group block p-12 border-b border-black md:border-r last:border-r-0 hover:bg-[#1A1A1A] hover:text-[#F2F0E9] transition-all duration-300 h-full flex flex-col justify-between">
+        <div>
+          <div className="flex justify-between items-start mb-12">
+            <span className="font-mono text-xs uppercase tracking-widest group-hover:text-[#D93025] transition-colors">{role}</span>
+            <ArrowRight size={20} className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+          </div>
+          <h3 className="text-3xl lg:text-4xl font-bold mb-6">{name}</h3>
+        </div>
+        <p className="font-mono text-xs md:text-sm max-w-md leading-relaxed opacity-70 group-hover:opacity-90">
+          {desc}
+        </p>
+      </a>
+    );
+
+    const Ventures = () => (
+      <section id="ventures" className="border-b border-black">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+          {/* Red intro card - spans 2 columns on desktop */}
+          <div className="p-16 border-b md:border-b-0 border-black md:border-r lg:col-span-2 bg-[#D93025] text-white flex flex-col justify-between min-h-[400px]">
+            <div>
+              <h2 className="text-6xl font-bold mb-8">Building<br />The Future</h2>
+              <div className="w-16 h-1 bg-white mb-8"></div>
+              <p className="font-mono text-base max-w-lg opacity-90 leading-relaxed">
+                A portfolio of ventures focused on underserved areas, document intelligence, and board transformation. Each addressing a gap where technology meets human need.
+              </p>
+            </div>
+            <div className="font-mono text-xs mt-12 opacity-60">
+              PORTFOLIO // MMXXV
+            </div>
+          </div>
+          <VentureCard
+            role="The Science of Truth"
+            name="Veriscience.AI"
+            desc="Evidence-grade AI for women's health. Turning 17-year diagnosis delays into months through autonomous research synthesis."
+            link="https://veriscience.ai"
+          />
+          <VentureCard
+            role="Agentic Resilience"
+            name="Unfreeze.org"
+            desc="Career transition intelligence. Navigate layoffs and pivots with AI that understands your skills, market gaps, and next moves."
+            link="https://unfreeze.org"
+          />
+          <VentureCard
+            role="Risk × Value"
+            name="Stratified Advisory"
+            desc="Board-as-a-Service for GenAI era. Strategic governance for founders building in regulated, high-stakes domains."
+            link="https://stratcorp.ai"
+          />
+          <VentureCard
+            role="Author"
+            name="JustAI.Fyi"
+            desc="Synthesis of Software 3.0 thinking. Essays on post-agentic systems, reasoning engines, and the infrastructure of truth."
+            link="https://justai.fyi"
+          />
+        </div>
+      </section>
+    );
+
+    const Investigations = () => (
+      <section id="current" className="py-24 px-6 border-b border-black">
+        <div className="max-w-[1600px] mx-auto">
+          <h2 className="text-4xl font-bold mb-16">Current Investigations</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="space-y-4 group">
+              <div className="w-8 h-8 border border-black flex items-center justify-center font-mono text-xs mb-4 group-hover:bg-[#D93025] group-hover:text-white group-hover:border-[#D93025] transition-colors">01</div>
+              <h3 className="text-xl font-bold">Post-Agentic AI Systems</h3>
+              <p className="text-sm leading-relaxed opacity-80">
+                Next-generation scientific computing platforms that transcend current agent limitations. Moving from chat to action.
+              </p>
+            </div>
+            <div className="space-y-4 group">
+              <div className="w-8 h-8 border border-black flex items-center justify-center font-mono text-xs mb-4 group-hover:bg-[#D93025] group-hover:text-white group-hover:border-[#D93025] transition-colors">02</div>
+              <h3 className="text-xl font-bold">Scientific Knowledge Graphs</h3>
+              <p className="text-sm leading-relaxed opacity-80">
+                Reimagining how research connections are discovered and accelerated. Reducing the 18-month lag in global health data.
+              </p>
+            </div>
+            <div className="space-y-4 group">
+              <div className="w-8 h-8 border border-black flex items-center justify-center font-mono text-xs mb-4 group-hover:bg-[#D93025] group-hover:text-white group-hover:border-[#D93025] transition-colors">03</div>
+              <h3 className="text-xl font-bold">Public-Private Innovation</h3>
+              <p className="text-sm leading-relaxed opacity-80">
+                Healthcare and government partnerships through responsible AI governance and "One Health" approaches.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    const Footer = () => (
+      <footer id="connect" className="bg-[#1A1A1A] text-[#F2F0E9] pt-24 pb-12 px-6">
+        <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 mb-24">
+          <div>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 text-white">
+              Let's Talk<span className="text-[#D93025]">.</span>
+            </h2>
+            <a
+              href="https://linkedin.com/in/siddharth"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-4 text-xl md:text-2xl border-b border-[#F2F0E9] pb-2 hover:text-[#D93025] hover:border-[#D93025] transition-all"
+            >
+              LinkedIn /in/siddharth <ArrowUpRight size={24} />
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 font-mono text-sm">
+            <div>
+              <span className="block text-[#D93025] mb-6 uppercase tracking-widest text-xs">Advisory & Investment</span>
+              <ul className="space-y-4">
+                <li>
+                  <strong className="block text-white">Limited Partner</strong>
+                  <span className="opacity-60">rpv (DeepTech VC)</span>
+                </li>
+                <li>
+                  <strong className="block text-white">Advisor</strong>
+                  <span className="opacity-60">Loyal VC</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <span className="block text-[#D93025] mb-6 uppercase tracking-widest text-xs">Currently Available</span>
+              <ul className="space-y-2 opacity-60">
+                <li>Strategic Advisory</li>
+                <li>Keynote Speaking</li>
+                <li>Board Positions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-[1600px] mx-auto border-t border-[#F2F0E9]/20 pt-8 flex flex-col md:flex-row justify-between items-end opacity-40 font-mono text-xs">
+          <div>© MMXXV Siddhartha Chaturvedi</div>
+          <div className="mt-4 md:mt-0">Available for global engagements</div>
+        </div>
+      </footer>
+    );
+
+    const App = () => {
+      useEffect(() => {
+        // Scroll-triggered animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('fade-in-up');
+            }
+          });
+        }, observerOptions);
+
+        // Observe all major sections
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+          section.style.opacity = '0';
+          observer.observe(section);
+        });
+
+        return () => observer.disconnect();
+      }, []);
+
+      return (
+        <div className="min-h-screen">
+          <Nav />
+          <Hero />
+          <QuoteSection />
+          <BioSection />
+          <ValueFunction />
+          <ThemeTicker />
+          <Recognition />
+          <PeerReview />
+          <Ventures />
+          <Investigations />
+          <Footer />
+        </div>
+      );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+
 </html>
