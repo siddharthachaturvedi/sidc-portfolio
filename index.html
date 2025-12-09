@@ -179,6 +179,26 @@
     .animate-fade-in {
       animation: fadeIn 0.6s ease-in;
     }
+
+    /* Fluid Responsive Utilities */
+    .fluid-hero-name {
+      font-size: clamp(2.5rem, 8vw, 9rem);
+      line-height: 0.9;
+    }
+
+    .fluid-photo {
+      width: clamp(6rem, 15vw, 12rem);
+      height: clamp(6rem, 15vw, 12rem);
+    }
+
+    .adaptive-container {
+      padding-left: clamp(1rem, 3vw, 3rem);
+      padding-right: clamp(1rem, 3vw, 3rem);
+    }
+
+    .fluid-subtext {
+      font-size: clamp(0.75rem, 1.5vw, 1.375rem);
+    }
   </style>
 </head>
 
@@ -236,7 +256,7 @@
             </div>
 
             {/* Links - Desktop */}
-            <div className="hidden md:flex flex-1 justify-end">
+            <div className="hidden lg:flex flex-1 justify-end">
               {['About', 'Recognition', 'Ventures', 'Current', 'Connect'].map((item) => (
                 <a
                   key={item}
@@ -257,14 +277,14 @@
             </div>
 
             {/* Mobile Menu Icon */}
-            <div className="md:hidden flex items-center px-6 border-l border-black cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+            <div className="lg:hidden flex items-center px-6 border-l border-black cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <XIcon /> : <MenuIcon />}
             </div>
           </div>
 
           {/* Mobile Menu - Full Screen Overlay */}
           {isOpen && (
-            <div className="md:hidden fixed inset-0 top-16 bg-[#F2F0E9] z-50 flex flex-col animate-fade-in">
+            <div className="lg:hidden fixed inset-0 top-16 bg-[#F2F0E9] z-50 flex flex-col animate-fade-in">
               <div className="flex-1 flex flex-col justify-center px-12">
                 {['About', 'Recognition', 'Ventures', 'Current', 'Connect'].map((item, index) => (
                   <a
@@ -306,7 +326,7 @@
     const Hero = () => {
       return (
         <section id="home" className="relative pt-32 pb-20 min-h-[90vh] flex flex-col justify-between border-b border-black">
-          <div className="max-w-[1600px] mx-auto w-full px-6 grid grid-cols-12 gap-6 h-full">
+          <div className="max-w-[1600px] mx-auto w-full adaptive-container grid grid-cols-12 gap-6 h-full">
 
             {/* Vertical Label */}
             <div className="hidden md:block col-span-1 h-full relative">
@@ -318,15 +338,15 @@
             {/* Main Typography & Image */}
             <div className="col-span-12 md:col-span-11 flex flex-col justify-center">
 
-              <div className="flex flex-col lg:flex-row gap-12 lg:items-end mb-12">
-                <h1 className="text-6xl md:text-[7rem] lg:text-[9rem] font-bold uppercase leading-[0.9] tracking-tighter break-words">
+              <div className="flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-12 lg:items-end mb-12 flex-wrap">
+                <h1 className="fluid-hero-name font-bold uppercase tracking-tighter break-words" style={{ wordBreak: 'break-word', overflowWrap: 'break-word' }}>
                   Siddhartha<br />
                   <span className="lg:ml-32">Chaturvedi</span>
                   <span className="text-[#D93025]">.</span>
                 </h1>
 
                 {/* Image Integration: Seamless with name */}
-                <div className="w-32 h-32 md:w-48 md:h-48 border border-black overflow-hidden relative grayscale contrast-125 mb-2 lg:mb-8 lg:-ml-12 shrink-0">
+                <div className="fluid-photo border border-black overflow-hidden relative grayscale contrast-125 mb-2 lg:mb-8 lg:-ml-12 shrink-0">
                   <img
                     src="sidc.jpeg"
                     alt="Siddhartha Chaturvedi"
