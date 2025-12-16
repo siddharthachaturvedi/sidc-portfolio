@@ -13,193 +13,27 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            washi: 'var(--bg-washi)',
+            ink: 'var(--ink)',
+            vermillion: 'var(--vermillion)',
+          }
+        }
+      }
+    }
+  </script>
 
   <!-- Fonts: Inter (Geometric/Bauhaus) & JetBrains Mono (Technical) -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet">
 
-  <style>
-    :root {
-      --bg-washi: #F2F0E9;
-      --ink: #1A1A1A;
-      --vermilion: #D93025;
-      --paper-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-    }
-
-    body {
-      background-color: var(--bg-washi);
-      color: var(--ink);
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-      position: relative;
-      scroll-behavior: smooth;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: var(--paper-texture);
-      pointer-events: none;
-      z-index: 50;
-      opacity: 0.4;
-    }
-
-    .font-mono {
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    /* Strict Grid Lines */
-    .border-ink {
-      border-color: var(--ink);
-    }
-
-    /* Bauhaus Typography */
-    h1,
-    h2,
-    h3,
-    h4 {
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--bg-washi);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--ink);
-    }
-
-    /* Logo hover effect */
-    .logo-container {
-      position: relative;
-      width: 32px;
-      height: 32px;
-    }
-
-    .logo-dot {
-      width: 32px;
-      height: 32px;
-      background-color: var(--vermilion);
-      border-radius: 50%;
-      transition: opacity 0.3s ease;
-    }
-
-    .logo-pic {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      filter: grayscale(100%) contrast(1.3) brightness(0.9);
-    }
-
-    .logo-container:hover .logo-dot {
-      opacity: 0;
-    }
-
-    .logo-container:hover .logo-pic {
-      opacity: 1;
-    }
-
-    .vertical-text {
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      transform: rotate(180deg);
-    }
-
-    /* Ticker Animation */
-    @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
-
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    .ticker-wrapper {
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .ticker-content {
-      display: inline-block;
-      animation: scroll 40s linear infinite;
-    }
-
-    /* Image Filters */
-    .img-ink-filter {
-      filter: grayscale(100%) contrast(1.2) brightness(0.95);
-      mix-blend-mode: multiply;
-    }
-
-    /* Scroll animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    .fade-in-up {
-      animation: fadeInUp 0.8s ease-out forwards;
-    }
-
-    .animate-fade-in {
-      animation: fadeIn 0.6s ease-in;
-    }
-
-    /* Fluid Responsive Utilities */
-    .fluid-hero-name {
-      font-size: clamp(2.5rem, 8vw, 9rem);
-      line-height: 0.9;
-    }
-
-    .fluid-photo {
-      width: clamp(6rem, 15vw, 12rem);
-      height: clamp(6rem, 15vw, 12rem);
-    }
-
-    .adaptive-container {
-      padding-left: clamp(1rem, 3vw, 3rem);
-      padding-right: clamp(1rem, 3vw, 3rem);
-    }
-
-    .fluid-subtext {
-      font-size: clamp(0.75rem, 1.5vw, 1.375rem);
-    }
-  </style>
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -245,7 +79,7 @@
       const [isOpen, setIsOpen] = useState(false);
 
       return (
-        <nav className="fixed top-0 w-full z-40 bg-[#F2F0E9] border-b border-black">
+        <nav className="fixed top-0 w-full z-40 bg-washi border-b border-black">
           <div className="flex justify-between items-stretch h-16">
             {/* Logo Section - Vermilion Dot with Pic on Hover */}
             <div className="flex items-center px-6 border-r border-black w-20 justify-center group cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
@@ -261,7 +95,7 @@
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="flex items-center px-8 text-sm font-medium border-l border-black hover:bg-black hover:text-[#F2F0E9] transition-colors duration-200"
+                  className="flex items-center px-8 text-sm font-medium border-l border-black hover:bg-black hover:text-washi transition-colors duration-200"
                 >
                   {item}
                 </a>
@@ -270,7 +104,7 @@
                 href="https://linkedin.com/in/siddharth"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-8 text-sm font-medium border-l border-black bg-[#D93025] text-white hover:bg-black hover:text-white transition-colors duration-200"
+                className="flex items-center gap-2 px-8 text-sm font-medium border-l border-black bg-vermillion text-white hover:bg-black hover:text-white transition-colors duration-200"
               >
                 LINKEDIN <ArrowUpRight size={14} />
               </a>
@@ -284,19 +118,19 @@
 
           {/* Mobile Menu - Full Screen Overlay */}
           {isOpen && (
-            <div className="lg:hidden fixed inset-0 top-16 bg-[#F2F0E9] z-50 flex flex-col animate-fade-in">
+            <div className="lg:hidden fixed inset-0 top-16 bg-washi z-50 flex flex-col animate-fade-in">
               <div className="flex-1 flex flex-col justify-center px-12">
                 {['About', 'Recognition', 'Ventures', 'Current', 'Connect'].map((item, index) => (
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
-                    className="py-6 border-b border-black text-4xl font-bold hover:text-[#D93025] transition-colors"
+                    className="py-6 border-b border-black text-4xl font-bold hover:text-vermillion transition-colors"
                     onClick={() => setIsOpen(false)}
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <div className="flex items-center justify-between">
                       <span>{item}</span>
-                      <ArrowRight size={32} className="text-[#D93025]" />
+                      <ArrowRight size={32} className="text-vermillion" />
                     </div>
                   </a>
                 ))}
@@ -307,7 +141,7 @@
                   href="https://linkedin.com/in/siddharth"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between w-full py-6 bg-[#D93025] text-white px-8 text-2xl font-bold"
+                  className="flex items-center justify-between w-full py-6 bg-vermillion text-white px-8 text-2xl font-bold"
                   onClick={() => setIsOpen(false)}
                 >
                   <span>LinkedIn Profile</span>
@@ -330,7 +164,7 @@
 
             {/* Vertical Label */}
             <div className="hidden md:block col-span-1 h-full relative">
-              <div className="vertical-text font-mono text-xs tracking-widest absolute top-0 left-2 text-[#D93025]">
+              <div className="vertical-text font-mono text-xs tracking-widest absolute top-0 left-2 text-vermillion">
                 POST-AGENTIC SYSTEMS // MMXXV
               </div>
             </div>
@@ -342,7 +176,7 @@
                 <h1 className="fluid-hero-name font-bold uppercase tracking-tighter break-words" style={{ wordBreak: 'break-word', overflowWrap: 'break-word' }}>
                   Siddhartha<br />
                   <span className="lg:ml-32">Chaturvedi</span>
-                  <span className="text-[#D93025]">.</span>
+                  <span className="text-vermillion">.</span>
                 </h1>
 
                 {/* Image Integration: Seamless with name */}
@@ -352,28 +186,28 @@
                     alt="Siddhartha Chaturvedi"
                     className="w-full h-full object-cover img-ink-filter hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-[#F2F0E9] opacity-10 mix-blend-overlay"></div>
+                  <div className="absolute inset-0 bg-washi opacity-10 mix-blend-overlay"></div>
                 </div>
               </div>
 
               <div className="mb-8">
-                <p className="font-mono text-xs uppercase tracking-widest text-[#D93025] ml-1">AI that acts, not just answers</p>
+                <p className="font-mono text-xs uppercase tracking-widest text-vermillion ml-1">AI that acts, not just answers</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-black pt-12 mt-12">
                 <p className="text-xl md:text-2xl font-medium leading-snug max-w-lg">
-                  Systems of Truth. <span className="underline decoration-[#D93025] decoration-2 underline-offset-4">Scaled Responsibly</span>.
+                  Systems of Truth. <span className="underline decoration-vermillion decoration-2 underline-offset-4">Scaled Responsibly</span>.
                 </p>
 
                 <div className="space-y-6 font-mono text-sm opacity-80">
                   <p>
                     Moving beyond chatbots to reasoning engines. Building the infrastructure for scientific autonomy and equitable truth.
                   </p>
-                  <div className="flex gap-2 items-center text-[#D93025]">
-                    <div className="w-2 h-2 bg-[#D93025] rounded-full"></div>
+                  <div className="flex gap-2 items-center text-vermillion">
+                    <div className="w-2 h-2 bg-vermillion rounded-full"></div>
                     <span>Based between US, UK & India</span>
                   </div>
-                  <a href="#connect" className="inline-flex items-center gap-2 px-6 py-3 bg-[#1A1A1A] text-white hover:bg-[#D93025] transition-colors">
+                  <a href="#connect" className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-white hover:bg-vermillion transition-colors">
                     Let's Connect <ArrowRight size={16} />
                   </a>
                 </div>
@@ -387,21 +221,21 @@
     const QuoteSection = () => (
       <section className="border-b border-black py-32 px-6 relative overflow-hidden">
         {/* Layered background with texture */}
-        <div className="absolute inset-0 bg-[#1A1A1A] opacity-95"></div>
+        <div className="absolute inset-0 bg-ink opacity-95"></div>
         <div className="absolute inset-0" style={{ backgroundImage: 'var(--paper-texture)', opacity: 0.15 }}></div>
 
         {/* Large decorative quote mark */}
-        <div className="absolute top-12 left-12 text-[#D93025] opacity-20 text-[200px] font-serif leading-none pointer-events-none">"</div>
+        <div className="absolute top-12 left-12 text-vermillion opacity-20 text-[200px] font-serif leading-none pointer-events-none">"</div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-serif italic leading-tight mb-8 text-[#F2F0E9]">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-serif italic leading-tight mb-8 text-washi">
             Strategy without execution is hallucination.<br />
             Execution without strategy is chaos.
           </h2>
           <div className="flex items-center justify-center gap-4">
-            <div className="w-12 h-[1px] bg-[#D93025]"></div>
-            <p className="font-mono text-xs tracking-widest opacity-60 uppercase text-[#F2F0E9]">Overheard at INSEAD</p>
-            <div className="w-12 h-[1px] bg-[#D93025]"></div>
+            <div className="w-12 h-[1px] bg-vermillion"></div>
+            <p className="font-mono text-xs tracking-widest opacity-60 uppercase text-washi">Overheard at INSEAD</p>
+            <div className="w-12 h-[1px] bg-vermillion"></div>
           </div>
         </div>
       </section>
@@ -411,7 +245,7 @@
       return (
         <section id="about" className="grid grid-cols-1 md:grid-cols-2 border-b border-black">
           <div className="p-12 md:p-20 border-b md:border-b-0 md:border-r border-black relative group hover:bg-white transition-colors">
-            <div className="font-mono text-xs text-[#D93025] mb-6 uppercase tracking-widest">Previous Chapter</div>
+            <div className="font-mono text-xs text-vermillion mb-6 uppercase tracking-widest">Previous Chapter</div>
             <h3 className="text-3xl font-bold mb-2">Planetary Scale</h3>
             <p className="text-lg font-medium mb-6 opacity-60">Director of Product Management</p>
             <p className="leading-relaxed max-w-md">
@@ -420,7 +254,7 @@
           </div>
 
           <div className="p-12 md:p-20 relative group hover:bg-white transition-colors">
-            <div className="font-mono text-xs text-[#D93025] mb-6 uppercase tracking-widest">Current Focus</div>
+            <div className="font-mono text-xs text-vermillion mb-6 uppercase tracking-widest">Current Focus</div>
             <h3 className="text-3xl font-bold mb-2">Precision Truth</h3>
             <p className="text-lg font-medium mb-6 opacity-60">Under-represented Disease Research</p>
             <p className="leading-relaxed max-w-md">
@@ -477,7 +311,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
       font-family: 'Inter', -apple-system, sans-serif;
-      background: #F2F0E9;
+      background: var(--bg-washi);
       width: 297mm;
       height: 210mm;
       padding: 40px;
@@ -489,12 +323,12 @@
     .title {
       font-size: 42px;
       font-weight: 800;
-      color: #1A1A1A;
+      color: var(--ink);
       margin-bottom: 8px;
     }
     .subtitle {
       font-size: 18px;
-      color: #D93025;
+      color: var(--vermillion);
       font-weight: 500;
     }
     .content {
@@ -513,7 +347,7 @@
     }
     .workbook {
       background: white;
-      border: 2px solid #1A1A1A;
+      border: 2px solid var(--ink);
       padding: 24px;
       height: 100%;
       min-height: 400px;
@@ -522,7 +356,7 @@
       font-size: 16px;
       font-weight: 700;
       margin-bottom: 20px;
-      color: #1A1A1A;
+      color: var(--ink);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
@@ -553,12 +387,12 @@
       justify-content: space-between;
       align-items: center;
       padding-top: 20px;
-      border-top: 1px solid #1A1A1A;
+      border-top: 1px solid var(--ink);
     }
     .attribution {
       font-size: 14px;
       font-weight: 600;
-      color: #1A1A1A;
+      color: var(--ink);
     }
     .attribution-sub {
       font-size: 11px;
@@ -601,25 +435,25 @@
     
     <div class="diagram">
       <svg viewBox="0 0 400 350">
-        <path d="M200 50 L50 300 L350 300 Z" fill="none" stroke="#1A1A1A" stroke-width="2" opacity="0.3" />
-        <line x1="200" y1="50" x2="200" y2="200" stroke="#D93025" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5" />
-        <line x1="50" y1="300" x2="200" y2="200" stroke="#D93025" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5" />
-        <line x1="350" y1="300" x2="200" y2="200" stroke="#D93025" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5" />
+        <path d="M200 50 L50 300 L350 300 Z" fill="none" stroke="var(--ink)" stroke-width="2" opacity="0.3" />
+        <line x1="200" y1="50" x2="200" y2="200" stroke="var(--vermillion)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5" />
+        <line x1="50" y1="300" x2="200" y2="200" stroke="var(--vermillion)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5" />
+        <line x1="350" y1="300" x2="200" y2="200" stroke="var(--vermillion)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5" />
         
-        <circle cx="200" cy="50" r="30" fill="#F2F0E9" stroke="#1A1A1A" stroke-width="2" />
-        <circle cx="200" cy="50" r="5" fill="#D93025" />
-        <text x="200" y="10" text-anchor="middle" font-size="10" fill="#1A1A1A" font-weight="bold">RESONANCE</text>
+        <circle cx="200" cy="50" r="30" fill="var(--bg-washi)" stroke="var(--ink)" stroke-width="2" />
+        <circle cx="200" cy="50" r="5" fill="var(--vermillion)" />
+        <text x="200" y="10" text-anchor="middle" font-size="10" fill="var(--ink)" font-weight="bold">RESONANCE</text>
         
-        <circle cx="50" cy="300" r="30" fill="#F2F0E9" stroke="#1A1A1A" stroke-width="2" />
-        <circle cx="50" cy="300" r="5" fill="#D93025" />
-        <text x="50" y="345" text-anchor="middle" font-size="10" fill="#1A1A1A" font-weight="bold">RELEVANCE</text>
+        <circle cx="50" cy="300" r="30" fill="var(--bg-washi)" stroke="var(--ink)" stroke-width="2" />
+        <circle cx="50" cy="300" r="5" fill="var(--vermillion)" />
+        <text x="50" y="345" text-anchor="middle" font-size="10" fill="var(--ink)" font-weight="bold">RELEVANCE</text>
         
-        <circle cx="350" cy="300" r="30" fill="#F2F0E9" stroke="#1A1A1A" stroke-width="2" />
-        <circle cx="350" cy="300" r="5" fill="#D93025" />
-        <text x="350" y="345" text-anchor="middle" font-size="10" fill="#1A1A1A" font-weight="bold">RESPONSE</text>
+        <circle cx="350" cy="300" r="30" fill="var(--bg-washi)" stroke="var(--ink)" stroke-width="2" />
+        <circle cx="350" cy="300" r="5" fill="var(--vermillion)" />
+        <text x="350" y="345" text-anchor="middle" font-size="10" fill="var(--ink)" font-weight="bold">RESPONSE</text>
         
-        <circle cx="200" cy="200" r="45" fill="none" stroke="#D93025" stroke-width="1.5" />
-        <circle cx="200" cy="200" r="5" fill="#1A1A1A" />
+        <circle cx="200" cy="200" r="45" fill="none" stroke="var(--vermillion)" stroke-width="1.5" />
+        <circle cx="200" cy="200" r="5" fill="var(--ink)" />
       </svg>
     </div>
     
@@ -666,19 +500,19 @@
       };
 
       return (
-        <section className="py-24 px-6 border-b border-black bg-[#F2F0E9] overflow-hidden">
+        <section className="py-24 px-6 border-b border-black bg-washi overflow-hidden">
           <div className="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
             {/* Text Side */}
             <div className="lg:col-span-5 space-y-8">
               <div>
                 <h2 className="text-4xl font-bold mb-2">The Value Function</h2>
-                <p className="font-mono text-xs uppercase tracking-widest text-[#D93025]">Framework // MMXXV</p>
+                <p className="font-mono text-xs uppercase tracking-widest text-vermillion">Framework // MMXXV</p>
               </div>
 
               <div className="min-h-[240px]">
                 <h3 className="text-2xl font-bold mb-2 transition-all duration-300">
-                  {content[active].title} <span className="text-[#D93025] text-lg font-mono font-normal">/ {content[active].subtitle}</span>
+                  {content[active].title} <span className="text-vermillion text-lg font-mono font-normal">/ {content[active].subtitle}</span>
                 </h3>
                 <p className="text-base leading-relaxed mb-4 transition-all duration-300">
                   {content[active].desc}
@@ -690,7 +524,7 @@
 
               <button
                 onClick={downloadFramework}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#1A1A1A] text-white hover:bg-[#D93025] transition-colors font-mono text-sm"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-white hover:bg-vermillion transition-colors font-mono text-sm"
               >
                 Download Framework <ArrowUpRight size={16} />
               </button>
@@ -700,12 +534,12 @@
             <div className="lg:col-span-7 flex justify-center items-center relative h-[500px]">
               <svg id="value-function-svg" viewBox="0 0 400 350" className="w-full max-w-[500px] h-auto drop-shadow-xl">
                 {/* Triangle Lines */}
-                <path d="M200 50 L50 300 L350 300 Z" fill="none" stroke="#1A1A1A" strokeWidth="2" className="opacity-30" />
+                <path d="M200 50 L50 300 L350 300 Z" fill="none" stroke="var(--ink)" strokeWidth="2" className="opacity-30" />
 
                 {/* Center Connector Lines */}
-                <line x1="200" y1="50" x2="200" y2="200" stroke="#D93025" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-50" />
-                <line x1="50" y1="300" x2="200" y2="200" stroke="#D93025" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-50" />
-                <line x1="350" y1="300" x2="200" y2="200" stroke="#D93025" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-50" />
+                <line x1="200" y1="50" x2="200" y2="200" stroke="var(--vermillion)" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-50" />
+                <line x1="50" y1="300" x2="200" y2="200" stroke="var(--vermillion)" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-50" />
+                <line x1="350" y1="300" x2="200" y2="200" stroke="var(--vermillion)" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-50" />
 
                 {/* Resonance (Top) */}
                 <g
@@ -713,9 +547,9 @@
                   onMouseEnter={() => setActive('resonance')}
                   onMouseLeave={() => setActive('equilibrium')}
                 >
-                  <circle cx="200" cy="50" r="30" fill="#F2F0E9" stroke="#1A1A1A" strokeWidth="2" className="group-hover:fill-[#1A1A1A] transition-colors duration-300" />
-                  <circle cx="200" cy="50" r="5" fill="#D93025" />
-                  <text x="200" y="10" textAnchor="middle" className="font-mono text-[10px] fill-[#1A1A1A] group-hover:fill-[#1A1A1A] transition-colors tracking-widest uppercase font-bold">Resonance</text>
+                  <circle cx="200" cy="50" r="30" fill="var(--bg-washi)" stroke="var(--ink)" strokeWidth="2" className="group-hover:fill-ink transition-colors duration-300" />
+                  <circle cx="200" cy="50" r="5" fill="var(--vermillion)" />
+                  <text x="200" y="10" textAnchor="middle" className="font-mono text-[10px] fill-ink group-hover:fill-ink transition-colors tracking-widest uppercase font-bold">Resonance</text>
                 </g>
 
                 {/* Relevance (Bottom Left) */}
@@ -724,9 +558,9 @@
                   onMouseEnter={() => setActive('relevance')}
                   onMouseLeave={() => setActive('equilibrium')}
                 >
-                  <circle cx="50" cy="300" r="30" fill="#F2F0E9" stroke="#1A1A1A" strokeWidth="2" className="group-hover:fill-[#1A1A1A] transition-colors duration-300" />
-                  <circle cx="50" cy="300" r="5" fill="#D93025" />
-                  <text x="50" y="345" textAnchor="middle" className="font-mono text-[10px] fill-[#1A1A1A] tracking-widest uppercase font-bold">Relevance</text>
+                  <circle cx="50" cy="300" r="30" fill="var(--bg-washi)" stroke="var(--ink)" strokeWidth="2" className="group-hover:fill-ink transition-colors duration-300" />
+                  <circle cx="50" cy="300" r="5" fill="var(--vermillion)" />
+                  <text x="50" y="345" textAnchor="middle" className="font-mono text-[10px] fill-ink tracking-widest uppercase font-bold">Relevance</text>
                 </g>
 
                 {/* Response (Bottom Right) */}
@@ -735,9 +569,9 @@
                   onMouseEnter={() => setActive('response')}
                   onMouseLeave={() => setActive('equilibrium')}
                 >
-                  <circle cx="350" cy="300" r="30" fill="#F2F0E9" stroke="#1A1A1A" strokeWidth="2" className="group-hover:fill-[#1A1A1A] transition-colors duration-300" />
-                  <circle cx="350" cy="300" r="5" fill="#D93025" />
-                  <text x="350" y="345" textAnchor="middle" className="font-mono text-[10px] fill-[#1A1A1A] tracking-widest uppercase font-bold">Response</text>
+                  <circle cx="350" cy="300" r="30" fill="var(--bg-washi)" stroke="var(--ink)" strokeWidth="2" className="group-hover:fill-ink transition-colors duration-300" />
+                  <circle cx="350" cy="300" r="5" fill="var(--vermillion)" />
+                  <text x="350" y="345" textAnchor="middle" className="font-mono text-[10px] fill-ink tracking-widest uppercase font-bold">Response</text>
                 </g>
 
                 {/* Equilibrium (Center) */}
@@ -745,8 +579,8 @@
                   className="cursor-pointer"
                   onMouseEnter={() => setActive('equilibrium')}
                 >
-                  <circle cx="200" cy="200" r="45" fill="none" stroke="#D93025" strokeWidth="1.5" className="animate-pulse" />
-                  <circle cx="200" cy="200" r="5" fill="#1A1A1A" />
+                  <circle cx="200" cy="200" r="45" fill="none" stroke="var(--vermillion)" strokeWidth="1.5" className="animate-pulse" />
+                  <circle cx="200" cy="200" r="5" fill="var(--ink)" />
                 </g>
               </svg>
             </div>
@@ -766,11 +600,11 @@
       ];
 
       return (
-        <div className="border-b border-black py-4 bg-[#F2F0E9] text-[#1A1A1A] ticker-wrapper">
+        <div className="border-b border-black py-4 bg-washi text-ink ticker-wrapper">
           <div className="ticker-content">
             {[...themes, ...themes].map((theme, i) => (
               <span key={i} className="inline-flex items-center gap-4 mx-8 font-mono text-xs tracking-widest">
-                <span className="w-2 h-2 bg-[#D93025] rounded-full inline-block"></span>
+                <span className="w-2 h-2 bg-vermillion rounded-full inline-block"></span>
                 <span>{theme}</span>
               </span>
             ))}
@@ -786,7 +620,7 @@
           <h4 className="text-xl font-bold mb-2 hover-red-accent transition-colors">{title}</h4>
           <p className="opacity-80 max-w-lg leading-relaxed">{desc}</p>
         </div>
-        <div className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity text-[#D93025]">
+        <div className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity text-vermillion">
           <ArrowUpRight size={20} />
         </div>
       </div>
@@ -845,17 +679,17 @@
       ];
 
       return (
-        <section className="border-b border-black py-24 px-6 bg-[#F2F0E9]">
+        <section className="border-b border-black py-24 px-6 bg-washi">
           <div className="max-w-[1600px] mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16">
               <h2 className="text-4xl font-bold">Peer Review</h2>
-              <p className="font-mono text-xs uppercase tracking-widest text-[#D93025] mt-4 md:mt-0">Select Perspectives</p>
+              <p className="font-mono text-xs uppercase tracking-widest text-vermillion mt-4 md:mt-0">Select Perspectives</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-black pt-12">
               {reviews.map((review, index) => (
                 <div key={index} className="group flex flex-col">
-                  <div className="font-mono text-xs text-[#D93025] mb-4 uppercase tracking-widest">{review.archetype}</div>
+                  <div className="font-mono text-xs text-vermillion mb-4 uppercase tracking-widest">{review.archetype}</div>
                   <p className="text-lg font-medium leading-relaxed mb-8 flex-grow">
                     "{review.quote}"
                   </p>
@@ -872,10 +706,10 @@
     };
 
     const VentureCard = ({ role, name, desc, link = "#" }) => (
-      <a href={link} target="_blank" rel="noopener noreferrer" className="group block p-12 border-b border-black md:border-r last:border-r-0 hover:bg-[#1A1A1A] hover:text-[#F2F0E9] transition-all duration-300 h-full flex flex-col justify-between">
+      <a href={link} target="_blank" rel="noopener noreferrer" className="group block p-12 border-b border-black md:border-r last:border-r-0 hover:bg-ink hover:text-washi transition-all duration-300 h-full flex flex-col justify-between">
         <div>
           <div className="flex justify-between items-start mb-12">
-            <span className="font-mono text-xs uppercase tracking-widest group-hover:text-[#D93025] transition-colors">{role}</span>
+            <span className="font-mono text-xs uppercase tracking-widest group-hover:text-vermillion transition-colors">{role}</span>
             <ArrowRight size={20} className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
           </div>
           <h3 className="text-3xl lg:text-4xl font-bold mb-6">{name}</h3>
@@ -890,7 +724,7 @@
       <section id="ventures" className="border-b border-black">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
           {/* Red intro card - spans 2 columns on desktop */}
-          <div className="p-16 border-b md:border-b-0 border-black md:border-r lg:col-span-2 bg-[#D93025] text-white flex flex-col justify-between min-h-[400px]">
+          <div className="p-16 border-b md:border-b-0 border-black md:border-r lg:col-span-2 bg-vermillion text-white flex flex-col justify-between min-h-[400px]">
             <div>
               <h2 className="text-6xl font-bold mb-8">Building<br />The Future</h2>
               <div className="w-16 h-1 bg-white mb-8"></div>
@@ -937,21 +771,21 @@
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="space-y-4 group">
-              <div className="w-8 h-8 border border-black flex items-center justify-center font-mono text-xs mb-4 group-hover:bg-[#D93025] group-hover:text-white group-hover:border-[#D93025] transition-colors">01</div>
+              <div className="w-8 h-8 border border-black flex items-center justify-center font-mono text-xs mb-4 group-hover:bg-vermillion group-hover:text-white group-hover:border-vermillion transition-colors">01</div>
               <h3 className="text-xl font-bold">Post-Agentic AI Systems</h3>
               <p className="text-sm leading-relaxed opacity-80">
                 Next-generation scientific computing platforms that transcend current agent limitations. Moving from chat to action.
               </p>
             </div>
             <div className="space-y-4 group">
-              <div className="w-8 h-8 border border-black flex items-center justify-center font-mono text-xs mb-4 group-hover:bg-[#D93025] group-hover:text-white group-hover:border-[#D93025] transition-colors">02</div>
+              <div className="w-8 h-8 border border-black flex items-center justify-center font-mono text-xs mb-4 group-hover:bg-vermillion group-hover:text-white group-hover:border-vermillion transition-colors">02</div>
               <h3 className="text-xl font-bold">Scientific Knowledge Graphs</h3>
               <p className="text-sm leading-relaxed opacity-80">
                 Reimagining how research connections are discovered and accelerated. Reducing the 18-month lag in global health data.
               </p>
             </div>
             <div className="space-y-4 group">
-              <div className="w-8 h-8 border border-black flex items-center justify-center font-mono text-xs mb-4 group-hover:bg-[#D93025] group-hover:text-white group-hover:border-[#D93025] transition-colors">03</div>
+              <div className="w-8 h-8 border border-black flex items-center justify-center font-mono text-xs mb-4 group-hover:bg-vermillion group-hover:text-white group-hover:border-vermillion transition-colors">03</div>
               <h3 className="text-xl font-bold">Public-Private Innovation</h3>
               <p className="text-sm leading-relaxed opacity-80">
                 Healthcare and government partnerships through responsible AI governance and "One Health" approaches.
@@ -963,17 +797,17 @@
     );
 
     const Footer = () => (
-      <footer id="connect" className="bg-[#1A1A1A] text-[#F2F0E9] pt-24 pb-12 px-6">
+      <footer id="connect" className="bg-ink text-washi pt-24 pb-12 px-6">
         <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 mb-24">
           <div>
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 text-white">
-              Let's Talk<span className="text-[#D93025]">.</span>
+              Let's Talk<span className="text-vermillion">.</span>
             </h2>
             <a
               href="https://linkedin.com/in/siddharth"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-4 text-xl md:text-2xl border-b border-[#F2F0E9] pb-2 hover:text-[#D93025] hover:border-[#D93025] transition-all"
+              className="inline-flex items-center gap-4 text-xl md:text-2xl border-b border-washi pb-2 hover:text-vermillion hover:border-vermillion transition-all"
             >
               LinkedIn /in/siddharth <ArrowUpRight size={24} />
             </a>
@@ -981,7 +815,7 @@
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 font-mono text-sm">
             <div>
-              <span className="block text-[#D93025] mb-6 uppercase tracking-widest text-xs">Advisory & Investment</span>
+              <span className="block text-vermillion mb-6 uppercase tracking-widest text-xs">Advisory & Investment</span>
               <ul className="space-y-4">
                 <li>
                   <strong className="block text-white">Limited Partner</strong>
@@ -995,7 +829,7 @@
             </div>
 
             <div>
-              <span className="block text-[#D93025] mb-6 uppercase tracking-widest text-xs">Currently Available</span>
+              <span className="block text-vermillion mb-6 uppercase tracking-widest text-xs">Currently Available</span>
               <ul className="space-y-2 opacity-60">
                 <li>Strategic Advisory</li>
                 <li>Keynote Speaking</li>
@@ -1005,7 +839,7 @@
           </div>
         </div>
 
-        <div className="max-w-[1600px] mx-auto border-t border-[#F2F0E9]/20 pt-8 flex flex-col md:flex-row justify-between items-end opacity-40 font-mono text-xs">
+        <div className="max-w-[1600px] mx-auto border-t border-washi/20 pt-8 flex flex-col md:flex-row justify-between items-end opacity-40 font-mono text-xs">
           <div>© MMXXV Siddhartha Chaturvedi</div>
           <div className="mt-4 md:mt-0">Available for global engagements</div>
         </div>
