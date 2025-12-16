@@ -32,8 +32,15 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="public/favicons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="public/favicons/favicon-64.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="public/favicons/favicon-128.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="public/favicons/favicon-256.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="public/favicons/favicon.png">
+
   <!-- External Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -85,7 +92,7 @@
             <div className="flex items-center px-6 border-r border-black w-20 justify-center group cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
               <div className="logo-container">
                 <div className="logo-dot"></div>
-                <img src="sidc.jpeg" alt="SC" className="logo-pic" />
+                <img src="public/images/sidc.jpeg" alt="SC" className="logo-pic" />
               </div>
             </div>
 
@@ -182,7 +189,7 @@
                 {/* Image Integration: Seamless with name */}
                 <div className="fluid-photo border border-black overflow-hidden relative grayscale contrast-125 mb-2 lg:mb-8 lg:-ml-12 shrink-0">
                   <img
-                    src="sidc.jpeg"
+                    src="public/images/sidc.jpeg"
                     alt="Siddhartha Chaturvedi"
                     className="w-full h-full object-cover img-ink-filter hover:scale-105 transition-transform duration-700"
                   />
@@ -207,7 +214,7 @@
                     <div className="w-2 h-2 bg-vermillion rounded-full"></div>
                     <span>Based between US, UK & India</span>
                   </div>
-                  <a href="#connect" className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-white hover:bg-vermillion transition-colors">
+                  <a href="https://linkedin.com/in/siddharth" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-white hover:bg-vermillion transition-colors">
                     Let's Connect <ArrowRight size={16} />
                   </a>
                 </div>

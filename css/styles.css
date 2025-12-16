@@ -56,6 +56,12 @@ body {
   position: relative;
 }
 
+/* Main content container with max-width */
+.main-container {
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
 /* Paper Texture Overlay */
 body::before {
   content: "";
@@ -120,8 +126,21 @@ h4 {
 }
 
 .adaptive-container {
-  padding-left: clamp(1rem, 3vw, 3rem);
-  padding-right: clamp(1rem, 3vw, 3rem);
+  padding-left: clamp(1.5rem, 4vw, 4rem);
+  padding-right: clamp(1.5rem, 4vw, 4rem);
+}
+
+/* Responsive section padding with better mobile margins */
+.section-padding {
+  padding-left: clamp(1.5rem, 5vw, 6rem);
+  padding-right: clamp(1.5rem, 5vw, 6rem);
+}
+
+/* Max-width container for content sections */
+.content-max-width {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .fluid-subtext {
@@ -578,6 +597,20 @@ footer {
 /* ============================================
    RESPONSIVE DESIGN
    ============================================ */
+
+/* Mobile-first: Better margins on small screens */
+@media (max-width: 767px) {
+  body {
+    padding: 0 1rem;
+  }
+  
+  .adaptive-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Tablet and up */
 @media (min-width: 768px) {
   .screen {
     padding: var(--space-xl) var(--space-md);
@@ -604,5 +637,19 @@ footer {
 
   .cta-link {
     flex: 1;
+  }
+}
+
+/* Large screens: Prevent content from becoming too wide */
+@media (min-width: 1920px) {
+  body {
+    padding: 0 calc((100vw - 1800px) / 2);
+  }
+}
+
+/* Extra large screens: Even more constraints */
+@media (min-width: 2560px) {
+  body {
+    padding: 0 calc((100vw - 2000px) / 2);
   }
 }
