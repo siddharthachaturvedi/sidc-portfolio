@@ -35,6 +35,13 @@
     document.documentElement.classList.add('js');
   </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="icon" type="image/png" sizes="32x32" href="public/favicons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="public/favicons/favicon-64.png">
   <link rel="icon" type="image/png" sizes="128x128" href="public/favicons/favicon-128.png">
@@ -218,31 +225,26 @@
     </section>
 
     <section id="about" class="bio-section reveal" aria-labelledby="about-title">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-heading__eyebrow">About</p>
-          <h2 id="about-title">Two chapters, one throughline.</h2>
-        </div>
+      <h2 id="about-title" class="sr-only">About</h2>
 
-        <div class="bio-grid">
-          <article class="story-card">
-            <p class="story-card__eyebrow">Previous Chapter</p>
-            <h3>Planetary Scale</h3>
-            <p class="story-card__role">Director of Product Management</p>
-            <p>
-              Directed the intersection of AI and global security. From tracking pathogens with Premonition to deploying GenAI systems, from LLMs to agents, for the US Federal Government (Civilian). 300+ use cases.
-            </p>
-          </article>
+      <div class="bio-grid">
+        <article class="story-card">
+          <p class="story-card__eyebrow">Previous Chapter</p>
+          <h3>Planetary Scale</h3>
+          <p class="story-card__role">Director of Product Management</p>
+          <p>
+            Directed the intersection of AI and global security. From tracking pathogens with Premonition to deploying GenAI systems, from LLMs to agents, for the US Federal Government (Civilian). 300+ use cases.
+          </p>
+        </article>
 
-          <article class="story-card">
-            <p class="story-card__eyebrow">Current Focus</p>
-            <h3>Precision Truth</h3>
-            <p class="story-card__role">Under-represented Disease Research</p>
-            <p>
-              Decoupling intelligence from human bottlenecks. Solving data swamps in scientific research, starting with the underserved landscape of Endometriosis. Evidence-grade. Autonomous.
-            </p>
-          </article>
-        </div>
+        <article class="story-card">
+          <p class="story-card__eyebrow">Current Focus</p>
+          <h3>Precision Truth</h3>
+          <p class="story-card__role">Under-represented Disease Research</p>
+          <p>
+            Decoupling intelligence from human bottlenecks. Solving data swamps in scientific research, starting with the underserved landscape of Endometriosis. Evidence-grade. Autonomous.
+          </p>
+        </article>
       </div>
     </section>
 
@@ -486,63 +488,56 @@
     </section>
 
     <section id="ventures" class="ventures-section reveal" aria-labelledby="ventures-title">
-      <div class="container">
-        <div class="section-heading">
-          <h2 id="ventures-title">Ventures</h2>
-          <p>
-            A portfolio of ventures focused on underserved areas, document intelligence, and board transformation.
-          </p>
-        </div>
+      <h2 id="ventures-title" class="sr-only">Ventures</h2>
 
-        <div class="ventures-grid">
-          <article class="venture-intro">
-            <p class="venture-intro__eyebrow">Portfolio // MMXXV</p>
-            <h3>Building the future</h3>
+      <div class="ventures-grid">
+        <article class="venture-intro">
+          <p class="venture-intro__eyebrow">Portfolio // MMXXV</p>
+          <h3>Building the future</h3>
+          <p>
+            A portfolio of ventures focused on underserved areas, document intelligence, and board transformation. Each addressing a gap where technology meets human need.
+          </p>
+        </article>
+
+        <a class="venture-card" href="https://veriscience.ai" target="_blank" rel="noopener noreferrer">
+          <article>
+            <p class="venture-card__eyebrow">The Science of Truth</p>
+            <h3>Veriscience.AI</h3>
             <p>
-              Each venture addresses a gap where technology meets human need, from evidence-grade science to board transformation and career resilience.
+              Evidence-grade AI for women's health. Turning 17-year diagnosis delays into months through autonomous research synthesis.
             </p>
           </article>
+        </a>
 
-          <a class="venture-card" href="https://veriscience.ai" target="_blank" rel="noopener noreferrer">
-            <article>
-              <p class="venture-card__eyebrow">The Science of Truth</p>
-              <h3>Veriscience.AI</h3>
-              <p>
-                Evidence-grade AI for women's health. Turning 17-year diagnosis delays into months through autonomous research synthesis.
-              </p>
-            </article>
-          </a>
+        <a class="venture-card" href="https://unfreeze.org" target="_blank" rel="noopener noreferrer">
+          <article>
+            <p class="venture-card__eyebrow">Agentic Resilience</p>
+            <h3>Unfreeze.org</h3>
+            <p>
+              Career transition intelligence. Navigate layoffs and pivots with AI that understands your skills, market gaps, and next moves.
+            </p>
+          </article>
+        </a>
 
-          <a class="venture-card" href="https://unfreeze.org" target="_blank" rel="noopener noreferrer">
-            <article>
-              <p class="venture-card__eyebrow">Agentic Resilience</p>
-              <h3>Unfreeze.org</h3>
-              <p>
-                Career transition intelligence. Navigate layoffs and pivots with AI that understands your skills, market gaps, and next moves.
-              </p>
-            </article>
-          </a>
+        <a class="venture-card" href="https://stratcorp.ai" target="_blank" rel="noopener noreferrer">
+          <article>
+            <p class="venture-card__eyebrow">Risk x Value</p>
+            <h3>Stratified Advisory</h3>
+            <p>
+              Board-as-a-Service for the GenAI era. Strategic governance for founders building in regulated, high-stakes domains.
+            </p>
+          </article>
+        </a>
 
-          <a class="venture-card" href="https://stratcorp.ai" target="_blank" rel="noopener noreferrer">
-            <article>
-              <p class="venture-card__eyebrow">Risk x Value</p>
-              <h3>Stratified Advisory</h3>
-              <p>
-                Board-as-a-Service for the GenAI era. Strategic governance for founders building in regulated, high-stakes domains.
-              </p>
-            </article>
-          </a>
-
-          <a class="venture-card" href="https://justai.fyi" target="_blank" rel="noopener noreferrer">
-            <article>
-              <p class="venture-card__eyebrow">Author</p>
-              <h3>JustAI.Fyi</h3>
-              <p>
-                Synthesis of Software 3.0 thinking. Essays on post-agentic systems, reasoning engines, and the infrastructure of truth.
-              </p>
-            </article>
-          </a>
-        </div>
+        <a class="venture-card" href="https://justai.fyi" target="_blank" rel="noopener noreferrer">
+          <article>
+            <p class="venture-card__eyebrow">Author</p>
+            <h3>JustAI.Fyi</h3>
+            <p>
+              Synthesis of Software 3.0 thinking. Essays on post-agentic systems, reasoning engines, and the infrastructure of truth.
+            </p>
+          </article>
+        </a>
       </div>
     </section>
 
@@ -622,7 +617,7 @@
     </div>
 
     <div class="container site-footer__bottom">
-      <p>&copy; MMXXV Siddhartha Chaturvedi</p>
+      <p>&copy; 2026 Siddhartha Chaturvedi</p>
       <p>Available for global engagements</p>
     </div>
   </footer>
