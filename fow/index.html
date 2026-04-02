@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Won't Simplify Work. It Might Finally Restore It.</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --purpose: #C45B28;
+      --system: #2B6CB0;
+      --ai: #6B46C1;
+      --bg: #FAFAF8;
+      --text: #1a1a1a;
+      --muted: #999;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Source Serif 4', Georgia, serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ═══════════════════════════════════════════
+       FIXED VENN DIAGRAM BACKGROUND
+       ═══════════════════════════════════════════ */
+    .venn-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .venn-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 25%, var(--bg) 78%);
+      z-index: 1;
+    }
+
+    .venn-svg {
+      width: min(640px, 88vw);
+      height: auto;
+      opacity: 0.5;
+    }
+
+    .venn-svg circle, .venn-svg text, .venn-svg rect, .venn-svg g {
+      transition: all 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @keyframes aiPulse {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 0.65; }
+    }
+    .ai-group.pulsing { animation: aiPulse 4s ease-in-out infinite; }
+
+    .intersection-glow {
+      transition: opacity 1.4s ease 0.3s, r 1.6s cubic-bezier(0.22,1,0.36,1),
+                  cx 1.6s cubic-bezier(0.22,1,0.36,1), cy 1.6s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    /* ═══════════════════════════════════════════
+       ARTICLE CONTENT
+       ═══════════════════════════════════════════ */
+    .article {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* Meta box */
+    .meta-box {
+      padding: 28px 32px;
+      margin-bottom: 40px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border-radius: 2px;
+      color: #c8ccd4;
+      font-size: 15px;
+      line-height: 1.75;
+      font-style: italic;
+      border-left: 3px solid var(--ai);
+    }
+    .meta-box p { margin: 0 0 20px 0; }
+    .meta-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .meta-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .meta-legend-bar {
+      width: 3px;
+      height: 16px;
+      border-radius: 1px;
+      opacity: 0.9;
+    }
+    .meta-legend-text {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-style: normal;
+    }
+
+    /* Title section */
+    .article-title {
+      margin-bottom: 48px;
+    }
+    .article-title h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .article-title .subtitle {
+      font-size: 18px;
+      color: #666;
+      font-style: italic;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .article-title .author {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .article-title .bar {
+      width: 60px;
+      height: 3px;
+      background: var(--text);
+      margin-top: 24px;
+    }
+
+    /* Headings */
+    .section-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    /* Separator */
+    .separator {
+      text-align: center;
+      margin: 40px 0;
+      color: #ccc;
+      font-size: 18px;
+      letter-spacing: 12px;
+    }
+
+    /* Content paragraphs (provenance-tagged) */
+    .prov-block {
+      position: relative;
+      margin-bottom: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+      padding-left: 20px;
+      border-radius: 0 2px 2px 0;
+    }
+    .prov-block.expanded {
+      padding: 16px 20px;
+    }
+    .prov-block p.content {
+      font-size: 16.5px;
+      line-height: 1.8;
+      color: #2a2a2a;
+      margin: 0;
+    }
+
+    /* Badge */
+    .prov-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .prov-badge .icon { font-size: 14px; }
+
+    /* Note box */
+    .prov-note {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: rgba(0,0,0,0.03);
+      border-radius: 2px;
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #666;
+      line-height: 1.65;
+    }
+    .prov-note .label {
+      font-weight: 600;
+    }
+
+    /* Instruction line */
+    .instructions {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .instructions .toggle {
+      color: var(--ai);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* Colophon */
+    .colophon {
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid #eee;
+    }
+    .colophon p {
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* Sublabel */
+    .sub-label {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      opacity: 0.4;
+      z-index: 5;
+      text-align: center;
+      pointer-events: none;
+      transition: all 0.7s ease;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ FIXED VENN DIAGRAM BACKGROUND ═══════ -->
+  <div class="venn-bg">
+    <svg class="venn-svg" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="gP" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#C45B28" stop-opacity="0.22"/>
+          <stop offset="85%" stop-color="#C45B28" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#C45B28" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="gS" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#2B6CB0" stop-opacity="0.22"/>
+          <stop offset="85%" stop-color="#2B6CB0" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#2B6CB0" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="gI" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#6B46C1" stop-opacity="0.2"/>
+          <stop offset="70%" stop-color="#6B46C1" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#6B46C1" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <circle id="pF" cx="190" cy="145" r="88" fill="url(#gP)"/>
+      <circle id="pS" cx="190" cy="145" r="88" fill="none" stroke="#C45B28" stroke-width="1.2" opacity="0.25"/>
+      <circle id="sF" cx="310" cy="145" r="82" fill="url(#gS)"/>
+      <circle id="sS" cx="310" cy="145" r="82" fill="none" stroke="#2B6CB0" stroke-width="1.2" opacity="0.25"/>
+      <circle id="iG" class="intersection-glow" cx="250" cy="145" r="35" fill="url(#gI)" opacity="0"/>
+
+      <text id="pL" x="150" y="149" text-anchor="middle"
+        font-size="11.5" font-family="'JetBrains Mono', monospace"
+        fill="#C45B28" opacity="0.5" font-weight="600" letter-spacing="0.12em">PURPOSE</text>
+      <text id="sL" x="350" y="149" text-anchor="middle"
+        font-size="11.5" font-family="'JetBrains Mono', monospace"
+        fill="#2B6CB0" opacity="0.5" font-weight="600" letter-spacing="0.12em">SYSTEM</text>
+
+      <g id="aiG" class="ai-group" opacity="0">
+        <text id="aiT" x="250" y="149" text-anchor="middle"
+          font-size="11.5" font-family="'JetBrains Mono', monospace"
+          fill="#6B46C1" opacity="0.5" font-weight="600" letter-spacing="0.12em">AI</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ═══════ ARTICLE CONTENT ═══════ -->
+  <div class="article" id="article"></div>
+
+  <!-- Sublabel -->
+  <div class="sub-label" id="subLabel">System in service of purpose</div>
+
+  <script>
+    // ═══════════════════════════════════════════
+    // PROVENANCE DATA
+    // ═══════════════════════════════════════════
+    const PROVENANCE = {
+      human: { color: '#C45B28', bg: '#FFF8F4', label: 'Human-originated', icon: '◉' },
+      ai:    { color: '#2B6CB0', bg: '#F4F8FF', label: 'AI-originated', icon: '◎' },
+      meld:  { color: '#6B46C1', bg: '#F9F4FF', label: 'Mind-meld', icon: '◈' },
+    };
+
+    const sections = [
+      {
+        type: 'meta', era: 1,
+        content: 'What follows is an article with its intellectual provenance made visible. Each passage is marked by who originated the core idea: the human author, the AI collaborator, or the iterative synthesis between them. This is not a demonstration of AI writing. It is a demonstration of a different mode of thinking — one that neither participant could have produced alone.'
+      },
+      {
+        type: 'title', era: 1,
+        content: 'AI Won\'t Simplify Work. It Might Finally Restore It.',
+        sub: 'The real promise of the agentic era isn\'t speed — it\'s returning human attention to the complexity that matters.',
+        author: 'Siddhartha Chaturvedi'
+      },
+      {
+        provenance: 'human', era: 1,
+        note: "Sid's original spoken insight: 'When you ask a 15-16 year old why they want to become a doctor, the purpose is clear. When you ask a 50 year old doctor what their purpose is, they seem disillusioned by insurance codes.'",
+        content: 'Ask a fifteen-year-old why they want to become a doctor, and the answer is luminous in its clarity: to heal people, to save lives, to make someone\'s worst day less terrible. Ask a fifty-year-old physician the same question, and you will often get a pause — followed by something about insurance codes, prior authorizations, and a documentation system that has quietly become a second full-time job they never applied for.'
+      },
+      {
+        provenance: 'meld', era: 1,
+        note: "Sid framed 'purpose vs. system' as the core tension. Claude abstracted it from domain-specific to universal structural condition across multiple iterations.",
+        content: 'That gap — between why people enter a profession and what the profession eventually asks of them — is not a healthcare problem. It is a structural condition of modern institutional life. And it is, I believe, the most important thing the agentic era has the potential to change.'
+      },
+      { type: 'heading', era: 1, content: 'The Two Complexities' },
+      {
+        provenance: 'human', era: 1,
+        note: "Sid's original framing: complexity in the system causes chaos, complexity in the purpose causes impact. He named the distinction and insisted it needed two labels.",
+        content: 'Every domain of consequential work involves two kinds of complexity. The first is the complexity native to the mission itself — diagnosing an ambiguous illness, architecting a distributed system, designing an experiment that might overturn a decade of accepted science. This is the complexity people signed up for. It is difficult, often beautiful, and it is where human judgment, creativity, and expertise create irreplaceable value. Call it impact complexity.'
+      },
+      {
+        provenance: 'meld', era: 1,
+        note: "Sid originally called the system side 'chaos complexity.' Claude pushed back: calling it chaos undermines your own argument that systems weren't stupid — they were necessary scaling mechanisms that metastasized. Refined to 'system complexity' to preserve intellectual honesty.",
+        content: 'The second kind of complexity is everything required to make that work legible, governable, fundable, and coordinated within an institutional context — status updates, compliance documentation, billing codes, grant applications, formatting requirements, cross-functional translation, and the sprawling apparatus of organizational proof. This complexity is not illegitimate. It exists for real reasons: coordination at scale, accountability, interoperability between teams and institutions. But it is not the work itself. Call it system complexity.'
+      },
+      {
+        provenance: 'ai', era: 1,
+        note: "Claude introduced the historical proportionality framing — that the two complexities once coexisted in balance — to set up the drift narrative. Sid hadn't framed a 'before' state.",
+        content: 'For most of the twentieth century, these two forms of complexity coexisted in rough proportion. Systems served purposes. Documentation supported the mission. Governance enabled the work. The relationship, while imperfect, was recognizable: the machinery existed to advance the thing that mattered.'
+      },
+      { type: 'heading', era: 2, content: 'How the System Outgrew the Purpose' },
+      {
+        provenance: 'meld', era: 2,
+        note: "Sid provided the Venn diagram concept (system circle growing larger than purpose circle from 1990s to 2020s). Claude reframed it as 'the system didn't break — it succeeded too well' to avoid sounding anti-institution.",
+        content: 'Sometime between the late 1990s and the present, that proportion quietly inverted across much of institutional life. The system didn\'t break — it succeeded too well. As organizations scaled, as regulatory environments grew denser, as the demand for cross-functional alignment multiplied, the infrastructure required to sustain coordination expanded faster than the mission it was meant to serve.'
+      },
+      {
+        provenance: 'human', era: 2,
+        note: "Sid's core example throughout every iteration. The doctor's purpose-to-system drift was his anchor from the first spoken draft.",
+        content: 'In healthcare, clinical attention has been progressively displaced by administrative burden. Physicians spend roughly two hours on documentation and administrative tasks for every one hour of direct patient care. The electronic health record, originally designed to improve care coordination, became in practice a billing and compliance instrument that consumes physician attention at industrial scale.'
+      },
+      {
+        provenance: 'ai', era: 2,
+        note: "Claude extended the pattern to enterprise technology with specific operational details (status reporting, approval workflows, cross-functional translation) drawn from understanding of Sid's Atlassian work context.",
+        content: 'In enterprise technology, the same dynamic plays out in different clothing. Teams that exist to build products spend enormous cognitive resources on coordination overhead — status reporting, cross-team alignment meetings, documentation maintenance, approval workflows, and the constant translation of work into formats legible to adjacent functions. A product manager\'s calendar often looks less like someone advancing a product and more like someone maintaining a complex information-routing system.'
+      },
+      {
+        provenance: 'human', era: 2,
+        note: "Sid's direct experience building VeriScience and scientific infrastructure. His phrase: 'peer review theater' and 'institutional performance before it was even allowed to call itself progress.'",
+        content: 'In scientific research, the divergence may be most consequential of all. The grant application process, the publication machinery, the formatting rituals, the peer review theater, the institutional legibility requirements — all of this infrastructure was built to ensure rigor and accountability. And much of it does. But the cumulative effect is that researchers increasingly spend their finite careers performing institutional compliance rather than pursuing the inquiry that justified the institution\'s existence.'
+      },
+      {
+        provenance: 'meld', era: 2,
+        note: "Sid said 'we ended up having to do stuff for the system.' Claude compressed it into this single-sentence summation. The idea is Sid's; the formulation is Claude's.",
+        content: 'In each case, the story is the same: systems built to serve the purpose gradually became systems the purpose had to serve.'
+      },
+      { type: 'heading', era: 2, content: 'The Problem Isn\'t the System. It\'s the Ratio.' },
+      {
+        provenance: 'ai', era: 2,
+        note: "Claude introduced the ratio framing to prevent the argument from sounding anti-governance. Sid's instinct was right ('documentation is not the outcome') but risked being too absolute. 'The ratio' gave it analytical precision.",
+        content: 'It is important to be precise about the diagnosis, because imprecision here leads to bad prescriptions. The argument is not that documentation is unnecessary, that governance is wasteful, or that coordination is overhead. Anyone who has worked inside a complex institution at scale understands that these mechanisms exist for deeply legitimate reasons.'
+      },
+      {
+        provenance: 'meld', era: 2,
+        note: "The physician two-thirds formulation and 'extracting rent from science' came from Claude. But the underlying anger — 'we are not historians, we are builders' — was Sid's spoken line that Claude refined into analytical language.",
+        content: 'The problem is not the existence of system complexity. The problem is the ratio. When a physician spends two-thirds of their cognitive energy on non-clinical tasks, we have not achieved accountability — we have achieved a reallocation of human expertise away from the domain in which it creates value. When a researcher spends more time formatting grant applications than formulating hypotheses, the system is no longer serving science. It is extracting rent from it.'
+      },
+      {
+        provenance: 'ai', era: 2,
+        note: "Claude's original contribution: the paradox that productivity tools often increased system complexity. 'The tools got better. The ratio got worse.' is a Claude line.",
+        content: 'And this is where the usual technology narrative falls short. For two decades, the dominant story about workplace technology has been productivity: faster communication, better dashboards, more efficient workflows. But productivity improvements, paradoxically, often increased system complexity rather than reducing it. Email multiplied coordination volume. Project management tools created new documentation burdens. Collaboration platforms generated a perpetual stream of status maintenance. The tools got better. The ratio got worse.'
+      },
+      { type: 'heading', era: 3, content: 'What the Agentic Era Actually Changes' },
+      {
+        provenance: 'human', era: 3,
+        note: "Sid's core thesis from the earliest spoken draft: 'the most exciting thing about the agentic era is not that it dumbs things down — it may finally let us preserve meaningful complexity while reducing the non-domain complexity.'",
+        content: 'This is why I believe the most significant promise of agentic AI is not the one most commonly discussed. The headline story — that AI makes individuals faster — is true but insufficient. Speed, applied to a broken ratio, simply accelerates the imbalance. The deeper opportunity is structural: agentic systems can absorb a meaningful share of system complexity, allowing human cognition to reallocate toward impact complexity.'
+      },
+      {
+        provenance: 'ai', era: 3,
+        note: "Claude distinguished agentic AI from previous automation by focusing on workflow absorption vs. discrete task replacement — a structural distinction Sid hadn't made explicitly.",
+        content: 'The distinction matters. Previous generations of automation replaced discrete tasks. Agentic AI can increasingly manage entire workflows of coordination, translation, and documentation — the connective tissue between the work and the institution. It can maintain records, generate status updates, translate between domains, navigate compliance requirements, and sustain the ambient documentation that organizations require to function — all without consuming the attention of the people whose expertise the institution was built around.'
+      },
+      {
+        provenance: 'meld', era: 3,
+        note: "Sid said 'the doctor becomes more fully a doctor.' Claude reframed around attention vs. time ('the reclaimed resource is not time — it is attention') and Sid confirmed this was the precise distinction he was reaching for.",
+        content: 'Consider what changes if a physician\'s documentation burden drops by sixty percent. Not only does clinical time increase — clinical attention increases. The cognitive space previously consumed by administrative translation becomes available for diagnostic reasoning, patient relationship, and the kind of integrative thinking that separates adequate care from excellent care. The doctor does not become faster. The doctor becomes more fully a doctor.'
+      },
+      {
+        provenance: 'ai', era: 3,
+        note: "Claude's formulation: attention as 'the scarcest and most consequential resource in any knowledge-intensive organization.' Sid's original framing was about time. Claude shifted it.",
+        content: 'Apply the same logic to a research scientist who no longer spends weeks formatting grant applications, or an engineer who no longer spends mornings translating yesterday\'s work into five different stakeholder-legible formats. The reclaimed resource is not time. It is attention — the scarcest and most consequential resource in any knowledge-intensive organization.'
+      },
+      { type: 'heading', era: 3, content: 'Restoration, Not Revolution' },
+      {
+        provenance: 'ai', era: 3,
+        note: "'Restoration, not revolution' was Claude's reframe. Sid's original instinct was closer to 'simplification.' Claude argued: you're not simplifying — you're restoring a proportion. Sid immediately adopted it as the thesis title.",
+        content: 'There is a temptation, in any discussion of transformative technology, to frame the opportunity as revolutionary. I want to resist that framing. What the agentic era offers is not a revolution against institutional systems. It is a restoration of the relationship between purpose and system — a return to a proportion that most institutions have not experienced in decades.'
+      },
+      {
+        provenance: 'meld', era: 3,
+        note: "Sid insisted throughout that the argument must not sound anti-rigor ('I am not anti-rigor. I am anti-wasting human genius on the wrong layer of rigor'). Claude structured that insistence into the simplification vs. restoration distinction.",
+        content: 'The distinction between simplification and restoration is critical. Simplification implies that the work was too complex and needs to be made easier. Restoration implies that the work was always complex — and should be — but that the surrounding infrastructure stole too much oxygen from it. The goal is not to flatten hard problems. It is to ensure that the hardest, most important problems receive the full attention of the people best equipped to solve them.'
+      },
+      {
+        provenance: 'meld', era: 3,
+        note: "This paragraph emerged from the 'simulate the argument for a legacy CMO' exercise. Sid flagged that the audience built their careers inside the system. Claude proposed reframing them as battle-scarred veterans, not obsolete bureaucrats.",
+        content: 'Organizations that understand this distinction will approach AI adoption very differently from those chasing productivity metrics. They will ask not \'How much faster can we make this process?\' but \'How much human attention can we return to the mission?\' They will measure success not in throughput but in the ratio of impact complexity to system complexity across their most valuable roles.'
+      },
+      { type: 'separator', era: 3 },
+      {
+        provenance: 'meld', era: 3,
+        note: "The closing is fully co-created. 'They lacked relief' was Claude's line. 'The same structural failure in different costumes' was Claude's compression of Sid's lived experience across Microsoft, VeriScience, and Atlassian.",
+        content: 'When I look back across the institutions I have worked inside — enterprise technology, healthcare AI, responsible AI governance, scientific infrastructure — I recognize that I have been watching the same structural failure repeat in different costumes. The people I admired most did not lack talent, ambition, or care. They lacked relief. They were extraordinary professionals spending too much of their finite cognitive lives interpreting institutional anxiety rather than advancing institutional purpose.'
+      },
+      {
+        provenance: 'ai', era: 3,
+        note: "'We built systems that forgot their place' is a Claude line. But the emotional core — letting doctors heal, researchers discover, builders build — is Sid's through every iteration.",
+        content: 'The agentic era will not solve that problem automatically. No technology does. But it offers, for the first time in a generation, a credible mechanism for rebalancing the relationship between purpose and system. For letting doctors heal, researchers discover, builders build, and institutions remember what they were originally designed to serve.'
+      },
+      {
+        provenance: 'meld', era: 3,
+        note: "Sid's instinct was always that this wasn't about productivity. Claude named it 'restoration.' Together: 'the most consequential story we get to tell.'",
+        content: 'That is not a productivity story. It is a restoration story. And it may be the most consequential one we get to tell.'
+      }
+    ];
+
+    // ═══════════════════════════════════════════
+    // VENN DIAGRAM ERA GEOMETRY
+    // ═══════════════════════════════════════════
+    //
+    // Era 1: Near-equal — purpose slightly larger, harmony
+    // Era 2: System balloons, purpose shrinks — imbalance
+    // Era 3: EQUAL circles, meaningful overlap, AI in the lens
+    //
+    const ERAS = {
+      1: {
+        purpose: { cx: 190, cy: 145, r: 88 },
+        system:  { cx: 310, cy: 145, r: 82 },
+        iGlow:   { cx: 250, cy: 145, r: 30, opacity: 0 },
+        ai:      { opacity: 0 },
+        pLabelX: 148, sLabelX: 352,
+        sublabel: 'System in service of purpose',
+      },
+      2: {
+        purpose: { cx: 178, cy: 145, r: 52 },
+        system:  { cx: 290, cy: 145, r: 125 },
+        iGlow:   { cx: 230, cy: 145, r: 18, opacity: 0 },
+        ai:      { opacity: 0 },
+        pLabelX: 148, sLabelX: 330,
+        sublabel: 'System outgrows purpose',
+      },
+      3: {
+        purpose: { cx: 205, cy: 145, r: 92 },
+        system:  { cx: 295, cy: 145, r: 92 },
+        iGlow:   { cx: 250, cy: 145, r: 48, opacity: 1 },
+        ai:      { opacity: 1 },
+        pLabelX: 152, sLabelX: 348,
+        sublabel: 'Restoration — AI rebalances purpose and system',
+      },
+    };
+
+    // ═══════════════════════════════════════════
+    // RENDER ARTICLE
+    // ═══════════════════════════════════════════
+    let showAll = false;
+    const expandedSet = new Set();
+
+    function renderArticle() {
+      const root = document.getElementById('article');
+      root.innerHTML = '';
+
+      // Instructions line
+      const instr = document.createElement('p');
+      instr.className = 'instructions';
+      instr.innerHTML = `Click any paragraph to reveal its intellectual provenance. The background diagram shifts as you read. <span class="toggle" id="toggleAll">${showAll ? 'Hide all' : 'Reveal all'}</span>`;
+      root.appendChild(instr);
+
+      sections.forEach((s, i) => {
+        const el = document.createElement('div');
+        el.dataset.era = s.era;
+
+        if (s.type === 'meta') {
+          el.className = 'meta-box';
+          el.innerHTML = `<p>${s.content}</p>
+            <div class="meta-legend">
+              ${Object.entries(PROVENANCE).map(([k, v]) =>
+                `<div class="meta-legend-item">
+                  <div class="meta-legend-bar" style="background:${v.color}"></div>
+                  <span class="meta-legend-text" style="color:${v.color}">${v.icon} ${v.label}</span>
+                </div>`
+              ).join('')}
+            </div>`;
+        } else if (s.type === 'title') {
+          el.className = 'article-title';
+          el.innerHTML = `<h1>${s.content}</h1>
+            <p class="subtitle">${s.sub}</p>
+            <p class="author">${s.author}</p>
+            <div class="bar"></div>`;
+        } else if (s.type === 'heading') {
+          el.className = 'section-heading';
+          el.textContent = s.content;
+        } else if (s.type === 'separator') {
+          el.className = 'separator';
+          el.textContent = '* * *';
+        } else {
+          // Provenance block
+          const p = PROVENANCE[s.provenance];
+          const isOpen = showAll || expandedSet.has(i);
+          el.className = 'prov-block' + (isOpen ? ' expanded' : '');
+          el.style.borderLeftColor = isOpen ? p.color : 'transparent';
+          el.style.background = isOpen ? p.bg : 'transparent';
+          el.dataset.idx = i;
+
+          let html = '';
+          if (isOpen) {
+            html += `<div class="prov-badge" style="color:${p.color}"><span class="icon">${p.icon}</span> ${p.label}</div>`;
+          }
+          html += `<p class="content">${s.content}</p>`;
+          if (isOpen && s.note) {
+            html += `<div class="prov-note" style="border-left:2px solid ${p.color}40"><span class="label" style="color:${p.color}">Provenance: </span>${s.note}</div>`;
+          }
+          el.innerHTML = html;
+
+          el.addEventListener('click', () => {
+            if (expandedSet.has(i)) expandedSet.delete(i);
+            else expandedSet.add(i);
+            renderArticle();
+          });
+        }
+
+        root.appendChild(el);
+      });
+
+      // Colophon
+      const col = document.createElement('div');
+      col.className = 'colophon';
+      col.innerHTML = `<p>This document was co-created by Siddhartha Chaturvedi and Claude (Anthropic)
+        through iterative discourse — spoken ideas refined into structure, structure
+        challenged back into sharper ideas. Neither the human nor the AI could have
+        produced this alone. The provenance encoding is itself part of the argument:
+        in the agentic era, the interesting question is not "who wrote this?" but
+        "what kind of thinking produced this?"</p>`;
+      root.appendChild(col);
+
+      // Toggle all handler
+      document.getElementById('toggleAll')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showAll = !showAll;
+        if (!showAll) expandedSet.clear();
+        renderArticle();
+      });
+    }
+
+    // ═══════════════════════════════════════════
+    // VENN DIAGRAM UPDATES
+    // ═══════════════════════════════════════════
+    const pF = document.getElementById('pF');
+    const pS = document.getElementById('pS');
+    const sF = document.getElementById('sF');
+    const sS = document.getElementById('sS');
+    const iG = document.getElementById('iG');
+    const pL = document.getElementById('pL');
+    const sL = document.getElementById('sL');
+    const aiG = document.getElementById('aiG');
+    const aiT = document.getElementById('aiT');
+    const subLabel = document.getElementById('subLabel');
+
+    let activeEra = 0;
+
+    function setC(fill, stroke, cx, cy, r) {
+      [fill, stroke].forEach(el => {
+        el.setAttribute('cx', cx);
+        el.setAttribute('cy', cy);
+        el.setAttribute('r', r);
+      });
+    }
+
+    function applyEra(n) {
+      const e = ERAS[n];
+      if (!e) return;
+
+      setC(pF, pS, e.purpose.cx, e.purpose.cy, e.purpose.r);
+      setC(sF, sS, e.system.cx, e.system.cy, e.system.r);
+
+      iG.setAttribute('cx', e.iGlow.cx);
+      iG.setAttribute('cy', e.iGlow.cy);
+      iG.setAttribute('r', e.iGlow.r);
+      iG.setAttribute('opacity', e.iGlow.opacity);
+
+      pL.setAttribute('x', e.pLabelX);
+      pL.setAttribute('y', e.purpose.cy + 4);
+      sL.setAttribute('x', e.sLabelX);
+      sL.setAttribute('y', e.system.cy + 4);
+
+      const mx = (e.purpose.cx + e.system.cx) / 2;
+      const my = e.purpose.cy;
+      aiG.setAttribute('opacity', e.ai.opacity);
+      aiT.setAttribute('x', mx);
+      aiT.setAttribute('y', my + 4);
+
+      if (e.ai.opacity > 0.5) {
+        aiG.classList.add('pulsing');
+      } else {
+        aiG.classList.remove('pulsing');
+      }
+
+      subLabel.textContent = e.sublabel;
+    }
+
+    function tick() {
+      const vh = window.innerHeight;
+      const trigger = vh * 0.4;
+      let era = 1;
+
+      // Find the last element whose top is above trigger
+      const els = document.querySelectorAll('[data-era]');
+      for (let i = els.length - 1; i >= 0; i--) {
+        const el = els[i];
+        if (el.getBoundingClientRect().top <= trigger) {
+          era = parseInt(el.dataset.era) || 1;
+          break;
+        }
+      }
+
+      if (era !== activeEra) {
+        activeEra = era;
+        applyEra(era);
+      }
+    }
+
+    // Init
+    renderArticle();
+    applyEra(1);
+    tick();
+
+    let raf = false;
+    window.addEventListener('scroll', () => {
+      if (!raf) {
+        requestAnimationFrame(() => { tick(); raf = false; });
+        raf = true;
+      }
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

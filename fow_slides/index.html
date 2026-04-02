@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purpose · System · AI — The Restoration</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --purpose: #C45B28;
+      --system: #2B6CB0;
+      --ai: #6B46C1;
+      --bg: #FAFAF8;
+      --text: #1a1a1a;
+      --muted: #999;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Source Serif 4', Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    /* ═══════════════════════════════════════════
+       FIXED VENN DIAGRAM BACKGROUND
+       ═══════════════════════════════════════════ */
+    .venn-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .venn-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 30%, var(--bg) 80%);
+      z-index: 1;
+    }
+
+    .venn-svg {
+      width: min(720px, 92vw);
+      height: auto;
+      opacity: 0.6;
+    }
+
+    .venn-svg circle, .venn-svg text, .venn-svg g {
+      transition: all 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @keyframes aiPulse {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 0.65; }
+    }
+    .ai-group.pulsing { animation: aiPulse 4s ease-in-out infinite; }
+
+    .intersection-glow {
+      transition: opacity 1.4s ease 0.3s, r 1.6s cubic-bezier(0.22,1,0.36,1),
+                  cx 1.6s cubic-bezier(0.22,1,0.36,1), cy 1.6s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    /* ═══════════════════════════════════════════
+       SLIDE PANELS (scroll-snap)
+       ═══════════════════════════════════════════ */
+    .slides {
+      scroll-snap-type: y mandatory;
+      overflow-y: auto;
+      height: 100vh;
+    }
+
+    .slide {
+      height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      padding: 40px 32px;
+    }
+
+    .era-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      opacity: 0.6;
+    }
+
+    .slide-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(32px, 5.5vw, 56px);
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      max-width: 700px;
+    }
+
+    .slide-body {
+      font-size: clamp(15px, 1.8vw, 18px);
+      color: #666;
+      font-style: italic;
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .slide-bar {
+      width: 48px;
+      height: 3px;
+      margin-top: 28px;
+      border-radius: 1px;
+    }
+    .slide-bar.purpose { background: var(--purpose); opacity: 0.5; }
+    .slide-bar.system  { background: var(--system);  opacity: 0.5; }
+    .slide-bar.ai      { background: linear-gradient(90deg, var(--purpose), var(--ai), var(--system)); opacity: 0.6; }
+
+    /* ═══════════════════════════════════════════
+       NAV DOTS
+       ═══════════════════════════════════════════ */
+    .nav-dots {
+      position: fixed;
+      right: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      z-index: 10;
+    }
+    .nav-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      border: 1.5px solid #bbb;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.35s ease;
+    }
+    .nav-dot.active {
+      background: var(--text);
+      border-color: var(--text);
+      transform: scale(1.3);
+    }
+
+    /* ═══════════════════════════════════════════
+       SUBLABEL
+       ═══════════════════════════════════════════ */
+    .sub-label {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      opacity: 0.4;
+      z-index: 5;
+      text-align: center;
+      pointer-events: none;
+      transition: all 0.7s ease;
+      white-space: nowrap;
+    }
+
+    /* ═══════════════════════════════════════════
+       SCROLL CUE
+       ═══════════════════════════════════════════ */
+    .scroll-cue {
+      position: fixed;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      z-index: 5;
+      opacity: 0.3;
+      transition: opacity 0.6s ease;
+    }
+    .scroll-cue.hidden { opacity: 0; pointer-events: none; }
+    .scroll-cue-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .scroll-cue-arrow {
+      width: 18px; height: 18px;
+      border-right: 1.5px solid var(--muted);
+      border-bottom: 1.5px solid var(--muted);
+      transform: rotate(45deg);
+      animation: scrollBounce 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(5px); }
+    }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .nav-dots { display: none; }
+      .slide { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ FIXED VENN DIAGRAM BACKGROUND ═══════ -->
+  <div class="venn-bg">
+    <svg class="venn-svg" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="gP" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#C45B28" stop-opacity="0.22"/>
+          <stop offset="85%" stop-color="#C45B28" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#C45B28" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="gS" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#2B6CB0" stop-opacity="0.22"/>
+          <stop offset="85%" stop-color="#2B6CB0" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#2B6CB0" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="gI" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#6B46C1" stop-opacity="0.2"/>
+          <stop offset="70%" stop-color="#6B46C1" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#6B46C1" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <circle id="pF" cx="190" cy="145" r="88" fill="url(#gP)"/>
+      <circle id="pS" cx="190" cy="145" r="88" fill="none" stroke="#C45B28" stroke-width="1.2" opacity="0.25"/>
+      <circle id="sF" cx="310" cy="145" r="82" fill="url(#gS)"/>
+      <circle id="sS" cx="310" cy="145" r="82" fill="none" stroke="#2B6CB0" stroke-width="1.2" opacity="0.25"/>
+      <circle id="iG" class="intersection-glow" cx="250" cy="145" r="35" fill="url(#gI)" opacity="0"/>
+
+      <text id="pL" x="150" y="149" text-anchor="middle"
+        font-size="11.5" font-family="'JetBrains Mono', monospace"
+        fill="#C45B28" opacity="0.5" font-weight="600" letter-spacing="0.12em">PURPOSE</text>
+      <text id="sL" x="350" y="149" text-anchor="middle"
+        font-size="11.5" font-family="'JetBrains Mono', monospace"
+        fill="#2B6CB0" opacity="0.5" font-weight="600" letter-spacing="0.12em">SYSTEM</text>
+
+      <g id="aiG" class="ai-group" opacity="0">
+        <text id="aiT" x="250" y="149" text-anchor="middle"
+          font-size="11.5" font-family="'JetBrains Mono', monospace"
+          fill="#6B46C1" opacity="0.5" font-weight="600" letter-spacing="0.12em">AI</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ═══════ SLIDE PANELS ═══════ -->
+  <div class="slides" id="slides">
+
+    <!-- ERA I -->
+    <div class="slide" data-era="1">
+      <div class="era-label">Era I</div>
+      <h1 class="slide-title">System in Service<br>of Purpose</h1>
+      <p class="slide-body">
+        For most of history, systems served purposes. Documentation
+        supported the mission. Governance enabled the work. The
+        machinery existed to advance the thing that mattered.
+      </p>
+      <div class="slide-bar purpose"></div>
+    </div>
+
+    <!-- ERA II -->
+    <div class="slide" data-era="2">
+      <div class="era-label">Era II</div>
+      <h1 class="slide-title">The System Outgrew<br>the Purpose</h1>
+      <p class="slide-body">
+        Systems built to serve the purpose gradually became systems
+        the purpose had to serve. The tools got better. The ratio
+        got worse.
+      </p>
+      <div class="slide-bar system"></div>
+    </div>
+
+    <!-- ERA III -->
+    <div class="slide" data-era="3">
+      <div class="era-label">Era III</div>
+      <h1 class="slide-title">Restoration</h1>
+      <p class="slide-body">
+        AI rebalances the relationship — absorbing system complexity
+        so human attention returns to the mission. Not revolution.
+        Restoration.
+      </p>
+      <div class="slide-bar ai"></div>
+    </div>
+
+  </div>
+
+  <!-- Nav dots -->
+  <div class="nav-dots" id="navDots">
+    <div class="nav-dot active" data-target="0"></div>
+    <div class="nav-dot" data-target="1"></div>
+    <div class="nav-dot" data-target="2"></div>
+  </div>
+
+  <!-- Sublabel -->
+  <div class="sub-label" id="subLabel">System in service of purpose</div>
+
+  <!-- Scroll cue -->
+  <div class="scroll-cue" id="scrollCue">
+    <span class="scroll-cue-text">Scroll</span>
+    <div class="scroll-cue-arrow"></div>
+  </div>
+
+  <script>
+    // ═══════════════════════════════════════════
+    // ERA GEOMETRY
+    // ═══════════════════════════════════════════
+    const ERAS = {
+      1: {
+        purpose: { cx: 190, cy: 145, r: 88 },
+        system:  { cx: 310, cy: 145, r: 82 },
+        iGlow:   { cx: 250, cy: 145, r: 30, opacity: 0 },
+        ai:      { opacity: 0 },
+        pLabelX: 148, sLabelX: 352,
+        sublabel: 'System in service of purpose',
+      },
+      2: {
+        purpose: { cx: 178, cy: 145, r: 52 },
+        system:  { cx: 290, cy: 145, r: 125 },
+        iGlow:   { cx: 230, cy: 145, r: 18, opacity: 0 },
+        ai:      { opacity: 0 },
+        pLabelX: 148, sLabelX: 330,
+        sublabel: 'System outgrows purpose',
+      },
+      3: {
+        purpose: { cx: 205, cy: 145, r: 92 },
+        system:  { cx: 295, cy: 145, r: 92 },
+        iGlow:   { cx: 250, cy: 145, r: 48, opacity: 1 },
+        ai:      { opacity: 1 },
+        pLabelX: 152, sLabelX: 348,
+        sublabel: 'Restoration — AI rebalances purpose and system',
+      },
+    };
+
+    // ═══════════════════════════════════════════
+    // DOM REFS
+    // ═══════════════════════════════════════════
+    const pF = document.getElementById('pF');
+    const pS = document.getElementById('pS');
+    const sF = document.getElementById('sF');
+    const sS = document.getElementById('sS');
+    const iG = document.getElementById('iG');
+    const pL = document.getElementById('pL');
+    const sL = document.getElementById('sL');
+    const aiG = document.getElementById('aiG');
+    const aiT = document.getElementById('aiT');
+    const subLabel = document.getElementById('subLabel');
+    const scrollCue = document.getElementById('scrollCue');
+    const slidesEl = document.getElementById('slides');
+    const dots = document.querySelectorAll('.nav-dot');
+    const slides = document.querySelectorAll('.slide');
+
+    let activeEra = 0;
+
+    function setC(fill, stroke, cx, cy, r) {
+      [fill, stroke].forEach(el => {
+        el.setAttribute('cx', cx);
+        el.setAttribute('cy', cy);
+        el.setAttribute('r', r);
+      });
+    }
+
+    function applyEra(n) {
+      const e = ERAS[n];
+      if (!e) return;
+
+      setC(pF, pS, e.purpose.cx, e.purpose.cy, e.purpose.r);
+      setC(sF, sS, e.system.cx, e.system.cy, e.system.r);
+
+      iG.setAttribute('cx', e.iGlow.cx);
+      iG.setAttribute('cy', e.iGlow.cy);
+      iG.setAttribute('r', e.iGlow.r);
+      iG.setAttribute('opacity', e.iGlow.opacity);
+
+      pL.setAttribute('x', e.pLabelX);
+      pL.setAttribute('y', e.purpose.cy + 4);
+      sL.setAttribute('x', e.sLabelX);
+      sL.setAttribute('y', e.system.cy + 4);
+
+      const mx = (e.purpose.cx + e.system.cx) / 2;
+      const my = e.purpose.cy;
+      aiG.setAttribute('opacity', e.ai.opacity);
+      aiT.setAttribute('x', mx);
+      aiT.setAttribute('y', my + 4);
+
+      if (e.ai.opacity > 0.5) {
+        aiG.classList.add('pulsing');
+      } else {
+        aiG.classList.remove('pulsing');
+      }
+
+      subLabel.textContent = e.sublabel;
+
+      // Update dots
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === n - 1);
+      });
+
+      // Hide scroll cue after first slide
+      scrollCue.classList.toggle('hidden', n > 1);
+    }
+
+    // ═══════════════════════════════════════════
+    // SCROLL DETECTION (IntersectionObserver)
+    // ═══════════════════════════════════════════
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+          const era = parseInt(entry.target.dataset.era) || 1;
+          if (era !== activeEra) {
+            activeEra = era;
+            applyEra(era);
+          }
+        }
+      });
+    }, {
+      root: slidesEl,
+      threshold: 0.6,
+    });
+
+    slides.forEach(s => observer.observe(s));
+
+    // Nav dots click
+    dots.forEach(d => {
+      d.addEventListener('click', () => {
+        const idx = parseInt(d.dataset.target);
+        slides[idx].scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Init
+    applyEra(1);
+  </script>
+
+</body>
+</html>
