@@ -78,17 +78,17 @@
       z-index: 2;
       max-width: 680px;
       margin: 0 auto;
-      padding: 40px 24px 80px;
+      padding: 64px 24px 100px;
     }
 
     /* Meta box */
     .meta-box {
       padding: 28px 32px;
-      margin-bottom: 40px;
+      margin-bottom: 48px;
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
       border-radius: 2px;
       color: #c8ccd4;
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.75;
       font-style: italic;
       border-left: 3px solid var(--ai);
@@ -122,29 +122,30 @@
 
     /* Title section */
     .article-title {
-      margin-bottom: 48px;
+      margin-bottom: 56px;
     }
     .article-title h1 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(28px, 4vw, 40px);
+      font-size: clamp(32px, 5vw, 48px);
       font-weight: 900;
       color: var(--text);
       line-height: 1.15;
       margin-bottom: 12px;
       letter-spacing: -0.02em;
+      text-wrap: balance;
     }
     .article-title .subtitle {
-      font-size: 18px;
-      color: #666;
+      font-size: 20px;
+      color: #555;
       font-style: italic;
       line-height: 1.5;
       margin-bottom: 16px;
     }
     .article-title .author {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--muted);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
     .article-title .bar {
@@ -157,18 +158,19 @@
     /* Headings */
     .section-heading {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 24px;
+      font-size: 28px;
       font-weight: 700;
       color: var(--text);
-      margin-top: 48px;
-      margin-bottom: 20px;
+      margin-top: 64px;
+      margin-bottom: 28px;
       line-height: 1.3;
+      text-wrap: balance;
     }
 
     /* Separator */
     .separator {
       text-align: center;
-      margin: 40px 0;
+      margin: 56px 0;
       color: #ccc;
       font-size: 18px;
       letter-spacing: 12px;
@@ -177,21 +179,24 @@
     /* Content paragraphs (provenance-tagged) */
     .prov-block {
       position: relative;
-      margin-bottom: 4px;
+      margin-bottom: 24px;
       cursor: pointer;
       transition: all 0.3s ease;
       border-left: 3px solid transparent;
-      padding-left: 20px;
+      padding-left: 24px;
       border-radius: 0 2px 2px 0;
     }
     .prov-block.expanded {
       padding: 16px 20px;
     }
     .prov-block p.content {
-      font-size: 16.5px;
-      line-height: 1.8;
-      color: #2a2a2a;
+      font-size: 19px;
+      line-height: 1.75;
+      color: #1f1f1f;
       margin: 0;
+      text-wrap: pretty;
+      hyphens: auto;
+      hyphenate-limit-chars: 8 4 4;
     }
 
     /* Badge */
@@ -225,7 +230,7 @@
 
     /* Instruction line */
     .instructions {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--muted);
       margin-bottom: 40px;
       font-family: 'JetBrains Mono', monospace;
@@ -238,12 +243,12 @@
 
     /* Colophon */
     .colophon {
-      margin-top: 64px;
+      margin-top: 80px;
       padding-top: 32px;
       border-top: 1px solid #eee;
     }
     .colophon p {
-      font-size: 13px;
+      font-size: 14px;
       font-family: 'JetBrains Mono', monospace;
       color: var(--muted);
       line-height: 1.7;
