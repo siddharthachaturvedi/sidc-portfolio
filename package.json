@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "name": "sidc-portfolio",
+  "scripts": {
+    "dev": "npx serve@latest -l 3000"
+  }
+}

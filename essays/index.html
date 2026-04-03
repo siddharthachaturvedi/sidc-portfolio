@@ -123,6 +123,27 @@
       height: 0.9rem;
     }
 
+    .essay-card--upcoming {
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    .essay-card--upcoming .essay-card__read {
+      display: none;
+    }
+
+    .essay-card__badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: 1px solid currentColor;
+      color: var(--ink-muted);
+    }
+
     @media (max-width: 760px) {
       .essays-grid {
         grid-template-columns: 1fr;
@@ -214,7 +235,7 @@
             <path d="M7 17L17 7M9 7h8v8" />
           </svg>
         </a>
-        <p class="menu-panel__meta">Post-Agentic Systems // MMXXVI</p>
+        <p class="menu-panel__meta">AI Systems That Ship // MMXXVI</p>
       </div>
     </div>
   </header>
@@ -246,6 +267,28 @@
           </span>
         </div>
       </a>
+
+      <div class="essay-card essay-card--upcoming">
+        <div class="essay-card__body">
+          <p class="essay-card__eyebrow">Essay // 2026</p>
+          <h2>The Machine Economy</h2>
+          <p class="essay-card__excerpt">
+            When AI agents become customers, every interface needs a second audience. What dual-interface design means for institutional infrastructure.
+          </p>
+          <span class="essay-card__badge">Coming Soon</span>
+        </div>
+      </div>
+
+      <div class="essay-card essay-card--upcoming">
+        <div class="essay-card__body">
+          <p class="essay-card__eyebrow">Essay // 2026</p>
+          <h2>Post-Agentic Workflow Patterns</h2>
+          <p class="essay-card__excerpt">
+            Systems that absorb coordination burden so domain experts reclaim attention for the work that actually matters.
+          </p>
+          <span class="essay-card__badge">Coming Soon</span>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -279,12 +322,8 @@
         </section>
 
         <section aria-labelledby="availability-title">
-          <h3 id="availability-title">Currently Available</h3>
-          <ul>
-            <li>Strategic Advisory</li>
-            <li>Keynote Speaking</li>
-            <li>Board Positions</li>
-          </ul>
+          <h3 id="availability-title">Availability</h3>
+          <p>Advising CEOs and boards on AI systems that ship — in regulated, high-stakes, and infrastructure-heavy industries.</p>
         </section>
       </div>
     </div>

@@ -3,8 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuPanel = document.getElementById("site-menu-panel");
   const printLinks = document.querySelectorAll("[data-print-link]");
   const revealItems = document.querySelectorAll(".reveal");
-  const valueButtons = Array.from(document.querySelectorAll("[data-vf-target]"));
-  const valuePanels = Array.from(document.querySelectorAll("[data-vf-panel]"));
 
   if (menuToggle && menuPanel) {
     const getMenuFocusableElements = () =>
@@ -80,6 +78,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  const pillars = document.querySelectorAll(".vf-pillar");
+  const vertexGroups = document.querySelectorAll("[data-pillar]");
+
+  if (pillars.length && vertexGroups.length) {
+    const highlight = (index) => {
+      pillars.forEach((p, i) => p.classList.toggle("is-active", i === index));
+      vertexGroups.forEach((v) =>
+        v.classList.toggle("is-active", v.getAttribute("data-pillar") === String(index))
+      );
+    };
+
+    const clearHighlight = () => {
+      pillars.forEach((p) => p.classList.remove("is-active"));
+      vertexGroups.forEach((v) => v.classList.remove("is-active"));
+    };
+
+    vertexGroups.forEach((el) => {
+      const idx = parseInt(el.getAttribute("data-pillar"), 10);
+      el.addEventListener("mouseenter", () => highlight(idx));
+      el.addEventListener("mouseleave", clearHighlight);
+      el.addEventListener("focus", () => highlight(idx));
+      el.addEventListener("blur", clearHighlight);
+    });
+
+    pillars.forEach((el, idx) => {
+      el.addEventListener("mouseenter", () => highlight(idx));
+      el.addEventListener("mouseleave", clearHighlight);
+    });
+  }
+
   if ("IntersectionObserver" in window) {
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -101,55 +129,4 @@ document.addEventListener("DOMContentLoaded", () => {
     revealItems.forEach((item) => item.classList.add("is-visible"));
   }
 
-  if (valueButtons.length && valuePanels.length) {
-    const activateValuePanel = (targetName) => {
-      valuePanels.forEach((panel) => {
-        const isActive = panel.getAttribute("data-vf-panel") === targetName;
-        panel.classList.toggle("is-active", isActive);
-        panel.hidden = !isActive;
-      });
-
-      valueButtons.forEach((button) => {
-        const isActive = button.getAttribute("data-vf-target") === targetName;
-        button.classList.toggle("is-active", isActive);
-        button.setAttribute("aria-pressed", String(isActive));
-      });
-    };
-
-    activateValuePanel("equilibrium");
-
-    valueButtons.forEach((button, index) => {
-      const activateCurrent = () => activateValuePanel(button.getAttribute("data-vf-target"));
-
-      button.addEventListener("click", activateCurrent);
-      button.addEventListener("mouseenter", activateCurrent);
-      button.addEventListener("focus", activateCurrent);
-
-      button.addEventListener("keydown", (event) => {
-        let nextIndex = null;
-
-        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-          nextIndex = (index + 1) % valueButtons.length;
-        }
-
-        if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-          nextIndex = (index - 1 + valueButtons.length) % valueButtons.length;
-        }
-
-        if (event.key === "Home") {
-          nextIndex = 0;
-        }
-
-        if (event.key === "End") {
-          nextIndex = valueButtons.length - 1;
-        }
-
-        if (nextIndex !== null) {
-          event.preventDefault();
-          valueButtons[nextIndex].focus();
-          activateValuePanel(valueButtons[nextIndex].getAttribute("data-vf-target"));
-        }
-      });
-    });
-  }
 });

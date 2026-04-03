@@ -1,0 +1,37 @@
+# Siddhartha Chaturvedi — sidc.ai
+
+## Who
+Siddhartha Chaturvedi builds AI systems that ship outcomes, not drafts. Former Microsoft Director of Product Management (2016–2025), INSEAD MBA. Won Fast Company's World Changing Idea Award (2021).
+
+## What He Built
+- Microsoft Premonition: edge AI robot that traps mosquitoes and runs genomic analysis to detect emerging diseases
+- AI for Health: $60M global program spanning 200+ grantees tackling child mortality, infectious disease, and health equity
+- 300+ GenAI use cases for US Federal civilian agencies, from pathogen surveillance to production systems
+
+## Current Focus
+Mapping how AI stops being a chatbot you babysit and starts being a teammate that ships outcomes — across tools, across teams, across the trust gap between generation and verification.
+
+## Value Function Framework
+A framework for evaluating useful AI across three dimensions:
+- Resonance (Voice): aligns outputs to organizational voice so they feel native, not generic
+- Relevance (Evidence): grounds responses in verified and proprietary sources to reduce hallucination
+- Response (Execution): turns intelligence into deterministic next steps inside the user's workflow
+The equilibrium of all three produces AI that ships.
+
+## Theses
+1. The future of AI is not generation. It is coordination. Value shifts from making content to closing loops across people, systems, and decisions.
+2. The future of health AI is not prediction. It is evidence. Breakthroughs will come from compressing the path from fragmented data to validated action.
+3. The future of software is not human-first or agent-first. It is dual-intent. The winning products will serve people and machines through shared context and persistent memory.
+
+## Ventures
+- VeriScience.AI (https://veriscience.ai) — evidence-grade AI for women's health
+- Unfreeze.org (https://unfreeze.org) — career transition intelligence
+- Stratified Advisory (https://stratcorp.ai) — board-as-a-service for the GenAI era
+- JustAI.Fyi (https://justai.fyi) — Software 3.0 strategy for the C-suite
+
+## Essays
+- "AI Won't Simplify Work. It Might Finally Restore It." (https://sidc.ai/essays/fow/) — the real promise of the agentic era isn't speed, it's returning human attention to the complexity that matters
+
+## Contact
+- LinkedIn: https://linkedin.com/in/siddharth
+- Website: https://sidc.ai
