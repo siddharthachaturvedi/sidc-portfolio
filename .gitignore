@@ -1,2 +1,8 @@
 .playwright-cli/
 node_modules/
+.claude/
+.gemini/
+.agent/
+.cursor/
+.antigravity/
+.codex/
