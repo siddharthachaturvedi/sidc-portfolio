@@ -1,0 +1,123 @@
+/* ═══════════════════════════════════════════
+   ESSAY SHARED CHROME
+   Minimal nav header + footer for essay pages.
+   Loaded alongside each essay's inline styles.
+   ═══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+.essay-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  background: rgba(250, 250, 248, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 26, 26, 0.12);
+}
+
+.essay-nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.essay-nav a {
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color 220ms ease;
+}
+
+.essay-nav a:hover,
+.essay-nav a:focus-visible {
+  color: #E34234;
+}
+
+.essay-nav__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.essay-nav__dot {
+  display: block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #E34234;
+  transition: transform 220ms ease;
+}
+
+.essay-nav__brand:hover .essay-nav__dot {
+  transform: scale(1.25);
+}
+
+.essay-nav__sep {
+  margin: 0 0.6rem;
+  color: #ccc;
+  font-weight: 300;
+  user-select: none;
+}
+
+.essay-nav__current {
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 40vw;
+}
+
+.essay-footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2.5rem 24px 3rem;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+.essay-footer a {
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color 220ms ease;
+}
+
+.essay-footer a:hover,
+.essay-footer a:focus-visible {
+  color: #E34234;
+}
+
+.essay-footer p {
+  margin: 0;
+  color: #999;
+}
+
+@media (max-width: 480px) {
+  .essay-nav__current {
+    display: none;
+  }
+
+  .essay-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}

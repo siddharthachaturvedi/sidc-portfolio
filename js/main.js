@@ -7,11 +7,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const valuePanels = Array.from(document.querySelectorAll("[data-vf-panel]"));
 
   if (menuToggle && menuPanel) {
+    const getMenuFocusableElements = () =>
+      Array.from(
+        menuPanel.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+      );
+
     const setMenuState = (isOpen) => {
       menuToggle.setAttribute("aria-expanded", String(isOpen));
       menuToggle.setAttribute("aria-label", isOpen ? "Close site menu" : "Open site menu");
       menuPanel.setAttribute("aria-hidden", String(!isOpen));
       document.body.classList.toggle("menu-open", isOpen);
+
+      if (isOpen) {
+        const focusableElements = getMenuFocusableElements();
+        if (focusableElements.length) {
+          requestAnimationFrame(() => focusableElements[0].focus());
+        }
+      }
     };
 
     setMenuState(false);
@@ -21,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setMenuState(!isOpen);
     });
 
-    menuPanel.querySelectorAll('a[href^="#"]').forEach((link) => {
+    menuPanel.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => setMenuState(false));
     });
 
@@ -32,9 +44,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+      const menuIsOpen = menuToggle.getAttribute("aria-expanded") === "true";
+
+      if (event.key === "Escape" && menuIsOpen) {
         setMenuState(false);
         menuToggle.focus();
+      }
+
+      if (event.key === "Tab" && menuIsOpen) {
+        const focusableElements = getMenuFocusableElements();
+        if (!focusableElements.length) {
+          event.preventDefault();
+          return;
+        }
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
       }
     });
   }

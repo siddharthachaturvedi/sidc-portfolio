@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Essays | Siddhartha Chaturvedi</title>
+  <meta
+    name="description"
+    content="Long-form thinking on purpose, systems, and the post-agentic era. Essays by Siddhartha Chaturvedi."
+  >
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#f2f0e9">
+  <link rel="canonical" href="https://sidc.ai/essays/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Essays | Siddhartha Chaturvedi">
+  <meta property="og:description" content="Long-form thinking on purpose, systems, and the post-agentic era.">
+  <meta property="og:url" content="https://sidc.ai/essays/">
+  <meta property="og:image" content="https://sidc.ai/public/images/sidc.jpeg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Essays | Siddhartha Chaturvedi">
+  <meta name="twitter:description" content="Long-form thinking on purpose, systems, and the post-agentic era.">
+
+  <script>
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/favicons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/public/favicons/favicon-64.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/public/favicons/favicon-128.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/public/favicons/favicon-256.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="/public/favicons/favicon.png">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/essay-shared.css">
+  <style>
+    .essays-hero {
+      padding: calc(var(--nav-height) + clamp(3rem, 6vw, 5rem)) 0 clamp(3rem, 5vw, 4rem);
+      border-bottom: 1px solid rgba(23, 23, 23, 0.9);
+    }
+
+    .essays-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 0;
+      border-bottom: 1px solid rgba(23, 23, 23, 0.9);
+    }
+
+    .essay-card {
+      display: block;
+      border-right: 1px solid rgba(23, 23, 23, 0.9);
+      background: var(--surface-strong);
+      transition:
+        background-color var(--transition),
+        color var(--transition);
+    }
+
+    .essay-card:hover,
+    .essay-card:focus-visible {
+      background: var(--ink);
+      color: var(--surface-strong);
+    }
+
+    .essay-card__body {
+      display: grid;
+      gap: 1rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .essay-card__eyebrow {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--vermillion);
+    }
+
+    .essay-card:hover .essay-card__eyebrow,
+    .essay-card:focus-visible .essay-card__eyebrow {
+      color: var(--vermillion);
+    }
+
+    .essay-card h2 {
+      margin: 0;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .essay-card__excerpt {
+      margin: 0;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+
+    .essay-card:hover .essay-card__excerpt,
+    .essay-card:focus-visible .essay-card__excerpt {
+      color: rgba(243, 237, 225, 0.78);
+    }
+
+    .essay-card__read {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .essay-card__read svg {
+      width: 0.9rem;
+      height: 0.9rem;
+    }
+
+    @media (max-width: 760px) {
+      .essays-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .essay-card {
+        border-right: 0;
+        border-bottom: 1px solid rgba(23, 23, 23, 0.9);
+      }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="site-nav container" aria-label="Primary">
+      <a class="site-brand" href="/" aria-label="Back to home">
+        <span class="site-brand__mark" aria-hidden="true">
+          <span class="site-brand__dot"></span>
+          <img
+            class="site-brand__photo"
+            src="/public/images/sidc.jpeg"
+            alt=""
+            width="800"
+            height="800"
+            loading="lazy"
+            decoding="async"
+          >
+        </span>
+        <span class="site-brand__wordmark">Siddhartha Chaturvedi</span>
+      </a>
+
+      <div class="site-nav__desktop">
+        <a href="/essays/" aria-current="page">Essays</a>
+        <a href="/#about">About</a>
+        <a href="/#value-function">Value</a>
+        <a href="/#recognition">Proof</a>
+        <a href="/#ventures">Ventures</a>
+        <a href="/#connect">Connect</a>
+        <a
+          class="site-nav__cta"
+          href="https://linkedin.com/in/siddharth"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M7 17L17 7M9 7h8v8" />
+          </svg>
+        </a>
+      </div>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-menu-panel"
+        aria-label="Open site menu"
+        data-menu-toggle
+      >
+        <span class="menu-toggle__label">Menu</span>
+        <span class="menu-toggle__bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </nav>
+
+    <div class="menu-panel" id="site-menu-panel" aria-hidden="true">
+      <div class="menu-panel__inner container">
+        <a href="/essays/" aria-current="page">Essays</a>
+        <a href="/#about">About</a>
+        <a href="/#value-function">Value</a>
+        <a href="/#recognition">Proof</a>
+        <a href="/#ventures">Ventures</a>
+        <a href="/#connect">Connect</a>
+      </div>
+      <div class="menu-panel__footer container">
+        <a
+          class="menu-panel__cta"
+          href="https://linkedin.com/in/siddharth"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn Profile
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M7 17L17 7M9 7h8v8" />
+          </svg>
+        </a>
+        <p class="menu-panel__meta">Post-Agentic Systems // MMXXVI</p>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="essays-hero">
+      <div class="container">
+        <div class="section-heading">
+          <h1 id="essays-title" style="font-size: clamp(3rem, 8vw, 6rem); line-height: 0.92; letter-spacing: -0.05em;">Essays</h1>
+          <p class="section-heading__eyebrow">Long-form // MMXXVI</p>
+          <p>Thinking on purpose, systems, and the post-agentic era.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="essays-grid" aria-labelledby="essays-title">
+      <a class="essay-card" href="/essays/fow/">
+        <div class="essay-card__body">
+          <p class="essay-card__eyebrow">Essay // 2025</p>
+          <h2>AI Won't Simplify Work. It Might Finally Restore It.</h2>
+          <p class="essay-card__excerpt">
+            The real promise of the agentic era isn't speed — it's returning human attention to the complexity that matters.
+          </p>
+          <span class="essay-card__read">
+            Read essay
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <footer id="connect" class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="site-footer__intro">
+        <h2>
+          Let's Talk<span>.</span>
+        </h2>
+        <a href="https://linkedin.com/in/siddharth" target="_blank" rel="noopener noreferrer">
+          LinkedIn /in/siddharth
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M7 17L17 7M9 7h8v8" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="site-footer__columns">
+        <section aria-labelledby="advisory-title">
+          <h3 id="advisory-title">Advisory &amp; Investment</h3>
+          <ul>
+            <li>
+              <strong>Limited Partner</strong>
+              <span>rpv (DeepTech VC)</span>
+            </li>
+            <li>
+              <strong>Advisor</strong>
+              <span>Loyal VC</span>
+            </li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="availability-title">
+          <h3 id="availability-title">Currently Available</h3>
+          <ul>
+            <li>Strategic Advisory</li>
+            <li>Keynote Speaking</li>
+            <li>Board Positions</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <div class="container site-footer__bottom">
+      <p>&copy; 2026 Siddhartha Chaturvedi</p>
+      <p>Available for global engagements</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

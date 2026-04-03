@@ -1,3 +1,7 @@
+/fow              /essays/fow/     301
+/fow/             /essays/fow/     301
+/essays/fow/slides  /fow_slides/   200
+
 /rovodev https://raw.githubusercontent.com/siddharthachaturvedi/rovodev/main/rovodev-launcher.command 200
 /rovodev/install /rovodev 301
 /rovodev/uninstall https://raw.githubusercontent.com/siddharthachaturvedi/rovodev/main/rovodev-uninstall.command 200
