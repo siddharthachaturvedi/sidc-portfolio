@@ -20,8 +20,8 @@ The equilibrium of all three produces AI that ships.
 
 ## Theses
 1. The future of AI is not generation. It is coordination. Value shifts from making content to closing loops across people, systems, and decisions.
-2. The future of health AI is not prediction. It is evidence. Breakthroughs will come from compressing the path from fragmented data to validated action.
-3. The future of software is not human-first or agent-first. It is dual-intent. The winning products will serve people and machines through shared context and persistent memory.
+2. The future of health AI is not prediction. It is evidence. Breakthroughs will come from turning fragmented data into validated, decision-ready action.
+3. The future of software is not human-first or agent-first. It is dual-intent. The winning products will serve humans and agents through shared context, executable workflows, and persistent memory.
 
 ## Ventures
 - VeriScience.AI (https://veriscience.ai) — evidence-grade AI for women's health
