@@ -1,0 +1,59 @@
+/* ══════════════════════════════════════════════════════════════════
+   DESIGN TOKENS — single source of truth ("Washi × Kinetic")
+   Loaded first (before styles.css / essay-shared.css) on every page so
+   palette, type, spacing, and motion are defined in exactly one place.
+   Do not hardcode colors/fonts/spacing elsewhere — reference these.
+   ══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ─ Surfaces ─ */
+  --bg-washi: #f4f1ea;        /* Washi paper base */
+  --surface-slate: #faf8f5;
+  --surface-strong: #ffffff;
+
+  /* ─ Ink ─ */
+  --ink: #17201e;            /* River ink (green-black) */
+  --ink-soft: #3d4542;
+  --ink-muted: #6e7774;
+  --line: #cfc7b7;
+  --line-dark: #17201e;
+
+  /* ─ Accent signals ─ */
+  --vermillion: #b86232;     /* Oxide Ochre — primary accent */
+  --vermillion-light: #d68a5a;
+  --vermillion-rgb: 184 98 50;
+  --crimson: #9d3c30;        /* Biothreat Crimson — emphasis */
+  --void: #08262d;           /* River Void — dark surfaces */
+  --void-text: #e5d7bb;
+  --void-line: rgba(229, 215, 187, 0.18);
+
+  /* ─ Typography ─ */
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-sans: "Public Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* ─ Layout ─ */
+  --nav-height: 4.5rem;
+  --container-width: 1400px;
+  --paper-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.045'/%3E%3C/svg%3E");
+
+  /* ─ Motion ─ */
+  --transition-premium: 450ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-kinetic: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ─ Spacing (strict 8px grid) ─ */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 128px;
+
+  /* ─ Grid line gradients ─ */
+  --grid-line: rgba(23, 32, 30, 0.038);
+  --grid-line-strong: rgba(23, 32, 30, 0.08);
+}

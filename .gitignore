@@ -6,3 +6,17 @@ node_modules/
 .cursor/
 .antigravity/
 .codex/
+# Local design experiment (homepage redesign sandbox — not shipped)
+experiment/
+
+# Local harmonization plan (not shipped)
+todo.md
+
+# Parked/snapshotted code (e.g. cut terminal shell) — local only
+parking-lot/
+
+# Local font experimentation tool (dev-only)
+js/font-lab.js
+
+# Local navbar design switcher (dev-only)
+js/nav-lab.js

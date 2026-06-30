@@ -25,7 +25,7 @@
 ### 🌍 Previous Chapter: **Planetary Scale**
 **Director of Product Management**
 
-Directed the intersection of AI and Global Security. From tracking pathogens with **Premonition** to deploying Gen AI systems - from LLMs to Agents - for the **US Federal Government (Civilian)**. 300+ use cases.
+Directed the intersection of AI and Global Security. From tracking pathogens with **Premonition** to deploying GenAI systems - from LLMs to Agents - for the **US Federal Government (Civilian)**. 300+ use cases.
 
 ### 🎯 Current Focus: **Precision Truth**
 **Under-represented Disease Research**
@@ -77,7 +77,7 @@ graph TD
 
 ## 🏆 Recognition
 
-### 2021 • Fast Company's World Changing Idea
+### 2021 • Fast Company's World Changing Ideas
 **Microsoft Premonition**: A biothreat detection platform securing multi-million government contracts. Early warning systems for disease outbreaks.
 
 🔗 [Read More](https://www.fastcompany.com/section/premonition)
@@ -107,7 +107,7 @@ Architected a global program addressing the barriers I faced as a first-time fou
 
 ## 🚀 Ventures
 
-### 🔬 [Veriscience.AI](https://veriscience.ai)
+### 🔬 [VeriScience.AI](https://veriscience.ai)
 **The Science of Truth**
 
 Evidence-grade AI for women's health. Turning 17-year diagnosis delays into months through autonomous research synthesis.
@@ -122,7 +122,7 @@ Career transition intelligence. Navigate layoffs and pivots with AI that underst
 
 Board-as-a-Service for GenAI era. Strategic governance for founders building in regulated, high-stakes domains.
 
-### ✍️ [JustAI.Fyi](https://justai.fyi)
+### ✍️ [JustAI.fyi](https://justai.fyi)
 **Author**
 
 Synthesis of Software 3.0 thinking. Essays on post-agentic systems, reasoning engines, and the infrastructure of truth.

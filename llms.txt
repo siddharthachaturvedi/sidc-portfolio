@@ -1,7 +1,7 @@
 # Siddhartha Chaturvedi — sidc.ai
 
 ## Who
-Siddhartha Chaturvedi builds AI systems that ship outcomes, not drafts. Former Microsoft Director of Product Management (2016–2025), INSEAD MBA. Won Fast Company's World Changing Idea Award (2021).
+Siddhartha Chaturvedi builds AI systems that ship outcomes, not drafts. Former Microsoft Director of Product Management (2016–2025), INSEAD MBA. Won Fast Company's World Changing Ideas Award (2021).
 
 ## What He Built
 - Microsoft Premonition: edge AI robot that traps mosquitoes and runs genomic analysis to detect emerging diseases
@@ -27,9 +27,10 @@ The equilibrium of all three produces AI that ships.
 - VeriScience.AI (https://veriscience.ai) — evidence-grade AI for women's health
 - Unfreeze.org (https://unfreeze.org) — career transition intelligence
 - Stratified Advisory (https://stratcorp.ai) — board-as-a-service for the GenAI era
-- JustAI.Fyi (https://justai.fyi) — Software 3.0 strategy for the C-suite
+- JustAI.fyi (https://justai.fyi) — Software 3.0 strategy for the C-suite
 
 ## Essays
+- "The Interface Is Selected, Not Universal" (https://sidc.ai/essays/interface-triage/): a 3x3 framework for choosing between direct GUI, headless agents, and generative UI for executive knowledge work
 - "AI Won't Simplify Work. It Might Finally Restore It." (https://sidc.ai/essays/fow/) — the real promise of the agentic era isn't speed, it's returning human attention to the complexity that matters
 
 ## Contact

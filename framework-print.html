@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f1ea">
   <title>The Value Function Framework | SIDC.AI</title>
   <meta
     name="description"
@@ -10,14 +11,21 @@
   >
   <link rel="icon" type="image/png" sizes="32x32" href="/public/favicons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/public/favicons/favicon-64.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #f2f0e9;
       --surface: #ffffff;
       --ink: #171717;
       --muted: #6a655d;
-      --accent: #E34234;
+      --accent: #b86232;
       --line: #d7d1c6;
+      --font-display: "Lora", "Georgia", serif;
+      --font-sans: "Inter", system-ui, -apple-system, sans-serif;
     }
 
     @page {
@@ -31,7 +39,7 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: var(--font-sans);
       color: var(--ink);
       background:
         radial-gradient(circle at top left, rgba(255, 255, 255, 0.72), transparent 30%),
@@ -73,7 +81,8 @@
 
     .page__header h1 {
       margin: 0;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
       line-height: 0.95;
       letter-spacing: -0.04em;
     }
@@ -112,9 +121,9 @@
 
     .worksheet h2 {
       margin: 0 0 1rem;
-      font-size: 1.15rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      letter-spacing: 0.02em;
     }
 
     .worksheet__group {
@@ -335,23 +344,23 @@
       <div class="diagram">
         <svg viewBox="0 0 400 350" aria-hidden="true">
           <path d="M200 50 L50 300 L350 300 Z" stroke="rgba(23, 23, 23, 0.28)" stroke-width="2" />
-          <line x1="200" y1="50" x2="200" y2="200" stroke="#E34234" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.45" />
-          <line x1="50" y1="300" x2="200" y2="200" stroke="#E34234" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.45" />
-          <line x1="350" y1="300" x2="200" y2="200" stroke="#E34234" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.45" />
+          <line x1="200" y1="50" x2="200" y2="200" stroke="#b86232" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.45" />
+          <line x1="50" y1="300" x2="200" y2="200" stroke="#b86232" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.45" />
+          <line x1="350" y1="300" x2="200" y2="200" stroke="#b86232" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.45" />
 
           <circle cx="200" cy="50" r="30" fill="#f2f0e9" stroke="#171717" stroke-width="2" />
-          <circle cx="200" cy="50" r="5" fill="#E34234" />
+          <circle cx="200" cy="50" r="5" fill="#b86232" />
           <text x="200" y="12" text-anchor="middle" font-size="10" fill="#171717" font-weight="700">RESONANCE</text>
 
           <circle cx="50" cy="300" r="30" fill="#f2f0e9" stroke="#171717" stroke-width="2" />
-          <circle cx="50" cy="300" r="5" fill="#E34234" />
+          <circle cx="50" cy="300" r="5" fill="#b86232" />
           <text x="50" y="344" text-anchor="middle" font-size="10" fill="#171717" font-weight="700">RELEVANCE</text>
 
           <circle cx="350" cy="300" r="30" fill="#f2f0e9" stroke="#171717" stroke-width="2" />
-          <circle cx="350" cy="300" r="5" fill="#E34234" />
+          <circle cx="350" cy="300" r="5" fill="#b86232" />
           <text x="350" y="344" text-anchor="middle" font-size="10" fill="#171717" font-weight="700">RESPONSE</text>
 
-          <circle cx="200" cy="200" r="45" fill="none" stroke="#E34234" stroke-width="1.5" />
+          <circle cx="200" cy="200" r="45" fill="none" stroke="#b86232" stroke-width="1.5" />
           <circle cx="200" cy="200" r="5" fill="#171717" />
         </svg>
 

@@ -9,7 +9,7 @@
     content="Siddhartha Chaturvedi builds AI systems that ship outcomes, not drafts — from Microsoft's $60M AI for Health program to post-agentic workflow systems for enterprise teams."
   >
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#f2f0e9">
+  <meta name="theme-color" content="#f4f1ea">
   <link rel="canonical" href="https://sidc.ai/">
 
   <meta property="og:type" content="website">
@@ -38,7 +38,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Public+Sans:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400..700&display=swap"
     rel="stylesheet"
   >
 
@@ -48,6 +48,7 @@
   <link rel="icon" type="image/png" sizes="256x256" href="/public/favicons/favicon-256.png">
   <link rel="apple-touch-icon" sizes="512x512" href="/public/favicons/favicon.png">
 
+  <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/styles.css">
   <script type="application/ld+json">
     {
@@ -78,7 +79,7 @@
           "url": "https://insead.edu"
         }
       ],
-      "award": "Fast Company World Changing Idea Award 2021",
+      "award": "Fast Company World Changing Ideas Award 2021",
       "founder": [
         {
           "@type": "Organization",
@@ -125,7 +126,7 @@
       },
       "speakable": {
         "@type": "SpeakableSpecification",
-        "cssSelector": [".hero__tagline", ".hero__lede", ".value-section__thesis", ".investigation-card h3", ".investigation-card p"]
+        "cssSelector": [".hero__lede", ".value-display__thesis", ".thesis-log h3", ".thesis-log p"]
       }
     }
   </script>
@@ -148,16 +149,16 @@
             decoding="async"
           >
         </span>
-        <span class="site-brand__wordmark">Siddhartha Chaturvedi</span>
+        <span class="site-brand__wordmark">SIDC.AI</span>
       </a>
 
       <div class="site-nav__desktop">
         <a href="/essays/">Essays</a>
         <a href="#about">About</a>
         <a href="#value-function">Value</a>
-        <a href="#recognition">Proof</a>
         <a href="#ventures">Ventures</a>
-        <a href="#connect">Connect</a>
+        <a href="#recognition">Proof</a>
+        <a href="#current">Theses</a>
         <a
           class="site-nav__cta"
           href="https://linkedin.com/in/siddharth"
@@ -179,7 +180,6 @@
         aria-label="Open site menu"
         data-menu-toggle
       >
-        <span class="menu-toggle__label">Menu</span>
         <span class="menu-toggle__bars" aria-hidden="true">
           <span></span>
           <span></span>
@@ -193,9 +193,9 @@
         <a href="/essays/">Essays</a>
         <a href="#about">About</a>
         <a href="#value-function">Value</a>
-        <a href="#recognition">Proof</a>
         <a href="#ventures">Ventures</a>
-        <a href="#connect">Connect</a>
+        <a href="#recognition">Proof</a>
+        <a href="#current">Theses</a>
       </div>
       <div class="menu-panel__footer container">
         <a
@@ -209,342 +209,394 @@
             <path d="M7 17L17 7M9 7h8v8" />
           </svg>
         </a>
-
       </div>
     </div>
   </header>
 
   <main id="main-content">
+    
+    <!-- ══════════════════════════════════════════════════════════════════
+         HERO CONSOLE — DUAL INTENT WORKSPACE
+         ══════════════════════════════════════════════════════════════════ -->
     <section id="home" class="hero">
-      <div class="container hero__grid">
-        <p class="hero__rail">MMXXVI</p>
+      <div class="container hero__layout">
+        
+        <!-- Left: Narrative -->
+        <div class="hero__narrative">
+          <p class="hero__eyebrow">MMXXVI // Post-Agentic Systems</p>
+          <h1 class="hero__title">
+            Siddhartha<br>
+            <span class="hero__title-accent">Chaturvedi</span>.
+          </h1>
 
-        <div class="hero__content">
-          <div class="hero__headline">
-            <h1 class="hero__title">
-              Siddhartha
-              <span>Chaturvedi</span><span class="hero__accent">.</span>
-            </h1>
+          <p class="hero__lede">
+            Edge AI in the field. $60M in global health. 300+ GenAI use cases. Why can organizations generate everything but ship nothing?
+          </p>
 
-            <figure class="hero__portrait">
-              <img
-                src="/public/images/sidc.jpeg"
-                alt="Portrait of Siddhartha Chaturvedi"
-                width="800"
-                height="800"
-                loading="eager"
-                fetchpriority="high"
-                decoding="async"
-              >
-            </figure>
-          </div>
-
-          <p class="hero__tagline">From mosquitoes to moonshots</p>
-
-          <div class="hero__summary">
-            <div class="hero__lede">
-              <p>
-                Edge AI in harsh terrain.
-                <span>$60M in global health</span>.
-                300+ Gen AI use cases.
-              </p>
-            </div>
-
-            <div class="hero__details">
-              <p>
-                Now mapping the question that won't let go: why can organizations generate everything but ship nothing?
-              </p>
-              <div class="hero__actions">
-                <a class="button button--dark" href="/essays/">
-                  Read Essays
-                  <svg aria-hidden="true" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </a>
-                <a
-                  class="button"
-                  href="#connect"
-                >
-                  Connect
-                  <svg aria-hidden="true" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </a>
-              </div>
-            </div>
+          <div class="hero__actions">
+            <a class="button button--dark" href="/essays/">
+              Read Essays
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a class="button" href="#connect">
+              Connect
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section id="about" class="bio-section reveal" aria-labelledby="about-title">
-      <h2 id="about-title" class="sr-only">About</h2>
-
-      <div class="bio-grid">
-        <article class="story-card">
-          <p class="story-card__eyebrow">Previous Chapter</p>
-          <h3>Microsoft</h3>
-          <p class="story-card__role">AI That Ships to the Real World</p>
-          <p>
-            Nine years from edge devices in harsh terrain to production GenAI at federal scale — a mosquito-trapping robot, a $60M AI for Health program, and 300+ use cases that earned a Fast Company World Changing Idea Award.
-          </p>
-        </article>
-
-        <article class="story-card">
-          <p class="story-card__eyebrow">Current Focus</p>
-          <h3>Outcomes, Not Drafts</h3>
-          <p class="story-card__role">Making AI a Teammate That Ships</p>
-          <p>
-            Mapping how AI stops being a chatbot you babysit and starts being a colleague that closes loops — across tools, across teams, across the trust gap between generation and verification.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section id="value-function" class="value-section reveal" aria-labelledby="value-title">
-      <div class="container value-section__layout">
-        <div class="value-section__copy">
-          <h2 id="value-title">Value Function</h2>
-
-          <p class="value-section__thesis">
-            Useful AI balances voice, verified evidence, and execution in real workflows.
-          </p>
-
-          <div class="vf-pillars">
-            <div class="vf-pillar">
-              <h3>Resonance <span>/ Voice</span></h3>
-              <p>Aligns outputs to organizational voice so they feel native, not generic.</p>
-            </div>
-            <div class="vf-pillar">
-              <h3>Relevance <span>/ Evidence</span></h3>
-              <p>Grounds responses in verified and proprietary sources to reduce hallucination.</p>
-            </div>
-            <div class="vf-pillar">
-              <h3>Response <span>/ Execution</span></h3>
-              <p>Turns intelligence into deterministic next steps inside the user's workflow.</p>
-            </div>
+        <!-- Right: Portrait specimen -->
+        <aside class="hero__portrait-box">
+          <div class="hero__portrait-meta">
+            <span>Subject // Operator</span>
+            <span>Status: Shipping</span>
           </div>
-
-          <a
-            class="button button--dark"
-            href="/framework-print.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-print-link
-            data-print-url="/framework-print.html"
-          >
-            View Framework
-            <svg aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M7 17L17 7M9 7h8v8" />
-            </svg>
-          </a>
-        </div>
-
-        <div class="value-section__visual">
-          <div class="vf-graphic">
-            <svg class="vf-diagram" viewBox="0 0 400 380" aria-hidden="true">
-              <path class="vf-diagram__triangle" d="M200 50 L50 300 L350 300 Z" />
-
-              <line class="vf-diagram__connector" x1="200" y1="50" x2="200" y2="200" />
-              <line class="vf-diagram__connector" x1="50" y1="300" x2="200" y2="200" />
-              <line class="vf-diagram__connector" x1="350" y1="300" x2="200" y2="200" />
-
-              <g class="vf-diagram__vertex-group" data-pillar="0">
-                <circle class="vf-diagram__vertex" cx="200" cy="50" r="18" />
-                <circle class="vf-diagram__dot" cx="200" cy="50" r="4" />
-              </g>
-              <g class="vf-diagram__vertex-group" data-pillar="1">
-                <circle class="vf-diagram__vertex" cx="50" cy="300" r="18" />
-                <circle class="vf-diagram__dot" cx="50" cy="300" r="4" />
-              </g>
-              <g class="vf-diagram__vertex-group" data-pillar="2">
-                <circle class="vf-diagram__vertex" cx="350" cy="300" r="18" />
-                <circle class="vf-diagram__dot" cx="350" cy="300" r="4" />
-              </g>
-
-              <a href="/framework-print.html" target="_blank" rel="noopener noreferrer" class="vf-diagram__center-link">
-                <circle class="vf-diagram__ring" cx="200" cy="200" r="45" />
-                <circle class="vf-diagram__ring-inner" cx="200" cy="200" r="30" />
-                <circle class="vf-diagram__center-dot" cx="200" cy="200" r="5" />
-              </a>
-            </svg>
-            <div class="vf-labels">
-              <span class="vf-label vf-label--top" data-pillar="0">Resonance</span>
-              <span class="vf-label vf-label--left" data-pillar="1">Relevance</span>
-              <span class="vf-label vf-label--right" data-pillar="2">Response</span>
-              <a class="vf-label vf-label--center" href="/framework-print.html" target="_blank" rel="noopener noreferrer">Equilibrium</a>
-            </div>
+          <div class="hero__portrait">
+            <img
+              src="/public/images/sidc.jpeg"
+              alt="Portrait of Siddhartha Chaturvedi"
+              width="800"
+              height="800"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            >
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="recognition" class="recognition-section reveal" aria-labelledby="recognition-title">
-      <div class="container recognition-section__layout">
-        <h2 id="recognition-title">Proof</h2>
-
-        <div class="recognition-list">
-          <a
-            class="recognition-card"
-            href="https://www.fastcompany.com/section/premonition"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <article>
-              <p class="recognition-card__year">2021</p>
-              <div class="recognition-card__copy">
-                <h3>Fast Company's World Changing Idea</h3>
-                <p>
-                  Microsoft Premonition: a biothreat detection platform securing multi-million government contracts for disease early warning.
-                </p>
-              </div>
-              <span class="recognition-card__arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M7 17L17 7M9 7h8v8" />
-                </svg>
-              </span>
-            </article>
-          </a>
-
-          <a
-            class="recognition-card"
-            href="https://blogs.microsoft.com/on-the-issues/2020/01/29/ai-for-health-child-mortality/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <article>
-              <p class="recognition-card__year">2020</p>
-              <div class="recognition-card__copy">
-                <h3>AI for Health: $60M Impact Investment</h3>
-                <p>
-                  Architected a global program tackling child mortality, infectious disease, and health equity through accessible AI.
-                </p>
-              </div>
-              <span class="recognition-card__arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M7 17L17 7M9 7h8v8" />
-                </svg>
-              </span>
-            </article>
-          </a>
-        </div>
-
-        <div class="proof-quotes" aria-label="Peer quotes">
-          <p>
-            <em class="proof-quotes__label">The Technologist</em>
-            "Technical depth with storytelling agility. Nuanced narratives grounded in scientific truth."
-            <span>Ethan Jackson, Senior Director, Microsoft</span>
-          </p>
-          <p>
-            <em class="proof-quotes__label">The Humanist</em>
-            "Understands complex problems and explains them in terms people can act on, with social good in view."
-            <span>Juan Lavista Ferres, Corporate Vice President, Microsoft AI for Good Lab</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="essay-callout essay-callout--quiet reveal" aria-label="Featured essay">
-      <a class="essay-callout__link container" href="/essays/fow/">
-        <span class="essay-callout__label">Featured Essay</span>
-        <span class="essay-callout__title">AI Won't Simplify Work. It Might Finally Restore It.</span>
-        <svg aria-hidden="true" viewBox="0 0 24 24">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-      </a>
-    </section>
-
-    <section id="ventures" class="ventures-section reveal" aria-labelledby="ventures-title">
-      <h2 id="ventures-title" class="sr-only">Ventures</h2>
-
-      <div class="ventures-grid">
-        <article class="venture-intro">
-          <p class="venture-intro__eyebrow">Portfolio</p>
-          <h3>Ventures</h3>
-          <p>
-            Each applies the same thesis: evidence in, outcomes out.
-          </p>
-        </article>
-
-        <a class="venture-card" href="https://veriscience.ai" target="_blank" rel="noopener noreferrer">
-          <article>
-            <p class="venture-card__eyebrow">Health AI</p>
-            <h3>Veriscience.AI</h3>
-            <p>
-              Evidence-grade AI for women's health. Turning 17-year diagnosis delays into months through autonomous research synthesis.
-            </p>
-          </article>
-        </a>
-
-        <a class="venture-card" href="https://unfreeze.org" target="_blank" rel="noopener noreferrer">
-          <article>
-            <p class="venture-card__eyebrow">Career AI</p>
-            <h3>Unfreeze.org</h3>
-            <p>
-              Career transition intelligence. Navigate layoffs and pivots with AI that understands your skills, market gaps, and next moves.
-            </p>
-          </article>
-        </a>
-
-        <a class="venture-card" href="https://stratcorp.ai" target="_blank" rel="noopener noreferrer">
-          <article>
-            <p class="venture-card__eyebrow">Governance</p>
-            <h3>Stratified Advisory</h3>
-            <p>
-              Board-as-a-Service for the GenAI era. Strategic governance for founders building in regulated, high-stakes domains.
-            </p>
-          </article>
-        </a>
-
-        <a class="venture-card" href="https://justai.fyi" target="_blank" rel="noopener noreferrer">
-          <article>
-            <p class="venture-card__eyebrow">Strategy</p>
-            <h3>JustAI.Fyi</h3>
-            <p>
-              Software 3.0 strategy for the C-suite. A codex of post-agentic terminology, architecture patterns, and executive frameworks.
-            </p>
-          </article>
-        </a>
+          <div class="hero__portrait-desc">
+            <strong>AI Systems Builder.</strong><br>
+            Aspiring Barista.<br>
+            Reformed Mosquito Wrangler.
+          </div>
+        </aside>
 
       </div>
     </section>
 
-    <section id="current" class="investigations-section reveal" aria-labelledby="theses-title">
+    <!-- ══════════════════════════════════════════════════════════════════
+         ABOUT — SPECIMEN NOTES
+         ══════════════════════════════════════════════════════════════════ -->
+    <section id="about" class="ledger-section" aria-label="Professional Overview">
       <div class="container">
-        <div class="section-heading">
-          <h2 id="theses-title">Theses</h2>
-          <p>Three bets on what comes next.</p>
+        <div class="specimen-label">SPECIMEN_ID: PM_CHAPTERS</div>
+        
+        <div class="story-grid">
+          <article class="story-card reveal reveal--stagger-1">
+            <span class="story-card__index">[FILE_01]</span>
+            <p class="story-card__meta">Previous Chapter // Microsoft</p>
+            <h3>AI That Ships to the Real World</h3>
+            <p>
+              Nine years from edge devices in the field to production GenAI at federal scale — a mosquito-trapping robot, a $60M AI for Health program, and 300+ use cases that earned a Fast Company World Changing Ideas Award.
+            </p>
+          </article>
+
+          <article class="story-card reveal reveal--stagger-2">
+            <span class="story-card__index">[FILE_02]</span>
+            <p class="story-card__meta">Current Focus // Strategy</p>
+            <h3>Outcomes, Not Drafts</h3>
+            <p>
+              Mapping how AI stops being a chatbot you babysit and starts being a colleague that closes loops — across tools, across teams, and across the trust gap between generation and verification.
+            </p>
+          </article>
         </div>
 
-        <div class="investigations-grid">
-          <article class="investigation-card">
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         VALUE FUNCTION SANDBOX — THE EQUILIBRIUM ENGINE
+         ══════════════════════════════════════════════════════════════════ -->
+    <section id="value-function" class="ledger-section" aria-labelledby="value-title">
+      <div class="container value-layout">
+        
+        <!-- Left: Static info + Active Interactive Highlight Card -->
+        <div class="value-display reveal reveal--stagger-1">
+          <div class="specimen-label">EQUILIBRIUM_ENGINE: VF_01</div>
+          <h2 id="value-title" class="value-display__title" data-num="01">Value Function</h2>
+          <p class="value-display__thesis">
+            Useful AI balances voice, verified evidence, and execution in real workflows. Drag the equilibrium point in the sandbox grid to introspect each dimension.
+          </p>
+
+          <!-- Dynamic Highlight Card (Wired by JS) -->
+          <div class="pillar-card" id="pillar-display-card">
+            <h3 id="pillar-card-title">Resonance <span>/ Voice</span></h3>
+            <p id="pillar-card-body">Aligns outputs to organizational voice so they feel native, not generic.</p>
+          </div>
+
+          <div>
+            <a
+              class="button button--dark"
+              href="/framework-print.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-print-link
+              data-print-url="/framework-print.html"
+            >
+              Print Framework Workbook
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M7 17L17 7M9 7h8v8" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Springs physics sandbox interactive grid -->
+        <div class="value-sandbox reveal reveal--stagger-2">
+          <div class="sandbox-container">
+            <canvas class="sandbox-canvas" id="sandbox-canvas" width="420" height="380"></canvas>
+            <span class="sandbox-instructions">Drag equilibrium node to warp vectors</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         FEATURED ESSAY CALLOUT BANNER
+         ══════════════════════════════════════════════════════════════════ -->
+    <section class="essay-banner reveal" aria-label="Featured writing">
+      <div class="container">
+        <div class="essay-banner__layout">
+          <a class="essay-banner__link" href="/essays/fow/">
+            <span class="essay-banner__eyebrow">Featured Essay</span>
+            <span class="essay-banner__title">AI Won't Simplify Work. It Might Finally Restore It.</span>
+            <span class="essay-banner__action">
+              Read publication
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         VENTURES — SPECIMEN CODEX
+         ══════════════════════════════════════════════════════════════════ -->
+    <section id="ventures" class="ledger-section" aria-labelledby="ventures-title">
+      <div class="container ventures-layout">
+        
+        <div class="ventures-header reveal reveal--stagger-1">
+          <div class="specimen-label">PORTFOLIO_DOCKET: VC_ENTRIES</div>
+          <h2 id="ventures-title" data-num="02">Ventures</h2>
+          <p>Each applies the same core thesis: evidence in, deterministic outcomes out.</p>
+        </div>
+
+        <div class="ventures-stack">
+          
+          <a class="venture-specimen reveal reveal--stagger-2" href="https://veriscience.ai" target="_blank" rel="noopener noreferrer">
+            <div class="venture-specimen__header">
+              <span class="venture-specimen__id">SPECIMEN // VC_01</span>
+              <span class="venture-specimen__date">STATUS: ACTIVE</span>
+            </div>
+            <div class="venture-specimen__body">
+              <span class="specimen-label">Health AI</span>
+              <h3>VeriScience.AI</h3>
+              <p>
+                Evidence-grade AI for women's health. Turning 17-year diagnosis delays into months through autonomous research synthesis and clinical graph coordination.
+              </p>
+              <span class="venture-specimen__link">
+                Launch System
+                <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" /></svg>
+              </span>
+            </div>
+          </a>
+
+          <a class="venture-specimen reveal reveal--stagger-3" href="https://unfreeze.org" target="_blank" rel="noopener noreferrer">
+            <div class="venture-specimen__header">
+              <span class="venture-specimen__id">SPECIMEN // VC_02</span>
+              <span class="venture-specimen__date">STATUS: ACTIVE</span>
+            </div>
+            <div class="venture-specimen__body">
+              <span class="specimen-label">Career Transition</span>
+              <h3>Unfreeze.org</h3>
+              <p>
+                Career transition intelligence. Navigate layoffs and pivots with AI that understands your deep skills, structural market gaps, and next career moves.
+              </p>
+              <span class="venture-specimen__link">
+                Launch System
+                <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" /></svg>
+              </span>
+            </div>
+          </a>
+
+          <a class="venture-specimen reveal reveal--stagger-4" href="https://stratcorp.ai" target="_blank" rel="noopener noreferrer">
+            <div class="venture-specimen__header">
+              <span class="venture-specimen__id">SPECIMEN // VC_03</span>
+              <span class="venture-specimen__date">STATUS: BOARD_LEVEL</span>
+            </div>
+            <div class="venture-specimen__body">
+              <span class="specimen-label">AI Governance</span>
+              <h3>Stratified Advisory</h3>
+              <p>
+                Board-as-a-Service for the GenAI era. High-stakes strategic governance for founders building in regulated, clinical, and federal domains.
+              </p>
+              <span class="venture-specimen__link">
+                Consult Details
+                <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" /></svg>
+              </span>
+            </div>
+          </a>
+
+          <a class="venture-specimen reveal reveal--stagger-2" href="https://justai.fyi" target="_blank" rel="noopener noreferrer">
+            <div class="venture-specimen__header">
+              <span class="venture-specimen__id">SPECIMEN // VC_04</span>
+              <span class="venture-specimen__date">STATUS: AUTHOR</span>
+            </div>
+            <div class="venture-specimen__body">
+              <span class="specimen-label">Executive Codex</span>
+              <h3>JustAI.fyi</h3>
+              <p>
+                Software 3.0 strategy and blueprints for the C-suite. A playbook of post-agentic architectural patterns, terminology, and executive governance models.
+              </p>
+              <span class="venture-specimen__link">
+                Open Strategy
+                <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" /></svg>
+              </span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         RECOGNITION — THE EVIDENCE LOGS
+         ══════════════════════════════════════════════════════════════════ -->
+    <section id="recognition" class="ledger-section" aria-labelledby="recognition-title">
+      <div class="container recognition-layout">
+        
+        <div class="recognition-header reveal reveal--stagger-1">
+          <div class="specimen-label">EVIDENCE_provenance: RE_PROOF</div>
+          <h2 id="recognition-title" data-num="03">Proof</h2>
+        </div>
+
+        <div class="recognition-cards">
+          
+          <article class="rec-specimen reveal reveal--stagger-2">
+            <div class="rec-specimen__meta">
+              <span>AWARD: FAST COMPANY</span>
+              <span>YEAR: 2021</span>
+            </div>
+            <h3>World Changing Ideas</h3>
+            <p>
+              Microsoft Premonition: a biothreat detection platform securing multi-million government contracts for early infectious pathogen warning and genomic analysis.
+            </p>
+            <a class="rec-specimen__link" href="https://www.fastcompany.com/section/premonition" target="_blank" rel="noopener noreferrer">
+              Source Ledger
+              <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" /></svg>
+            </a>
+          </article>
+
+          <article class="rec-specimen reveal reveal--stagger-3">
+            <div class="rec-specimen__meta">
+              <span>FUND: $60M INVESTMENT</span>
+              <span>YEAR: 2020</span>
+            </div>
+            <h3>AI for Health Program</h3>
+            <p>
+              Architected Microsoft's global program addressing childhood mortality, infectious disease mapping, and health equity through accessible AI deployments.
+            </p>
+            <a class="rec-specimen__link" href="https://blogs.microsoft.com/on-the-issues/2020/01/29/ai-for-health-child-mortality/" target="_blank" rel="noopener noreferrer">
+              Source Ledger
+              <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" /></svg>
+            </a>
+          </article>
+
+        </div>
+
+        <div class="peer-quotes reveal reveal--stagger-4" aria-label="Peer testimonies">
+          
+          <div class="peer-quote">
+            <span class="peer-quote__icon">“</span>
+            <blockquote>
+              Technical depth with storytelling agility. Nuanced narratives grounded in scientific truth.
+            </blockquote>
+            <div class="peer-quote__cite">
+              <span class="peer-quote__author">Ethan Jackson</span>
+              <span class="peer-quote__role">Senior Director // Microsoft</span>
+            </div>
+          </div>
+
+          <div class="peer-quote">
+            <span class="peer-quote__icon">“</span>
+            <blockquote>
+              Understands complex problems and explains them in terms people can act on, with social good in view.
+            </blockquote>
+            <div class="peer-quote__cite">
+              <span class="peer-quote__author">Juan Lavista Ferres</span>
+              <span class="peer-quote__role">CVP // Microsoft AI for Good Lab</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         THESES — THREE BETS
+         ══════════════════════════════════════════════════════════════════ -->
+    <section id="current" class="ledger-section" aria-labelledby="theses-title">
+      <div class="container theses-layout">
+        
+        <div class="theses-header reveal reveal--stagger-1">
+          <div class="specimen-label">COGNITIVE_LOGS: THREE_BETS</div>
+          <h2 id="theses-title" data-num="04">Theses</h2>
+        </div>
+
+        <div class="theses-cards">
+          
+          <article class="thesis-log reveal reveal--stagger-2">
+            <span class="thesis-log__id">[THESIS_01]</span>
+            <span class="specimen-label">Coordination</span>
             <h3>The future of AI is not generation. It is coordination.</h3>
             <p>
               Value shifts from making content to closing loops across people, systems, and decisions.
             </p>
           </article>
 
-          <article class="investigation-card">
+          <article class="thesis-log reveal reveal--stagger-3">
+            <span class="thesis-log__id">[THESIS_02]</span>
+            <span class="specimen-label">Evidence</span>
             <h3>The future of health AI is not prediction. It is evidence.</h3>
             <p>
               Breakthroughs will come from turning fragmented data into validated, decision-ready action.
             </p>
           </article>
 
-          <article class="investigation-card">
+          <article class="thesis-log reveal reveal--stagger-4">
+            <span class="thesis-log__id">[THESIS_03]</span>
+            <span class="specimen-label">Structure</span>
             <h3>The future of software is not human-first or agent-first. It is dual-intent.</h3>
             <p>
               The winning products will serve humans and agents through shared context, executable workflows, and persistent memory.
             </p>
+            <a class="thesis-log__link" href="/essays/interface-triage/">
+              Explore interface triage
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
           </article>
+
         </div>
+
       </div>
     </section>
 
   </main>
 
+  <!-- ══════════════════════════════════════════════════════════════════
+       FOOTER & CONNECT — TERMINATION RECORD
+       ══════════════════════════════════════════════════════════════════ -->
   <footer id="connect" class="site-footer">
     <div class="container site-footer__grid">
+      
       <div class="site-footer__intro">
         <h2>
           Let's Talk<span>.</span>
@@ -577,13 +629,21 @@
           <p>Advising CEOs and boards on AI systems that ship — in regulated, high-stakes, and infrastructure-heavy industries.</p>
         </section>
       </div>
+
     </div>
 
     <div class="container site-footer__bottom">
-      <p>&copy; 2026 Siddhartha Chaturvedi</p>
+      <p>&copy; 2026 Siddhartha Chaturvedi // Systems of Truth. Deployed Responsibly.</p>
+      <p>MMXXVI // ALL RIGHTS RESERVED.</p>
     </div>
   </footer>
 
   <script src="/js/main.js" defer></script>
+  <script src="/js/motion.js" defer></script>
+
+  <!-- Font Lab — live type experimentation (Aa button / Shift+F). DEV-ONLY: gitignored; remove this line before shipping. -->
+  <script src="/js/font-lab.js" defer></script>
+  <!-- Nav Lab — navbar design switcher (▤ Nav button / Shift+N). DEV-ONLY: gitignored; remove before shipping. -->
+  <script src="/js/nav-lab.js" defer></script>
 </body>
 </html>
