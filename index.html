@@ -153,7 +153,7 @@
       </a>
 
       <div class="site-nav__desktop">
-        <a href="/essays/">Essays</a>
+        <a href="/essays/">Field Notes</a>
         <a href="#about">About</a>
         <a href="#value-function">Value</a>
         <a href="#ventures">Ventures</a>
@@ -190,7 +190,7 @@
 
     <div class="menu-panel" id="site-menu-panel" aria-hidden="true">
       <div class="menu-panel__inner container">
-        <a href="/essays/">Essays</a>
+        <a href="/essays/">Field Notes</a>
         <a href="#about">About</a>
         <a href="#value-function">Value</a>
         <a href="#ventures">Ventures</a>
@@ -235,7 +235,7 @@
 
           <div class="hero__actions">
             <a class="button button--dark" href="/essays/">
-              Read Essays
+              Read Field Notes
               <svg aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
@@ -296,7 +296,7 @@
           <article class="story-card reveal reveal--stagger-2">
             <span class="story-card__index">[FILE_02]</span>
             <p class="story-card__meta">Current Focus // Strategy</p>
-            <h3>Outcomes, Not Drafts</h3>
+            <h3>Outcomes, Not Drafts or AI Slop</h3>
             <p>
               Mapping how AI stops being a chatbot you babysit and starts being a colleague that closes loops — across tools, across teams, and across the trust gap between generation and verification.
             </p>
@@ -314,16 +314,16 @@
         
         <!-- Left: Static info + Active Interactive Highlight Card -->
         <div class="value-display reveal reveal--stagger-1">
-          <div class="specimen-label">EQUILIBRIUM_ENGINE: VF_01</div>
+          <div class="specimen-label">FRAMEWORK: VF_01</div>
           <h2 id="value-title" class="value-display__title" data-num="01">Value Function</h2>
           <p class="value-display__thesis">
-            Useful AI balances voice, verified evidence, and execution in real workflows. Drag the equilibrium point in the sandbox grid to introspect each dimension.
+            Useful AI balances voice, verified evidence, and execution in real workflows. Drag the center point to see how the three pull against each other.
           </p>
 
           <!-- Dynamic Highlight Card (Wired by JS) -->
           <div class="pillar-card" id="pillar-display-card">
             <h3 id="pillar-card-title">Resonance <span>/ Voice</span></h3>
-            <p id="pillar-card-body">Aligns outputs to organizational voice so they feel native, not generic.</p>
+            <p id="pillar-card-body">Makes AI sound like your team — not a generic chatbot.</p>
           </div>
 
           <div>
@@ -332,10 +332,8 @@
               href="/framework-print.html"
               target="_blank"
               rel="noopener noreferrer"
-              data-print-link
-              data-print-url="/framework-print.html"
             >
-              Print Framework Workbook
+              Open the Value Function framework
               <svg aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M7 17L17 7M9 7h8v8" />
               </svg>
@@ -347,7 +345,7 @@
         <div class="value-sandbox reveal reveal--stagger-2">
           <div class="sandbox-container">
             <canvas class="sandbox-canvas" id="sandbox-canvas" width="420" height="380"></canvas>
-            <span class="sandbox-instructions">Drag equilibrium node to warp vectors</span>
+            <span class="sandbox-instructions">Drag the center to feel the tension</span>
           </div>
         </div>
 
@@ -383,7 +381,7 @@
         <div class="ventures-header reveal reveal--stagger-1">
           <div class="specimen-label">PORTFOLIO_DOCKET: VC_ENTRIES</div>
           <h2 id="ventures-title" data-num="02">Ventures</h2>
-          <p>Each applies the same core thesis: evidence in, deterministic outcomes out.</p>
+          <p>Same bet behind all four: evidence in, outcomes out.</p>
         </div>
 
         <div class="ventures-stack">
@@ -397,7 +395,7 @@
               <span class="specimen-label">Health AI</span>
               <h3>VeriScience.AI</h3>
               <p>
-                Evidence-grade AI for women's health. Turning 17-year diagnosis delays into months through autonomous research synthesis and clinical graph coordination.
+                Evidence-grade AI for women's health. Turning 17-year diagnosis delays into months.
               </p>
               <span class="venture-specimen__link">
                 Launch System
@@ -545,7 +543,7 @@
       <div class="container theses-layout">
         
         <div class="theses-header reveal reveal--stagger-1">
-          <div class="specimen-label">COGNITIVE_LOGS: THREE_BETS</div>
+          <div class="specimen-label">RESEARCH: THREE_BETS</div>
           <h2 id="theses-title" data-num="04">Theses</h2>
         </div>
 
@@ -633,17 +631,12 @@
     </div>
 
     <div class="container site-footer__bottom">
-      <p>&copy; 2026 Siddhartha Chaturvedi // Systems of Truth. Deployed Responsibly.</p>
+      <p>&copy; 2026 Siddhartha Chaturvedi</p>
       <p>MMXXVI // ALL RIGHTS RESERVED.</p>
     </div>
   </footer>
 
   <script src="/js/main.js" defer></script>
   <script src="/js/motion.js" defer></script>
-
-  <!-- Font Lab — live type experimentation (Aa button / Shift+F). DEV-ONLY: gitignored; remove this line before shipping. -->
-  <script src="/js/font-lab.js" defer></script>
-  <!-- Nav Lab — navbar design switcher (▤ Nav button / Shift+N). DEV-ONLY: gitignored; remove before shipping. -->
-  <script src="/js/nav-lab.js" defer></script>
 </body>
 </html>

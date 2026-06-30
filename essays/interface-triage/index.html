@@ -41,6 +41,7 @@
   >
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/essay-shared.css">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -1293,95 +1294,28 @@
 <body id="top">
   <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <header class="site-header">
-    <nav class="site-nav container" aria-label="Primary">
-      <a class="site-brand" href="/" aria-label="Back to home">
-        <span class="site-brand__mark" aria-hidden="true">
-          <span class="site-brand__dot"></span>
-          <img
-            class="site-brand__photo"
-            src="/public/images/sidc.jpeg"
-            alt=""
-            width="800"
-            height="800"
-            loading="lazy"
-            decoding="async"
-          >
-        </span>
-        <span class="site-brand__wordmark">Siddhartha Chaturvedi</span>
+  <header class="essay-header">
+    <nav class="essay-nav" aria-label="Site">
+      <a class="essay-nav__brand" href="/" aria-label="sidc.ai home">
+        <span class="essay-nav__dot"></span>
       </a>
-
-      <div class="site-nav__desktop">
-        <a href="/essays/" aria-current="page">Essays</a>
-        <a href="/#about">About</a>
-        <a href="/#value-function">Value</a>
-        <a href="/#recognition">Proof</a>
-        <a href="/#ventures">Ventures</a>
-        <a href="/#connect">Connect</a>
-        <a
-          class="site-nav__cta"
-          href="https://linkedin.com/in/siddharth"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn
-          <svg aria-hidden="true" viewBox="0 0 24 24">
-            <path d="M7 17L17 7M9 7h8v8" />
-          </svg>
-        </a>
-      </div>
-
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="site-menu-panel"
-        aria-label="Open site menu"
-        data-menu-toggle
-      >
-        <span class="menu-toggle__bars" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-      </button>
+      <span class="essay-nav__sep" aria-hidden="true">/</span>
+      <a class="essay-nav__link" href="/essays/">Field Notes</a>
+      <span class="essay-nav__sep" aria-hidden="true">/</span>
+      <span class="essay-nav__current">Interface Triage</span>
     </nav>
-
-    <div class="menu-panel" id="site-menu-panel" aria-hidden="true">
-      <div class="menu-panel__inner container">
-        <a href="/essays/" aria-current="page">Essays</a>
-        <a href="/#about">About</a>
-        <a href="/#value-function">Value</a>
-        <a href="/#recognition">Proof</a>
-        <a href="/#ventures">Ventures</a>
-        <a href="/#connect">Connect</a>
-      </div>
-      <div class="menu-panel__footer container">
-        <a
-          class="menu-panel__cta"
-          href="https://linkedin.com/in/siddharth"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn Profile
-          <svg aria-hidden="true" viewBox="0 0 24 24">
-            <path d="M7 17L17 7M9 7h8v8" />
-          </svg>
-        </a>
-        <p class="menu-panel__meta">AI Systems That Ship // MMXXVI</p>
-      </div>
-    </div>
   </header>
 
   <main id="main-content" class="page">
     <section class="intro" aria-labelledby="page-title">
       <div class="intro__copy">
-        <p class="eyebrow">Executive workflow artifact</p>
-        <h1 id="page-title">The work chooses the interface.</h1>
+        <p class="eyebrow">Field note · Interface design</p>
+        <h1 id="page-title">Not everything should be a chatbot.</h1>
         <p class="intro__lede">
-          The point is not to put AI everywhere. Some work still wants a screen. Some work
-          should run in the background. Some work needs a temporary interface built around
-          the decision in front of the team.
+          We keep reaching for the same answer — wrap it in chat, hand it to an agent — no
+          matter the question. But some work still wants a screen you can point at. Some
+          should just run in the background. And some needs an interface built for one
+          decision, in front of one team, then thrown away.
         </p>
         <div class="intro__bar" aria-label="Interface models">
           <span>Direct GUI</span>
@@ -1809,46 +1743,9 @@
     </section>
   </main>
 
-  <footer id="connect" class="site-footer">
-    <div class="container site-footer__grid">
-      <div class="site-footer__intro">
-        <h2>
-          Let's Talk<span>.</span>
-        </h2>
-        <a href="https://linkedin.com/in/siddharth" target="_blank" rel="noopener noreferrer">
-          LinkedIn /in/siddharth
-          <svg aria-hidden="true" viewBox="0 0 24 24">
-            <path d="M7 17L17 7M9 7h8v8" />
-          </svg>
-        </a>
-      </div>
-
-      <div class="site-footer__columns">
-        <section aria-labelledby="advisory-title">
-          <h3 id="advisory-title">Advisory &amp; Investment</h3>
-          <ul>
-            <li>
-              <strong>Limited Partner</strong>
-              <span>rpv (DeepTech VC)</span>
-            </li>
-            <li>
-              <strong>Advisor</strong>
-              <span>Loyal VC</span>
-            </li>
-          </ul>
-        </section>
-
-        <section aria-labelledby="availability-title">
-          <h3 id="availability-title">Availability</h3>
-          <p>Advising CEOs and boards on AI systems that ship in regulated, high-stakes, and infrastructure-heavy industries.</p>
-        </section>
-      </div>
-    </div>
-
-    <div class="container site-footer__bottom">
-      <p>&copy; 2026 Siddhartha Chaturvedi</p>
-      <p>Available for global engagements</p>
-    </div>
+  <footer class="essay-footer" id="connect">
+    <a href="/essays/">&larr; Back to Field Notes</a>
+    <p>&copy; 2026 Siddhartha Chaturvedi</p>
   </footer>
 
   <script src="/js/main.js" defer></script>

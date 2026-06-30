@@ -124,15 +124,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const pillarData = [
       {
         title: "Resonance <span>/ Voice</span>",
-        body: "Aligns outputs to organizational voice so they feel native, not generic. Crucial for matching clinical warmth, brand styling, and operational vocabulary, preventing AI from sounding robotic."
+        body: "Makes AI sound like your team — native to your voice, not a generic chatbot."
       },
       {
         title: "Relevance <span>/ Evidence</span>",
-        body: "Grounds responses in verified scientific data and proprietary knowledge graphs to eliminate hallucination. Ensures only evidence-grade, peer-reviewed sources back your clinical claims."
+        body: "Grounds every answer in verified, proprietary sources — so it cites real evidence instead of making things up."
       },
       {
         title: "Response <span>/ Execution</span>",
-        body: "Turns raw intelligence into deterministic actions inside the user's workflow. Generates structured logs, direct diagnostic summaries, or clinical protocols rather than generic narrative prose."
+        body: "Turns the answer into real next steps inside your workflow — a logged action or a clear summary, not another wall of text."
       }
     ];
 
