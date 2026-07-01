@@ -266,6 +266,12 @@
       transition: all 0.7s ease;
       white-space: nowrap;
     }
+
+    @media (max-width: 700px) {
+      .sub-label {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -519,13 +525,7 @@
       const root = document.getElementById('article');
       root.innerHTML = '';
 
-      // Instructions line
-      const instr = document.createElement('p');
-      instr.className = 'instructions';
-      instr.innerHTML = `Click any paragraph to reveal its intellectual provenance. The background diagram shifts as you read. <span class="toggle" id="toggleAll">${showAll ? 'Hide all' : 'Reveal all'}</span>`;
-      root.appendChild(instr);
-
-      sections.forEach((s, i) => {
+      const renderSection = (s, i) => {
         const el = document.createElement('div');
         el.dataset.era = s.era;
 
@@ -584,6 +584,22 @@
         }
 
         root.appendChild(el);
+      };
+
+      const titleIndex = sections.findIndex((s) => s.type === 'title');
+      if (titleIndex !== -1) {
+        renderSection(sections[titleIndex], titleIndex);
+      }
+
+      // Instructions line
+      const instr = document.createElement('p');
+      instr.className = 'instructions';
+      instr.innerHTML = `Click any paragraph to reveal its intellectual provenance. The background diagram shifts as you read. <span class="toggle" id="toggleAll">${showAll ? 'Hide all' : 'Reveal all'}</span>`;
+      root.appendChild(instr);
+
+      sections.forEach((s, i) => {
+        if (i === titleIndex) return;
+        renderSection(s, i);
       });
 
       // Colophon

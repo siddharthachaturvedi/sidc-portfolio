@@ -232,7 +232,7 @@
     .gu-db__row.winner .recommend { display: inline-block; }
 
     /* ═══════════════════════════════════════════
-       WIDE DARK MATRIX VISUALS
+       WIDE COMPARISON VISUALS
        Break out of the 680px reading column like
        Substack's wide-screen embeds
        ═══════════════════════════════════════════ */
@@ -256,6 +256,16 @@
       box-shadow:
         0 4px 24px rgba(0,0,0,0.18),
         0 1px 0 rgba(229, 215, 187, 0.06) inset;
+    }
+
+    .matrix-card--taxonomy {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.72), rgba(250,248,245,0.92)),
+        var(--surface-slate);
+      border-color: var(--line);
+      box-shadow:
+        0 1px 0 rgba(23, 32, 30, 0.08),
+        0 18px 48px rgba(23, 32, 30, 0.08);
     }
 
     .matrix-card__header {
@@ -286,6 +296,21 @@
       line-height: 1.45;
     }
 
+    .matrix-card--taxonomy .matrix-card__header {
+      border-bottom-color: var(--line);
+      background:
+        linear-gradient(90deg, rgba(165, 80, 39, 0.08), rgba(43, 108, 176, 0.06), rgba(107, 70, 193, 0.06));
+    }
+    .matrix-card--taxonomy .matrix-card__kicker {
+      color: var(--vermillion);
+    }
+    .matrix-card--taxonomy .matrix-card__title {
+      color: var(--ink);
+    }
+    .matrix-card--taxonomy .matrix-card__subtitle {
+      color: var(--ink-muted);
+    }
+
     /* Three-column mode definitions */
     .mode-grid {
       display: grid;
@@ -296,6 +321,11 @@
     .mode-col {
       border-bottom: 1px solid rgba(229, 215, 187, 0.06);
       position: relative;
+    }
+
+    .matrix-card--taxonomy .mode-col {
+      border-color: rgba(23, 32, 30, 0.1);
+      background: rgba(255, 255, 255, 0.34);
     }
 
     .mode-col__name {
@@ -325,6 +355,9 @@
       flex-direction: column;
       justify-content: center;
     }
+    .matrix-card--taxonomy .mode-cell {
+      border-color: rgba(23, 32, 30, 0.1);
+    }
     .mode-cell:last-child {
       border-bottom: 0;
     }
@@ -348,6 +381,13 @@
       font-size: 0.86rem;
       color: rgba(229, 215, 187, 0.65);
       line-height: 1.5;
+    }
+    .matrix-card--taxonomy .mode-cell__label {
+      color: var(--ink-muted);
+    }
+    .matrix-card--taxonomy .mode-cell__text,
+    .matrix-card--taxonomy .mode-col__desc {
+      color: var(--ink-soft);
     }
 
     /* Journey comparison grid */
@@ -444,7 +484,7 @@
       background: rgba(229, 215, 187, 0.03);
     }
     .journey-cell:not(.is-winner) {
-      opacity: 0.4;
+      opacity: 0.52;
       filter: grayscale(100%);
       transition: opacity 0.28s ease, filter 0.28s ease;
       display: flex;
@@ -873,6 +913,9 @@
         border-bottom: 0;
         border-right: 1px solid rgba(229, 215, 187, 0.06);
       }
+      .matrix-card--taxonomy .mode-col {
+        border-right-color: rgba(23, 32, 30, 0.1);
+      }
       .mode-col:last-child { border-right: 0; }
 
       .journey-cells {
@@ -883,6 +926,69 @@
         border-bottom: 0;
       }
       .journey-cell:last-child { border-right: 0; }
+    }
+
+    @media (max-width: 699px) {
+      .wide-visual {
+        padding: 0 16px;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .matrix-card__header {
+        padding: 1.3rem 1.1rem 1rem;
+      }
+
+      .matrix-card--taxonomy {
+        border-radius: 8px;
+      }
+
+      .matrix-card--taxonomy .mode-grid {
+        gap: 0.7rem;
+        padding: 0.8rem;
+      }
+
+      .matrix-card--taxonomy .mode-col {
+        border: 1px solid rgba(23, 32, 30, 0.12);
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      .matrix-card--taxonomy .mode-cell {
+        padding: 0.72rem 0.82rem;
+      }
+
+      .matrix-card--taxonomy .mode-cell--header {
+        padding-top: 0.95rem;
+        padding-bottom: 0.45rem;
+      }
+
+      .matrix-card--taxonomy .mode-cell--desc {
+        padding-top: 0.3rem;
+        padding-bottom: 0.8rem;
+      }
+
+      .matrix-card--taxonomy .mode-cell:not(.mode-cell--header):not(.mode-cell--desc) {
+        display: grid;
+        grid-template-columns: 6.4rem minmax(0, 1fr);
+        gap: 0.65rem;
+        align-items: start;
+      }
+
+      .matrix-card--taxonomy .mode-cell__label {
+        margin-bottom: 0;
+        line-height: 1.35;
+      }
+
+      .matrix-card--taxonomy .mode-cell__text {
+        font-size: 0.82rem;
+        line-height: 1.45;
+      }
+
+      .journey-cell:not(.is-winner) {
+        opacity: 0.62;
+        padding: 1.1rem 1.2rem;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1003,12 +1109,12 @@
 
   <!-- ═══════════════════════════════════════════
        WIDE VISUAL 2: THE THREE MODES (PART I)
-       Breaks out of 680px column into wide dark card with cell borders
+       Light taxonomy card for a fast comparison before the demo
        ═══════════════════════════════════════════ -->
   <div class="wide-visual" data-mode-highlight="1">
-    <div class="matrix-card">
+    <div class="matrix-card matrix-card--taxonomy">
       <div class="matrix-card__header">
-        <div class="matrix-card__kicker">The 3×3 Journey Matrix</div>
+        <div class="matrix-card__kicker">Interface fit map</div>
         <div class="matrix-card__title">Three Interface Shapes</div>
         <div class="matrix-card__subtitle">Each mode has a sweet spot — and a point where it breaks.</div>
       </div>

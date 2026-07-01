@@ -1316,6 +1316,54 @@ h2[data-num]::before {
   }
 }
 
+@media (max-width: 979px) {
+  .site-nav {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: stretch;
+  }
+
+  .site-brand {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .site-nav::after {
+    content: "Field Notes / Systems";
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    padding-inline: var(--space-sm);
+    border-left: 1px solid var(--ink);
+    border-right: 1px solid var(--ink);
+    overflow: hidden;
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 1.35;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .menu-toggle {
+    grid-column: 3;
+    grid-row: 1;
+    min-height: var(--nav-height);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 430px) {
+  .site-nav::after {
+    content: "Field Notes";
+  }
+}
+
 @media (min-width: 980px) {
   .site-nav__desktop {
     display: flex;
