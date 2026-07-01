@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Interface Is Selected, Not Universal | Siddhartha Chaturvedi</title>
+  <meta name="theme-color" content="#f4f1ea">
+  <title>Generative UI: The App That Builds Itself | Siddhartha Chaturvedi</title>
   <meta
     name="description"
-    content="A visual framework for deciding when executive knowledge work needs a direct screen, a headless agent, or a generated interface."
+    content="Chat gave every problem the same text box. Generative UI assembles a bespoke, throwaway interface around the exact question — a demo you can play with."
   >
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#f3efe5">
   <link rel="canonical" href="https://sidc.ai/essays/interface-triage/">
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="The Interface Is Selected, Not Universal">
-  <meta property="og:description" content="A 3x3 framework for choosing between direct GUI, headless agents, and generative UI at work.">
+  <meta property="og:title" content="Generative UI: The App That Builds Itself">
+  <meta property="og:description" content="Chat gave every problem the same text box. Generative UI builds the right screen for the question — with a demo you can play with.">
   <meta property="og:url" content="https://sidc.ai/essays/interface-triage/">
   <meta property="og:image" content="https://sidc.ai/public/images/sidc.jpeg">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Interface Is Selected, Not Universal">
-  <meta name="twitter:description" content="A visual framework for deciding which AI workflow interface belongs in front of knowledge workers.">
+  <meta name="twitter:title" content="Generative UI: The App That Builds Itself">
+  <meta name="twitter:description" content="Not everything should be a chatbot. Generative UI generates the interface for the task — play with the demo.">
   <meta name="twitter:image" content="https://sidc.ai/public/images/sidc.jpeg">
 
   <script>
@@ -33,1266 +33,145 @@
   <link rel="icon" type="image/png" sizes="128x128" href="/public/favicons/favicon-128.png">
   <link rel="icon" type="image/png" sizes="256x256" href="/public/favicons/favicon-256.png">
   <link rel="apple-touch-icon" sizes="512x512" href="/public/favicons/favicon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&family=JetBrains+Mono:wght@400..600&display=swap"
     rel="stylesheet"
   >
+
   <link rel="stylesheet" href="/css/tokens.css">
-  <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/essay-shared.css">
+  <link rel="stylesheet" href="/css/field-notes.css">
+
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "The Interface Is Selected, Not Universal",
-      "description": "A visual framework for deciding when executive knowledge work needs a direct screen, a headless agent, or a generated interface.",
-      "author": {
-        "@type": "Person",
-        "name": "Siddhartha Chaturvedi",
-        "url": "https://sidc.ai/"
-      },
-      "datePublished": "2026-06-29",
+      "headline": "Generative UI: The App That Builds Itself for One Question",
+      "description": "Chat gave every problem the same text box. Generative UI assembles a bespoke, throwaway interface around the exact question, with an interactive demo.",
+      "author": { "@type": "Person", "name": "Siddhartha Chaturvedi", "url": "https://sidc.ai/" },
+      "datePublished": "2026-07-01",
       "url": "https://sidc.ai/essays/interface-triage/",
-      "image": "https://sidc.ai/public/images/sidc.jpeg"
+      "image": "https://sidc.ai/public/images/sidc.jpeg",
+      "about": "Generative user interfaces"
     }
   </script>
+
   <style>
-    .page {
-      --paper: #f3efe5;
-      --paper-2: #fbfaf6;
-      --ink: #141917;
-      --ink-soft: #3f4845;
-      --muted: #59635f;
-      --line: #cfc6b7;
-      --line-strong: #141917;
-      --oxide: #9d4a30;
-      --crimson: #9d3c30;
-      --pine: #2f644f;
-      --river: #205b6b;
-      --gold: #c09a32;
-      --sky: #dfecef;
-      --rose: #f1ded6;
-      --mint: #dfece4;
-      --font-display: "Fraunces", Georgia, serif;
-      --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-      --shadow: 10px 10px 0 rgba(20, 25, 23, 0.1);
-      --fast: 180ms ease;
-      --slow: 680ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background: var(--bg-washi);
-    }
-
-    body {
-      margin: 0;
-      color: var(--ink);
-      font-family: var(--font-sans);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .page {
-      min-height: 100vh;
-      overflow-x: hidden;
-      color: var(--ink);
-      font-family: var(--font-sans);
-      background:
-        linear-gradient(rgba(20, 25, 23, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(20, 25, 23, 0.04) 1px, transparent 1px),
-        var(--paper);
-      background-size: 40px 40px;
-    }
-
-    .intro {
-      min-height: min(760px, 100svh);
-      display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.68fr);
-      gap: clamp(2rem, 5vw, 5.5rem);
-      align-items: center;
-      padding: calc(clamp(2rem, 5vw, 5rem) + var(--nav-height, 4.5rem)) clamp(2rem, 5vw, 5rem) clamp(2rem, 5vw, 5rem);
-      border-bottom: 1px solid var(--line-strong);
-      background:
-        linear-gradient(90deg, rgba(20, 25, 23, 0.94), rgba(20, 25, 23, 0.86)),
-        linear-gradient(rgba(251, 250, 246, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(251, 250, 246, 0.08) 1px, transparent 1px);
-      background-size: auto, 48px 48px, 48px 48px;
-      color: var(--paper-2);
-    }
-
-    .eyebrow,
-    .metric__label,
-    .mode-tag,
-    .fit,
-    .cell__note,
-    .step-list b,
-    .journey__kicker,
-    .mini-label {
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .eyebrow {
-      margin: 0 0 1.5rem;
-      color: var(--oxide);
-      font-size: 0.78rem;
-    }
-
-    .intro .eyebrow {
-      color: #d8b358;
-    }
-
-    .page h1,
-    .page h2,
-    .page h3 {
-      margin: 0;
-      font-family: var(--font-display);
-      font-weight: 650;
-      line-height: 0.98;
-      letter-spacing: 0;
-      color: inherit;
-    }
-
-    .page h1 {
-      max-width: 13ch;
-      font-size: clamp(3.6rem, 8vw, 6rem);
-    }
-
-    .intro__lede {
-      max-width: 58rem;
-      margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
-      color: rgba(251, 250, 246, 0.76);
-      font-size: clamp(1.08rem, 1.9vw, 1.45rem);
-      line-height: 1.55;
-    }
-
-    .intro__bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 2.5rem;
-    }
-
-    .intro__bar span {
-      border: 1px solid rgba(251, 250, 246, 0.28);
-      padding: 0.7rem 0.9rem;
-      color: rgba(251, 250, 246, 0.82);
-      font-family: var(--font-mono);
-      font-size: 0.76rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .intro-map {
-      position: relative;
-      display: grid;
-      gap: 0.85rem;
-      padding: clamp(1rem, 2vw, 1.5rem);
-      border: 1px solid rgba(251, 250, 246, 0.24);
-      background: rgba(251, 250, 246, 0.05);
-      box-shadow: var(--shadow);
-      animation: rise 900ms var(--slow) both 120ms;
-    }
-
-    .intro-map__row {
-      display: grid;
-      grid-template-columns: 4rem 1fr 1fr 1fr;
-      min-height: 6.4rem;
-      border: 1px solid rgba(251, 250, 246, 0.16);
-      background: rgba(251, 250, 246, 0.045);
-    }
-
-    .intro-map__axis {
-      display: grid;
-      place-items: center;
-      border-right: 1px solid rgba(251, 250, 246, 0.16);
-      color: rgba(251, 250, 246, 0.62);
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-    }
-
-    .intro-map__cell {
-      position: relative;
-      min-width: 0;
-      border-right: 1px solid rgba(251, 250, 246, 0.12);
-    }
-
-    .intro-map__cell:last-child {
-      border-right: 0;
-    }
-
-    .intro-map__cell::before {
-      content: "";
-      position: absolute;
-      left: 18%;
-      right: 18%;
-      top: 50%;
-      height: 2px;
-      background: rgba(251, 250, 246, 0.2);
-      transform: translateY(-50%);
-    }
-
-    .intro-map__cell::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 1.15rem;
-      height: 1.15rem;
-      border: 1px solid rgba(251, 250, 246, 0.32);
-      background: #202925;
-      transform: translate(-50%, -50%) rotate(45deg);
-    }
-
-    .intro-map__cell.is-hero::before {
-      background: currentColor;
-      box-shadow: 0 0 22px currentColor;
-    }
-
-    .intro-map__cell.is-hero::after {
-      width: 2.4rem;
-      height: 2.4rem;
-      background: currentColor;
-      border-color: currentColor;
-      box-shadow: 0 0 40px rgba(255, 255, 255, 0.22);
-    }
-
-    .intro-map__cell[data-color="oxide"] {
-      color: #d2774d;
-    }
-
-    .intro-map__cell[data-color="pine"] {
-      color: #71b38d;
-    }
-
-    .intro-map__cell[data-color="river"] {
-      color: #75bccb;
-    }
-
-    .matrix {
-      width: min(1680px, calc(100% - clamp(1.25rem, 4vw, 5rem)));
-      margin: 0 auto;
-      padding: clamp(2.2rem, 5vw, 5rem) 0 clamp(3rem, 8vw, 7rem);
-    }
-
-    .matrix__header {
-      display: grid;
-      grid-template-columns: minmax(0, 0.75fr) minmax(420px, 1fr);
-      gap: clamp(1.5rem, 5vw, 5rem);
-      align-items: end;
-      margin-bottom: clamp(2rem, 4vw, 3.8rem);
-    }
-
-    .matrix__header h2 {
-      font-size: clamp(2.7rem, 5.5vw, 5.8rem);
-    }
-
-    .matrix__header p {
-      max-width: 50rem;
-      margin: 1rem 0 0;
-      color: var(--ink-soft);
-      font-size: clamp(1rem, 1.4vw, 1.18rem);
-      line-height: 1.55;
-    }
-
-    .mode-key {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      border: 1px solid var(--line-strong);
-      background: var(--paper-2);
-    }
-
-    .mode-key__item {
-      min-width: 0;
-      padding: 1rem;
-      border-right: 1px solid var(--line-strong);
-    }
-
-    .mode-key__item:last-child {
-      border-right: 0;
-    }
-
-    .mode-key strong {
-      display: block;
-      margin-bottom: 0.35rem;
-      font-size: 0.94rem;
-    }
-
-    .mode-key span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.45;
-    }
-
-    .verdict-key {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.85rem;
-    }
-
-    .verdict-key span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.42rem;
-      border: 1px solid var(--line-strong);
-      background: var(--paper-2);
-      padding: 0.48rem 0.62rem;
-      color: var(--ink-soft);
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .verdict-key span::before {
-      content: "";
-      width: 0.54rem;
-      height: 0.54rem;
-      border: 1px solid var(--line-strong);
-      background: var(--line);
-    }
-
-    .verdict-key span:nth-child(1)::before {
-      background: var(--pine);
-    }
-
-    .verdict-key span:nth-child(2)::before {
-      background: var(--gold);
-    }
-
-    .verdict-key span:nth-child(3)::before {
-      background: var(--crimson);
-    }
-
-    .model-audit {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      border: 1px solid var(--line-strong);
-      background: rgba(251, 250, 246, 0.72);
-      margin-bottom: clamp(1.8rem, 4vw, 3rem);
-    }
-
-    .model-audit__item {
-      min-width: 0;
-      padding: clamp(1rem, 2vw, 1.35rem);
-      border-right: 1px solid var(--line-strong);
-    }
-
-    .model-audit__item:last-child {
-      border-right: 0;
-    }
-
-    .model-audit__tag {
-      display: inline-flex;
-      margin-bottom: 0.9rem;
-      color: var(--oxide);
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .model-audit h3 {
-      font-family: var(--font-sans);
-      font-size: 1.06rem;
-      line-height: 1.25;
-      font-weight: 700;
-    }
-
-    .model-audit dl {
-      display: grid;
-      gap: 0.75rem;
-      margin: 1rem 0 0;
-    }
-
-    .model-audit div {
-      min-width: 0;
-    }
-
-    .model-audit dt {
-      margin: 0 0 0.2rem;
-      color: var(--muted);
-      font-family: var(--font-mono);
-      font-size: 0.64rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .model-audit dd {
-      margin: 0;
-      color: var(--ink-soft);
-      font-size: 0.92rem;
-      line-height: 1.45;
-    }
-
-    .token-economics {
-      display: grid;
-      grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
-      gap: clamp(1rem, 3vw, 2rem);
-      align-items: stretch;
-      margin: 0 0 clamp(1.8rem, 4vw, 3rem);
-      border-top: 1px solid var(--line-strong);
-      border-bottom: 1px solid var(--line-strong);
-      padding: clamp(1rem, 2.8vw, 1.6rem) 0;
-    }
-
-    .token-economics__copy {
-      min-width: 0;
-    }
-
-    .token-economics__copy h3 {
-      font-size: clamp(1.8rem, 3.5vw, 3.4rem);
-      line-height: 1;
-      max-width: 12ch;
-    }
-
-    .token-economics__copy p {
-      max-width: 36rem;
-      margin: 1rem 0 0;
-      color: var(--ink-soft);
-      line-height: 1.5;
-    }
-
-    .token-economics__grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      border: 1px solid var(--line-strong);
-      background: var(--paper-2);
-    }
-
-    .token-economics__item {
-      min-width: 0;
-      padding: 1rem;
-      border-right: 1px solid var(--line-strong);
-    }
-
-    .token-economics__item:last-child {
-      border-right: 0;
-    }
-
-    .token-economics__item b {
-      display: block;
-      margin-bottom: 0.45rem;
-      font-size: 0.96rem;
-    }
-
-    .token-economics__item span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.86rem;
-      line-height: 1.45;
-    }
-
-    .journey {
-      display: grid;
-      grid-template-columns: minmax(230px, 0.28fr) minmax(0, 1fr);
-      gap: clamp(1rem, 2vw, 1.5rem);
-      padding: clamp(1.25rem, 2.8vw, 2rem) 0;
-      border-top: 1px solid var(--line-strong);
-      animation: rise 780ms var(--slow) both;
-    }
-
-    .journey:nth-of-type(2) {
-      animation-delay: 100ms;
-    }
-
-    .journey:nth-of-type(3) {
-      animation-delay: 180ms;
-    }
-
-    .journey:nth-of-type(4) {
-      animation-delay: 260ms;
-    }
-
-    .journey:last-child {
-      border-bottom: 1px solid var(--line-strong);
-    }
-
-    .journey__copy {
-      position: sticky;
-      top: 1rem;
-      align-self: start;
-      min-width: 0;
-      padding: 1rem 1rem 1rem 0;
-    }
-
-    .journey__kicker {
-      display: inline-flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-      color: var(--oxide);
-      font-size: 0.76rem;
-    }
-
-    .journey__copy h3 {
-      max-width: 12ch;
-      font-size: clamp(2rem, 4.6vw, 5.3rem);
-    }
-
-    .journey__copy p {
-      margin: 1rem 0 0;
-      color: var(--ink-soft);
-      line-height: 1.5;
-    }
-
-    .journey__best {
-      display: inline-flex;
-      margin-top: 1.4rem;
-      border: 1px solid var(--line-strong);
-      background: var(--ink);
-      color: var(--paper-2);
-      padding: 0.58rem 0.7rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .journey__grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.9rem;
-      min-width: 0;
-    }
-
-    .cell {
-      min-width: 0;
-      display: grid;
-      grid-template-rows: auto minmax(250px, auto) auto 1fr;
-      border: 1px solid var(--line-strong);
-      background: rgba(251, 250, 246, 0.78);
-      transition:
-        transform var(--slow),
-        box-shadow var(--slow),
-        background var(--slow);
-    }
-
-    .cell:hover,
-    .cell:focus-within {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 0 rgba(20, 25, 23, 0.08);
-      background: #fffdf8;
-    }
-
-    .cell--winner {
-      position: relative;
-      --winner-color: var(--ink);
-      background: #fffdf8;
-      box-shadow: var(--shadow);
-    }
-
-    .cell--winner::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      pointer-events: none;
-      border: 2px solid var(--winner-color);
-    }
-
-    .journey--gui .cell--winner {
-      --winner-color: var(--oxide);
-    }
-
-    .journey--agent .cell--winner {
-      --winner-color: var(--pine);
-    }
-
-    .journey--generative .cell--winner {
-      --winner-color: var(--river);
-    }
-
-    .cell__top {
-      display: flex;
-      align-items: stretch;
-      justify-content: space-between;
-      gap: 0.75rem;
-      min-height: 3.35rem;
-      border-bottom: 1px solid var(--line-strong);
-    }
-
-    .mode-tag {
-      display: inline-flex;
-      align-items: center;
-      min-width: 0;
-      padding: 0.75rem 0.85rem;
-      color: var(--ink);
-      font-size: 0.72rem;
-    }
-
-    .fit {
-      display: inline-flex;
-      align-items: center;
-      flex: 0 0 auto;
-      border-left: 1px solid var(--line-strong);
-      padding: 0.75rem 0.85rem;
-      background: rgba(20, 25, 23, 0.06);
-      color: var(--muted);
-      font-size: 0.68rem;
-    }
-
-    .cell--winner .fit {
-      background: var(--winner-color);
-      color: var(--paper-2);
-    }
-
-    .mock {
-      min-width: 0;
-      margin: 1rem;
-      border: 1px solid var(--line-strong);
-      background: var(--paper-2);
-      color: var(--ink);
+    /* ── Page-specific: the Generative UI demo (the unique visual) ── */
+    .fn-header { background: var(--surface-slate); }
+
+    .genui {
+      border: 1px solid var(--ink);
+      background: var(--surface-strong);
+      border-radius: 8px;
       overflow: hidden;
+      box-shadow: 10px 10px 0 rgba(23, 32, 30, 0.06);
     }
-
-    .cell--winner .mock {
-      border-width: 2px;
-    }
-
-    .phone {
-      width: min(84%, 260px);
-      min-height: 255px;
-      margin-inline: auto;
-      border-radius: 18px;
-      border: 2px solid var(--ink);
-      padding: 0.7rem;
-      background: #111815;
-      box-shadow: 0 8px 0 rgba(20, 25, 23, 0.14);
-    }
-
-    .phone__screen {
-      height: 100%;
-      min-height: 232px;
-      border-radius: 12px;
-      padding: 0.9rem;
-      background: var(--paper-2);
-    }
-
-    .mini-label {
-      display: block;
-      color: var(--muted);
-      font-size: 0.62rem;
-      margin-bottom: 0.55rem;
-    }
-
-    .brief-card {
-      border: 1px solid var(--ink);
-      padding: 0.75rem;
-      background: var(--rose);
-    }
-
-    .brief-card strong {
-      display: block;
-      font-size: 1.08rem;
-      line-height: 1.1;
-    }
-
-    .brief-card span {
-      display: block;
-      margin-top: 0.3rem;
-      color: var(--ink-soft);
-      font-size: 0.82rem;
-    }
-
-    .tap-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.5rem;
-      margin-top: 0.8rem;
-    }
-
-    .tap-row div,
-    .pay-bar {
-      border: 1px solid var(--ink);
-      padding: 0.6rem;
-      font-weight: 700;
-      text-align: center;
-      font-size: 0.78rem;
-    }
-
-    .pay-bar {
-      margin-top: 0.7rem;
-      background: var(--ink);
-      color: var(--paper-2);
-    }
-
-    .chat {
-      min-height: 255px;
-      padding: 0.9rem;
-      display: grid;
-      align-content: start;
-      gap: 0.72rem;
-      background:
-        linear-gradient(rgba(20, 25, 23, 0.05) 1px, transparent 1px),
-        var(--paper-2);
-      background-size: 100% 36px;
-    }
-
-    .bubble {
-      max-width: 88%;
-      padding: 0.7rem 0.78rem;
-      border: 1px solid var(--line-strong);
-      font-size: 0.86rem;
-      line-height: 1.35;
-      background: #fff;
-    }
-
-    .bubble--user {
-      justify-self: end;
-      background: var(--ink);
-      color: var(--paper-2);
-    }
-
-    .bubble--low {
-      color: var(--muted);
-      background: #f5f3ee;
-    }
-
-    .overbuilt {
-      min-height: 255px;
-      padding: 0.9rem;
-      background: #f8f6f0;
-    }
-
-    .control-line {
-      display: grid;
-      grid-template-columns: 4.5rem 1fr 2.5rem;
-      gap: 0.5rem;
+    .genui__bar {
+      display: flex;
       align-items: center;
-      margin-bottom: 0.58rem;
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .slider {
-      height: 0.45rem;
-      border: 1px solid var(--line-strong);
-      background: linear-gradient(90deg, var(--gold) 42%, #fff 42%);
-    }
-
-    .choice-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.45rem;
-      margin-top: 0.8rem;
-    }
-
-    .choice-grid div {
-      min-height: 2.35rem;
-      border: 1px solid var(--line-strong);
-      background: #fff;
-    }
-
-    .spreadsheet {
-      min-height: 255px;
-      padding: 0.75rem;
-      background: #fff;
-    }
-
-    .sheet-toolbar {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 2fr;
-      gap: 0.4rem;
-      margin-bottom: 0.65rem;
-    }
-
-    .sheet-toolbar span,
-    .sheet-cell {
-      border: 1px solid var(--line);
-      min-height: 1.55rem;
-      background: #f3f5f2;
-    }
-
-    .sheet-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.7fr 0.9fr 0.55fr;
-      gap: 0.28rem;
-    }
-
-    .sheet-cell {
-      min-height: 1.8rem;
-    }
-
-    .sheet-cell.is-alert {
-      background: var(--rose);
-      border-color: var(--oxide);
-    }
-
-    .sheet-callout {
-      margin-top: 0.7rem;
-      border: 1px solid var(--oxide);
-      padding: 0.55rem;
-      color: var(--oxide);
-      font-size: 0.74rem;
-      font-weight: 700;
-    }
-
-    .agent-console {
-      min-height: 255px;
-      padding: 0.9rem;
-      background: #101815;
-      color: #dfece4;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-    }
-
-    .console-row {
-      display: grid;
-      grid-template-columns: 4.5rem 1fr;
       gap: 0.6rem;
-      padding: 0.46rem 0;
-      border-bottom: 1px solid rgba(223, 236, 228, 0.12);
-    }
-
-    .console-row span:first-child {
-      color: #71b38d;
-    }
-
-    .progress {
-      height: 0.55rem;
-      margin: 1rem 0;
-      border: 1px solid rgba(223, 236, 228, 0.5);
-      background: linear-gradient(90deg, #71b38d 91%, transparent 91%);
-    }
-
-    .exception-list {
-      display: grid;
-      gap: 0.45rem;
-      margin-top: 0.8rem;
-    }
-
-    .exception-list div {
-      border: 1px solid rgba(223, 236, 228, 0.35);
-      padding: 0.48rem;
-      color: #f3efe5;
-    }
-
-    .dynamic-table {
-      min-height: 255px;
-      padding: 0.8rem;
-      background: #fff;
-    }
-
-    .pivot-head {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.5rem;
-      margin-bottom: 0.7rem;
-    }
-
-    .pivot-head div {
-      border: 1px solid var(--line-strong);
-      padding: 0.5rem;
-      background: var(--mint);
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-
-    .bar-chart {
-      display: grid;
-      align-items: end;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 0.36rem;
-      height: 6.8rem;
-      padding: 0.5rem;
-      border: 1px solid var(--line-strong);
-    }
-
-    .bar-chart span {
-      display: block;
-      min-height: 1rem;
-      background: var(--pine);
-    }
-
-    .bar-chart span:nth-child(1) { height: 30%; }
-    .bar-chart span:nth-child(2) { height: 58%; }
-    .bar-chart span:nth-child(3) { height: 44%; }
-    .bar-chart span:nth-child(4) { height: 72%; }
-    .bar-chart span:nth-child(5) { height: 38%; }
-    .bar-chart span:nth-child(6) { height: 88%; }
-    .bar-chart span:nth-child(7) { height: 52%; }
-
-    .roadmap-table {
-      min-height: 255px;
-      padding: 0.8rem;
-      background: #fff;
-    }
-
-    .search-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .search-row div {
-      border: 1px solid var(--line-strong);
-      padding: 0.55rem;
-      font-size: 0.76rem;
-      color: var(--muted);
-    }
-
-    .fare-row {
-      display: grid;
-      grid-template-columns: 1fr 0.75fr 0.75fr;
-      gap: 0.36rem;
-      align-items: center;
-      margin-bottom: 0.42rem;
-    }
-
-    .fare-row span {
-      min-height: 1.75rem;
-      border: 1px solid var(--line);
-      padding: 0.36rem;
-      font-size: 0.72rem;
-      color: var(--ink-soft);
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-
-    .fare-row.is-dim span {
-      color: var(--muted);
-      background: #f5f3ee;
-    }
-
-    .black-box {
-      min-height: 255px;
-      padding: 0.9rem;
-      background: #151b19;
-      color: var(--paper-2);
-    }
-
-    .black-box__status {
-      display: grid;
-      place-items: center;
-      min-height: 7rem;
-      border: 1px solid rgba(251, 250, 246, 0.28);
-      color: rgba(251, 250, 246, 0.7);
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      text-align: center;
-    }
-
-    .black-box__pick {
-      margin-top: 0.8rem;
-      border: 1px solid rgba(251, 250, 246, 0.32);
-      padding: 0.75rem;
-      background: rgba(251, 250, 246, 0.06);
-    }
-
-    .black-box__pick strong {
-      display: block;
-      margin-bottom: 0.3rem;
-      color: #75bccb;
-    }
-
-    .black-box__pick span {
-      color: rgba(251, 250, 246, 0.68);
-      font-size: 0.82rem;
-    }
-
-    .travel-canvas {
-      min-height: 255px;
-      padding: 0.85rem;
-      background: var(--sky);
-      display: grid;
-      grid-template-columns: 1fr 0.78fr;
-      gap: 0.75rem;
-    }
-
-    .map-panel {
-      position: relative;
-      min-height: 13rem;
-      border: 1px solid var(--line-strong);
-      background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.8) 12%, transparent 12% 24%, rgba(255, 255, 255, 0.55) 24% 36%, transparent 36%),
-        #bcd5db;
-      overflow: hidden;
-    }
-
-    .map-panel span {
-      position: absolute;
-      width: 2.4rem;
-      height: 2.4rem;
-      border: 1px solid var(--line-strong);
-      background: rgba(192, 154, 50, 0.78);
-    }
-
-    .map-panel span:nth-child(1) {
-      left: 18%;
-      top: 22%;
-    }
-
-    .map-panel span:nth-child(2) {
-      right: 16%;
-      top: 35%;
-      background: rgba(32, 91, 107, 0.8);
-    }
-
-    .map-panel span:nth-child(3) {
-      left: 44%;
-      bottom: 18%;
-      background: rgba(180, 90, 53, 0.72);
-    }
-
-    .travel-controls {
-      display: grid;
-      align-content: start;
-      gap: 0.52rem;
-      min-width: 0;
-    }
-
-    .priority-note {
-      border: 1px solid var(--line-strong);
-      background: #fff;
-      padding: 0.55rem;
-      font-size: 0.76rem;
-      line-height: 1.3;
-    }
-
-    .priority-note strong {
-      display: block;
-      color: var(--river);
-    }
-
-    .cell__note {
-      border-top: 1px solid var(--line-strong);
+      padding: 0.7rem 0.9rem;
       border-bottom: 1px solid var(--line);
-      padding: 0.75rem 1rem;
-      color: var(--muted);
-      font-size: 0.68rem;
+      background: rgba(23, 32, 30, 0.02);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
     }
+    .genui__caret { color: var(--vermillion); font-weight: 600; }
+    .genui__prompt { color: var(--ink); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .genui__badge { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); border: 1px solid var(--line); padding: 0.2rem 0.4rem; border-radius: 999px; }
 
-    .cell--winner .cell__note {
-      color: var(--ink);
-      font-weight: 700;
-    }
-
-    .step-list {
-      margin: 0;
-      padding: 0.9rem 1rem 1rem;
-      list-style: none;
-      display: grid;
-      gap: 0.75rem;
-      min-width: 0;
-    }
-
-    .step-list li {
-      display: grid;
-      grid-template-columns: 4.5rem 1fr;
-      gap: 0.75rem;
+    .genui__chips { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0.9rem; border-bottom: 1px solid var(--line); }
+    .genui__chip {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--line);
+      background: var(--surface-slate);
       color: var(--ink-soft);
-      font-size: 0.9rem;
-      line-height: 1.42;
-      min-width: 0;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease;
+    }
+    .genui__chip:hover,
+    .genui__chip:focus-visible { border-color: var(--vermillion); color: var(--ink); }
+    .genui__chip[aria-pressed="true"] { background: var(--ink); color: var(--surface-strong); border-color: var(--ink); }
+
+    .genui__screen {
+      position: relative;
+      min-height: 340px;
+      padding: 1.4rem;
+      background:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+        var(--surface-strong);
+      background-size: 22px 22px;
+    }
+    .genui__building {
+      position: absolute; inset: 0;
+      display: grid; place-content: center; gap: 0.9rem; justify-items: center;
+      font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted);
+      background: var(--surface-strong);
+      opacity: 0; pointer-events: none; transition: opacity 160ms ease;
+    }
+    .genui__building.on { opacity: 1; pointer-events: auto; }
+    .genui__skeleton { width: min(320px, 80%); display: grid; gap: 0.55rem; }
+    .genui__skeleton span { height: 12px; border-radius: 4px; background: linear-gradient(90deg, var(--line), var(--surface-slate), var(--line)); background-size: 200% 100%; animation: genuiShimmer 1.1s linear infinite; }
+    .genui__skeleton span:nth-child(2) { width: 82%; }
+    .genui__skeleton span:nth-child(3) { width: 64%; }
+    .genui__skeleton span:nth-child(4) { width: 90%; }
+    @keyframes genuiShimmer { to { background-position: -200% 0; } }
+
+    .genui__out { font-family: var(--font-sans); color: var(--ink); }
+    .genui__note {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.04em;
+      color: var(--ink-muted); padding: 0.75rem 0.9rem; border-top: 1px solid var(--line); background: rgba(23,32,30,0.02);
     }
 
-    .step-list b {
-      color: var(--ink);
-      font-size: 0.65rem;
-      padding-top: 0.16rem;
-    }
+    /* generated: fashion */
+    .gu-fashion { display: grid; gap: 1rem; }
+    .gu-fashion__head { font-family: var(--font-display, "Fraunces"), serif; font-size: 1.35rem; letter-spacing: -0.02em; }
+    .gu-swatches { display: flex; gap: 0.4rem; }
+    .gu-swatch { width: 26px; height: 26px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.15); }
+    .gu-pieces { display: grid; gap: 0.5rem; }
+    .gu-piece { display: flex; justify-content: space-between; gap: 1rem; padding: 0.6rem 0.75rem; border: 1px solid var(--line); background: var(--surface-slate); font-size: 0.9rem; }
+    .gu-piece b { font-weight: 600; }
+    .gu-piece span { color: var(--ink-muted); font-family: var(--font-mono); font-size: 0.72rem; }
 
-    .takeaway {
-      display: grid;
-      grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.42fr);
-      gap: clamp(1.5rem, 4vw, 4rem);
-      align-items: stretch;
-      margin-top: clamp(2rem, 5vw, 4rem);
-      padding-top: clamp(1.5rem, 4vw, 3rem);
-      border-top: 1px solid var(--line-strong);
-    }
+    /* generated: fractal */
+    .gu-fractal { display: grid; gap: 0.8rem; }
+    .gu-fractal svg { width: 100%; height: 230px; background: var(--void); border: 1px solid var(--ink); }
+    .gu-fractal__ctl { display: flex; align-items: center; gap: 0.8rem; font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); }
+    .gu-fractal__ctl input { flex: 1; accent-color: var(--vermillion); }
 
-    .takeaway h2 {
-      font-size: clamp(2.3rem, 5vw, 5.6rem);
-      max-width: 13ch;
-    }
+    /* generated: math */
+    .gu-math { display: grid; gap: 0.9rem; justify-items: start; }
+    .gu-math__q { font-family: var(--font-display, "Fraunces"), serif; font-size: 2.4rem; letter-spacing: -0.02em; }
+    .gu-math__opts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .gu-math__opt { font-family: var(--font-mono); font-size: 1rem; min-width: 3.4rem; padding: 0.6rem 0.8rem; border: 1px solid var(--ink); background: var(--surface-strong); cursor: pointer; }
+    .gu-math__opt:hover { border-color: var(--vermillion); }
+    .gu-math__opt.correct { background: var(--void); color: var(--void-text); border-color: var(--void); }
+    .gu-math__opt.wrong { background: var(--crimson); color: #fff; border-color: var(--crimson); }
+    .gu-math__fb { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-muted); min-height: 1.2em; }
 
-    .takeaway p {
-      max-width: 46rem;
-      color: var(--ink-soft);
-      font-size: clamp(1rem, 1.4vw, 1.18rem);
-      line-height: 1.55;
-    }
-
-    .metric-stack {
-      display: grid;
-      border: 1px solid var(--line-strong);
-      background: var(--paper-2);
-    }
-
-    .metric {
-      display: grid;
-      grid-template-columns: 6.2rem 1fr;
-      gap: 1rem;
-      padding: 1rem;
-      border-bottom: 1px solid var(--line-strong);
-    }
-
-    .metric:last-child {
-      border-bottom: 0;
-    }
-
-    .metric__label {
-      color: var(--muted);
-      font-size: 0.64rem;
-    }
-
-    .metric strong {
-      font-size: 0.96rem;
-      line-height: 1.25;
-    }
-
-    @keyframes rise {
-      from {
-        opacity: 0;
-        transform: translateY(26px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 1180px) {
-      .intro,
-      .matrix__header,
-      .token-economics,
-      .journey,
-      .takeaway {
-        grid-template-columns: 1fr;
-      }
-
-      .intro {
-        min-height: auto;
-      }
-
-      .intro-map {
-        max-width: 760px;
-      }
-
-      .journey__copy {
-        position: relative;
-        top: auto;
-        padding-right: 0;
-      }
-
-      .journey__copy h3 {
-        max-width: 18ch;
-      }
-    }
-
-    @media (max-width: 920px) {
-      .journey__grid,
-      .mode-key,
-      .model-audit,
-      .token-economics__grid {
-        grid-template-columns: 1fr;
-      }
-
-      .mode-key__item,
-      .model-audit__item,
-      .token-economics__item {
-        border-right: 0;
-        border-bottom: 1px solid var(--line-strong);
-      }
-
-      .mode-key__item:last-child,
-      .model-audit__item:last-child,
-      .token-economics__item:last-child {
-        border-bottom: 0;
-      }
-
-      .cell {
-        grid-template-rows: auto auto auto 1fr;
-      }
-
-      .travel-canvas {
-        grid-template-columns: 1fr;
-      }
-
-      .map-panel {
-        min-height: 10rem;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .intro,
-      .matrix {
-        width: 100%;
-        padding-inline: 1rem;
-      }
-
-      .intro {
-        padding-block: calc(1.75rem + var(--nav-height, 4.5rem)) 1.5rem;
-      }
-
-      .page h1 {
-        font-size: clamp(2.8rem, 15vw, 4.4rem);
-      }
-
-      .intro-map__row {
-        grid-template-columns: 2.8rem 1fr 1fr 1fr;
-        min-height: 4.5rem;
-      }
-
-      .intro-map__axis {
-        font-size: 0.62rem;
-      }
-
-      .cell__top,
-      .step-list li,
-      .metric {
-        grid-template-columns: 1fr;
-      }
-
-      .cell__top {
-        display: grid;
-        gap: 0;
-      }
-
-      .fit {
-        border-left: 0;
-        border-top: 1px solid var(--line-strong);
-      }
-
-      .mock {
-        margin: 0.8rem;
-      }
-
-      .phone {
-        width: auto;
-      }
-    }
+    /* three-mode strip */
+    .modes { display: grid; gap: 1px; background: var(--ink); border: 1px solid var(--ink); }
+    .mode { background: var(--surface-strong); padding: 1.1rem; }
+    .mode h4 { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vermillion); margin: 0 0 0.5rem; }
+    .mode p { font-size: 0.92rem; margin: 0; color: var(--ink-soft); }
+    @media (min-width: 720px) { .modes { grid-template-columns: repeat(3, 1fr); } }
 
     @media (prefers-reduced-motion: reduce) {
-      .page,
-      .page *,
-      .page *::before,
-      .page *::after {
-        animation-duration: 1ms !important;
-        scroll-behavior: auto !important;
-        transition-duration: 1ms !important;
-      }
+      .genui__skeleton span { animation: none; }
+      .genui__building { transition: none; }
     }
   </style>
 </head>
 <body id="top">
-  <a class="skip-link" href="#main-content">Skip to content</a>
+  <a class="skip-link" href="#main-content" style="position:absolute;left:-9999px;">Skip to content</a>
 
   <header class="essay-header">
     <nav class="essay-nav" aria-label="Site">
@@ -1302,452 +181,299 @@
       <span class="essay-nav__sep" aria-hidden="true">/</span>
       <a class="essay-nav__link" href="/essays/">Field Notes</a>
       <span class="essay-nav__sep" aria-hidden="true">/</span>
-      <span class="essay-nav__current">Interface Triage</span>
+      <span class="essay-nav__current">Generative UI</span>
     </nav>
   </header>
 
-  <main id="main-content" class="page">
-    <section class="intro" aria-labelledby="page-title">
-      <div class="intro__copy">
-        <p class="eyebrow">Field note · Interface design</p>
-        <h1 id="page-title">Not everything should be a chatbot.</h1>
-        <p class="intro__lede">
-          We keep reaching for the same answer — wrap it in chat, hand it to an agent — no
-          matter the question. But some work still wants a screen you can point at. Some
-          should just run in the background. And some needs an interface built for one
-          decision, in front of one team, then thrown away.
-        </p>
-        <div class="intro__bar" aria-label="Interface models">
-          <span>Direct GUI</span>
-          <span>Headless agent</span>
-          <span>Generative UI</span>
+  <header class="fn-header">
+    <div class="fn-header__inner">
+      <p class="fn-kicker">Field note · Generative UI</p>
+      <h1 class="fn-title">The app that builds itself for <em>one</em> question.</h1>
+      <p class="fn-lede">
+        Chat gave every problem the same little text box. Generative UI does something
+        stranger and more useful — it assembles a bespoke, throwaway interface around the
+        exact thing you asked, then forgets it when you're done.
+      </p>
+      <p class="fn-byline">
+        <span>Siddhartha Chaturvedi</span>
+        <span>MMXXVI · ~6 min</span>
+      </p>
+    </div>
+  </header>
+
+  <main id="main-content" class="fieldnote">
+
+    <p>
+      For three years the answer to "how should people use AI?" has been a single, stubborn
+      shape: a chat box. You type, it types back — a wall of markdown you then have to read,
+      parse, and act on yourself. It was a huge leap over a blank prompt. It is also, for a
+      surprising amount of real work, the wrong tool.
+    </p>
+
+    <p>
+      Because not every question wants a paragraph. Ask a model to help you dress for a winter
+      wedding and a wall of text is a downgrade from a page you could actually <em>look</em> at.
+      Ask it to explain fractals to a curious ten-year-old and the right answer is something they
+      can drag a slider on. Ask it to drill you on multiplication and you want buttons, not prose.
+    </p>
+
+    <p>
+      That is the bet behind <strong>generative UI</strong>: instead of returning content, the
+      model generates the <em>interface</em> — a small, custom, interactive application built for
+      one prompt and thrown away after. Google's research team put it plainly: not just content,
+      but "immersive visual experiences and interactive interfaces… automatically designed and
+      fully customized in response to any question, instruction, or prompt."
+    </p>
+
+    <h2 data-fn-num="01">Watch it happen</h2>
+
+    <p>
+      Here is the same prompt bar, three different questions. A chatbot would answer all three
+      with text. Generative UI answers each with a different tool. Pick a question and watch the
+      screen assemble itself.
+    </p>
+
+    <figure class="fn-wide">
+      <div class="genui" id="genui">
+        <div class="genui__bar">
+          <span class="genui__caret">&gt;_</span>
+          <span class="genui__prompt" id="genui-prompt">Pick a prompt below…</span>
+          <span class="genui__badge">generating</span>
+        </div>
+        <div class="genui__chips" role="group" aria-label="Example prompts">
+          <button type="button" class="genui__chip" data-gu="fashion" aria-pressed="false">Style me for a winter wedding</button>
+          <button type="button" class="genui__chip" data-gu="fractal" aria-pressed="false">Explain fractals to a 10-year-old</button>
+          <button type="button" class="genui__chip" data-gu="math" aria-pressed="false">Drill me on multiplication</button>
+        </div>
+        <div class="genui__screen" id="genui-screen" aria-live="polite">
+          <div class="genui__building" id="genui-building">
+            <div class="genui__skeleton"><span></span><span></span><span></span><span></span></div>
+            <div>Composing interface…</div>
+          </div>
+          <div class="genui__out" id="genui-out">
+            <p style="font-family:var(--font-mono);font-size:0.8rem;color:var(--ink-muted);margin:0;">
+              ↑ Choose a prompt. The same box will build a different interface for each one.
+            </p>
+          </div>
+        </div>
+        <div class="genui__note">
+          A chatbot would have returned three walls of text. Generative UI returns three different tools — and discards each when you move on.
         </div>
       </div>
+      <figcaption>Demo · a bespoke interface generated per prompt (mocked; real systems generate the markup live)</figcaption>
+    </figure>
 
-      <div class="intro-map" aria-hidden="true">
-        <div class="intro-map__row">
-          <div class="intro-map__axis">Brief</div>
-          <div class="intro-map__cell is-hero" data-color="oxide"></div>
-          <div class="intro-map__cell"></div>
-          <div class="intro-map__cell"></div>
-        </div>
-        <div class="intro-map__row">
-          <div class="intro-map__axis">Data</div>
-          <div class="intro-map__cell"></div>
-          <div class="intro-map__cell is-hero" data-color="pine"></div>
-          <div class="intro-map__cell"></div>
-        </div>
-        <div class="intro-map__row">
-          <div class="intro-map__axis">Plan</div>
-          <div class="intro-map__cell"></div>
-          <div class="intro-map__cell"></div>
-          <div class="intro-map__cell is-hero" data-color="river"></div>
-        </div>
-      </div>
-    </section>
+    <h2 data-fn-num="02">Why this is different, not just prettier</h2>
 
-    <section class="matrix" aria-labelledby="matrix-title">
-      <div class="matrix__header">
-        <div>
-          <p class="eyebrow">3x3 journey matrix</p>
-          <h2 id="matrix-title">Same columns. Different winners.</h2>
+    <p>
+      It is tempting to file generative UI under "nicer formatting." It is more than that. A chat
+      answer is <em>static</em> — the model's one shot at being useful, frozen as text. A generated
+      interface is a place you can keep working: adjust the fractal's depth, swap a jacket, get the
+      next problem. The output stops being a message and starts being a small machine.
+    </p>
+
+    <p>
+      When Google ran the comparison, humans strongly preferred generated interfaces over the
+      standard markdown reply — a "substantial gap" — landing second only to sites hand-built by
+      human experts. The honest catch is speed: generating a real interface can take a minute or
+      more, and that minute is not free. Which is exactly why generative UI is a <em>choice</em>,
+      not a default.
+    </p>
+
+    <h2 data-fn-num="03">It's one of three moves, not the only one</h2>
+
+    <p>
+      The mistake would be to make everything generative, the same way we made everything a chatbot.
+      Most real work sorts into three interface shapes — and the skill is matching the shape to the
+      task in front of the team.
+    </p>
+
+    <div class="fn-wide">
+      <div class="modes">
+        <div class="mode">
+          <h4>Direct GUI</h4>
+          <p>The user can point at the thing. Editing, approving, selecting a known object. Near-zero AI cost once the screen exists. If someone can say "change this line," give them the line.</p>
         </div>
-        <div>
-          <p>
-            Each row is a workplace journey a CMO or executive team would recognize. The
-            winner changes because the cognitive load changes.
-          </p>
-          <div class="mode-key" aria-label="Column definitions">
-            <div class="mode-key__item">
-              <strong>Direct GUI</strong>
-              <span>Best when the object is clear and the action is small.</span>
-            </div>
-            <div class="mode-key__item">
-              <strong>Agent / headless</strong>
-              <span>Best when the work is long, multi-step, and mostly procedural.</span>
-            </div>
-            <div class="mode-key__item">
-              <strong>Generative UI</strong>
-              <span>Best when teams need to see tradeoffs from several angles.</span>
-            </div>
-          </div>
-          <div class="verdict-key" aria-label="Cell verdict legend">
-            <span>Best fit</span>
-            <span>Workable</span>
-            <span>Poor fit</span>
-          </div>
+        <div class="mode">
+          <h4>Headless agent</h4>
+          <p>No one needs to watch. Reconciliation, monitoring, multi-system busywork that should just happen and report back. The best interface is often no interface — a log and an exception.</p>
+        </div>
+        <div class="mode">
+          <h4>Generative UI</h4>
+          <p>The task is one-off and shaped by the question itself. A decision brief, a comparison, a teaching aid — worth a custom screen built now and thrown away after.</p>
         </div>
       </div>
+    </div>
 
-      <section class="model-audit" aria-label="Interface model assessment">
-        <article class="model-audit__item">
-          <span class="model-audit__tag">Direct GUI</span>
-          <h3>Works when the user can point to the thing.</h3>
-          <dl>
-            <div>
-              <dt>Strong at</dt>
-              <dd>Editing, approving, selecting, scanning, and acting on a known object.</dd>
-            </div>
-            <div>
-              <dt>Breaks when</dt>
-              <dd>The user has to stitch together many systems, policies, or time periods.</dd>
-            </div>
-            <div>
-              <dt>Executive test</dt>
-              <dd>If a person can say "change this line," give them the line.</dd>
-            </div>
-            <div>
-              <dt>Token profile</dt>
-              <dd>Near-zero AI spend per action once the screen exists.</dd>
-            </div>
-          </dl>
-        </article>
+    <p class="fn-pull">
+      Chat was never the destination. It was the placeholder we all agreed to while we figured out
+      what the interface should have been.
+    </p>
 
-        <article class="model-audit__item">
-          <span class="model-audit__tag">Agent / headless</span>
-          <h3>Works when the process matters less than the result.</h3>
-          <dl>
-            <div>
-              <dt>Strong at</dt>
-              <dd>Running tool chains, checking data, retrying failed steps, and keeping evidence.</dd>
-            </div>
-            <div>
-              <dt>Breaks when</dt>
-              <dd>The user needs to steer tradeoffs visually or compare several futures at once.</dd>
-            </div>
-            <div>
-              <dt>Executive test</dt>
-              <dd>If the work is "do the analysis and show exceptions," hide the machinery.</dd>
-            </div>
-            <div>
-              <dt>Token profile</dt>
-              <dd>High spend is acceptable when it replaces hours of tool work.</dd>
-            </div>
-          </dl>
-        </article>
+    <h2 data-fn-num="04">What it means if you build things</h2>
 
-        <article class="model-audit__item">
-          <span class="model-audit__tag">Generative UI</span>
-          <h3>Works when the view needs to change with the decision.</h3>
-          <dl>
-            <div>
-              <dt>Strong at</dt>
-              <dd>Making a temporary planning surface around teams, constraints, and tradeoffs.</dd>
-            </div>
-            <div>
-              <dt>Breaks when</dt>
-              <dd>It burns tokens to create a panel but still makes people read and judge more output.</dd>
-            </div>
-            <div>
-              <dt>Executive test</dt>
-              <dd>If each function needs a different lens on the same plan, generate the lens.</dd>
-            </div>
-            <div>
-              <dt>Token profile</dt>
-              <dd>Expensive if every prompt rebuilds context, layout, and data bindings.</dd>
-            </div>
-          </dl>
-        </article>
-      </section>
+    <p>
+      The teams who win the next wave won't be the ones who bolt a chat box onto every product.
+      They'll be the ones who ask, task by task, whether this moment wants a screen you point at, a
+      daemon you never see, or an interface generated on the spot — and who treat tokens, latency,
+      and cognitive load as the real product costs they are.
+    </p>
 
-      <section class="token-economics" aria-labelledby="token-title">
-        <div class="token-economics__copy">
-          <p class="eyebrow">Token economics</p>
-          <h3 id="token-title">Generated UI has a meter running.</h3>
-          <p>
-            It spends tokens before the user acts: to understand the request, summarize the
-            context, choose components, bind data, and explain the result. That cost is worth
-            paying only when the view saves more executive attention than it consumes.
-          </p>
-        </div>
-        <div class="token-economics__grid" aria-label="Token cost comparison">
-          <div class="token-economics__item">
-            <b>Direct GUI</b>
-            <span>Higher design cost up front, low AI cost during repeated use.</span>
-          </div>
-          <div class="token-economics__item">
-            <b>Agent / headless</b>
-            <span>High token use can be justified when it replaces real process work.</span>
-          </div>
-          <div class="token-economics__item">
-            <b>Generative UI</b>
-            <span>Token spend must buy cognitive compression, not just a prettier surface.</span>
-          </div>
-        </div>
-      </section>
+    <p>
+      Generative UI is the most futuristic of the three and the easiest to overuse. Reach for it
+      when the question genuinely deserves its own tool. The rest of the time, the kindest thing you
+      can build is the boring screen that was always the right answer.
+    </p>
 
-      <article class="journey journey--gui">
-        <div class="journey__copy">
-          <span class="journey__kicker">Known object</span>
-          <h3>Edit the launch brief.</h3>
-          <p>The document is already the workspace. The fastest path is to touch the thing directly.</p>
-          <span class="journey__best">Hero: Direct GUI</span>
-        </div>
-        <div class="journey__grid" aria-label="Launch brief journey comparison">
-          <section class="cell cell--winner" aria-label="Launch brief journey with direct GUI">
-            <div class="cell__top">
-              <span class="mode-tag">Direct GUI</span>
-              <span class="fit">Best fit</span>
-            </div>
-            <div class="mock phone" aria-hidden="true">
-              <div class="phone__screen">
-                <span class="mini-label">Launch brief</span>
-                <div class="brief-card">
-                  <strong>Q3 launch brief</strong>
-                  <span>Positioning, owner, review date</span>
-                </div>
-                <div class="tap-row">
-                  <div>Comment</div>
-                  <div>Approve</div>
-                </div>
-                <div class="pay-bar">Save edit</div>
-              </div>
-            </div>
-            <div class="cell__note">Low overhead, high control</div>
-            <ol class="step-list">
-              <li><b>Intent</b><span>The executive knows exactly which line needs to change.</span></li>
-              <li><b>Action</b><span>Edit the line, leave a comment, approve the doc.</span></li>
-              <li><b>Result</b><span>No prompt, no summary, no extra interpretation layer.</span></li>
-            </ol>
-          </section>
-
-          <section class="cell" aria-label="Launch brief journey with agent">
-            <div class="cell__top">
-              <span class="mode-tag">Agent / headless</span>
-              <span class="fit">Poor fit</span>
-            </div>
-            <div class="mock chat" aria-hidden="true">
-              <div class="bubble bubble--user">Update the launch brief with the new positioning.</div>
-              <div class="bubble">Which section should change?</div>
-              <div class="bubble bubble--user">The opening.</div>
-              <div class="bubble bubble--low">Drafting three alternatives for review...</div>
-            </div>
-            <div class="cell__note">AI adds reading work</div>
-            <ol class="step-list">
-              <li><b>Intent</b><span>The user turns a visible edit into a conversation.</span></li>
-              <li><b>Action</b><span>The agent creates options the user must now inspect.</span></li>
-              <li><b>Result</b><span>The work gets slower unless the edit was genuinely unclear.</span></li>
-            </ol>
-          </section>
-
-          <section class="cell" aria-label="Launch brief journey with generative UI">
-            <div class="cell__top">
-              <span class="mode-tag">Generative UI</span>
-              <span class="fit">Workable</span>
-            </div>
-            <div class="mock overbuilt" aria-hidden="true">
-              <span class="mini-label">Generated review panel</span>
-              <div class="control-line"><span>Tone</span><div class="slider"></div><span>clear</span></div>
-              <div class="control-line"><span>Risk</span><div class="slider"></div><span>low</span></div>
-              <div class="control-line"><span>Legal</span><div class="slider"></div><span>ok</span></div>
-              <div class="choice-grid">
-                <div></div><div></div><div></div>
-                <div></div><div></div><div></div>
-              </div>
-            </div>
-            <div class="cell__note">Useful only if review is complex</div>
-            <ol class="step-list">
-              <li><b>Intent</b><span>The system creates controls around a simple document action.</span></li>
-              <li><b>Action</b><span>The user reviews tone, risk, and policy checks.</span></li>
-              <li><b>Result</b><span>Helpful for a sensitive launch, overbuilt for a line edit.</span></li>
-            </ol>
-          </section>
-        </div>
-      </article>
-
-      <article class="journey journey--agent">
-        <div class="journey__copy">
-          <span class="journey__kicker">Analysis engine</span>
-          <h3>Run the market analysis.</h3>
-          <p>The value is in the loop: pull data, test assumptions, keep evidence, surface exceptions.</p>
-          <span class="journey__best">Hero: Headless agent</span>
-        </div>
-        <div class="journey__grid" aria-label="Market analysis journey comparison">
-          <section class="cell" aria-label="Market analysis journey with direct GUI">
-            <div class="cell__top">
-              <span class="mode-tag">Direct GUI</span>
-              <span class="fit">Poor fit</span>
-            </div>
-            <div class="mock spreadsheet" aria-hidden="true">
-              <div class="sheet-toolbar"><span></span><span></span><span></span><span></span></div>
-              <div class="sheet-grid">
-                <div class="sheet-cell"></div><div class="sheet-cell"></div><div class="sheet-cell is-alert"></div><div class="sheet-cell"></div>
-                <div class="sheet-cell"></div><div class="sheet-cell is-alert"></div><div class="sheet-cell"></div><div class="sheet-cell"></div>
-                <div class="sheet-cell"></div><div class="sheet-cell"></div><div class="sheet-cell"></div><div class="sheet-cell is-alert"></div>
-                <div class="sheet-cell is-alert"></div><div class="sheet-cell"></div><div class="sheet-cell"></div><div class="sheet-cell"></div>
-              </div>
-              <div class="sheet-callout">12 exports before the answer</div>
-            </div>
-            <div class="cell__note">Too much process on screen</div>
-            <ol class="step-list">
-              <li><b>Intent</b><span>The CMO wants a defensible answer, not another dashboard tour.</span></li>
-              <li><b>Action</b><span>Teams export CRM, ads, web, revenue, and survey data by hand.</span></li>
-              <li><b>Result</b><span>The interface exposes every step but does not do the work.</span></li>
-            </ol>
-          </section>
-
-          <section class="cell cell--winner" aria-label="Market analysis journey with agent">
-            <div class="cell__top">
-              <span class="mode-tag">Agent / headless</span>
-              <span class="fit">Best fit</span>
-            </div>
-            <div class="mock agent-console" aria-hidden="true">
-              <div class="console-row"><span>pull</span><span>CRM, ads, web, revenue</span></div>
-              <div class="console-row"><span>test</span><span>6 hypotheses against cohorts</span></div>
-              <div class="console-row"><span>trace</span><span>assumptions and source links</span></div>
-              <div class="progress"></div>
-              <div class="exception-list">
-                <div>2 conflicting campaign names</div>
-                <div>1 metric definition needs owner</div>
-                <div>3 slides ready for review</div>
-              </div>
-            </div>
-            <div class="cell__note">Human reviews assumptions, not clicks</div>
-            <ol class="step-list">
-              <li><b>Intent</b><span>Ask for the analysis outcome and the standard of proof.</span></li>
-              <li><b>Action</b><span>The agent runs tools, retries failed steps, and keeps an audit trail.</span></li>
-              <li><b>Result</b><span>The executive reviews the few calls that actually need judgment.</span></li>
-            </ol>
-          </section>
-
-          <section class="cell" aria-label="Market analysis journey with generative UI">
-            <div class="cell__top">
-              <span class="mode-tag">Generative UI</span>
-              <span class="fit">Workable</span>
-            </div>
-            <div class="mock dynamic-table" aria-hidden="true">
-              <div class="pivot-head">
-                <div>By segment</div>
-                <div>By channel</div>
-              </div>
-              <div class="bar-chart">
-                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-              </div>
-            </div>
-            <div class="cell__note">Good for review, not for the whole run</div>
-            <ol class="step-list">
-              <li><b>Intent</b><span>The system builds a useful surface for inspecting results.</span></li>
-              <li><b>Action</b><span>The user still has to drive the analysis loop.</span></li>
-              <li><b>Result</b><span>Great as a review layer, weaker as the engine.</span></li>
-            </ol>
-          </section>
-        </div>
-      </article>
-
-      <article class="journey journey--generative">
-        <div class="journey__copy">
-          <span class="journey__kicker">Cross-team decision</span>
-          <h3>Align roadmap and marketing.</h3>
-          <p>Product, Marketing, Sales, and Success need different views of the same priorities.</p>
-          <span class="journey__best">Hero: Generative UI</span>
-        </div>
-        <div class="journey__grid" aria-label="Roadmap and marketing journey comparison">
-          <section class="cell" aria-label="Roadmap and marketing journey with direct GUI">
-            <div class="cell__top">
-              <span class="mode-tag">Direct GUI</span>
-              <span class="fit">Workable</span>
-            </div>
-            <div class="mock roadmap-table" aria-hidden="true">
-              <div class="search-row">
-                <div>Product</div>
-                <div>Marketing</div>
-              </div>
-              <div class="fare-row"><span>Initiative</span><span>Impact</span><span>Date</span></div>
-              <div class="fare-row is-dim"><span>Retention</span><span>High</span><span>Aug</span></div>
-              <div class="fare-row is-dim"><span>AI launch</span><span>High</span><span>Sep</span></div>
-              <div class="fare-row is-dim"><span>Pricing</span><span>Med</span><span>Oct</span></div>
-              <div class="fare-row"><span>Sales push, brand launch, support load?</span><span></span><span></span></div>
-            </div>
-            <div class="cell__note">The SaaS object is too rigid</div>
-            <ol class="step-list">
-              <li><b>Intent</b><span>The team needs one plan across roadmap, standup notes, and launch calendar.</span></li>
-              <li><b>Action</b><span>Fixed filters show one department's model at a time.</span></li>
-              <li><b>Result</b><span>Executives do the cross-functional comparison in their heads.</span></li>
-            </ol>
-          </section>
-
-          <section class="cell" aria-label="Roadmap and marketing journey with agent">
-            <div class="cell__top">
-              <span class="mode-tag">Agent / headless</span>
-              <span class="fit">Poor fit</span>
-            </div>
-            <div class="mock black-box" aria-hidden="true">
-              <div class="black-box__status">Reading roadmap, standups, launch calendar...</div>
-              <div class="black-box__pick">
-                <strong>Suggested: move retention</strong>
-                <span>Good logic, but the tradeoff is hidden in a narrative.</span>
-              </div>
-            </div>
-            <div class="cell__note">The answer is too compressed</div>
-            <ol class="step-list">
-              <li><b>Intent</b><span>The executive can describe the planning problem naturally.</span></li>
-              <li><b>Action</b><span>The agent picks a recommendation without showing enough of the map.</span></li>
-              <li><b>Result</b><span>Leaders ask follow-up questions because they cannot steer the tradeoff.</span></li>
-            </ol>
-          </section>
-
-          <section class="cell cell--winner" aria-label="Roadmap and marketing journey with generative UI">
-            <div class="cell__top">
-              <span class="mode-tag">Generative UI</span>
-              <span class="fit">Best fit</span>
-            </div>
-            <div class="mock travel-canvas" aria-hidden="true">
-              <div class="map-panel">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div class="travel-controls">
-                <span class="mini-label">Generated for this planning cycle</span>
-                <div class="control-line"><span>Teams</span><div class="slider"></div><span>4</span></div>
-                <div class="control-line"><span>Risk</span><div class="slider"></div><span>med</span></div>
-                <div class="priority-note"><strong>Marketing</strong>Launch story needs product proof</div>
-                <div class="priority-note"><strong>Product</strong>Roadmap depends on support capacity</div>
-              </div>
-            </div>
-            <div class="cell__note">The interface adapts to the planning question</div>
-            <ol class="step-list">
-              <li><b>Intent</b><span>Bring weekly standup, roadmap, and marketing priorities into one decision.</span></li>
-              <li><b>Action</b><span>The app generates team lenses, conflicts, dependencies, and next best moves.</span></li>
-              <li><b>Result</b><span>Executives can steer the plan without forcing everyone into one SaaS shape.</span></li>
-            </ol>
-          </section>
-        </div>
-      </article>
-
-      <section class="takeaway" aria-labelledby="takeaway-title">
-        <div>
-          <p class="eyebrow">Operating principle</p>
-          <h2 id="takeaway-title">AI should compress work, including its own cost.</h2>
-          <p>
-            Direct GUI wins when the user already knows what to touch. Agents win when the
-            process is long and tool-heavy. Generative UI wins when leaders need a temporary
-            shared surface for a messy decision, and when the token spend buys back attention.
-          </p>
-        </div>
-        <div class="metric-stack" aria-label="Summary metrics">
-          <div class="metric">
-            <span class="metric__label">Known object</span>
-            <strong>Do not wrap a simple edit in AI ceremony.</strong>
-          </div>
-          <div class="metric">
-            <span class="metric__label">Analysis loop</span>
-            <strong>Let the agent run, then inspect the evidence.</strong>
-          </div>
-          <div class="metric">
-            <span class="metric__label">Team planning</span>
-            <strong>Use generated UI when the changing view is worth the meter.</strong>
-          </div>
-        </div>
-      </section>
-    </section>
   </main>
+
+  <aside class="essay-cta">
+    <p>Designing where AI actually belongs in a real product or workflow?</p>
+    <a class="essay-cta__link" href="https://linkedin.com/in/siddharth" target="_blank" rel="noopener noreferrer">Let's talk &rarr;</a>
+  </aside>
 
   <footer class="essay-footer" id="connect">
     <a href="/essays/">&larr; Back to Field Notes</a>
     <p>&copy; 2026 Siddhartha Chaturvedi</p>
   </footer>
 
-  <script src="/js/main.js" defer></script>
+  <script>
+    (() => {
+      "use strict";
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const screen = document.getElementById("genui-screen");
+      const out = document.getElementById("genui-out");
+      const building = document.getElementById("genui-building");
+      const promptEl = document.getElementById("genui-prompt");
+      const chips = Array.from(document.querySelectorAll(".genui__chip"));
+      let pendingGenerate = null;
+
+      const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+
+      // ── Generated interface #1: fashion board ──
+      const fashion = () => {
+        out.innerHTML = `
+          <div class="gu-fashion">
+            <div class="gu-fashion__head">Winter wedding · evening · smart</div>
+            <div class="gu-swatches" aria-hidden="true">
+              <span class="gu-swatch" style="background:#2b2f3a"></span>
+              <span class="gu-swatch" style="background:#7a4a34"></span>
+              <span class="gu-swatch" style="background:#d8cbb3"></span>
+              <span class="gu-swatch" style="background:#9d3c30"></span>
+            </div>
+            <div class="gu-pieces">
+              <div class="gu-piece"><b>Midnight wool suit</b><span>anchor</span></div>
+              <div class="gu-piece"><b>Fine-gauge roll-neck</b><span>warm · no tie</span></div>
+              <div class="gu-piece"><b>Oxblood leather boots</b><span>the accent</span></div>
+              <div class="gu-piece"><b>Camel overcoat</b><span>the arrival</span></div>
+            </div>
+          </div>`;
+      };
+
+      // ── Generated interface #2: interactive fractal ──
+      const fractal = () => {
+        out.innerHTML = `
+          <div class="gu-fractal">
+            <svg id="gu-tree" viewBox="0 0 320 230" role="img" aria-label="A fractal tree that branches; drag the slider to change its depth"></svg>
+            <label class="gu-fractal__ctl">Detail
+              <input type="range" id="gu-depth" min="2" max="10" value="7" aria-label="Fractal depth">
+              <span id="gu-depth-val">7</span>
+            </label>
+            <p style="margin:0;font-size:0.9rem;color:var(--ink-soft);">Each branch splits into two smaller copies of itself. That's a fractal — the same shape, all the way down.</p>
+          </div>`;
+        const svg = document.getElementById("gu-tree");
+        const slider = document.getElementById("gu-depth");
+        const val = document.getElementById("gu-depth-val");
+        const accent = getComputedStyle(document.documentElement).getPropertyValue("--vermillion-light").trim() || "#d68a5a";
+        const draw = (depth) => {
+          const parts = [];
+          const branch = (x, y, len, ang, d) => {
+            if (d === 0) return;
+            const x2 = x + len * Math.cos(ang);
+            const y2 = y + len * Math.sin(ang);
+            const w = Math.max(0.6, d * 0.55);
+            const op = 0.35 + (d / depth) * 0.65;
+            parts.push(`<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${accent}" stroke-width="${w.toFixed(1)}" stroke-linecap="round" opacity="${op.toFixed(2)}"/>`);
+            branch(x2, y2, len * 0.74, ang - 0.42, d - 1);
+            branch(x2, y2, len * 0.74, ang + 0.42, d - 1);
+          };
+          branch(160, 222, 52, -Math.PI / 2, depth);
+          svg.innerHTML = parts.join("");
+        };
+        draw(+slider.value);
+        slider.addEventListener("input", () => { val.textContent = slider.value; draw(+slider.value); });
+      };
+
+      // ── Generated interface #3: math drill ──
+      const math = () => {
+        const roll = () => {
+          const a = 2 + Math.floor(Math.random() * 8);
+          const b = 2 + Math.floor(Math.random() * 8);
+          const ans = a * b;
+          const opts = new Set([ans]);
+          while (opts.size < 4) {
+            const d = ans + (Math.floor(Math.random() * 11) - 5) || ans + 3;
+            if (d > 0) opts.add(d);
+          }
+          return { a, b, ans, opts: [...opts].sort(() => Math.random() - 0.5) };
+        };
+        const render = () => {
+          const q = roll();
+          out.innerHTML = `
+            <div class="gu-math">
+              <div class="gu-math__q">${q.a} × ${q.b}</div>
+              <div class="gu-math__opts" role="group" aria-label="Choose the answer">
+                ${q.opts.map((o) => `<button type="button" class="gu-math__opt" data-a="${o}">${o}</button>`).join("")}
+              </div>
+              <div class="gu-math__fb" id="gu-fb" aria-live="polite"></div>
+            </div>`;
+          const fb = document.getElementById("gu-fb");
+          out.querySelectorAll(".gu-math__opt").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const pick = +btn.dataset.a;
+              if (pick === q.ans) {
+                btn.classList.add("correct");
+                fb.textContent = "Correct — next one loading…";
+                out.querySelectorAll(".gu-math__opt").forEach((b) => (b.disabled = true));
+                setTimeout(render, 900);
+              } else {
+                btn.classList.add("wrong");
+                fb.textContent = `Not ${pick}. Try again.`;
+              }
+            });
+          });
+        };
+        render();
+      };
+
+      const RENDERERS = { fashion, fractal, math };
+      const LABELS = {
+        fashion: "Style me for a winter wedding",
+        fractal: "Explain fractals to a curious 10-year-old",
+        math: "Drill me on multiplication",
+      };
+
+      const generate = (key) => {
+        promptEl.textContent = LABELS[key];
+        chips.forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.gu === key)));
+        const run = () => RENDERERS[key]();
+        if (pendingGenerate) {
+          clearTimeout(pendingGenerate);
+          pendingGenerate = null;
+        }
+        if (reduce) { run(); return; }
+        building.classList.add("on");
+        out.style.visibility = "hidden";
+        pendingGenerate = setTimeout(() => {
+          pendingGenerate = null;
+          run();
+          building.classList.remove("on");
+          out.style.visibility = "visible";
+        }, 720);
+      };
+
+      chips.forEach((c) => c.addEventListener("click", () => generate(c.dataset.gu)));
+    })();
+  </script>
 </body>
 </html>

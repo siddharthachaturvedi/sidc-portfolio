@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Host: sidc.ai
+
+Sitemap: https://sidc.ai/sitemap.xml

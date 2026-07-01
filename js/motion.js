@@ -23,7 +23,10 @@
       const lines = title.innerHTML.trim().split(/<br\s*\/?>/i);
       let html = "";
       lines.forEach((line) => {
-        html += `<span class="hero__title-line">`;
+        // aria-hidden: the split glyphs are decorative; the H1's aria-label
+        // ("Siddhartha Chaturvedi") supplies the accessible name so screen
+        // readers don't announce it letter-by-letter.
+        html += `<span class="hero__title-line" aria-hidden="true">`;
         const tmp = document.createElement("div");
         tmp.innerHTML = line.trim();
         tmp.childNodes.forEach((node) => {

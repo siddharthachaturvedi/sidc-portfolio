@@ -109,6 +109,46 @@
   color: var(--ink-muted);
 }
 
+/* Compact article-ending contact CTA (keeps conversion without the full footer). */
+.essay-cta {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2.5rem 24px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.essay-cta p {
+  margin: 0;
+  max-width: 44ch;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+
+.essay-cta__link {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  color: var(--vermillion);
+  text-decoration: none;
+  border-bottom: 1px solid var(--vermillion);
+  padding-bottom: 2px;
+  transition: color 220ms ease, border-color 220ms ease;
+}
+
+.essay-cta__link:hover,
+.essay-cta__link:focus-visible {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
 @media (max-width: 480px) {
   .essay-nav__current {
     display: none;

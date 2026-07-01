@@ -1,0 +1,216 @@
+/* ══════════════════════════════════════════════════════════════════
+   FIELD NOTES — shared editorial reading system
+   -------------------------------------------------------------------
+   One typographic system across every Field Note so they feel like a
+   family; each note keeps its own unique visuals (diagrams, demos,
+   colour-coding). Loaded after tokens.css + essay-shared.css.
+
+   Type:  Fraunces (display) · Source Serif 4 (reading) · JetBrains Mono (labels)
+   Scope: apply class="fieldnote" to the article body wrapper.
+   ══════════════════════════════════════════════════════════════════ */
+
+.fieldnote {
+  --fn-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --fn-body: "Source Serif 4", Georgia, serif;
+  --fn-mono: var(--font-mono);
+
+  --fn-ink: var(--ink);
+  --fn-soft: var(--ink-soft);
+  --fn-muted: var(--ink-muted);
+  --fn-accent: var(--vermillion);
+  --fn-line: var(--line);
+  --fn-paper: var(--bg-washi);
+  --fn-surface: var(--surface-slate);
+
+  /* reading measure ~66 characters */
+  --fn-measure: 39rem;
+  --fn-wide: 60rem;
+
+  font-family: var(--fn-body);
+  font-optical-sizing: auto;
+  color: var(--fn-soft);
+  font-size: clamp(1.06rem, 1rem + 0.35vw, 1.22rem);
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── Rhythm: prose sits on a measure; figures/demos can go wide ── */
+.fieldnote {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(1.25rem, 1fr)
+    [wide-start] minmax(0, calc((var(--fn-wide) - var(--fn-measure)) / 2))
+    [text-start] min(var(--fn-measure), calc(100% - 2.5rem)) [text-end]
+    minmax(0, calc((var(--fn-wide) - var(--fn-measure)) / 2)) [wide-end]
+    minmax(1.25rem, 1fr) [full-end];
+}
+.fieldnote > * { grid-column: text; min-width: 0; }
+.fieldnote > .fn-wide { grid-column: wide; }
+.fieldnote > .fn-bleed { grid-column: full; }
+
+/* ── Body copy ── */
+.fieldnote p { margin: 0 0 1.35em; color: var(--fn-soft); }
+.fieldnote strong { color: var(--fn-ink); font-weight: 600; }
+.fieldnote em { font-style: italic; }
+
+.fieldnote a {
+  color: var(--fn-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--fn-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 180ms ease;
+}
+.fieldnote a:hover,
+.fieldnote a:focus-visible { color: var(--fn-accent); }
+
+/* ── Headings — Fraunces, tight kerning, generous space above ── */
+.fieldnote h2,
+.fieldnote h3,
+.fieldnote h4 {
+  font-family: var(--fn-display);
+  color: var(--fn-ink);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.fieldnote h2 {
+  font-size: clamp(1.7rem, 1.3rem + 1.7vw, 2.55rem);
+  letter-spacing: -0.028em;
+  margin: 2.6em 0 0.5em;
+}
+.fieldnote h3 {
+  font-size: clamp(1.28rem, 1.15rem + 0.6vw, 1.55rem);
+  margin: 2.1em 0 0.4em;
+}
+.fieldnote h4 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin: 1.8em 0 0.3em;
+}
+/* section index numeral, e.g. <h2 data-fn-num="02"> */
+.fieldnote [data-fn-num]::before {
+  content: attr(data-fn-num);
+  display: block;
+  font-family: var(--fn-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: var(--fn-accent);
+  margin-bottom: 0.7rem;
+}
+
+/* ── Lists ── */
+.fieldnote ul,
+.fieldnote ol { margin: 0 0 1.35em; padding-left: 1.3em; }
+.fieldnote li { margin-bottom: 0.55em; padding-left: 0.2em; }
+.fieldnote ul li::marker { color: var(--fn-accent); }
+.fieldnote ol li::marker { font-family: var(--fn-mono); font-size: 0.85em; color: var(--fn-muted); }
+
+/* ── Kicker / meta labels — mono ── */
+.fn-kicker {
+  font-family: var(--fn-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  color: var(--fn-accent);
+}
+.fn-specimen {
+  font-family: var(--fn-mono);
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fn-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.fn-specimen::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background: var(--fn-accent);
+}
+
+/* ── Article header (lives outside .fieldnote grid, full-width band) ── */
+.fn-header {
+  padding: calc(var(--nav-height, 3rem) + clamp(2.5rem, 6vw, 5rem)) clamp(1.5rem, 6vw, 5rem) clamp(2.5rem, 6vw, 4rem);
+  border-bottom: 1px solid var(--fn-line);
+}
+.fn-header__inner { max-width: var(--fn-wide); margin: 0 auto; }
+.fn-title {
+  font-family: var(--fn-display);
+  font-weight: 400;
+  color: var(--fn-ink);
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  font-size: clamp(2.6rem, 1.7rem + 4.4vw, 5.2rem);
+  margin: 0.6rem 0 0;
+  max-width: 18ch;
+}
+.fn-title em { font-style: italic; color: var(--fn-accent); }
+.fn-lede {
+  font-family: var(--fn-body);
+  font-size: clamp(1.24rem, 1.08rem + 0.8vw, 1.6rem);
+  line-height: 1.5;
+  color: var(--fn-soft);
+  max-width: 42ch;
+  margin: 1.6rem 0 0;
+}
+.fn-byline {
+  font-family: var(--fn-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fn-muted);
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+}
+
+/* ── Pull quote ── */
+.fn-pull {
+  font-family: var(--fn-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 1.2rem + 1.7vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--fn-ink);
+  border-left: 2px solid var(--fn-accent);
+  padding-left: 1.3rem;
+  margin: 2.2em 0;
+}
+
+/* ── Aside / margin note ── */
+.fn-aside {
+  font-family: var(--fn-mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--fn-muted);
+  border-top: 1px solid var(--fn-line);
+  border-bottom: 1px solid var(--fn-line);
+  padding: 1rem 0;
+  margin: 2em 0;
+}
+
+/* ── Figure + caption ── */
+.fieldnote figure { margin: 2.6em 0; }
+.fieldnote figcaption {
+  font-family: var(--fn-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--fn-muted);
+  margin-top: 0.8rem;
+}
+
+/* ── Hairline rule ── */
+.fn-rule { border: 0; border-top: 1px solid var(--fn-line); margin: 3em 0; }
+
+/* ── Reduced motion respected by consumers; base system is static ── */
+@media (max-width: 640px) {
+  .fieldnote { font-size: 1.06rem; }
+}

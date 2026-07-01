@@ -29,8 +29,9 @@ The equilibrium of all three produces AI that ships.
 - Stratified Advisory (https://stratcorp.ai) — board-as-a-service for the GenAI era
 - JustAI.fyi (https://justai.fyi) — Software 3.0 strategy for the C-suite
 
-## Essays
-- "The Interface Is Selected, Not Universal" (https://sidc.ai/essays/interface-triage/): a 3x3 framework for choosing between direct GUI, headless agents, and generative UI for executive knowledge work
+## Field Notes
+- "The Value Function" (https://sidc.ai/framework-print.html): a working model + printable worksheet for AI that balances voice, evidence, and execution
+- "The App That Builds Itself for One Question" (https://sidc.ai/essays/interface-triage/): what generative UI means \u2014 the model builds a bespoke interface for the question instead of a wall of text \u2014 with an interactive demo
 - "AI Won't Simplify Work. It Might Finally Restore It." (https://sidc.ai/essays/fow/) — the real promise of the agentic era isn't speed, it's returning human attention to the complexity that matters
 
 ## Contact

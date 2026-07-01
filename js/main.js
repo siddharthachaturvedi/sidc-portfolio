@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const setMenuState = (isOpen) => {
       menuToggle.setAttribute("aria-expanded", String(isOpen));
       menuPanel.setAttribute("aria-hidden", String(!isOpen));
+      menuPanel.toggleAttribute("inert", !isOpen);
       document.body.classList.toggle("menu-open", isOpen);
 
       if (isOpen) {
@@ -109,6 +110,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (canvas && cardTitle && cardBody) {
     const ctx = canvas.getContext("2d");
+
+    // Resolve palette from CSS tokens once (kept in sync with tokens.css).
+    const css = getComputedStyle(document.documentElement);
+    const token = (name, fallback) => (css.getPropertyValue(name).trim() || fallback);
+    const inkColor = token("--ink", "#17201e");
+    const accentColor = token("--vermillion", "#b86232");
+    const bgColor = token("--surface-slate", "#faf8f5");
+    const gridColor = token("--grid-line-strong", "rgba(23, 32, 30, 0.08)");
     
     // Canvas Geometry Configuration
     const vertices = [
@@ -137,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     let activePillarIndex = -1;
+    let manualPillar = null; // set via the keyboard pillar buttons; pauses auto-select
     let isDragging = false;
     let draggedNode = null;
 
@@ -153,6 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const updateActivePillar = () => {
+      if (manualPillar !== null) return; // a keyboard button selection is held
       let minDist = Infinity;
       let nearestIdx = 0;
 
@@ -179,14 +190,25 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
+    // Keyboard-accessible pillar selection (a11y fallback for the pointer-only
+    // canvas): the three buttons drive the same descriptive card. A selection is
+    // "held" via manualPillar until the user drags the canvas again.
+    const pillarButtons = document.querySelectorAll("[data-pillar-btn]");
+    const showPillar = (idx) => {
+      manualPillar = idx;
+      activePillarIndex = idx;
+      cardTitle.innerHTML = pillarData[idx].title;
+      cardBody.innerText = pillarData[idx].body;
+      pillarButtons.forEach((b, i) => b.setAttribute("aria-pressed", String(i === idx)));
+    };
+    pillarButtons.forEach((btn, i) => {
+      btn.addEventListener("click", () => showPillar(i));
+      btn.addEventListener("focus", () => showPillar(i));
+    });
+
     // Render Canvas Loop with Gravitational Grid Warp Math
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const inkColor = "#17201e";
-      const accentColor = "#b86232";
-      const bgColor = "#faf8f5";
-      const gridColor = "rgba(23, 32, 30, 0.04)";
 
       // Draw mathematical gravitational warped grid lines!
       ctx.strokeStyle = gridColor;
@@ -326,6 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const handleMouseDown = (x, y) => {
+      manualPillar = null; // dragging resumes automatic (proximity) selection
       if (getDistance(x, y, center.x, center.y) < center.r + 10) {
         isDragging = true;
         draggedNode = "center";

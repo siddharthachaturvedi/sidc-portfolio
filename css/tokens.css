@@ -14,7 +14,7 @@
   /* ─ Ink ─ */
   --ink: #17201e;            /* River ink (green-black) */
   --ink-soft: #3d4542;
-  --ink-muted: #6e7774;
+  --ink-muted: #61665f;  /* darkened for WCAG AA (4.5:1) on washi */
   --line: #cfc7b7;
   --line-dark: #17201e;
 

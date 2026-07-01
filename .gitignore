@@ -16,7 +16,10 @@ todo.md
 parking-lot/
 
 # Local font experimentation tool (dev-only)
-js/font-lab.js
 
 # Local navbar design switcher (dev-only)
-js/nav-lab.js
+# Local dev-only tools (font/nav labs)
+tools/dev/
+
+# Internal audit / working doc (not shipped)
+AUDIT.md

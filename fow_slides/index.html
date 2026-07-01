@@ -4,10 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f4f1ea">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://sidc.ai/essays/fow/">
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/favicons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/public/favicons/favicon-64.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/public/favicons/favicon-128.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/public/favicons/favicon-256.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="/public/favicons/favicon.png">
   <title>Purpose · System · AI — The Restoration | Siddhartha Chaturvedi</title>
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/essay-shared.css">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,400..600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -106,7 +113,7 @@
     }
 
     .slide-title {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: "Fraunces", Georgia, serif;
       font-size: clamp(32px, 5.5vw, 56px);
       font-weight: 900;
       color: var(--text);
@@ -153,6 +160,8 @@
       border: 1.5px solid #bbb;
       background: transparent;
       cursor: pointer;
+      padding: 0;
+      appearance: none;
       transition: all 0.35s ease;
     }
     .nav-dot.active {
@@ -285,7 +294,7 @@
   </div>
 
   <!-- ═══════ SLIDE PANELS ═══════ -->
-  <main class="slides" id="slides" aria-label="Purpose system AI slide deck">
+  <main class="slides" id="slides" aria-label="Purpose system AI slide deck" tabindex="0">
 
     <!-- ERA I -->
     <div class="slide" data-era="1">
@@ -326,10 +335,10 @@
   </main>
 
   <!-- Nav dots -->
-  <div class="nav-dots" id="navDots">
-    <div class="nav-dot active" data-target="0"></div>
-    <div class="nav-dot" data-target="1"></div>
-    <div class="nav-dot" data-target="2"></div>
+  <div class="nav-dots" id="navDots" aria-label="Slide navigation">
+    <button type="button" class="nav-dot active" data-target="0" aria-label="Go to slide 1" aria-current="true"></button>
+    <button type="button" class="nav-dot" data-target="1" aria-label="Go to slide 2"></button>
+    <button type="button" class="nav-dot" data-target="2" aria-label="Go to slide 3"></button>
   </div>
 
   <!-- Sublabel -->
@@ -433,7 +442,9 @@
 
       // Update dots
       dots.forEach((d, i) => {
-        d.classList.toggle('active', i === n - 1);
+        const isActive = i === n - 1;
+        d.classList.toggle('active', isActive);
+        d.toggleAttribute('aria-current', isActive);
       });
 
       // Hide scroll cue after first slide

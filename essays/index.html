@@ -43,6 +43,17 @@
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/essay-shared.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Field Notes",
+      "description": "Long-form thinking on purpose, systems, and the post-agentic era \u2014 essays, frameworks, and working models by Siddhartha Chaturvedi.",
+      "url": "https://sidc.ai/essays/",
+      "isPartOf": { "@type": "WebSite", "name": "sidc.ai", "url": "https://sidc.ai/" },
+      "author": { "@type": "Person", "name": "Siddhartha Chaturvedi", "url": "https://sidc.ai/" }
+    }
+  </script>
   <style>
     .essays-hero {
       padding: calc(var(--nav-height) + clamp(3rem, 6vw, 5rem)) 0 clamp(3rem, 5vw, 4rem);
@@ -155,6 +166,7 @@
         border-bottom: 1px solid rgba(23, 23, 23, 0.9);
       }
     }
+    #essays-title { font-size: clamp(3rem, 8vw, 6rem); line-height: 0.92; letter-spacing: -0.04em; }
   </style>
 </head>
 <body id="top">
@@ -203,7 +215,7 @@
         type="button"
         aria-expanded="false"
         aria-controls="site-menu-panel"
-        aria-label="Open site menu"
+        aria-label="Menu"
         data-menu-toggle
       >
         <span class="menu-toggle__bars" aria-hidden="true">
@@ -214,7 +226,7 @@
       </button>
     </nav>
 
-    <div class="menu-panel" id="site-menu-panel" aria-hidden="true">
+    <div class="menu-panel" id="site-menu-panel" aria-hidden="true" inert>
       <div class="menu-panel__inner container">
         <a href="/essays/" aria-current="page">Field Notes</a>
         <a href="/#about">About</a>
@@ -244,7 +256,7 @@
     <section class="essays-hero">
       <div class="container">
         <div class="section-heading">
-          <h1 id="essays-title" style="font-size: clamp(3rem, 8vw, 6rem); line-height: 0.92; letter-spacing: -0.04em;">Field Notes</h1>
+          <h1 id="essays-title">Field Notes</h1>
           <p class="section-heading__eyebrow">Long-form // MMXXVI</p>
           <p>Thinking on purpose, systems, and the post-agentic era.</p>
         </div>
@@ -269,13 +281,13 @@
       </a>
       <a class="essay-card" href="/essays/interface-triage/">
         <div class="essay-card__body">
-          <p class="essay-card__eyebrow">Visual Framework // 2026</p>
-          <h2>The Interface Is Selected, Not Universal</h2>
+          <p class="essay-card__eyebrow">Essay // Generative UI</p>
+          <h2>The App That Builds Itself for One Question</h2>
           <p class="essay-card__excerpt">
-            A 3x3 guide for deciding when knowledge work needs a direct screen, a headless agent, or a generated interface.
+            Chat gave every problem the same text box. Generative UI builds the right screen for the question — with a demo you can play with.
           </p>
           <span class="essay-card__read">
-            Open framework
+            Read essay
             <svg aria-hidden="true" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>

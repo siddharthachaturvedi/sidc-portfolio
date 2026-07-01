@@ -177,7 +177,7 @@
         type="button"
         aria-expanded="false"
         aria-controls="site-menu-panel"
-        aria-label="Open site menu"
+        aria-label="Menu"
         data-menu-toggle
       >
         <span class="menu-toggle__bars" aria-hidden="true">
@@ -188,7 +188,7 @@
       </button>
     </nav>
 
-    <div class="menu-panel" id="site-menu-panel" aria-hidden="true">
+    <div class="menu-panel" id="site-menu-panel" aria-hidden="true" inert>
       <div class="menu-panel__inner container">
         <a href="/essays/">Field Notes</a>
         <a href="#about">About</a>
@@ -224,7 +224,7 @@
         <!-- Left: Narrative -->
         <div class="hero__narrative">
           <p class="hero__eyebrow">MMXXVI // Post-Agentic Systems</p>
-          <h1 class="hero__title">
+          <h1 class="hero__title" aria-label="Siddhartha Chaturvedi">
             Siddhartha<br>
             <span class="hero__title-accent">Chaturvedi</span>.
           </h1>
@@ -344,8 +344,13 @@
         <!-- Right: Springs physics sandbox interactive grid -->
         <div class="value-sandbox reveal reveal--stagger-2">
           <div class="sandbox-container">
-            <canvas class="sandbox-canvas" id="sandbox-canvas" width="420" height="380"></canvas>
+            <canvas class="sandbox-canvas" id="sandbox-canvas" width="420" height="380" aria-hidden="true"></canvas>
             <span class="sandbox-instructions">Drag the center to feel the tension</span>
+          </div>
+          <div class="sandbox-pillars" role="group" aria-label="Explore each dimension of the Value Function">
+            <button type="button" class="sandbox-pillar" data-pillar-btn aria-pressed="true">Resonance</button>
+            <button type="button" class="sandbox-pillar" data-pillar-btn aria-pressed="false">Relevance</button>
+            <button type="button" class="sandbox-pillar" data-pillar-btn aria-pressed="false">Response</button>
           </div>
         </div>
 

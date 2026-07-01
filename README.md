@@ -4,9 +4,9 @@
 
 ### **Post-Agentic Systems** • AI that acts, not just answers
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-siddharth-E34234?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/siddharth)
-[![Portfolio](https://img.shields.io/badge/Portfolio-sidc.ai-E34234?style=for-the-badge)](https://sidc.ai)
-[![Location](https://img.shields.io/badge/Based-US%20%7C%20UK%20%7C%20India-E34234?style=for-the-badge)]()
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-siddharth-B86232?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/siddharth)
+[![Portfolio](https://img.shields.io/badge/Portfolio-sidc.ai-B86232?style=for-the-badge)](https://sidc.ai)
+[![Location](https://img.shields.io/badge/Based-US%20%7C%20UK%20%7C%20India-B86232?style=for-the-badge)]()
 
 ---
 
@@ -46,10 +46,10 @@ graph TD
     B[Relevance<br/>The Truth] -->|Grounds in<br/>verified data| D
     C[Response<br/>The Action] -->|Ensures<br/>actionable outputs| D
     
-    style A fill:#E34234,stroke:#000,stroke-width:2px,color:#fff
-    style B fill:#E34234,stroke:#000,stroke-width:2px,color:#fff
-    style C fill:#E34234,stroke:#000,stroke-width:2px,color:#fff
-    style D fill:#000,stroke:#E34234,stroke-width:3px,color:#fff
+    style A fill:#B86232,stroke:#000,stroke-width:2px,color:#fff
+    style B fill:#B86232,stroke:#000,stroke-width:2px,color:#fff
+    style C fill:#B86232,stroke:#000,stroke-width:2px,color:#fff
+    style D fill:#000,stroke:#B86232,stroke-width:3px,color:#fff
 ```
 
 | Component | Definition | Example |
@@ -125,7 +125,7 @@ Board-as-a-Service for GenAI era. Strategic governance for founders building in 
 ### ✍️ [JustAI.fyi](https://justai.fyi)
 **Author**
 
-Synthesis of Software 3.0 thinking. Essays on post-agentic systems, reasoning engines, and the infrastructure of truth.
+Synthesis of Software 3.0 thinking. Field notes on post-agentic systems, reasoning engines, and the infrastructure of truth.
 
 ---
 
