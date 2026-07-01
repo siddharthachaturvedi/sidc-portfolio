@@ -437,6 +437,392 @@
       background: rgba(229, 215, 187, 0.03);
     }
 
+    /* ── Visual Mocks for Journey cells (Dark Mode) ── */
+    .mock {
+      min-height: 140px;
+      margin: 0.8rem 0;
+      padding: 0.8rem;
+      border: 1px solid rgba(229, 215, 187, 0.08);
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .brief-card {
+      background: rgba(229, 215, 187, 0.04);
+      border: 1px solid rgba(229, 215, 187, 0.08);
+      padding: 0.5rem;
+      border-radius: 4px;
+      font-size: 0.76rem;
+    }
+    .brief-card strong {
+      color: #e5d7bb;
+      display: block;
+      font-size: 0.8rem;
+    }
+    .brief-card span {
+      color: rgba(229, 215, 187, 0.5);
+      font-size: 0.72rem;
+    }
+
+    .tap-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem;
+    }
+    .tap-row div {
+      border: 1px solid rgba(229, 215, 187, 0.15);
+      padding: 0.35rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+      color: rgba(229, 215, 187, 0.8);
+      cursor: default;
+    }
+
+    .chat {
+      background: rgba(0, 0, 0, 0.35);
+      justify-content: start;
+    }
+    .bubble {
+      max-width: 88%;
+      padding: 0.4rem 0.55rem;
+      border: 1px solid rgba(229, 215, 187, 0.08);
+      border-radius: 4px;
+      font-size: 0.76rem;
+      line-height: 1.3;
+      background: rgba(229, 215, 187, 0.02);
+      color: rgba(229, 215, 187, 0.7);
+    }
+    .bubble--user {
+      align-self: flex-end;
+      background: var(--c-gui);
+      border-color: var(--c-gui);
+      color: #fff;
+    }
+    .bubble--low {
+      color: rgba(229, 215, 187, 0.35);
+    }
+
+    .overbuilt {
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .control-line {
+      display: grid;
+      grid-template-columns: 3rem 1fr 2rem;
+      gap: 0.4rem;
+      align-items: center;
+      font-size: 0.68rem;
+      color: rgba(229, 215, 187, 0.5);
+    }
+    .slider {
+      height: 4px;
+      background: rgba(229, 215, 187, 0.1);
+      border-radius: 2px;
+      position: relative;
+    }
+    .slider::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 42%;
+      background: var(--c-genui);
+      border-radius: 2px;
+    }
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.3rem;
+    }
+    .choice-grid div {
+      height: 1.2rem;
+      border: 1px solid rgba(229, 215, 187, 0.08);
+      background: rgba(229, 215, 187, 0.02);
+    }
+    .pay-bar {
+      margin-top: 0.2rem;
+      background: var(--c-genui);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-align: center;
+      padding: 0.35rem;
+    }
+
+    .spreadsheet {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    .sheet-toolbar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.2rem;
+      margin-bottom: 0.4rem;
+    }
+    .sheet-toolbar span {
+      height: 0.8rem;
+      background: rgba(229, 215, 187, 0.05);
+      border: 1px solid rgba(229, 215, 187, 0.08);
+    }
+    .sheet-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.2rem;
+    }
+    .sheet-cell {
+      height: 1.1rem;
+      background: rgba(229, 215, 187, 0.02);
+      border: 1px solid rgba(229, 215, 187, 0.05);
+    }
+    .sheet-cell.is-alert {
+      background: rgba(157, 60, 48, 0.15);
+      border-color: var(--crimson);
+    }
+    .sheet-callout {
+      border: 1px solid var(--c-gui);
+      background: rgba(165, 80, 39, 0.08);
+      color: var(--c-gui);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.3rem;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .agent-console {
+      background: #090e0c;
+      color: #71b38d;
+      border-color: rgba(113, 179, 141, 0.15);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      justify-content: start;
+    }
+    .console-row {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 0.4rem;
+      padding: 0.2rem 0;
+      border-bottom: 1px solid rgba(113, 179, 141, 0.08);
+    }
+    .console-row span:first-child {
+      color: #71b38d;
+      opacity: 0.8;
+    }
+    .progress {
+      height: 6px;
+      border: 1px solid rgba(113, 179, 141, 0.25);
+      background: linear-gradient(90deg, #71b38d 91%, rgba(229, 215, 187, 0.1) 91%);
+      margin: 0.2rem 0;
+    }
+    .exception-list {
+      display: grid;
+      gap: 0.25rem;
+    }
+    .exception-list div {
+      border: 1px solid rgba(113, 179, 141, 0.2);
+      background: rgba(113, 179, 141, 0.05);
+      padding: 0.25rem;
+      font-size: 0.6rem;
+      color: #dfece4;
+    }
+
+    .dynamic-table {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    .pivot-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3rem;
+    }
+    .pivot-head div {
+      border: 1px solid rgba(229, 215, 187, 0.08);
+      background: rgba(229, 215, 187, 0.03);
+      padding: 0.25rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-align: center;
+      color: #e5d7bb;
+    }
+    .bar-chart {
+      display: grid;
+      align-items: end;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.2rem;
+      height: 3rem;
+      padding: 0.2rem;
+      border: 1px solid rgba(229, 215, 187, 0.08);
+    }
+    .bar-chart span {
+      display: block;
+      background: var(--c-agent);
+      opacity: 0.7;
+    }
+    .bar-chart span:nth-child(1) { height: 30%; }
+    .bar-chart span:nth-child(2) { height: 58%; }
+    .bar-chart span:nth-child(3) { height: 44%; }
+    .bar-chart span:nth-child(4) { height: 72%; }
+    .bar-chart span:nth-child(5) { height: 38%; }
+    .bar-chart span:nth-child(6) { height: 88%; }
+    .bar-chart span:nth-child(7) { height: 52%; }
+
+    .roadmap-table {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    .search-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3rem;
+    }
+    .search-row div {
+      border: 1px solid rgba(229, 215, 187, 0.08);
+      padding: 0.25rem;
+      font-size: 0.65rem;
+      color: rgba(229, 215, 187, 0.4);
+    }
+    .fare-row {
+      display: grid;
+      grid-template-columns: 1fr 0.75fr 0.75fr;
+      gap: 0.2rem;
+      align-items: center;
+    }
+    .fare-row span {
+      border: 1px solid rgba(229, 215, 187, 0.05);
+      padding: 0.2rem;
+      font-size: 0.62rem;
+      color: rgba(229, 215, 187, 0.6);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .fare-row.is-dim span {
+      color: rgba(229, 215, 187, 0.3);
+      background: rgba(229, 215, 187, 0.01);
+    }
+
+    .black-box {
+      background: #0f1315;
+      border-color: rgba(229, 215, 187, 0.08);
+    }
+    .black-box__status {
+      display: grid;
+      place-items: center;
+      height: 2.2rem;
+      border: 1px solid rgba(229, 215, 187, 0.05);
+      color: rgba(229, 215, 187, 0.4);
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      text-align: center;
+    }
+    .black-box__pick {
+      border: 1px solid rgba(229, 215, 187, 0.08);
+      padding: 0.4rem;
+      background: rgba(229, 215, 187, 0.02);
+    }
+    .black-box__pick strong {
+      display: block;
+      margin-bottom: 0.1rem;
+      color: var(--c-agent);
+      font-size: 0.68rem;
+    }
+    .black-box__pick span {
+      color: rgba(229, 215, 187, 0.5);
+      font-size: 0.65rem;
+    }
+
+    .travel-canvas {
+      background: rgba(0, 0, 0, 0.3);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 0.4rem;
+    }
+    .map-panel {
+      position: relative;
+      height: 6rem;
+      border: 1px solid rgba(229, 215, 187, 0.08);
+      background: #19272d;
+      overflow: hidden;
+    }
+    .map-panel span {
+      position: absolute;
+      width: 1.2rem;
+      height: 1.2rem;
+      border: 1px solid rgba(229, 215, 187, 0.15);
+      background: rgba(192, 154, 50, 0.6);
+    }
+    .map-panel span:nth-child(1) { left: 18%; top: 22%; }
+    .map-panel span:nth-child(2) { right: 16%; top: 35%; background: rgba(32, 91, 107, 0.6); }
+    .map-panel span:nth-child(3) { left: 44%; bottom: 18%; background: rgba(180, 90, 53, 0.55); }
+
+    .travel-controls {
+      display: grid;
+      align-content: start;
+      gap: 0.25rem;
+    }
+    .mini-label {
+      font-size: 0.55rem;
+      color: rgba(229, 215, 187, 0.35);
+      font-family: var(--font-mono);
+    }
+    .priority-note {
+      border: 1px solid rgba(229, 215, 187, 0.08);
+      background: rgba(229, 215, 187, 0.02);
+      padding: 0.3rem;
+      font-size: 0.6rem;
+      line-height: 1.25;
+      color: rgba(229, 215, 187, 0.65);
+    }
+    .priority-note strong {
+      display: block;
+      color: var(--c-genui);
+    }
+
+    .journey-cell__note {
+      border-top: 1px solid rgba(229, 215, 187, 0.05);
+      border-bottom: 1px solid rgba(229, 215, 187, 0.03);
+      padding: 0.4rem 0;
+      color: rgba(229, 215, 187, 0.45);
+      font-size: 0.68rem;
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+    }
+    .journey-cell.is-winner .journey-cell__note {
+      color: #e5d7bb;
+      font-weight: 600;
+    }
+
+    .step-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.35rem;
+    }
+    .step-list li {
+      display: grid;
+      grid-template-columns: 2.8rem 1fr;
+      gap: 0.4rem;
+      color: rgba(229, 215, 187, 0.55);
+      font-size: 0.74rem;
+      line-height: 1.3;
+    }
+    .step-list li b {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: rgba(229, 215, 187, 0.4);
+    }
+
     /* ── Responsive: Desktop (3-column layouts) ── */
     @media (min-width: 700px) {
       .genui__chips {
@@ -542,6 +928,10 @@
   </div>
 
   <main id="main-content" class="article">
+    <div class="fn-summary">
+      <p><strong>TL;DR</strong> — Not every AI interaction should be a chatbot. Real work sorts into three interface shapes: <strong>Direct GUI</strong> (point and click), <strong>Headless Agent</strong> (runs in the background), and <strong>Generative UI</strong> (builds a bespoke screen per question). The skill is matching the shape to the task. This note includes an interactive demo and a 3×3 decision matrix.</p>
+    </div>
+
     <header class="fn-header">
       <div class="fn-header__inner">
         <p class="fn-kicker">Field Note · Visual Interface</p>
@@ -557,10 +947,6 @@
         </div>
       </div>
     </header>
-
-    <div class="fn-summary">
-      <p><strong>TL;DR</strong> — Not every AI interaction should be a chatbot. Real work sorts into three interface shapes: <strong>Direct GUI</strong> (point and click), <strong>Headless Agent</strong> (runs in the background), and <strong>Generative UI</strong> (builds a bespoke screen per question). The skill is matching the shape to the task. This note includes an interactive demo and a 3×3 decision matrix.</p>
-    </div>
 
     <div data-section="0">
       <p>
@@ -666,8 +1052,220 @@
     </div>
   </main>
 
+  </main>
+
   <!-- ═══════════════════════════════════════════
-       WIDE VISUAL 1: THE THREE MODES
+       WIDE VISUAL 1: JOURNEY COMPARISON (PART II)
+       Three workloads with detailed visual mockups inside the cells
+       ═══════════════════════════════════════════ -->
+  <div class="wide-visual" data-journey-section="1">
+    <div class="matrix-card">
+      <div class="matrix-card__header">
+        <div class="matrix-card__kicker">The 3×3 Journey Matrix · Part II</div>
+        <div class="matrix-card__title">Journey Comparison</div>
+        <div class="matrix-card__subtitle">How the winner changes based on workload context.</div>
+      </div>
+      <div class="journey-grid">
+
+        <!-- Journey 1 -->
+        <div class="journey-row" data-journey-trigger="1">
+          <div class="journey-row__header">
+            <div class="journey-row__num">Workload 01</div>
+            <div class="journey-row__title">Edit the launch brief <span style="opacity:0.45;font-size:0.85em;">(Known Object)</span></div>
+          </div>
+          <div class="journey-cells">
+            <!-- Cell 1: GUI (Winner) -->
+            <div class="journey-cell is-winner" data-fit="gui">
+              <div class="journey-cell__label">Direct GUI <span class="journey-cell__winner">WINNER</span></div>
+              <div class="mock phone" aria-hidden="true">
+                <div class="brief-card">
+                  <strong>Launch story</strong>
+                  <span>August launch date</span>
+                </div>
+                <div class="tap-row">
+                  <div>Approve</div>
+                  <div>Edit</div>
+                </div>
+              </div>
+              <div class="journey-cell__note">Low overhead, high control. User touches the line directly.</div>
+              <ul class="step-list">
+                <li><b>Intent</b><span>Change the date without navigating menus or drafting prompts.</span></li>
+                <li><b>Action</b><span>User taps "Edit" directly on the brief text line.</span></li>
+                <li><b>Result</b><span>Simple, instantaneous, and zero cognitive overhead.</span></li>
+              </ul>
+            </div>
+            <!-- Cell 2: Agent -->
+            <div class="journey-cell" data-fit="agent">
+              <div class="journey-cell__label">Headless Agent</div>
+              <div class="mock chat" aria-hidden="true">
+                <div class="bubble bubble--user">Change launch date to August</div>
+                <div class="bubble bubble--low">Running updater... New date: August.</div>
+              </div>
+              <div class="journey-cell__note">Turning visible edits into conversations adds reading work.</div>
+              <ul class="step-list">
+                <li><b>Intent</b><span>The user tries to request the simple change via dialogue.</span></li>
+                <li><b>Action</b><span>Typing out a sentence instead of clicking a button.</span></li>
+                <li><b>Result</b><span>Slow and verbose; forces the reader to verify narrative output.</span></li>
+              </ul>
+            </div>
+            <!-- Cell 3: GenUI -->
+            <div class="journey-cell" data-fit="genui">
+              <div class="journey-cell__label">Generative UI</div>
+              <div class="mock overbuilt" aria-hidden="true">
+                <div class="control-line"><span>Date</span><div class="slider"></div><span>Aug</span></div>
+                <div class="choice-grid"><div></div><div></div><div></div></div>
+                <div class="pay-bar">Confirm August launch</div>
+              </div>
+              <div class="journey-cell__note">Overbuilt for simple text changes</div>
+              <ul class="step-list">
+                <li><b>Intent</b><span>Generate controls dynamically for editing a single date.</span></li>
+                <li><b>Action</b><span>Generating custom sliders and confirmation layout loops.</span></li>
+                <li><b>Result</b><span>Unnecessary token consumption and visual noise for minor actions.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Journey 2 -->
+        <div class="journey-row" data-journey-trigger="2">
+          <div class="journey-row__header">
+            <div class="journey-row__num">Workload 02</div>
+            <div class="journey-row__title">Run the market analysis <span style="opacity:0.45;font-size:0.85em;">(Analysis Loop)</span></div>
+          </div>
+          <div class="journey-cells">
+            <!-- Cell 1: GUI -->
+            <div class="journey-cell" data-fit="gui">
+              <div class="journey-cell__label">Direct GUI</div>
+              <div class="mock spreadsheet" aria-hidden="true">
+                <div class="sheet-toolbar"><span></span><span></span><span></span><span></span></div>
+                <div class="sheet-grid">
+                  <div class="sheet-cell"></div><div class="sheet-cell"></div><div class="sheet-cell is-alert"></div><div class="sheet-cell"></div>
+                  <div class="sheet-cell"></div><div class="sheet-cell is-alert"></div><div class="sheet-cell"></div><div class="sheet-cell"></div>
+                </div>
+                <div class="sheet-callout">12 exports before the answer</div>
+              </div>
+              <div class="journey-cell__note">Too much process on screen</div>
+              <ul class="step-list">
+                <li><b>Intent</b><span>User exports and correlates several channels by hand.</span></li>
+                <li><b>Action</b><span>Manually clicking through lists and pivot setups.</span></li>
+                <li><b>Result</b><span>Exposes every tool step but leaves the cognitive loading on humans.</span></li>
+              </ul>
+            </div>
+            <!-- Cell 2: Agent (Winner) -->
+            <div class="journey-cell is-winner" data-fit="agent">
+              <div class="journey-cell__label">Headless Agent <span class="journey-cell__winner">WINNER</span></div>
+              <div class="mock agent-console" aria-hidden="true">
+                <div class="console-row"><span>pull</span><span>CRM, ads, web, revenue</span></div>
+                <div class="console-row"><span>test</span><span>6 hypotheses against cohorts</span></div>
+                <div class="progress"></div>
+                <div class="exception-list">
+                  <div>2 conflicting campaign names</div>
+                  <div>3 slides ready for review</div>
+                </div>
+              </div>
+              <div class="journey-cell__note">Human reviews assumptions, not clicks</div>
+              <ul class="step-list">
+                <li><b>Intent</b><span>Delegate the tedious data gathering and processing loop.</span></li>
+                <li><b>Action</b><span>Agent acts in background; human is only queried on anomalies.</span></li>
+                <li><b>Result</b><span>Saves hours of dashboard clicking; highlights verified insights.</span></li>
+              </ul>
+            </div>
+            <!-- Cell 3: GenUI -->
+            <div class="journey-cell" data-fit="genui">
+              <div class="journey-cell__label">Generative UI</div>
+              <div class="mock dynamic-table" aria-hidden="true">
+                <div class="pivot-head">
+                  <div>By segment</div>
+                  <div>By channel</div>
+                </div>
+                <div class="bar-chart">
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="journey-cell__note">Good for review, not for the whole run</div>
+              <ul class="step-list">
+                <li><b>Intent</b><span>Interact with the data variables using a live dashboard grid.</span></li>
+                <li><b>Action</b><span>Adjust segments and watch custom chart segments compile.</span></li>
+                <li><b>Result</b><span>Excellent as a review surface, but overbuilt as the processing engine.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Journey 3 -->
+        <div class="journey-row" data-journey-trigger="3">
+          <div class="journey-row__header">
+            <div class="journey-row__num">Workload 03</div>
+            <div class="journey-row__title">Align roadmap and marketing <span style="opacity:0.45;font-size:0.85em;">(Team Decision)</span></div>
+          </div>
+          <div class="journey-cells">
+            <!-- Cell 1: GUI -->
+            <div class="journey-cell" data-fit="gui">
+              <div class="journey-cell__label">Direct GUI</div>
+              <div class="mock roadmap-table" aria-hidden="true">
+                <div class="search-row">
+                  <div>Product</div>
+                  <div>Marketing</div>
+                </div>
+                <div class="fare-row"><span>Initiative</span><span>Impact</span><span>Date</span></div>
+                <div class="fare-row is-dim"><span>Retention</span><span>High</span><span>Aug</span></div>
+                <div class="fare-row is-dim"><span>AI launch</span><span>High</span><span>Sep</span></div>
+              </div>
+              <div class="journey-cell__note">The SaaS object is too rigid</div>
+              <ul class="step-list">
+                <li><b>Intent</b><span>User views planning timelines across separate tabs and views.</span></li>
+                <li><b>Action</b><span>Clicking between different filters and layouts.</span></li>
+                <li><b>Result</b><span>Executives must perform cross-functional alignment in their heads.</span></li>
+              </ul>
+            </div>
+            <!-- Cell 2: Agent -->
+            <div class="journey-cell" data-fit="agent">
+              <div class="journey-cell__label">Headless Agent</div>
+              <div class="mock black-box" aria-hidden="true">
+                <div class="black-box__status">Analyzing calendar alignment...</div>
+                <div class="black-box__pick">
+                  <strong>Suggested: move retention</strong>
+                  <span>Good logic, but tradeoff is hidden in narrative.</span>
+                </div>
+              </div>
+              <div class="journey-cell__note">The answer is too compressed</div>
+              <ul class="step-list">
+                <li><b>Intent</b><span>Request a cross-functional timeline solution.</span></li>
+                <li><b>Action</b><span>Agent reports an optimized plan as a text summary block.</span></li>
+                <li><b>Result</b><span>Tradeoffs remain invisible; team cannot steer the model's assumptions.</span></li>
+              </ul>
+            </div>
+            <!-- Cell 3: GenUI (Winner) -->
+            <div class="journey-cell is-winner" data-fit="genui">
+              <div class="journey-cell__label">Generative UI <span class="journey-cell__winner">WINNER</span></div>
+              <div class="mock travel-canvas" aria-hidden="true">
+                <div class="map-panel">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="travel-controls">
+                  <span class="mini-label">Planning Cycle Lenses</span>
+                  <div class="priority-note"><strong>Marketing</strong>Needs launch assets</div>
+                  <div class="priority-note"><strong>Product</strong>Blocked by support load</div>
+                </div>
+              </div>
+              <div class="journey-cell__note">The interface adapts to the planning question</div>
+              <ul class="step-list">
+                <li><b>Intent</b><span>Simulate different timeline dependencies live in a team review.</span></li>
+                <li><b>Action</b><span>Interface builds custom sliders and visual blocks.</span></li>
+                <li><b>Result</b><span>Bespoke dashboard allows team to interact with tradeoffs.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       WIDE VISUAL 2: THE THREE MODES (PART I)
        Breaks out of 680px column into wide dark card
        ═══════════════════════════════════════════ -->
   <div class="wide-visual" data-mode-highlight="1">
@@ -714,89 +1312,6 @@
             <dd>If each team needs a different lens on the same plan, generate it.</dd>
           </dl>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════════════════
-       WIDE VISUAL 2: JOURNEY COMPARISON
-       Three workloads, three verdicts
-       ═══════════════════════════════════════════ -->
-  <div class="wide-visual" data-journey-section="1">
-    <div class="matrix-card">
-      <div class="matrix-card__header">
-        <div class="matrix-card__kicker">The 3×3 Journey Matrix · Part II</div>
-        <div class="matrix-card__title">Journey Comparison</div>
-        <div class="matrix-card__subtitle">How the winner changes based on workload context.</div>
-      </div>
-      <div class="journey-grid">
-
-        <!-- Journey 1 -->
-        <div class="journey-row" data-journey-trigger="1">
-          <div class="journey-row__header">
-            <div class="journey-row__num">Workload 01</div>
-            <div class="journey-row__title">Edit the launch brief <span style="opacity:0.45;font-size:0.85em;">(Known Object)</span></div>
-          </div>
-          <div class="journey-cells">
-            <div class="journey-cell is-winner" data-fit="gui">
-              <div class="journey-cell__label">Direct GUI <span class="journey-cell__winner">WINNER</span></div>
-              <div class="journey-cell__text">Low overhead, high control. User touches the line directly.</div>
-            </div>
-            <div class="journey-cell" data-fit="agent">
-              <div class="journey-cell__label">Agent</div>
-              <div class="journey-cell__text">Poor fit. Turning visible edits into conversations adds reading work.</div>
-            </div>
-            <div class="journey-cell" data-fit="genui">
-              <div class="journey-cell__label">Generative UI</div>
-              <div class="journey-cell__text">Workable. Overbuilt for line edits; only useful for complex compliance reviews.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Journey 2 -->
-        <div class="journey-row" data-journey-trigger="2">
-          <div class="journey-row__header">
-            <div class="journey-row__num">Workload 02</div>
-            <div class="journey-row__title">Run the market analysis <span style="opacity:0.45;font-size:0.85em;">(Analysis Loop)</span></div>
-          </div>
-          <div class="journey-cells">
-            <div class="journey-cell" data-fit="gui">
-              <div class="journey-cell__label">Direct GUI</div>
-              <div class="journey-cell__text">Poor fit. Exposes every export step but does not execute the actual process.</div>
-            </div>
-            <div class="journey-cell is-winner" data-fit="agent">
-              <div class="journey-cell__label">Agent <span class="journey-cell__winner">WINNER</span></div>
-              <div class="journey-cell__text">Best fit. Agent pulls, tests, and compiles; human inspects evidence.</div>
-            </div>
-            <div class="journey-cell" data-fit="genui">
-              <div class="journey-cell__label">Generative UI</div>
-              <div class="journey-cell__text">Workable. Excellent for visualizing final scenarios, weak as the loop engine.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Journey 3 -->
-        <div class="journey-row" data-journey-trigger="3">
-          <div class="journey-row__header">
-            <div class="journey-row__num">Workload 03</div>
-            <div class="journey-row__title">Align roadmap and marketing <span style="opacity:0.45;font-size:0.85em;">(Team Decision)</span></div>
-          </div>
-          <div class="journey-cells">
-            <div class="journey-cell" data-fit="gui">
-              <div class="journey-cell__label">Direct GUI</div>
-              <div class="journey-cell__text">Workable. SaaS grid structures are too rigid for cross-department dependencies.</div>
-            </div>
-            <div class="journey-cell" data-fit="agent">
-              <div class="journey-cell__label">Agent</div>
-              <div class="journey-cell__text">Poor fit. Black-box recommendations compress critical tradeoffs into text.</div>
-            </div>
-            <div class="journey-cell is-winner" data-fit="genui">
-              <div class="journey-cell__label">Generative UI <span class="journey-cell__winner">WINNER</span></div>
-              <div class="journey-cell__text">Best fit. Bespoke, interactive canvas adjusts layout to the planning question.</div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
