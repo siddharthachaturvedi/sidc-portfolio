@@ -4,7 +4,7 @@
 
 ### **Post-Agentic Systems** • AI that acts, not just answers
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-siddharth-A55027?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/siddharth)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-sidcai-B86232?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/sidcai)
 [![Portfolio](https://img.shields.io/badge/Portfolio-sidc.ai-A55027?style=for-the-badge)](https://sidc.ai)
 [![Location](https://img.shields.io/badge/Based-US%20%7C%20UK%20%7C%20India-A55027?style=for-the-badge)]()
 
@@ -163,7 +163,7 @@ Loyal VC
 
 ### Let's Talk.
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%2Fin%2Fsiddharth-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/siddharth)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%2Fin%2Fsidcai-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/sidcai)
 
 **Available for global engagements**
 

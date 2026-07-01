@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f1ea">
+  <title>The Value Function: Resonance + Relevance + Response | Siddhartha Chaturvedi</title>
+  <meta
+    name="description"
+    content="Alignment is a three-body problem. Useful AI balances Resonance (Voice), Relevance (Evidence), and Response (Execution) in real workflows."
+  >
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://sidc.ai/essays/value-function/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Value Function: Resonance + Relevance + Response">
+  <meta property="og:description" content="Alignment is a three-body problem. Useful AI balances Resonance, Relevance, and Response in real workflows.">
+  <meta property="og:url" content="https://sidc.ai/essays/value-function/">
+  <meta property="og:image" content="https://sidc.ai/public/images/sidc.jpeg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Value Function: Resonance + Relevance + Response">
+  <meta name="twitter:description" content="Alignment is a three-body problem. Grounding AI in voice, evidence, and utility.">
+  <meta name="twitter:image" content="https://sidc.ai/public/images/sidc.jpeg">
+
+  <script>
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/favicons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/public/favicons/favicon-64.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/public/favicons/favicon-128.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/public/favicons/favicon-256.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="/public/favicons/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&family=JetBrains+Mono:wght@400..600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/essay-shared.css">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "The Value Function: Resonance + Relevance + Response",
+      "description": "Alignment is a three-body problem. Useful AI balances Resonance, Relevance, and Response in real workflows.",
+      "author": { "@type": "Person", "name": "Siddhartha Chaturvedi", "url": "https://sidc.ai/" },
+      "datePublished": "2026-07-01",
+      "url": "https://sidc.ai/essays/value-function/",
+      "image": "https://sidc.ai/public/images/sidc.jpeg",
+      "about": "AI Alignment and Value Framework"
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: var(--surface-slate);
+      --text: var(--ink-soft);
+      --heading-color: var(--ink);
+      --muted: var(--ink-muted);
+      --accent: var(--vermillion);
+      --line: var(--line);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.06rem, 1rem + 0.35vw, 1.22rem);
+      line-height: 1.68;
+      overflow-x: hidden;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ═══════════════════════════════════════════
+       FIXED VALUE FUNCTION BACKGROUND SVG
+       ═══════════════════════════════════════════ */
+    .vf-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .vf-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 25%, var(--bg) 78%);
+      z-index: 1;
+    }
+
+    .vf-svg {
+      width: min(500px, 80vw);
+      height: auto;
+      opacity: 0.45;
+    }
+
+    .vf-svg circle, .vf-svg text, .vf-svg line, .vf-svg path {
+      transition: all 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ═══════════════════════════════════════════
+       ARTICLE CONTENT (Centered flow)
+       ═══════════════════════════════════════════ */
+    .article {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 96px 24px 100px;
+    }
+
+    .fn-header {
+      margin-bottom: 3.5rem;
+    }
+    .fn-kicker {
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.72rem;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .fn-title {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 400;
+      color: var(--heading-color);
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+      font-size: clamp(2.4rem, 1.8rem + 3.2vw, 4.4rem);
+      margin: 0.6rem 0 0.8rem;
+    }
+    .fn-title em { font-style: italic; color: var(--accent); }
+    .fn-lede {
+      font-size: clamp(1.2rem, 1.08rem + 0.6vw, 1.45rem);
+      line-height: 1.5;
+      color: var(--heading-color);
+      margin: 1.4rem 0;
+    }
+    .fn-byline {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 1.8rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    p { margin-bottom: 1.35em; }
+    strong { color: var(--heading-color); font-weight: 600; }
+
+    h2, h3 {
+      font-family: "Fraunces", Georgia, serif;
+      color: var(--heading-color);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
+      margin: 2.2em 0 0.5em;
+    }
+    h2[data-fn-num]::before {
+      content: attr(data-fn-num);
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.28rem;
+      margin: 1.8em 0 0.4em;
+    }
+
+    /* Pull quote */
+    .fn-pull {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2rem);
+      line-height: 1.25;
+      color: var(--heading-color);
+      border-left: 2px solid var(--accent);
+      padding-left: 1.3rem;
+      margin: 2em 0;
+    }
+
+    /* Worksheet card list */
+    .worksheet-preview {
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      padding: 1.5rem;
+      border-radius: 6px;
+      margin: 2.5rem 0;
+      box-shadow: 10px 10px 0 rgba(23, 32, 30, 0.06);
+    }
+    .worksheet-preview h3 { margin-top: 0; margin-bottom: 1.2rem; }
+    .wp-pillars { display: grid; gap: 1.2rem; }
+    .wp-pillar { border-bottom: 1px solid var(--line); padding-bottom: 1rem; }
+    .wp-pillar:last-child { border-bottom: 0; padding-bottom: 0; }
+    .wp-pillar h4 { font-family: var(--font-mono); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.4rem; }
+    .wp-pillar p { font-size: 0.94rem; line-height: 1.5; margin-bottom: 0.5rem; }
+    .wp-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .wp-tag { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); padding: 0.15rem 0.4rem; border-radius: 4px; background: var(--surface-slate); }
+
+    .framework-cta {
+      border: 1px solid var(--accent);
+      background: rgba(184, 98, 50, 0.04);
+      padding: 1.5rem;
+      border-radius: 6px;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    .framework-cta h3 { font-size: 1.35rem; color: var(--accent); margin-bottom: 0.5rem; }
+    .framework-cta p { font-size: 0.96rem; line-height: 1.5; margin-bottom: 1.2rem; }
+    .framework-cta .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.4rem;
+      background: var(--heading-color);
+      color: var(--surface-strong);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-radius: 4px;
+      transition: all 180ms ease;
+    }
+    .framework-cta .button:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+    .framework-cta .button svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    @media(min-width: 600px) {
+      .wp-pillars { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+      .wp-pillar { border-bottom: 0; padding-bottom: 0; border-right: 1px solid var(--line); padding-right: 0.8rem; }
+      .wp-pillar:last-child { border-right: 0; padding-right: 0; }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main-content" style="position:absolute;left:-9999px;">Skip to content</a>
+
+  <!-- ═══════════════════════════════════════════
+       BREADCRUMB READING CHROME
+       ═══════════════════════════════════════════ -->
+  <header class="essay-header">
+    <nav class="essay-nav" aria-label="Site">
+      <a class="essay-nav__brand" href="/" aria-label="sidc.ai home">
+        <span class="essay-nav__dot"></span>
+      </a>
+      <span class="essay-nav__sep" aria-hidden="true">/</span>
+      <a class="essay-nav__link" href="/essays/">Field Notes</a>
+      <span class="essay-nav__sep" aria-hidden="true">/</span>
+      <span class="essay-nav__current">The Value Function</span>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════════════════════
+       VALUE FUNCTION VECTOR EQUILIBRIUM BACKGROUND
+       ═══════════════════════════════════════════ -->
+  <div class="vf-bg" aria-hidden="true">
+    <svg class="vf-svg" viewBox="0 0 400 350" id="vfSvg">
+      <!-- Triangle skeleton -->
+      <path d="M200 50 L50 300 L350 300 Z" stroke="#cfc7b7" stroke-width="1.5" stroke-dasharray="4 4" fill="none" />
+      <line x1="200" y1="50" x2="200" y2="200" stroke="#cfc7b7" stroke-width="1" stroke-dasharray="2 2" />
+      <line x1="50" y1="300" x2="200" y2="200" stroke="#cfc7b7" stroke-width="1" stroke-dasharray="2 2" />
+      <line x1="350" y1="300" x2="200" y2="200" stroke="#cfc7b7" stroke-width="1" stroke-dasharray="2 2" />
+
+      <!-- Nodes -->
+      <!-- Node 1: Resonance -->
+      <g id="node-resonance">
+        <circle cx="200" cy="50" r="28" fill="#faf8f5" stroke="#17201e" stroke-width="1.5" />
+        <circle cx="200" cy="50" r="4" fill="#b86232" />
+        <text x="200" y="14" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#17201e">RESONANCE</text>
+      </g>
+
+      <!-- Node 2: Relevance -->
+      <g id="node-relevance">
+        <circle cx="50" cy="300" r="28" fill="#faf8f5" stroke="#17201e" stroke-width="1.5" />
+        <circle cx="50" cy="300" r="4" fill="#b86232" />
+        <text x="50" y="342" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#17201e">RELEVANCE</text>
+      </g>
+
+      <!-- Node 3: Response -->
+      <g id="node-response">
+        <circle cx="350" cy="300" r="28" fill="#faf8f5" stroke="#17201e" stroke-width="1.5" />
+        <circle cx="350" cy="300" r="4" fill="#b86232" />
+        <text x="350" y="342" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#17201e">RESPONSE</text>
+      </g>
+
+      <!-- Equilibrium circle -->
+      <circle id="node-eq" cx="200" cy="200" r="32" fill="none" stroke="#b86232" stroke-width="1.5" stroke-dasharray="3 3" />
+      <circle cx="200" cy="200" r="5" fill="#17201e" />
+    </svg>
+  </div>
+
+  <main id="main-content" class="article">
+    <header class="fn-header">
+      <div class="fn-header__inner">
+        <p class="fn-kicker">Field Note · Strategic Alignment</p>
+        <h1 class="fn-title">The Value Function.</h1>
+        <p class="fn-lede">
+          System alignment is a three-body problem. Truth without voice feels robotic and sterile. Voice without truth hallucinates. Both without utility waste expensive compute.
+        </p>
+        <div class="fn-byline">
+          <span>Siddhartha Chaturvedi</span>
+          <span>MMXXVI · ~5 min read</span>
+        </div>
+      </div>
+    </header>
+
+    <div data-section="0">
+      <p>
+        When organizations integrate AI into high-stakes, regulated, or core operational workflows,
+        they often run into a common frustration. They build a system that is technically accurate
+        but sounds entirely robotic—lacking the nuance and vocabulary of their team. Or they build
+        a chatty system that sounds incredibly convincing but hallucinates details, quoting rules and data that do not exist.
+      </p>
+
+      <p>
+        This happens because we tend to optimize AI along a single axis at a time. The engineer
+        focuses on factual grounding (RAG pipelines). The designer focuses on natural voice. The
+        product manager focuses on workflow actions. 
+      </p>
+
+      <p>
+        But useful AI is a **three-body problem**. It requires finding the equilibrium point
+        where three vectors pull in balance: **Resonance** (how it sounds), **Relevance** (what it knows),
+        and **Response** (what it does).
+      </p>
+
+      <p class="fn-pull">
+        Truth without voice is sterile. Voice without truth is dangerous. Both without execution are useless.
+      </p>
+    </div>
+
+    <h2 data-fn-num="01" data-section-trigger="1">Resonance / Voice</h2>
+
+    <div data-section="1">
+      <p>
+        **Resonance** is the tone, character, and aesthetics of the system. It makes the interface
+        feel native to your team rather than a generic chatbot copy-pasted from an API demonstration.
+      </p>
+
+      <p>
+        This is not about "formatting instructions" or telling the model to be "polite." True resonance
+        is acquired over time, drawing directly from the organizational identity and shared culture. 
+        It is the difference between a tool that feels like a stranger reciting a manual, and an experienced 
+        partner who understands the unwritten context, values, and vocabulary of the room.
+      </p>
+
+      <p>
+        When designing your system's Resonance, look to:
+      </p>
+      <ul>
+        <li><strong>Organizational Voice</strong>: The authentic phrasing, tone guidelines, and narrative voice of your leaders.</li>
+        <li><strong>Brand Aesthetics</strong>: The visual rhythm, styling tokens, and micro-interactions of the interface.</li>
+        <li><strong>Tone and Style</strong>: How the system handles disagreements, explains errors, and handles ambiguity.</li>
+      </ul>
+    </div>
+
+    <h2 data-fn-num="02" data-section-trigger="2">Relevance / Evidence</h2>
+
+    <div data-section="2">
+      <p>
+        **Relevance** is the standard of proof. It is the grounding mechanism that forces the AI to speak
+        only from verified, proprietary, and contextual sources of truth. 
+      </p>
+
+      <p>
+        Without strict relevance controls, language models default to plausible-sounding summaries
+        that collapse under scrutiny. In medical diagnostics, supply chain logistics, or corporate policy,
+        "mostly right" is a liability. The system must know where its knowledge ends, and it must cite its
+        provenance—linking back to the exact files, rows, or regulatory updates that informed its output.
+      </p>
+
+      <p>
+        To anchor Relevance:
+      </p>
+      <ul>
+        <li><strong>Verified Sources</strong>: Connecting explicitly to proprietary data sources, eliminating external training noise.</li>
+        <li><strong>Provenance Mapping</strong>: Building clear indicators showing exactly *why* a decision was made.</li>
+        <li><strong>Standard of Proof</strong>: Setting explicit confidence thresholds for actions, preventing hallucinated conclusions.</li>
+      </ul>
+    </div>
+
+    <h2 data-fn-num="03" data-section-trigger="3">Response / Execution</h2>
+
+    <div data-section="3">
+      <p>
+        **Response** is the utility of the system. It is where the analysis is translated into
+        a concrete action inside your actual workflow—a logged database write, a structured summary, 
+        or a formatted output.
+      </p>
+
+      <p>
+        An aligned, relevant, resonant system that simply drops another paragraph of text onto the user
+        is still wasting cognitive attention. The output of AI should compress work, not add to the reading pile.
+        If the system runs a market analysis, it should output ready-to-review slides, not a narrative summary.
+        If it finds a compliance exception, it should generate the email draft and link the issue tracker.
+      </p>
+
+      <p>
+        To streamline Response:
+      </p>
+      <ul>
+        <li><strong>Action Outputs</strong>: Formatting outputs as files, tools, or API triggers ready for human approval.</li>
+        <li><strong>Workflow Hooks</strong>: Writing actions back into the tools the team already lives in.</li>
+        <li><strong>Utility Metrics</strong>: Measuring whether the AI's step saved mouse clicks or added review burden.</li>
+      </ul>
+    </div>
+
+    <!-- Interactive Worksheet Preview -->
+    <div class="worksheet-preview">
+      <h3>The Value Function Framework</h3>
+      <div class="wp-pillars">
+        <div class="wp-pillar" data-pillar-highlight="1">
+          <h4>Resonance</h4>
+          <p>How the system sounds, visual aesthetics, and brand alignment.</p>
+          <div class="wp-tags">
+            <span class="wp-tag">Voice</span>
+            <span class="wp-tag">Style</span>
+            <span class="wp-tag">Aesthetics</span>
+          </div>
+        </div>
+        <div class="wp-pillar" data-pillar-highlight="2">
+          <h4>Relevance</h4>
+          <p>Proprietary grounding sources, evidence citations, and confidence logic.</p>
+          <div class="wp-tags">
+            <span class="wp-tag">Grounding</span>
+            <span class="wp-tag">Provenance</span>
+            <span class="wp-tag">Citations</span>
+          </div>
+        </div>
+        <div class="wp-pillar" data-pillar-highlight="3">
+          <h4>Response</h4>
+          <p>Bespoke visual layouts, direct api actions, and operational success metrics.</p>
+          <div class="wp-tags">
+            <span class="wp-tag">Execution</span>
+            <span class="wp-tag">Actions</span>
+            <span class="wp-tag">Utility</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA block to open printable workbook -->
+    <div class="framework-cta" data-section="0">
+      <h3>Map your own system alignment</h3>
+      <p>
+        We have designed a printable workbook containing worksheets to map your system's Resonance, 
+        Relevance, and Response vectors. Use it to audit existing setups or align teams before writing code.
+      </p>
+      <a class="button" href="/framework-print.html" target="_blank" rel="noopener noreferrer">
+        Open printable workbook
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M7 17L17 7M9 7h8v8" />
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       CTA & FOOTER CHROME
+       ═══════════════════════════════════════════ -->
+  <aside class="essay-cta">
+    <p>Aligning voice, evidence, and actions for your enterprise systems?</p>
+    <a class="essay-cta__link" href="https://linkedin.com/in/sidcai" target="_blank" rel="noopener noreferrer">Let's talk &rarr;</a>
+  </aside>
+
+  <footer class="essay-footer" id="connect">
+    <a href="/essays/">&larr; Back to Field Notes</a>
+    <p>&copy; 2026 Siddhartha Chaturvedi</p>
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+
+      // ── Scroll-reactive background SVG circles ──
+      const vfSvg = document.getElementById("vfSvg");
+      const nodeResonance = document.getElementById("node-resonance");
+      const nodeRelevance = document.getElementById("node-relevance");
+      const nodeResponse = document.getElementById("node-response");
+      const nodeEq = document.getElementById("node-eq");
+
+      const updateVfBg = () => {
+        const vh = window.innerHeight;
+        const trigger = vh * 0.45;
+        let activePillar = 0; // 0 = balance/all, 1 = Resonance, 2 = Relevance, 3 = Response
+
+        // Check active data-sections
+        const sections = document.querySelectorAll("[data-section]");
+        sections.forEach(sec => {
+          if (sec.getBoundingClientRect().top <= trigger) {
+            activePillar = parseInt(sec.dataset.section) || 0;
+          }
+        });
+
+        // Or check checklist targets
+        const highlights = [
+          { selector: "[data-section-trigger='1']", id: 1 },
+          { selector: "[data-section-trigger='2']", id: 2 },
+          { selector: "[data-section-trigger='3']", id: 3 },
+          { selector: "[data-pillar-highlight='1']", id: 1 },
+          { selector: "[data-pillar-highlight='2']", id: 2 },
+          { selector: "[data-pillar-highlight='3']", id: 3 }
+        ];
+
+        highlights.forEach(h => {
+          const el = document.querySelector(h.selector);
+          if (el && el.getBoundingClientRect().top <= trigger && el.getBoundingClientRect().bottom >= trigger) {
+            activePillar = h.id;
+          }
+        });
+
+        // Update SVG group opacities and transformations
+        const nodes = [
+          { group: nodeResonance, id: 1, cx: 200, cy: 50 },
+          { group: nodeRelevance, id: 2, cx: 50, cy: 300 },
+          { group: nodeResponse, id: 3, cx: 350, cy: 300 }
+        ];
+
+        nodes.forEach(n => {
+          if (!n.group) return;
+          const circle = n.group.querySelector("circle");
+          const innerCircle = n.group.querySelectorAll("circle")[1];
+          const text = n.group.querySelector("text");
+          const isFocused = activePillar === n.id;
+          const isNeutral = activePillar === 0;
+
+          if (isFocused) {
+            circle.setAttribute("stroke", "#b86232");
+            circle.setAttribute("stroke-width", "2.5");
+            circle.setAttribute("r", "32");
+            innerCircle.setAttribute("fill", "#b86232");
+            text.setAttribute("fill", "#b86232");
+            text.setAttribute("font-size", "11");
+            n.group.setAttribute("opacity", "1");
+          } else if (isNeutral) {
+            circle.setAttribute("stroke", "#17201e");
+            circle.setAttribute("stroke-width", "1.5");
+            circle.setAttribute("r", "28");
+            innerCircle.setAttribute("fill", "#b86232");
+            text.setAttribute("fill", "#17201e");
+            text.setAttribute("font-size", "10");
+            n.group.setAttribute("opacity", "0.9");
+          } else {
+            circle.setAttribute("stroke", "#cfc7b7");
+            circle.setAttribute("stroke-width", "1");
+            circle.setAttribute("r", "26");
+            innerCircle.setAttribute("fill", "#cfc7b7");
+            text.setAttribute("fill", "#cfc7b7");
+            text.setAttribute("font-size", "9");
+            n.group.setAttribute("opacity", "0.28");
+          }
+        });
+
+        // Shift equilibrium circle towards active node
+        if (nodeEq) {
+          if (activePillar === 1) { // Resonance (Top)
+            nodeEq.setAttribute("cx", "200");
+            nodeEq.setAttribute("cy", "150");
+            nodeEq.setAttribute("stroke", "#b86232");
+          } else if (activePillar === 2) { // Relevance (Bottom-Left)
+            nodeEq.setAttribute("cx", "150");
+            nodeEq.setAttribute("cy", "230");
+            nodeEq.setAttribute("stroke", "#b86232");
+          } else if (activePillar === 3) { // Response (Bottom-Right)
+            nodeEq.setAttribute("cx", "250");
+            nodeEq.setAttribute("cy", "230");
+            nodeEq.setAttribute("stroke", "#b86232");
+          } else {
+            nodeEq.setAttribute("cx", "200");
+            nodeEq.setAttribute("cy", "200");
+            nodeEq.setAttribute("stroke", "rgba(184, 98, 50, 0.45)");
+          }
+        }
+      };
+
+      window.addEventListener("scroll", () => {
+        requestAnimationFrame(updateVfBg);
+      }, { passive: true });
+
+      // Initialize positions
+      updateVfBg();
+    })();
+  </script>
+</body>
+</html>

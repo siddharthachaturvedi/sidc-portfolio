@@ -43,7 +43,6 @@
 
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/essay-shared.css">
-  <link rel="stylesheet" href="/css/field-notes.css">
 
   <script type="application/ld+json">
     {
@@ -60,11 +59,158 @@
   </script>
 
   <style>
-    /* ── Page-specific: the Generative UI demo (the unique visual) ── */
-    .fn-header { background: var(--surface-slate); }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+    :root {
+      --bg: var(--surface-slate);
+      --text: var(--ink-soft);
+      --heading-color: var(--ink);
+      --muted: var(--ink-muted);
+      --accent: var(--vermillion);
+      --line: var(--line);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.06rem, 1rem + 0.35vw, 1.22rem);
+      line-height: 1.68;
+      overflow-x: hidden;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ═══════════════════════════════════════════
+       FIXED INTERFACE MATRIX BACKGROUND
+       ═══════════════════════════════════════════ */
+    .matrix-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .matrix-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 25%, var(--bg) 78%);
+      z-index: 1;
+    }
+
+    .matrix-svg {
+      width: min(600px, 86vw);
+      height: auto;
+      opacity: 0.42;
+    }
+
+    .matrix-svg circle, .matrix-svg text, .matrix-svg line, .matrix-svg path {
+      transition: all 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ═══════════════════════════════════════════
+       ARTICLE CONTENT (Centered flow)
+       ═══════════════════════════════════════════ */
+    .article {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 96px 24px 100px;
+    }
+
+    .fn-header {
+      margin-bottom: 3.5rem;
+    }
+    .fn-kicker {
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.72rem;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .fn-title {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 400;
+      color: var(--heading-color);
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+      font-size: clamp(2.4rem, 1.8rem + 3.2vw, 4.4rem);
+      margin: 0.6rem 0 0.8rem;
+    }
+    .fn-title em { font-style: italic; color: var(--accent); }
+    .fn-lede {
+      font-size: clamp(1.2rem, 1.08rem + 0.6vw, 1.45rem);
+      line-height: 1.5;
+      color: var(--heading-color);
+      margin: 1.4rem 0;
+    }
+    .fn-byline {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 1.8rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    p { margin-bottom: 1.35em; }
+    strong { color: var(--heading-color); font-weight: 600; }
+
+    h2, h3 {
+      font-family: "Fraunces", Georgia, serif;
+      color: var(--heading-color);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
+      margin: 2.2em 0 0.5em;
+    }
+    h2[data-fn-num]::before {
+      content: attr(data-fn-num);
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.28rem;
+      margin: 1.8em 0 0.4em;
+    }
+
+    /* Pull quote */
+    .fn-pull {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2rem);
+      line-height: 1.25;
+      color: var(--heading-color);
+      border-left: 2px solid var(--accent);
+      padding-left: 1.3rem;
+      margin: 2em 0;
+    }
+
+    /* ── Demo sandbox styles ── */
+    .genui-container {
+      margin: 2rem 0;
+    }
     .genui {
-      border: 1px solid var(--ink);
+      border: 1px solid var(--heading-color);
       background: var(--surface-strong);
       border-radius: 8px;
       overflow: hidden;
@@ -80,29 +226,31 @@
       font-family: var(--font-mono);
       font-size: 0.78rem;
     }
-    .genui__caret { color: var(--vermillion); font-weight: 600; }
-    .genui__prompt { color: var(--ink); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .genui__badge { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); border: 1px solid var(--line); padding: 0.2rem 0.4rem; border-radius: 999px; }
+    .genui__caret { color: var(--accent); font-weight: 600; }
+    .genui__prompt { color: var(--heading-color); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .genui__badge { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); padding: 0.2rem 0.4rem; border-radius: 999px; }
 
-    .genui__chips { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0.9rem; border-bottom: 1px solid var(--line); }
+    .genui__chips { display: flex; flex-direction: column; gap: 0.4rem; padding: 0.9rem; border-bottom: 1px solid var(--line); }
     .genui__chip {
       font-family: var(--font-mono);
       font-size: 0.72rem;
+      text-align: left;
       padding: 0.5rem 0.75rem;
       border: 1px solid var(--line);
       background: var(--surface-slate);
-      color: var(--ink-soft);
+      color: var(--text);
       cursor: pointer;
       border-radius: 6px;
       transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease;
+      width: 100%;
     }
     .genui__chip:hover,
-    .genui__chip:focus-visible { border-color: var(--vermillion); color: var(--ink); }
-    .genui__chip[aria-pressed="true"] { background: var(--ink); color: var(--surface-strong); border-color: var(--ink); }
+    .genui__chip:focus-visible { border-color: var(--accent); color: var(--heading-color); }
+    .genui__chip[aria-pressed="true"] { background: var(--heading-color); color: var(--surface-strong); border-color: var(--heading-color); }
 
     .genui__screen {
       position: relative;
-      min-height: 340px;
+      min-height: 320px;
       padding: 1.4rem;
       background:
         linear-gradient(var(--grid-line) 1px, transparent 1px),
@@ -113,66 +261,209 @@
     .genui__building {
       position: absolute; inset: 0;
       display: grid; place-content: center; gap: 0.9rem; justify-items: center;
-      font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted);
+      font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
       background: var(--surface-strong);
       opacity: 0; pointer-events: none; transition: opacity 160ms ease;
     }
     .genui__building.on { opacity: 1; pointer-events: auto; }
-    .genui__skeleton { width: min(320px, 80%); display: grid; gap: 0.55rem; }
+    .genui__skeleton { width: min(300px, 80%); display: grid; gap: 0.55rem; }
     .genui__skeleton span { height: 12px; border-radius: 4px; background: linear-gradient(90deg, var(--line), var(--surface-slate), var(--line)); background-size: 200% 100%; animation: genuiShimmer 1.1s linear infinite; }
     .genui__skeleton span:nth-child(2) { width: 82%; }
     .genui__skeleton span:nth-child(3) { width: 64%; }
     .genui__skeleton span:nth-child(4) { width: 90%; }
     @keyframes genuiShimmer { to { background-position: -200% 0; } }
 
-    .genui__out { font-family: var(--font-sans); color: var(--ink); }
+    .genui__out { font-family: var(--font-sans); color: var(--heading-color); }
     .genui__note {
       font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.04em;
-      color: var(--ink-muted); padding: 0.75rem 0.9rem; border-top: 1px solid var(--line); background: rgba(23,32,30,0.02);
+      color: var(--muted); padding: 0.75rem 0.9rem; border-top: 1px solid var(--line); background: rgba(23,32,30,0.02);
+    }
+    .genui-caption {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-top: 0.6rem;
+      text-align: center;
+      display: block;
     }
 
-    /* generated: fashion */
-    .gu-fashion { display: grid; gap: 1rem; }
-    .gu-fashion__head { font-family: var(--font-display, "Fraunces"), serif; font-size: 1.35rem; letter-spacing: -0.02em; }
+    /* Generated fashion */
+    .gu-fashion { display: grid; gap: 0.8rem; }
+    .gu-fashion__head { font-family: "Fraunces", serif; font-size: 1.25rem; letter-spacing: -0.02em; color: var(--heading-color); }
     .gu-swatches { display: flex; gap: 0.4rem; }
-    .gu-swatch { width: 26px; height: 26px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.15); }
-    .gu-pieces { display: grid; gap: 0.5rem; }
-    .gu-piece { display: flex; justify-content: space-between; gap: 1rem; padding: 0.6rem 0.75rem; border: 1px solid var(--line); background: var(--surface-slate); font-size: 0.9rem; }
+    .gu-swatch { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); }
+    .gu-pieces { display: grid; gap: 0.45rem; }
+    .gu-piece { display: flex; justify-content: space-between; gap: 1rem; padding: 0.5rem 0.7rem; border: 1px solid var(--line); background: var(--surface-slate); font-size: 0.82rem; }
     .gu-piece b { font-weight: 600; }
-    .gu-piece span { color: var(--ink-muted); font-family: var(--font-mono); font-size: 0.72rem; }
+    .gu-piece span { color: var(--muted); font-family: var(--font-mono); font-size: 0.68rem; }
 
-    /* generated: fractal */
-    .gu-fractal { display: grid; gap: 0.8rem; }
-    .gu-fractal svg { width: 100%; height: 230px; background: var(--void); border: 1px solid var(--ink); }
-    .gu-fractal__ctl { display: flex; align-items: center; gap: 0.8rem; font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); }
-    .gu-fractal__ctl input { flex: 1; accent-color: var(--vermillion); }
+    /* Generated fractal */
+    .gu-fractal { display: grid; gap: 0.6rem; }
+    .gu-fractal svg { width: 100%; height: 200px; background: var(--void); border: 1px solid var(--heading-color); }
+    .gu-fractal__ctl { display: flex; align-items: center; gap: 0.8rem; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text); }
+    .gu-fractal__ctl input { flex: 1; accent-color: var(--accent); }
 
-    /* generated: math */
-    .gu-math { display: grid; gap: 0.9rem; justify-items: start; }
-    .gu-math__q { font-family: var(--font-display, "Fraunces"), serif; font-size: 2.4rem; letter-spacing: -0.02em; }
-    .gu-math__opts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .gu-math__opt { font-family: var(--font-mono); font-size: 1rem; min-width: 3.4rem; padding: 0.6rem 0.8rem; border: 1px solid var(--ink); background: var(--surface-strong); cursor: pointer; }
-    .gu-math__opt:hover { border-color: var(--vermillion); }
+    /* Generated math */
+    .gu-math { display: grid; gap: 0.8rem; justify-items: start; }
+    .gu-math__q { font-family: "Fraunces", serif; font-size: 2.2rem; letter-spacing: -0.02em; color: var(--heading-color); }
+    .gu-math__opts { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .gu-math__opt { font-family: var(--font-mono); font-size: 0.9rem; min-width: 3rem; padding: 0.5rem 0.7rem; border: 1px solid var(--heading-color); background: var(--surface-strong); cursor: pointer; }
+    .gu-math__opt:hover { border-color: var(--accent); }
     .gu-math__opt.correct { background: var(--void); color: var(--void-text); border-color: var(--void); }
     .gu-math__opt.wrong { background: var(--crimson); color: #fff; border-color: var(--crimson); }
-    .gu-math__fb { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-muted); min-height: 1.2em; }
+    .gu-math__fb { font-family: var(--font-mono); font-size: 0.76rem; color: var(--muted); min-height: 1.2em; }
 
-    /* three-mode strip */
-    .modes { display: grid; gap: 1px; background: var(--ink); border: 1px solid var(--ink); }
-    .mode { background: var(--surface-strong); padding: 1.1rem; }
-    .mode h4 { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vermillion); margin: 0 0 0.5rem; }
-    .mode p { font-size: 0.92rem; margin: 0; color: var(--ink-soft); }
-    @media (min-width: 720px) { .modes { grid-template-columns: repeat(3, 1fr); } }
+    /* ── Re-integrated Comparison Matrix style ── */
+    .restored-matrix {
+      margin: 2.5rem 0;
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      padding: 1.5rem;
+      border-radius: 6px;
+      box-shadow: 10px 10px 0 rgba(23, 32, 30, 0.06);
+    }
+    .restored-matrix h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.35rem;
+    }
+    .rm-modes {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .rm-mode {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1rem;
+    }
+    .rm-mode:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+    .rm-mode h4 {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.35rem;
+    }
+    .rm-mode p {
+      font-size: 0.94rem;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .rm-detail {
+      font-size: 0.88rem;
+      margin-top: 0.8rem;
+    }
+    .rm-detail dl {
+      display: grid;
+      gap: 0.6rem;
+    }
+    .rm-detail dt {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    .rm-detail dd {
+      margin-left: 0;
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    .rm-journeys {
+      margin-top: 2rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1.5rem;
+    }
+    .rm-journey {
+      margin-bottom: 1.5rem;
+    }
+    .rm-journey h4 {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.2rem;
+    }
+    .rm-journey h5 {
+      font-size: 1.05rem;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      color: var(--heading-color);
+      margin-bottom: 0.4rem;
+    }
+    .rm-j-grid {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 0.6rem;
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+    .rm-j-cell {
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--surface-slate);
+    }
+    .rm-j-cell.winner {
+      border-color: var(--accent);
+      background: rgba(184, 98, 50, 0.04);
+    }
+    .rm-j-cell b {
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    @media(min-width: 600px) {
+      .genui__chips {
+        flex-direction: row;
+      }
+      .genui__chip {
+        text-align: center;
+      }
+      .rm-modes {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+      .rm-mode {
+        border-bottom: 0;
+        padding-bottom: 0;
+        border-right: 1px solid var(--line);
+        padding-right: 0.8rem;
+      }
+      .rm-mode:last-child {
+        border-right: 0;
+        padding-right: 0;
+      }
+      .rm-j-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
 
     @media (prefers-reduced-motion: reduce) {
       .genui__skeleton span { animation: none; }
       .genui__building { transition: none; }
+      .matrix-svg circle, .matrix-svg text, .matrix-svg line, .matrix-svg path { transition: none; }
     }
   </style>
 </head>
 <body id="top">
   <a class="skip-link" href="#main-content" style="position:absolute;left:-9999px;">Skip to content</a>
 
+  <!-- ═══════════════════════════════════════════
+       BREADCRUMB READING CHROME
+       ═══════════════════════════════════════════ -->
   <header class="essay-header">
     <nav class="essay-nav" aria-label="Site">
       <a class="essay-nav__brand" href="/" aria-label="sidc.ai home">
@@ -185,151 +476,257 @@
     </nav>
   </header>
 
-  <header class="fn-header">
-    <div class="fn-header__inner">
-      <p class="fn-kicker">Field note · Generative UI</p>
-      <h1 class="fn-title">The app that builds itself for <em>one</em> question.</h1>
-      <p class="fn-lede">
-        Chat gave every problem the same little text box. Generative UI does something
-        stranger and more useful — it assembles a bespoke, throwaway interface around the
-        exact thing you asked, then forgets it when you're done.
+  <!-- ═══════════════════════════════════════════
+       INTERACTIVE MATRIX BACKGROUND SVG
+       ═══════════════════════════════════════════ -->
+  <div class="matrix-bg" aria-hidden="true">
+    <svg class="matrix-svg" viewBox="0 0 500 320" id="matrixSvg">
+      <!-- Connection lines -->
+      <line x1="250" y1="70" x2="140" y2="250" stroke="#cfc7b7" stroke-width="1.5" stroke-dasharray="4 4" />
+      <line x1="250" y1="70" x2="360" y2="250" stroke="#cfc7b7" stroke-width="1.5" stroke-dasharray="4 4" />
+      <line x1="140" y1="250" x2="360" y2="250" stroke="#cfc7b7" stroke-width="1.5" stroke-dasharray="4 4" />
+
+      <!-- Nodes -->
+      <!-- Node 1: Direct GUI -->
+      <g id="node-gui">
+        <circle cx="250" cy="70" r="28" fill="#faf8f5" stroke="#17201e" stroke-width="1.5" />
+        <circle cx="250" cy="70" r="4" fill="#b86232" />
+        <text x="250" y="32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#17201e">DIRECT GUI</text>
+      </g>
+
+      <!-- Node 2: Headless Agent -->
+      <g id="node-agent">
+        <circle cx="140" cy="250" r="28" fill="#faf8f5" stroke="#17201e" stroke-width="1.5" />
+        <circle cx="140" cy="250" r="4" fill="#b86232" />
+        <text x="140" y="294" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#17201e">HEADLESS AGENT</text>
+      </g>
+
+      <!-- Node 3: Generative UI -->
+      <g id="node-genui">
+        <circle cx="360" cy="250" r="28" fill="#faf8f5" stroke="#17201e" stroke-width="1.5" />
+        <circle cx="360" cy="250" r="4" fill="#b86232" />
+        <text x="360" y="294" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#17201e">GENERATIVE UI</text>
+      </g>
+    </svg>
+  </div>
+
+  <main id="main-content" class="article">
+    <header class="fn-header">
+      <div class="fn-header__inner">
+        <p class="fn-kicker">Field Note · Visual Interface</p>
+        <h1 class="fn-title">The app that builds itself for <em>one</em> question.</h1>
+        <p class="fn-lede">
+          Chat gave every problem the same little text box. Generative UI does something
+          stranger and more useful — it assembles a bespoke, throwaway interface around the
+          exact thing you asked, then forgets it when you're done.
+        </p>
+        <div class="fn-byline">
+          <span>Siddhartha Chaturvedi</span>
+          <span>MMXXVI · ~7 min read</span>
+        </div>
+      </div>
+    </header>
+
+    <div data-section="0">
+      <p>
+        For three years the answer to "how should people use AI?" has been a single, stubborn
+        shape: a chat box. You type, it types back — a wall of markdown you then have to read,
+        parse, and act on yourself. It was a huge leap over a blank prompt. It is also, for a
+        surprising amount of real work, the wrong tool.
       </p>
-      <p class="fn-byline">
-        <span>Siddhartha Chaturvedi</span>
-        <span>MMXXVI · ~6 min</span>
+
+      <p>
+        Because not every question wants a paragraph. Ask a model to help you dress for a winter
+        wedding and a wall of text is a downgrade from a page you could actually <em>look</em> at.
+        Ask it to explain fractals to a curious ten-year-old and the right answer is something they
+        can drag a slider on. Ask it to drill you on multiplication and you want buttons, not prose.
+      </p>
+
+      <p>
+        That is the bet behind <strong>generative UI</strong>: instead of returning content, the
+        model generates the <em>interface</em> — a small, custom, interactive application built for
+        one prompt and thrown away after. Google's research team put it plainly: not just content,
+        but "immersive visual experiences and interactive interfaces… automatically designed and
+        fully customized in response to any question, instruction, or prompt."
       </p>
     </div>
-  </header>
-
-  <main id="main-content" class="fieldnote">
-
-    <p>
-      For three years the answer to "how should people use AI?" has been a single, stubborn
-      shape: a chat box. You type, it types back — a wall of markdown you then have to read,
-      parse, and act on yourself. It was a huge leap over a blank prompt. It is also, for a
-      surprising amount of real work, the wrong tool.
-    </p>
-
-    <p>
-      Because not every question wants a paragraph. Ask a model to help you dress for a winter
-      wedding and a wall of text is a downgrade from a page you could actually <em>look</em> at.
-      Ask it to explain fractals to a curious ten-year-old and the right answer is something they
-      can drag a slider on. Ask it to drill you on multiplication and you want buttons, not prose.
-    </p>
-
-    <p>
-      That is the bet behind <strong>generative UI</strong>: instead of returning content, the
-      model generates the <em>interface</em> — a small, custom, interactive application built for
-      one prompt and thrown away after. Google's research team put it plainly: not just content,
-      but "immersive visual experiences and interactive interfaces… automatically designed and
-      fully customized in response to any question, instruction, or prompt."
-    </p>
 
     <h2 data-fn-num="01">Watch it happen</h2>
 
-    <p>
-      Here is the same prompt bar, three different questions. A chatbot would answer all three
-      with text. Generative UI answers each with a different tool. Pick a question and watch the
-      screen assemble itself.
-    </p>
+    <div data-section="0">
+      <p>
+        Here is the same prompt bar, three different questions. A chatbot would answer all three
+        with text. Generative UI answers each with a different tool. Pick a question and watch the
+        screen assemble itself.
+      </p>
 
-    <figure class="fn-wide">
-      <div class="genui" id="genui">
-        <div class="genui__bar">
-          <span class="genui__caret">&gt;_</span>
-          <span class="genui__prompt" id="genui-prompt">Pick a prompt below…</span>
-          <span class="genui__badge">generating</span>
-        </div>
-        <div class="genui__chips" role="group" aria-label="Example prompts">
-          <button type="button" class="genui__chip" data-gu="fashion" aria-pressed="false">Style me for a winter wedding</button>
-          <button type="button" class="genui__chip" data-gu="fractal" aria-pressed="false">Explain fractals to a 10-year-old</button>
-          <button type="button" class="genui__chip" data-gu="math" aria-pressed="false">Drill me on multiplication</button>
-        </div>
-        <div class="genui__screen" id="genui-screen" aria-live="polite">
-          <div class="genui__building" id="genui-building">
-            <div class="genui__skeleton"><span></span><span></span><span></span><span></span></div>
-            <div>Composing interface…</div>
+      <!-- Prompt demo (centered inside flow) -->
+      <div class="genui-container">
+        <div class="genui" id="genui">
+          <div class="genui__bar">
+            <span class="genui__caret">&gt;_</span>
+            <span class="genui__prompt" id="genui-prompt">Pick a prompt below…</span>
+            <span class="genui__badge">generating</span>
           </div>
-          <div class="genui__out" id="genui-out">
-            <p style="font-family:var(--font-mono);font-size:0.8rem;color:var(--ink-muted);margin:0;">
-              ↑ Choose a prompt. The same box will build a different interface for each one.
-            </p>
+          <div class="genui__chips" role="group" aria-label="Example prompts">
+            <button type="button" class="genui__chip" data-gu="fashion" aria-pressed="false">Style me for a winter wedding</button>
+            <button type="button" class="genui__chip" data-gu="fractal" aria-pressed="false">Explain fractals to a 10-year-old</button>
+            <button type="button" class="genui__chip" data-gu="math" aria-pressed="false">Drill me on multiplication</button>
+          </div>
+          <div class="genui__screen" id="genui-screen" aria-live="polite">
+            <div class="genui__building" id="genui-building">
+              <div class="genui__skeleton"><span></span><span></span><span></span><span></span></div>
+              <div>Composing interface…</div>
+            </div>
+            <div class="genui__out" id="genui-out">
+              <p style="font-family:var(--font-mono);font-size:0.8rem;color:var(--muted);margin:0;text-align:center;padding: 2rem 0;">
+                ↑ Choose a prompt. The same box will build a different interface for each one.
+              </p>
+            </div>
+          </div>
+          <div class="genui__note">
+            A chatbot would have returned three walls of text. Generative UI returns three different tools — and discards each when you move on.
           </div>
         </div>
-        <div class="genui__note">
-          A chatbot would have returned three walls of text. Generative UI returns three different tools — and discards each when you move on.
-        </div>
+        <span class="genui-caption">Demo · a bespoke interface generated per prompt (mocked; real systems generate the markup live)</span>
       </div>
-      <figcaption>Demo · a bespoke interface generated per prompt (mocked; real systems generate the markup live)</figcaption>
-    </figure>
+    </div>
 
     <h2 data-fn-num="02">Why this is different, not just prettier</h2>
 
-    <p>
-      It is tempting to file generative UI under "nicer formatting." It is more than that. A chat
-      answer is <em>static</em> — the model's one shot at being useful, frozen as text. A generated
-      interface is a place you can keep working: adjust the fractal's depth, swap a jacket, get the
-      next problem. The output stops being a message and starts being a small machine.
-    </p>
+    <div data-section="3">
+      <p>
+        It is tempting to file generative UI under "nicer formatting." It is more than that. A chat
+        answer is <em>static</em> — the model's one shot at being useful, frozen as text. A generated
+        interface is a place you can keep working: adjust the fractal's depth, swap a jacket, get the
+        next problem. The output stops being a message and starts being a small machine.
+      </p>
 
-    <p>
-      When Google ran the comparison, humans strongly preferred generated interfaces over the
-      standard markdown reply — a "substantial gap" — landing second only to sites hand-built by
-      human experts. The honest catch is speed: generating a real interface can take a minute or
-      more, and that minute is not free. Which is exactly why generative UI is a <em>choice</em>,
-      not a default.
-    </p>
+      <p>
+        When Google ran the comparison, humans strongly preferred generated interfaces over the
+        standard markdown reply — a "substantial gap" — landing second only to sites hand-built by
+        human experts. The honest catch is speed: generating a real interface can take a minute or
+        more, and that minute is not free. Which is exactly why generative UI is a <em>choice</em>,
+        not a default.
+      </p>
+    </div>
 
     <h2 data-fn-num="03">It's one of three moves, not the only one</h2>
 
-    <p>
-      The mistake would be to make everything generative, the same way we made everything a chatbot.
-      Most real work sorts into three interface shapes — and the skill is matching the shape to the
-      task in front of the team.
-    </p>
+    <div data-section="0">
+      <p>
+        The mistake would be to make everything generative, the same way we made everything a chatbot.
+        Most real work sorts into three interface shapes — and the skill is matching the shape to the
+        task in front of the team.
+      </p>
 
-    <div class="fn-wide">
-      <div class="modes">
-        <div class="mode">
+      <p class="fn-pull">
+        Chat was never the destination. It was the placeholder we all agreed to while we figured out
+        what the interface should have been.
+      </p>
+
+      <p>
+        We must distinguish between three distinct product interfaces, choosing the correct shape for the cognitive overhead of the target workload.
+      </p>
+    </div>
+
+    <!-- Restored Comparison Matrix (Beautifully aligned vertical/grid flow) -->
+    <div class="restored-matrix">
+      <h3>The 3x3 Journey Matrix</h3>
+      <div class="rm-modes">
+        <div class="rm-mode" data-mode-highlight="1">
           <h4>Direct GUI</h4>
-          <p>The user can point at the thing. Editing, approving, selecting a known object. Near-zero AI cost once the screen exists. If someone can say "change this line," give them the line.</p>
+          <p>The user points at and manipulates known objects. Best when the action is small and the context is clear.</p>
+          <div class="rm-detail">
+            <dl>
+              <dt>Strong at</dt> <dd>Editing, approving, selecting, scanning.</dd>
+              <dt>Breaks when</dt> <dd>Stitching together multiple systems/policies.</dd>
+              <dt>Executive test</dt> <dd>If they can say "change this line," give them the line.</dd>
+            </dl>
+          </div>
         </div>
-        <div class="mode">
-          <h4>Headless agent</h4>
-          <p>No one needs to watch. Reconciliation, monitoring, multi-system busywork that should just happen and report back. The best interface is often no interface — a log and an exception.</p>
+        <div class="rm-mode" data-mode-highlight="2">
+          <h4>Headless Agent</h4>
+          <p>The work runs in the background. Best when tasks are long, multi-step, and procedural.</p>
+          <div class="rm-detail">
+            <dl>
+              <dt>Strong at</dt> <dd>Running tool chains, tracing data, retrying steps.</dd>
+              <dt>Breaks when</dt> <dd>Comparing tradeoffs or steering paths visually.</dd>
+              <dt>Executive test</dt> <dd>If the job is "do the analysis, show errors," hide the screen.</dd>
+            </dl>
+          </div>
         </div>
-        <div class="mode">
+        <div class="rm-mode" data-mode-highlight="3">
           <h4>Generative UI</h4>
-          <p>The task is one-off and shaped by the question itself. A decision brief, a comparison, a teaching aid — worth a custom screen built now and thrown away after.</p>
+          <p>The layout adapts to the question. Best when teams need to see planning constraints dynamically.</p>
+          <div class="rm-detail">
+            <dl>
+              <dt>Strong at</dt> <dd>Temporary surfaces for messy planning/tradeoffs.</dd>
+              <dt>Breaks when</dt> <dd>Rebuilding layouts adds reading time instead of saving it.</dd>
+              <dt>Executive test</dt> <dd>If each team needs a different lens on the same plan, generate it.</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="rm-journeys">
+        <h4>Journey Comparison</h4>
+        <h5>How the winner changes based on workload context</h5>
+        
+        <div class="rm-journey" data-journey-trigger="1">
+          <h6>1. Edit the launch brief (Known Object)</h6>
+          <div class="rm-j-grid">
+            <div class="rm-j-cell winner"><b>Direct GUI (Winner)</b>Low overhead, high control. User touches the line directly.</div>
+            <div class="rm-j-cell"><b>Agent</b>Poor fit. Turning visible edits into conversations adds reading work.</div>
+            <div class="rm-j-cell"><b>Generative UI</b>Workable. Overbuilt for line edits; only useful for complex compliance reviews.</div>
+          </div>
+        </div>
+
+        <div class="rm-journey" data-journey-trigger="2">
+          <h6>2. Run the market analysis (Analysis Loop)</h6>
+          <div class="rm-j-grid">
+            <div class="rm-j-cell"><b>Direct GUI</b>Poor fit. Exposes every export step but does not execute the actual process.</div>
+            <div class="rm-j-cell winner"><b>Agent (Winner)</b>Best fit. Agent pulls, tests, and compiles; human inspects evidence.</div>
+            <div class="rm-j-cell"><b>Generative UI</b>Workable. Excellent for visualizing final scenarios, weak as the loop engine.</div>
+          </div>
+        </div>
+
+        <div class="rm-journey" data-journey-trigger="3">
+          <h6>3. Align roadmap and marketing (Team Decision)</h6>
+          <div class="rm-j-grid">
+            <div class="rm-j-cell"><b>Direct GUI</b>Workable. SaaS grid structures are too rigid for cross-department dependencies.</div>
+            <div class="rm-j-cell"><b>Agent</b>Poor fit. Black-box recommendations compress critical tradeoffs into text.</div>
+            <div class="rm-j-cell winner"><b>Generative UI (Winner)</b>Best fit. Bespoke, interactive canvas adjusts layout to the planning question.</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <p class="fn-pull">
-      Chat was never the destination. It was the placeholder we all agreed to while we figured out
-      what the interface should have been.
-    </p>
-
     <h2 data-fn-num="04">What it means if you build things</h2>
 
-    <p>
-      The teams who win the next wave won't be the ones who bolt a chat box onto every product.
-      They'll be the ones who ask, task by task, whether this moment wants a screen you point at, a
-      daemon you never see, or an interface generated on the spot — and who treat tokens, latency,
-      and cognitive load as the real product costs they are.
-    </p>
+    <div data-section="0">
+      <p>
+        The teams who win the next wave won't be the ones who bolt a chat box onto every product.
+        They'll be the ones who ask, task by task, whether this moment wants a screen you point at, a
+        daemon you never see, or an interface generated on the spot — and who treat tokens, latency,
+        and cognitive load as the real product costs they are.
+      </p>
 
-    <p>
-      Generative UI is the most futuristic of the three and the easiest to overuse. Reach for it
-      when the question genuinely deserves its own tool. The rest of the time, the kindest thing you
-      can build is the boring screen that was always the right answer.
-    </p>
+      <p>
+        Generative UI is the most futuristic of the three and the easiest to overuse. Reach for it
+        when the question genuinely deserves its own tool. The rest of the time, the kindest thing you
+        can build is the boring screen that was always the right answer.
+      </p>
+    </div>
 
   </main>
 
+  <!-- ═══════════════════════════════════════════
+       CTA & FOOTER CHROME
+       ═══════════════════════════════════════════ -->
   <aside class="essay-cta">
     <p>Designing where AI actually belongs in a real product or workflow?</p>
-    <a class="essay-cta__link" href="https://linkedin.com/in/siddharth" target="_blank" rel="noopener noreferrer">Let's talk &rarr;</a>
+    <a class="essay-cta__link" href="https://linkedin.com/in/sidcai" target="_blank" rel="noopener noreferrer">Let's talk &rarr;</a>
   </aside>
 
   <footer class="essay-footer" id="connect">
@@ -340,6 +737,94 @@
   <script>
     (() => {
       "use strict";
+
+      // ── Scroll-reactive background matrix highlighting ──
+      const matrixSvg = document.getElementById("matrixSvg");
+      const nodeGui = document.getElementById("node-gui");
+      const nodeAgent = document.getElementById("node-agent");
+      const nodeGenui = document.getElementById("node-genui");
+
+      const updateMatrixBg = () => {
+        const vh = window.innerHeight;
+        const trigger = vh * 0.45;
+        let mode = 0; // 0 = all active/neutral, 1 = GUI, 2 = Agent, 3 = GenUI
+
+        // Check data-section positions
+        const sections = document.querySelectorAll("[data-section]");
+        sections.forEach(sec => {
+          if (sec.getBoundingClientRect().top <= trigger) {
+            mode = parseInt(sec.dataset.section) || 0;
+          }
+        });
+
+        // Or check matrix mode highlights
+        const highlightModes = [
+          { selector: "[data-mode-highlight='1']", mode: 1 },
+          { selector: "[data-mode-highlight='2']", mode: 2 },
+          { selector: "[data-mode-highlight='3']", mode: 3 },
+          { selector: "[data-journey-trigger='1']", mode: 1 },
+          { selector: "[data-journey-trigger='2']", mode: 2 },
+          { selector: "[data-journey-trigger='3']", mode: 3 }
+        ];
+
+        highlightModes.forEach(h => {
+          const el = document.querySelector(h.selector);
+          if (el && el.getBoundingClientRect().top <= trigger && el.getBoundingClientRect().bottom >= trigger) {
+            mode = h.mode;
+          }
+        });
+
+        // Highlight nodes accordingly
+        const nodes = [
+          { group: nodeGui, id: 1 },
+          { group: nodeAgent, id: 2 },
+          { group: nodeGenui, id: 3 }
+        ];
+
+        nodes.forEach(n => {
+          if (!n.group) return;
+          const circle = n.group.querySelector("circle");
+          const innerCircle = n.group.querySelectorAll("circle")[1];
+          const text = n.group.querySelector("text");
+          const isActive = mode === 0 || mode === n.id;
+          const isFocused = mode === n.id;
+
+          if (isFocused) {
+            circle.setAttribute("stroke", "#b86232");
+            circle.setAttribute("stroke-width", "2.5");
+            circle.setAttribute("r", "32");
+            innerCircle.setAttribute("fill", "#b86232");
+            text.setAttribute("fill", "#b86232");
+            text.setAttribute("font-size", "11");
+            n.group.setAttribute("opacity", "1");
+          } else if (isActive) {
+            circle.setAttribute("stroke", "#17201e");
+            circle.setAttribute("stroke-width", "1.5");
+            circle.setAttribute("r", "28");
+            innerCircle.setAttribute("fill", "#b86232");
+            text.setAttribute("fill", "#17201e");
+            text.setAttribute("font-size", "10");
+            n.group.setAttribute("opacity", "0.9");
+          } else {
+            circle.setAttribute("stroke", "#cfc7b7");
+            circle.setAttribute("stroke-width", "1");
+            circle.setAttribute("r", "26");
+            innerCircle.setAttribute("fill", "#cfc7b7");
+            text.setAttribute("fill", "#cfc7b7");
+            text.setAttribute("font-size", "9");
+            n.group.setAttribute("opacity", "0.28");
+          }
+        });
+      };
+
+      window.addEventListener("scroll", () => {
+        requestAnimationFrame(updateMatrixBg);
+      }, { passive: true });
+
+      // Init background
+      updateMatrixBg();
+
+      // ── Prompt sandbox simulator logic ──
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const screen = document.getElementById("genui-screen");
       const out = document.getElementById("genui-out");
@@ -350,7 +835,7 @@
 
       const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
 
-      // ── Generated interface #1: fashion board ──
+      // Generated interface #1: fashion board
       const fashion = () => {
         out.innerHTML = `
           <div class="gu-fashion">
@@ -370,7 +855,7 @@
           </div>`;
       };
 
-      // ── Generated interface #2: interactive fractal ──
+      // Generated interface #2: interactive fractal
       const fractal = () => {
         out.innerHTML = `
           <div class="gu-fractal">
@@ -379,7 +864,7 @@
               <input type="range" id="gu-depth" min="2" max="10" value="7" aria-label="Fractal depth">
               <span id="gu-depth-val">7</span>
             </label>
-            <p style="margin:0;font-size:0.9rem;color:var(--ink-soft);">Each branch splits into two smaller copies of itself. That's a fractal — the same shape, all the way down.</p>
+            <p style="margin:0;font-size:0.85rem;color:var(--text);line-height:1.45;">Each branch splits into two smaller copies of itself. That's a fractal — the same shape, all the way down.</p>
           </div>`;
         const svg = document.getElementById("gu-tree");
         const slider = document.getElementById("gu-depth");
@@ -404,7 +889,7 @@
         slider.addEventListener("input", () => { val.textContent = slider.value; draw(+slider.value); });
       };
 
-      // ── Generated interface #3: math drill ──
+      // Generated interface #3: math drill
       const math = () => {
         const roll = () => {
           const a = 2 + Math.floor(Math.random() * 8);
