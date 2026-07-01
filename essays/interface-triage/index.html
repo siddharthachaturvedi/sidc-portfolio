@@ -1002,6 +1002,167 @@
     </div>
 
   <!-- ═══════════════════════════════════════════
+       WIDE VISUAL 2: THE THREE MODES (PART I)
+       Breaks out of 680px column into wide dark card with cell borders
+       ═══════════════════════════════════════════ -->
+  <div class="wide-visual" data-mode-highlight="1">
+    <div class="matrix-card">
+      <div class="matrix-card__header">
+        <div class="matrix-card__kicker">The 3×3 Journey Matrix</div>
+        <div class="matrix-card__title">Three Interface Shapes</div>
+        <div class="matrix-card__subtitle">Each mode has a sweet spot — and a point where it breaks.</div>
+      </div>
+      <div class="mode-grid">
+        <!-- Column 1: GUI -->
+        <div class="mode-col" data-mode="gui">
+          <div class="mode-cell mode-cell--header">
+            <h4 class="mode-col__name">Direct GUI</h4>
+          </div>
+          <div class="mode-cell mode-cell--desc">
+            <p class="mode-col__desc">The user points at and manipulates known objects. Best when the action is small and the context is clear.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Strong at</span>
+            <p class="mode-cell__text">Editing, approving, selecting, scanning.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Breaks when</span>
+            <p class="mode-cell__text">Stitching together multiple systems/policies.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Executive test</span>
+            <p class="mode-cell__text">If they can say "change this line," give them the line.</p>
+          </div>
+        </div>
+
+        <!-- Column 2: Agent -->
+        <div class="mode-col" data-mode="agent">
+          <div class="mode-cell mode-cell--header">
+            <h4 class="mode-col__name">Headless Agent</h4>
+          </div>
+          <div class="mode-cell mode-cell--desc">
+            <p class="mode-col__desc">The work runs in the background. Best when tasks are long, multi-step, and procedural.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Strong at</span>
+            <p class="mode-cell__text">Running tool chains, tracing data, retrying steps.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Breaks when</span>
+            <p class="mode-cell__text">Comparing tradeoffs or steering paths visually.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Executive test</span>
+            <p class="mode-cell__text">If the job is "do the analysis, show errors," hide the screen.</p>
+          </div>
+        </div>
+
+        <!-- Column 3: GenUI -->
+        <div class="mode-col" data-mode="genui">
+          <div class="mode-cell mode-cell--header">
+            <h4 class="mode-col__name">Generative UI</h4>
+          </div>
+          <div class="mode-cell mode-cell--desc">
+            <p class="mode-col__desc">The layout adapts to the question. Best when teams need to see planning constraints dynamically.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Strong at</span>
+            <p class="mode-cell__text">Temporary surfaces for messy planning/tradeoffs.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Breaks when</span>
+            <p class="mode-cell__text">Rebuilding layouts adds reading time instead of saving it.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Executive test</span>
+            <p class="mode-cell__text">If each team needs a different lens on the same plan, generate it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <h2 data-fn-num="01">Watch it happen</h2>
+
+    <div data-section="0">
+      <p>
+        Here is the same prompt bar, three different questions. A chatbot would answer all three
+        with text. Generative UI answers each with a different tool. Pick a question and watch the
+        screen assemble itself.
+      </p>
+
+      <!-- Prompt demo (centered inside flow) -->
+      <div class="genui-container">
+        <div class="genui" id="genui">
+          <div class="genui__bar">
+            <span class="genui__caret">&gt;_</span>
+            <span class="genui__prompt" id="genui-prompt">Pick a prompt below…</span>
+            <span class="genui__badge">generating</span>
+          </div>
+          <div class="genui__chips" role="group" aria-label="Example prompts">
+            <button type="button" class="genui__chip" data-gu="fashion" aria-pressed="false">Style me for a winter wedding</button>
+            <button type="button" class="genui__chip" data-gu="fractal" aria-pressed="false">Explain fractals to a 10-year-old</button>
+            <button type="button" class="genui__chip" data-gu="db" aria-pressed="false">Compare database options for my workload</button>
+          </div>
+          <div class="genui__screen" id="genui-screen" aria-live="polite">
+            <div class="genui__building" id="genui-building">
+              <div class="genui__skeleton"><span></span><span></span><span></span><span></span></div>
+              <div>Composing interface…</div>
+            </div>
+            <div class="genui__out" id="genui-out">
+              <p style="font-family:var(--font-mono);font-size:0.8rem;color:var(--muted);margin:0;text-align:center;padding: 2rem 0;">
+                ↑ Choose a prompt. The same box will build a different interface for each one.
+              </p>
+            </div>
+          </div>
+          <div class="genui__note">
+            A chatbot would have returned three walls of text. Generative UI returns three different tools — and discards each when you move on.
+          </div>
+        </div>
+        <span class="genui-caption">Demo · a bespoke interface generated per prompt (mocked; real systems generate the markup live)</span>
+      </div>
+    </div>
+
+    <h2 data-fn-num="02">Why this is different, not just prettier</h2>
+
+    <div data-section="3">
+      <p>
+        It is tempting to file generative UI under "nicer formatting." It is more than that. A chat
+        answer is <em>static</em> — the model's one shot at being useful, frozen as text. A generated
+        interface is a place you can keep working: adjust the fractal's depth, swap a jacket, get the
+        next problem. The output stops being a message and starts being a small machine.
+      </p>
+
+      <p>
+        When Google ran the comparison, humans strongly preferred generated interfaces over the
+        standard markdown reply — a "substantial gap" — landing second only to sites hand-built by
+        human experts. The honest catch is speed: generating a real interface can take a minute or
+        more, and that minute is not free. Which is exactly why generative UI is a <em>choice</em>,
+        not a default.
+      </p>
+    </div>
+
+    <h2 data-fn-num="03">It's one of three moves, not the only one</h2>
+
+    <div data-section="0">
+      <p>
+        The mistake would be to make everything generative, the same way we made everything a chatbot.
+        Most real work sorts into three interface shapes — and the skill is matching the shape to the
+        task in front of the team.
+      </p>
+
+      <p class="fn-pull">
+        Chat was never the destination. It was the placeholder we all agreed to while we figured out
+        what the interface should have been.
+      </p>
+
+      <p>
+        We must distinguish between three distinct product interfaces, choosing the correct shape for the cognitive overhead of the target workload.
+      </p>
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════════════════════
        WIDE VISUAL 1: JOURNEY COMPARISON
        Three workloads with detailed visual mockups inside the cells
        ═══════════════════════════════════════════ -->
@@ -1138,86 +1299,6 @@
       </div>
     </div>
   </div>
-
-    <h2 data-fn-num="01">Watch it happen</h2>
-
-    <div data-section="0">
-      <p>
-        Here is the same prompt bar, three different questions. A chatbot would answer all three
-        with text. Generative UI answers each with a different tool. Pick a question and watch the
-        screen assemble itself.
-      </p>
-
-      <!-- Prompt demo (centered inside flow) -->
-      <div class="genui-container">
-        <div class="genui" id="genui">
-          <div class="genui__bar">
-            <span class="genui__caret">&gt;_</span>
-            <span class="genui__prompt" id="genui-prompt">Pick a prompt below…</span>
-            <span class="genui__badge">generating</span>
-          </div>
-          <div class="genui__chips" role="group" aria-label="Example prompts">
-            <button type="button" class="genui__chip" data-gu="fashion" aria-pressed="false">Style me for a winter wedding</button>
-            <button type="button" class="genui__chip" data-gu="fractal" aria-pressed="false">Explain fractals to a 10-year-old</button>
-            <button type="button" class="genui__chip" data-gu="db" aria-pressed="false">Compare database options for my workload</button>
-          </div>
-          <div class="genui__screen" id="genui-screen" aria-live="polite">
-            <div class="genui__building" id="genui-building">
-              <div class="genui__skeleton"><span></span><span></span><span></span><span></span></div>
-              <div>Composing interface…</div>
-            </div>
-            <div class="genui__out" id="genui-out">
-              <p style="font-family:var(--font-mono);font-size:0.8rem;color:var(--muted);margin:0;text-align:center;padding: 2rem 0;">
-                ↑ Choose a prompt. The same box will build a different interface for each one.
-              </p>
-            </div>
-          </div>
-          <div class="genui__note">
-            A chatbot would have returned three walls of text. Generative UI returns three different tools — and discards each when you move on.
-          </div>
-        </div>
-        <span class="genui-caption">Demo · a bespoke interface generated per prompt (mocked; real systems generate the markup live)</span>
-      </div>
-    </div>
-
-    <h2 data-fn-num="02">Why this is different, not just prettier</h2>
-
-    <div data-section="3">
-      <p>
-        It is tempting to file generative UI under "nicer formatting." It is more than that. A chat
-        answer is <em>static</em> — the model's one shot at being useful, frozen as text. A generated
-        interface is a place you can keep working: adjust the fractal's depth, swap a jacket, get the
-        next problem. The output stops being a message and starts being a small machine.
-      </p>
-
-      <p>
-        When Google ran the comparison, humans strongly preferred generated interfaces over the
-        standard markdown reply — a "substantial gap" — landing second only to sites hand-built by
-        human experts. The honest catch is speed: generating a real interface can take a minute or
-        more, and that minute is not free. Which is exactly why generative UI is a <em>choice</em>,
-        not a default.
-      </p>
-    </div>
-
-    <h2 data-fn-num="03">It's one of three moves, not the only one</h2>
-
-    <div data-section="0">
-      <p>
-        The mistake would be to make everything generative, the same way we made everything a chatbot.
-        Most real work sorts into three interface shapes — and the skill is matching the shape to the
-        task in front of the team.
-      </p>
-
-      <p class="fn-pull">
-        Chat was never the destination. It was the placeholder we all agreed to while we figured out
-        what the interface should have been.
-      </p>
-
-      <p>
-        We must distinguish between three distinct product interfaces, choosing the correct shape for the cognitive overhead of the target workload.
-      </p>
-    </div>
-  </main>
 
   <!-- Resume reading column -->
   <div class="article" style="padding-top: 0;">
