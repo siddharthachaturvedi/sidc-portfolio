@@ -3,6 +3,8 @@
 /essays/fow/slides  /fow_slides/   200
 /generativeUI        /essays/interface-triage/   301
 /generativeUI/*      /essays/interface-triage/   301
+/justai              /essays/justai/             301
+/justai/             /essays/justai/             301
 
 /rovodev https://raw.githubusercontent.com/siddharthachaturvedi/rovodev/main/rovodev-launcher.command 200
 /rovodev/install /rovodev 301

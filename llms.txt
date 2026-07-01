@@ -9,7 +9,7 @@ Siddhartha Chaturvedi builds AI systems that ship outcomes, not drafts. Former M
 - 300+ GenAI use cases for US Federal civilian agencies, from pathogen surveillance to production systems
 
 ## Current Focus
-Mapping how AI stops being a chatbot you babysit and starts being a teammate that ships outcomes — across tools, across teams, across the trust gap between generation and verification.
+Mapping how AI stops being a chatbot you babysit and starts being a system that ships outcomes — across tools, teams, context, verification, and the trust gap between generation and action.
 
 ## Value Function Framework
 A framework for evaluating useful AI across three dimensions:
@@ -27,10 +27,11 @@ The equilibrium of all three produces AI that ships.
 - VeriScience.AI (https://veriscience.ai) — evidence-grade AI for women's health
 - Unfreeze.org (https://unfreeze.org) — career transition intelligence
 - Stratified Advisory (https://stratcorp.ai) — board-as-a-service for the GenAI era
-- JustAI.fyi (https://justai.fyi) — Software 3.0 strategy for the C-suite
+- JustAI.fyi (https://justai.fyi) — full Software 3.0 paper
 
 ## Field Notes
-- "The Value Function" (https://sidc.ai/framework-print.html): a working model + printable worksheet for AI that balances voice, evidence, and execution
+- "JustAI: The Enterprise Refactor" (https://sidc.ai/essays/justai/) — a local field note translating Software 3.0 into context, verification, dual interfaces, and the agent web; links to the full paper at https://justai.fyi
+- "The Value Function" (https://sidc.ai/essays/value-function/): a working model + printable worksheet for AI that balances voice, evidence, and execution
 - "The App That Builds Itself for One Question" (https://sidc.ai/essays/interface-triage/): what generative UI means \u2014 the model builds a bespoke interface for the question instead of a wall of text \u2014 with an interactive demo
 - "AI Won't Simplify Work. It Might Finally Restore It." (https://sidc.ai/essays/fow/) — the real promise of the agentic era isn't speed, it's returning human attention to the complexity that matters
 
