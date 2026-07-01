@@ -30,7 +30,7 @@ The equilibrium of all three produces AI that ships.
 - JustAI.fyi (https://justai.fyi) — full Software 3.0 paper
 
 ## Field Notes
-- "JustAI: The Enterprise Refactor" (https://sidc.ai/essays/justai/) — a local field note translating Software 3.0 into context, verification, dual interfaces, and the agent web; links to the full paper at https://justai.fyi
+- "The Enterprise Refactor" (https://sidc.ai/essays/justai/) — a local field note translating Software 3.0 into context, verification, dual interfaces, and the agent web; links to the full paper at https://justai.fyi
 - "The Value Function" (https://sidc.ai/essays/value-function/): a working model + printable worksheet for AI that balances voice, evidence, and execution
 - "The App That Builds Itself for One Question" (https://sidc.ai/essays/interface-triage/): what generative UI means \u2014 the model builds a bespoke interface for the question instead of a wall of text \u2014 with an interactive demo
 - "AI Won't Simplify Work. It Might Finally Restore It." (https://sidc.ai/essays/fow/) — the real promise of the agentic era isn't speed, it's returning human attention to the complexity that matters
