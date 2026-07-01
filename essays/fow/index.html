@@ -54,12 +54,12 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --purpose: #C45B28;
+      --purpose: var(--vermillion);
       --system: #2B6CB0;
       --ai: #6B46C1;
-      --bg: #FAFAF8;
-      --text: #1a1a1a;
-      --muted: #999;
+      --bg: var(--surface-slate);
+      --text: var(--ink);
+      --muted: var(--ink-muted);
     }
 
     html { scroll-behavior: smooth; }
@@ -337,9 +337,9 @@
     <svg class="venn-svg" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <radialGradient id="gP" cx="50%" cy="50%" r="55%">
-          <stop offset="0%" stop-color="#C45B28" stop-opacity="0.22"/>
-          <stop offset="85%" stop-color="#C45B28" stop-opacity="0.06"/>
-          <stop offset="100%" stop-color="#C45B28" stop-opacity="0"/>
+          <stop offset="0%" stop-color="#a55027" stop-opacity="0.22"/>
+          <stop offset="85%" stop-color="#a55027" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#a55027" stop-opacity="0"/>
         </radialGradient>
         <radialGradient id="gS" cx="50%" cy="50%" r="55%">
           <stop offset="0%" stop-color="#2B6CB0" stop-opacity="0.22"/>
@@ -354,14 +354,14 @@
       </defs>
 
       <circle id="pF" cx="190" cy="145" r="88" fill="url(#gP)"/>
-      <circle id="pS" cx="190" cy="145" r="88" fill="none" stroke="#C45B28" stroke-width="1.2" opacity="0.25"/>
+      <circle id="pS" cx="190" cy="145" r="88" fill="none" stroke="#a55027" stroke-width="1.2" opacity="0.25"/>
       <circle id="sF" cx="310" cy="145" r="82" fill="url(#gS)"/>
       <circle id="sS" cx="310" cy="145" r="82" fill="none" stroke="#2B6CB0" stroke-width="1.2" opacity="0.25"/>
       <circle id="iG" class="intersection-glow" cx="250" cy="145" r="35" fill="url(#gI)" opacity="0"/>
 
       <text id="pL" x="150" y="149" text-anchor="middle"
         font-size="11.5" font-family="'JetBrains Mono', monospace"
-        fill="#C45B28" opacity="0.5" font-weight="600" letter-spacing="0.12em">PURPOSE</text>
+        fill="#a55027" opacity="0.5" font-weight="600" letter-spacing="0.12em">PURPOSE</text>
       <text id="sL" x="350" y="149" text-anchor="middle"
         font-size="11.5" font-family="'JetBrains Mono', monospace"
         fill="#2B6CB0" opacity="0.5" font-weight="600" letter-spacing="0.12em">SYSTEM</text>
@@ -385,7 +385,7 @@
     // PROVENANCE DATA
     // ═══════════════════════════════════════════
     const PROVENANCE = {
-      human: { color: '#C45B28', bg: '#FFF8F4', label: 'Human-originated', icon: '◉' },
+      human: { color: '#a55027', bg: '#FFF8F4', label: 'Human-originated', icon: '◉' },
       ai:    { color: '#2B6CB0', bg: '#F4F8FF', label: 'AI-originated', icon: '◎' },
       meld:  { color: '#6B46C1', bg: '#F9F4FF', label: 'Mind-meld', icon: '◈' },
     };
@@ -744,6 +744,11 @@
 
   <script data-goatcounter="https://sidc.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
+
+  <aside class="essay-cta">
+    <p>Exploring how AI can return attention to the work that matters?</p>
+    <a class="essay-cta__link" href="https://linkedin.com/in/siddharth" target="_blank" rel="noopener noreferrer">Let's talk &rarr;</a>
+  </aside>
 
   <footer class="essay-footer">
     <a href="/essays/">&larr; Back to Field Notes</a>

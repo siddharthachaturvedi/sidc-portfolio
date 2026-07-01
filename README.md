@@ -4,9 +4,9 @@
 
 ### **Post-Agentic Systems** • AI that acts, not just answers
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-siddharth-B86232?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/siddharth)
-[![Portfolio](https://img.shields.io/badge/Portfolio-sidc.ai-B86232?style=for-the-badge)](https://sidc.ai)
-[![Location](https://img.shields.io/badge/Based-US%20%7C%20UK%20%7C%20India-B86232?style=for-the-badge)]()
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-siddharth-A55027?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/siddharth)
+[![Portfolio](https://img.shields.io/badge/Portfolio-sidc.ai-A55027?style=for-the-badge)](https://sidc.ai)
+[![Location](https://img.shields.io/badge/Based-US%20%7C%20UK%20%7C%20India-A55027?style=for-the-badge)]()
 
 ---
 
@@ -46,10 +46,10 @@ graph TD
     B[Relevance<br/>The Truth] -->|Grounds in<br/>verified data| D
     C[Response<br/>The Action] -->|Ensures<br/>actionable outputs| D
     
-    style A fill:#B86232,stroke:#000,stroke-width:2px,color:#fff
-    style B fill:#B86232,stroke:#000,stroke-width:2px,color:#fff
-    style C fill:#B86232,stroke:#000,stroke-width:2px,color:#fff
-    style D fill:#000,stroke:#B86232,stroke-width:3px,color:#fff
+    style A fill:#A55027,stroke:#000,stroke-width:2px,color:#fff
+    style B fill:#A55027,stroke:#000,stroke-width:2px,color:#fff
+    style C fill:#A55027,stroke:#000,stroke-width:2px,color:#fff
+    style D fill:#000,stroke:#A55027,stroke-width:3px,color:#fff
 ```
 
 | Component | Definition | Example |

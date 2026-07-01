@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const css = getComputedStyle(document.documentElement);
     const token = (name, fallback) => (css.getPropertyValue(name).trim() || fallback);
     const inkColor = token("--ink", "#17201e");
-    const accentColor = token("--vermillion", "#b86232");
+    const accentColor = token("--vermillion", "#a55027");
     const bgColor = token("--surface-slate", "#faf8f5");
     const gridColor = token("--grid-line-strong", "rgba(23, 32, 30, 0.08)");
     
