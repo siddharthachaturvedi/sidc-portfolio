@@ -732,6 +732,93 @@ h1, h2, h3, h4 {
    PROOF STRIP — CONTEXT WITHOUT TURNING HOME INTO A RESUME
    ══════════════════════════════════════════════════════════════════ */
 
+/* ── Three Bets (theses band) — threads the notes into claims ── */
+.theses-band {
+  background: var(--surface-slate);
+}
+
+.theses-band__intro {
+  max-width: 42rem;
+  margin-bottom: var(--space-xl);
+}
+
+.theses-band__grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.thesis {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  border: 1px solid var(--ink);
+  background: var(--surface-strong);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform var(--transition-premium),
+    border-color var(--transition-premium);
+}
+
+.thesis:hover,
+.thesis:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--vermillion);
+}
+
+.thesis__num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--ink-muted);
+}
+
+.thesis__claim {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.thesis__claim em {
+  font-style: normal;
+  color: var(--vermillion);
+}
+
+.thesis__tag {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vermillion);
+}
+
+.thesis__tag svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  transition: transform var(--transition-premium);
+}
+
+.thesis:hover .thesis__tag svg {
+  transform: translateX(3px);
+}
+
+@media (min-width: 768px) {
+  .theses-band__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .proof-strip {
   background: var(--bg-washi);
 }
