@@ -139,6 +139,21 @@ Synthesis of Software 3.0 thinking. Field notes on post-agentic systems, reasoni
 
 ---
 
+## 🤖 Agentic Integrations (WebMCP)
+
+This site is fully optimized for the agentic web. It implements both readability mapping (via `/llms.txt`) and capability task tooling via the evolving, experimental W3C **Web Model Context Protocol (WebMCP)** standard.
+
+AI agents visiting the site can discover and interact with Siddhartha's frameworks natively:
+* **Static Discovery Manifest**: Exposed at [.well-known/webmcp](file:///.well-known/webmcp) and [.well-known/webmcp.json](file:///.well-known/webmcp.json).
+* **Client-Side JavaScript WebMCP API**: Progessively enhanced on the client via [js/webmcp.js](file:///js/webmcp.js).
+* **Callable Tools**:
+  * `fetch_professional_profile`: Siddhartha's credentials, ventures, and contact routes.
+  * `fetch_field_note_summaries`: Canonical database URLs and TL;DR descriptions of all essays.
+  * `triage_workload_interface`: 3x3 workload triage recommendation logic (GUI, Agent, GenUI).
+  * `evaluate_system_equilibrium`: Value Function equilibrium vector calculator.
+
+---
+
 ## 🤝 Connect
 
 ### 📍 Advisory & Investment

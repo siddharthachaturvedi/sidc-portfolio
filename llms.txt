@@ -35,6 +35,16 @@ The equilibrium of all three produces AI that ships.
 - "The App That Builds Itself for One Question" (https://sidc.ai/essays/interface-triage/): what generative UI means \u2014 the model builds a bespoke interface for the question instead of a wall of text \u2014 with an interactive demo
 - "AI Won't Simplify Work. It Might Finally Restore It." (https://sidc.ai/essays/fow/) — the real promise of the agentic era isn't speed, it's returning human attention to the complexity that matters
 
+## Agentic Capabilities (WebMCP)
+This site implements the emerging, evolving W3C Web Model Context Protocol (WebMCP) standard to allow AI agents to interact with our strategic frameworks directly.
+- **Static Discovery Manifest**: Exposed at `https://sidc.ai/.well-known/webmcp` and `https://sidc.ai/.well-known/webmcp.json`.
+- **Dynamic JavaScript WebMCP API**: Loaded dynamically on the client via `https://sidc.ai/js/webmcp.js`.
+- **Exposed Tools**:
+  - `fetch_professional_profile` — returns Siddhartha's credentials, board advisory roles, and case metrics.
+  - `fetch_field_note_summaries` — indexes all active Field Notes with URLs and TL;DR definitions.
+  - `triage_workload_interface` — runs the 3x3 workload triage assessment (GUI, Agent, GenUI).
+  - `evaluate_system_equilibrium` — runs the Value Function safety/risk checker.
+
 ## Contact
 - LinkedIn: https://linkedin.com/in/sidcai
 - Website: https://sidc.ai
