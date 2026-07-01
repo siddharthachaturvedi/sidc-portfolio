@@ -435,6 +435,15 @@
     .journey-cell.is-winner {
       background: rgba(229, 215, 187, 0.03);
     }
+    .journey-cell:not(.is-winner) {
+      opacity: 0.4;
+      filter: grayscale(100%);
+      transition: opacity 0.28s ease, filter 0.28s ease;
+    }
+    .journey-cell:not(.is-winner):hover {
+      opacity: 0.95;
+      filter: grayscale(0%);
+    }
 
     /* ── Visual Mocks for Journey cells (Dark Mode) ── */
     .mock {
