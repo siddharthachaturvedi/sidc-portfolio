@@ -36,7 +36,7 @@
       "headline": "AI Won't Simplify Work. It Might Finally Restore It.",
       "description": "The real promise of the agentic era isn't speed — it's returning human attention to the complexity that matters.",
       "url": "https://sidc.ai/essays/fow/",
-      "image": "https://sidc.ai/public/images/essays/fow-thumb.png",
+      "image": "https://sidc.ai/public/images/og/fow.png",
       "datePublished": "2025-01-01",
       "author": {
         "@type": "Person",
@@ -227,7 +227,7 @@
     .instructions {
       font-size: 13px;
       color: var(--muted);
-      margin-bottom: 40px;
+      margin-bottom: 18px;
       font-family: 'JetBrains Mono', monospace;
     }
     .instructions .toggle {
@@ -586,19 +586,24 @@
         root.appendChild(el);
       };
 
-      const titleIndex = sections.findIndex((s) => s.type === 'title');
-      if (titleIndex !== -1) {
-        renderSection(sections[titleIndex], titleIndex);
-      }
-
       // Instructions line
       const instr = document.createElement('p');
       instr.className = 'instructions';
       instr.innerHTML = `Click any paragraph to reveal its intellectual provenance. The background diagram shifts as you read. <span class="toggle" id="toggleAll">${showAll ? 'Hide all' : 'Reveal all'}</span>`;
       root.appendChild(instr);
 
+      const metaIndex = sections.findIndex((s) => s.type === 'meta');
+      if (metaIndex !== -1) {
+        renderSection(sections[metaIndex], metaIndex);
+      }
+
+      const titleIndex = sections.findIndex((s) => s.type === 'title');
+      if (titleIndex !== -1) {
+        renderSection(sections[titleIndex], titleIndex);
+      }
+
       sections.forEach((s, i) => {
-        if (i === titleIndex) return;
+        if (i === metaIndex || i === titleIndex) return;
         renderSection(s, i);
       });
 
