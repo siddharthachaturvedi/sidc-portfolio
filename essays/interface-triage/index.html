@@ -290,32 +290,17 @@
     }
 
     .mode-col {
-      padding: 1.8rem 2rem;
       border-bottom: 1px solid rgba(229, 215, 187, 0.06);
       position: relative;
     }
-
-    .mode-col::before {
-      content: '';
-      position: absolute;
-      top: 1.8rem;
-      left: 0;
-      width: 3px;
-      height: calc(100% - 3.6rem);
-      border-radius: 2px;
-      opacity: 0.6;
-    }
-    .mode-col[data-mode="gui"]::before    { background: var(--c-gui); }
-    .mode-col[data-mode="agent"]::before  { background: var(--c-agent); }
-    .mode-col[data-mode="genui"]::before  { background: var(--c-genui); }
 
     .mode-col__name {
       font-family: var(--font-mono);
       font-size: 0.72rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
       font-weight: 600;
+      margin: 0;
     }
     .mode-col[data-mode="gui"] .mode-col__name    { color: var(--c-gui); }
     .mode-col[data-mode="agent"] .mode-col__name  { color: var(--c-agent); }
@@ -326,21 +311,35 @@
       font-size: 0.94rem;
       color: rgba(229, 215, 187, 0.75);
       line-height: 1.55;
-      margin-bottom: 1.2rem;
+      margin: 0;
     }
 
-    .mode-col dl {
-      display: grid;
-      gap: 0.7rem;
+    .mode-cell {
+      padding: 1.2rem 2rem;
+      border-bottom: 1px solid rgba(229, 215, 187, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-    .mode-col dt {
+    .mode-cell:last-child {
+      border-bottom: 0;
+    }
+    .mode-cell--header {
+      padding-top: 1.8rem;
+      padding-bottom: 0.8rem;
+    }
+    .mode-cell--desc {
+      padding-bottom: 1.4rem;
+    }
+    .mode-cell__label {
       font-family: var(--font-mono);
       font-size: 0.62rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: rgba(229, 215, 187, 0.35);
+      margin-bottom: 0.3rem;
     }
-    .mode-col dd {
+    .mode-cell__text {
       margin: 0;
       font-size: 0.86rem;
       color: rgba(229, 215, 187, 0.65);
@@ -833,18 +832,16 @@
       }
       .mode-grid {
         grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto auto auto auto auto;
       }
       .mode-col {
+        display: grid;
+        grid-row: 1 / -1;
+        grid-template-rows: subgrid;
         border-bottom: 0;
         border-right: 1px solid rgba(229, 215, 187, 0.06);
       }
       .mode-col:last-child { border-right: 0; }
-      .mode-col::before {
-        top: 0;
-        height: 3px;
-        width: calc(100% - 4rem);
-        left: 2rem;
-      }
 
       .journey-cells {
         grid-template-columns: repeat(3, 1fr);
@@ -1052,16 +1049,14 @@
     </div>
   </main>
 
-  </main>
-
   <!-- ═══════════════════════════════════════════
-       WIDE VISUAL 1: JOURNEY COMPARISON (PART II)
+       WIDE VISUAL 1: JOURNEY COMPARISON
        Three workloads with detailed visual mockups inside the cells
        ═══════════════════════════════════════════ -->
   <div class="wide-visual" data-journey-section="1">
     <div class="matrix-card">
       <div class="matrix-card__header">
-        <div class="matrix-card__kicker">The 3×3 Journey Matrix · Part II</div>
+        <div class="matrix-card__kicker">The 3×3 Journey Matrix</div>
         <div class="matrix-card__title">Journey Comparison</div>
         <div class="matrix-card__subtitle">How the winner changes based on workload context.</div>
       </div>
@@ -1266,7 +1261,7 @@
 
   <!-- ═══════════════════════════════════════════
        WIDE VISUAL 2: THE THREE MODES (PART I)
-       Breaks out of 680px column into wide dark card
+       Breaks out of 680px column into wide dark card with cell borders
        ═══════════════════════════════════════════ -->
   <div class="wide-visual" data-mode-highlight="1">
     <div class="matrix-card">
@@ -1276,41 +1271,70 @@
         <div class="matrix-card__subtitle">Each mode has a sweet spot — and a point where it breaks.</div>
       </div>
       <div class="mode-grid">
+        <!-- Column 1: GUI -->
         <div class="mode-col" data-mode="gui">
-          <h4 class="mode-col__name">Direct GUI</h4>
-          <p class="mode-col__desc">The user points at and manipulates known objects. Best when the action is small and the context is clear.</p>
-          <dl>
-            <dt>Strong at</dt>
-            <dd>Editing, approving, selecting, scanning.</dd>
-            <dt>Breaks when</dt>
-            <dd>Stitching together multiple systems/policies.</dd>
-            <dt>Executive test</dt>
-            <dd>If they can say "change this line," give them the line.</dd>
-          </dl>
+          <div class="mode-cell mode-cell--header">
+            <h4 class="mode-col__name">Direct GUI</h4>
+          </div>
+          <div class="mode-cell mode-cell--desc">
+            <p class="mode-col__desc">The user points at and manipulates known objects. Best when the action is small and the context is clear.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Strong at</span>
+            <p class="mode-cell__text">Editing, approving, selecting, scanning.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Breaks when</span>
+            <p class="mode-cell__text">Stitching together multiple systems/policies.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Executive test</span>
+            <p class="mode-cell__text">If they can say "change this line," give them the line.</p>
+          </div>
         </div>
+
+        <!-- Column 2: Agent -->
         <div class="mode-col" data-mode="agent">
-          <h4 class="mode-col__name">Headless Agent</h4>
-          <p class="mode-col__desc">The work runs in the background. Best when tasks are long, multi-step, and procedural.</p>
-          <dl>
-            <dt>Strong at</dt>
-            <dd>Running tool chains, tracing data, retrying steps.</dd>
-            <dt>Breaks when</dt>
-            <dd>Comparing tradeoffs or steering paths visually.</dd>
-            <dt>Executive test</dt>
-            <dd>If the job is "do the analysis, show errors," hide the screen.</dd>
-          </dl>
+          <div class="mode-cell mode-cell--header">
+            <h4 class="mode-col__name">Headless Agent</h4>
+          </div>
+          <div class="mode-cell mode-cell--desc">
+            <p class="mode-col__desc">The work runs in the background. Best when tasks are long, multi-step, and procedural.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Strong at</span>
+            <p class="mode-cell__text">Running tool chains, tracing data, retrying steps.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Breaks when</span>
+            <p class="mode-cell__text">Comparing tradeoffs or steering paths visually.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Executive test</span>
+            <p class="mode-cell__text">If the job is "do the analysis, show errors," hide the screen.</p>
+          </div>
         </div>
+
+        <!-- Column 3: GenUI -->
         <div class="mode-col" data-mode="genui">
-          <h4 class="mode-col__name">Generative UI</h4>
-          <p class="mode-col__desc">The layout adapts to the question. Best when teams need to see planning constraints dynamically.</p>
-          <dl>
-            <dt>Strong at</dt>
-            <dd>Temporary surfaces for messy planning/tradeoffs.</dd>
-            <dt>Breaks when</dt>
-            <dd>Rebuilding layouts adds reading time instead of saving it.</dd>
-            <dt>Executive test</dt>
-            <dd>If each team needs a different lens on the same plan, generate it.</dd>
-          </dl>
+          <div class="mode-cell mode-cell--header">
+            <h4 class="mode-col__name">Generative UI</h4>
+          </div>
+          <div class="mode-cell mode-cell--desc">
+            <p class="mode-col__desc">The layout adapts to the question. Best when teams need to see planning constraints dynamically.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Strong at</span>
+            <p class="mode-cell__text">Temporary surfaces for messy planning/tradeoffs.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Breaks when</span>
+            <p class="mode-cell__text">Rebuilding layouts adds reading time instead of saving it.</p>
+          </div>
+          <div class="mode-cell">
+            <span class="mode-cell__label">Executive test</span>
+            <p class="mode-cell__text">If each team needs a different lens on the same plan, generate it.</p>
+          </div>
         </div>
       </div>
     </div>
