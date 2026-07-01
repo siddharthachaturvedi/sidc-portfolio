@@ -447,10 +447,25 @@
       opacity: 0.4;
       filter: grayscale(100%);
       transition: opacity 0.28s ease, filter 0.28s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.8rem 2rem;
     }
     .journey-cell:not(.is-winner):hover {
       opacity: 0.95;
       filter: grayscale(0%);
+    }
+    .journey-cell:not(.is-winner) .journey-cell__note {
+      border: 0;
+      padding: 0;
+      color: rgba(229, 215, 187, 0.6);
+      font-size: 0.84rem;
+      line-height: 1.45;
+      font-family: 'Source Serif 4', Georgia, serif;
+      margin-top: 0.5rem;
     }
 
     /* ── Visual Mocks for Journey cells (Dark Mode) ── */
@@ -1109,31 +1124,12 @@
             <!-- Cell 2: Agent -->
             <div class="journey-cell" data-fit="agent">
               <div class="journey-cell__label">Headless Agent</div>
-              <div class="mock chat" aria-hidden="true">
-                <div class="bubble bubble--user">Change launch date to August</div>
-                <div class="bubble bubble--low">Running updater... New date: August.</div>
-              </div>
               <div class="journey-cell__note">Turning visible edits into conversations adds reading work.</div>
-              <ul class="step-list">
-                <li><b>Intent</b><span>The user tries to request the simple change via dialogue.</span></li>
-                <li><b>Action</b><span>Typing out a sentence instead of clicking a button.</span></li>
-                <li><b>Result</b><span>Slow and verbose; forces the reader to verify narrative output.</span></li>
-              </ul>
             </div>
             <!-- Cell 3: GenUI -->
             <div class="journey-cell" data-fit="genui">
               <div class="journey-cell__label">Generative UI</div>
-              <div class="mock overbuilt" aria-hidden="true">
-                <div class="control-line"><span>Date</span><div class="slider"></div><span>Aug</span></div>
-                <div class="choice-grid"><div></div><div></div><div></div></div>
-                <div class="pay-bar">Confirm August launch</div>
-              </div>
-              <div class="journey-cell__note">Overbuilt for simple text changes</div>
-              <ul class="step-list">
-                <li><b>Intent</b><span>Generate controls dynamically for editing a single date.</span></li>
-                <li><b>Action</b><span>Generating custom sliders and confirmation layout loops.</span></li>
-                <li><b>Result</b><span>Unnecessary token consumption and visual noise for minor actions.</span></li>
-              </ul>
+              <div class="journey-cell__note">Overbuilt for simple text changes.</div>
             </div>
           </div>
         </div>
@@ -1148,20 +1144,7 @@
             <!-- Cell 1: GUI -->
             <div class="journey-cell" data-fit="gui">
               <div class="journey-cell__label">Direct GUI</div>
-              <div class="mock spreadsheet" aria-hidden="true">
-                <div class="sheet-toolbar"><span></span><span></span><span></span><span></span></div>
-                <div class="sheet-grid">
-                  <div class="sheet-cell"></div><div class="sheet-cell"></div><div class="sheet-cell is-alert"></div><div class="sheet-cell"></div>
-                  <div class="sheet-cell"></div><div class="sheet-cell is-alert"></div><div class="sheet-cell"></div><div class="sheet-cell"></div>
-                </div>
-                <div class="sheet-callout">12 exports before the answer</div>
-              </div>
-              <div class="journey-cell__note">Too much process on screen</div>
-              <ul class="step-list">
-                <li><b>Intent</b><span>User exports and correlates several channels by hand.</span></li>
-                <li><b>Action</b><span>Manually clicking through lists and pivot setups.</span></li>
-                <li><b>Result</b><span>Exposes every tool step but leaves the cognitive loading on humans.</span></li>
-              </ul>
+              <div class="journey-cell__note">Too much process on screen. Exposes database columns but leaves analysis to the user.</div>
             </div>
             <!-- Cell 2: Agent (Winner) -->
             <div class="journey-cell is-winner" data-fit="agent">
@@ -1185,21 +1168,7 @@
             <!-- Cell 3: GenUI -->
             <div class="journey-cell" data-fit="genui">
               <div class="journey-cell__label">Generative UI</div>
-              <div class="mock dynamic-table" aria-hidden="true">
-                <div class="pivot-head">
-                  <div>By segment</div>
-                  <div>By channel</div>
-                </div>
-                <div class="bar-chart">
-                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
-              </div>
-              <div class="journey-cell__note">Good for review, not for the whole run</div>
-              <ul class="step-list">
-                <li><b>Intent</b><span>Interact with the data variables using a live dashboard grid.</span></li>
-                <li><b>Action</b><span>Adjust segments and watch custom chart segments compile.</span></li>
-                <li><b>Result</b><span>Excellent as a review surface, but overbuilt as the processing engine.</span></li>
-              </ul>
+              <div class="journey-cell__note">Good for review, not for the whole run.</div>
             </div>
           </div>
         </div>
@@ -1214,38 +1183,12 @@
             <!-- Cell 1: GUI -->
             <div class="journey-cell" data-fit="gui">
               <div class="journey-cell__label">Direct GUI</div>
-              <div class="mock roadmap-table" aria-hidden="true">
-                <div class="search-row">
-                  <div>Product</div>
-                  <div>Marketing</div>
-                </div>
-                <div class="fare-row"><span>Initiative</span><span>Impact</span><span>Date</span></div>
-                <div class="fare-row is-dim"><span>Retention</span><span>High</span><span>Aug</span></div>
-                <div class="fare-row is-dim"><span>AI launch</span><span>High</span><span>Sep</span></div>
-              </div>
-              <div class="journey-cell__note">The SaaS object is too rigid</div>
-              <ul class="step-list">
-                <li><b>Intent</b><span>User views planning timelines across separate tabs and views.</span></li>
-                <li><b>Action</b><span>Clicking between different filters and layouts.</span></li>
-                <li><b>Result</b><span>Executives must perform cross-functional alignment in their heads.</span></li>
-              </ul>
+              <div class="journey-cell__note">The SaaS grid objects are too rigid for cross-department dependencies.</div>
             </div>
             <!-- Cell 2: Agent -->
             <div class="journey-cell" data-fit="agent">
               <div class="journey-cell__label">Headless Agent</div>
-              <div class="mock black-box" aria-hidden="true">
-                <div class="black-box__status">Analyzing calendar alignment...</div>
-                <div class="black-box__pick">
-                  <strong>Suggested: move retention</strong>
-                  <span>Good logic, but tradeoff is hidden in narrative.</span>
-                </div>
-              </div>
-              <div class="journey-cell__note">The answer is too compressed</div>
-              <ul class="step-list">
-                <li><b>Intent</b><span>Request a cross-functional timeline solution.</span></li>
-                <li><b>Action</b><span>Agent reports an optimized plan as a text summary block.</span></li>
-                <li><b>Result</b><span>Tradeoffs remain invisible; team cannot steer the model's assumptions.</span></li>
-              </ul>
+              <div class="journey-cell__note">Black-box recommendations compress critical tradeoffs into simple text.</div>
             </div>
             <!-- Cell 3: GenUI (Winner) -->
             <div class="journey-cell is-winner" data-fit="genui">
@@ -1283,7 +1226,7 @@
   <div class="wide-visual" data-mode-highlight="1">
     <div class="matrix-card">
       <div class="matrix-card__header">
-        <div class="matrix-card__kicker">The 3×3 Journey Matrix · Part I</div>
+        <div class="matrix-card__kicker">The 3×3 Journey Matrix</div>
         <div class="matrix-card__title">Three Interface Shapes</div>
         <div class="matrix-card__subtitle">Each mode has a sweet spot — and a point where it breaks.</div>
       </div>
