@@ -68,8 +68,11 @@
       background: var(--bg);
       color: var(--text);
       font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.06rem, 1rem + 0.35vw, 1.22rem);
+      line-height: 1.68;
       overflow-x: hidden;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* ═══════════════════════════════════════════
@@ -116,24 +119,18 @@
     }
 
     /* ═══════════════════════════════════════════
-       ARTICLE CONTENT
+       FOW-SPECIFIC STYLES
+       (.article, .fn-*, h2, h3, .fn-pull shared via essay-shared.css)
        ═══════════════════════════════════════════ */
-    .article {
-      position: relative;
-      z-index: 2;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 96px 24px 100px;
-    }
 
-    /* Meta box */
+    /* Meta box (provenance legend — FOW-specific) */
     .meta-box {
       padding: 28px 32px;
       margin-bottom: 48px;
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
       border-radius: 2px;
       color: #c8ccd4;
-      font-size: 16px;
+      font-size: 0.92rem;
       line-height: 1.75;
       font-style: italic;
       border-left: 3px solid var(--ai);
@@ -165,53 +162,6 @@
       font-style: normal;
     }
 
-    /* Title section */
-    .article-title {
-      margin-bottom: 56px;
-    }
-    .article-title h1 {
-      font-family: "Fraunces", Georgia, serif;
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 900;
-      color: var(--text);
-      line-height: 1.15;
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-      text-wrap: balance;
-    }
-    .article-title .subtitle {
-      font-size: 20px;
-      color: #555;
-      font-style: italic;
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-    .article-title .author {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-    .article-title .bar {
-      width: 60px;
-      height: 3px;
-      background: var(--text);
-      margin-top: 24px;
-    }
-
-    /* Headings */
-    .section-heading {
-      font-family: "Fraunces", Georgia, serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--text);
-      margin-top: 64px;
-      margin-bottom: 28px;
-      line-height: 1.3;
-      text-wrap: balance;
-    }
-
     /* Separator */
     .separator {
       text-align: center;
@@ -224,7 +174,7 @@
     /* Content paragraphs (provenance-tagged) */
     .prov-block {
       position: relative;
-      margin-bottom: 24px;
+      margin-bottom: 1.35em;
       cursor: pointer;
       transition: all 0.3s ease;
       border-left: 3px solid transparent;
@@ -235,9 +185,9 @@
       padding: 16px 20px;
     }
     .prov-block p.content {
-      font-size: 19px;
-      line-height: 1.75;
-      color: #1f1f1f;
+      font-size: inherit;
+      line-height: 1.68;
+      color: var(--ink-soft);
       margin: 0;
       text-wrap: pretty;
       hyphens: auto;
@@ -591,14 +541,19 @@
               ).join('')}
             </div>`;
         } else if (s.type === 'title') {
-          el.className = 'article-title';
-          el.innerHTML = `<h1>${s.content}</h1>
-            <p class="subtitle">${s.sub}</p>
-            <p class="author">${s.author}</p>
-            <div class="bar"></div>`;
+          el.className = 'fn-header';
+          el.innerHTML = `<p class="fn-kicker">Field Note · Essay</p>
+            <h1 class="fn-title">${s.content}</h1>
+            <p class="fn-lede">${s.sub}</p>
+            <div class="fn-byline"><span>${s.author}</span><span>MMXXVI · ~12 min read</span></div>
+            <div class="fn-byline__bar"></div>`;
         } else if (s.type === 'heading') {
-          el.className = 'section-heading';
-          el.textContent = s.content;
+          // Swap the div for a real h2 so shared essay-shared.css h2 styles apply
+          const h = document.createElement('h2');
+          h.textContent = s.content;
+          h.dataset.era = s.era;
+          root.appendChild(h);
+          return; // skip the default el append
         } else if (s.type === 'separator') {
           el.className = 'separator';
           el.textContent = '* * *';

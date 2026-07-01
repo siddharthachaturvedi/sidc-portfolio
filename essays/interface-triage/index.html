@@ -67,7 +67,9 @@
       --heading-color: var(--ink);
       --muted: var(--ink-muted);
       --accent: var(--vermillion);
-      --line: var(--line);
+      --c-gui: #a55027;
+      --c-agent: #2B6CB0;
+      --c-genui: #6B46C1;
     }
 
     html { scroll-behavior: smooth; }
@@ -84,9 +86,11 @@
     }
 
     /* ═══════════════════════════════════════════
-       FIXED INTERFACE MATRIX BACKGROUND
+       FIXED VENN DIAGRAM BACKGROUND
+       Three translucent circles (GUI / Agent / GenUI)
+       matching the FOW essay's Venn aesthetic
        ═══════════════════════════════════════════ */
-    .matrix-bg {
+    .venn-bg {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
@@ -97,7 +101,7 @@
       z-index: 0;
     }
 
-    .matrix-bg::after {
+    .venn-bg::after {
       content: '';
       position: absolute;
       inset: 0;
@@ -105,104 +109,14 @@
       z-index: 1;
     }
 
-    .matrix-svg {
-      width: min(600px, 86vw);
+    .venn-svg {
+      width: min(640px, 88vw);
       height: auto;
-      opacity: 0.42;
+      opacity: 0.5;
     }
 
-    .matrix-svg circle, .matrix-svg text, .matrix-svg line, .matrix-svg path {
+    .venn-svg circle, .venn-svg text {
       transition: all 1.6s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    /* ═══════════════════════════════════════════
-       ARTICLE CONTENT (Centered flow)
-       ═══════════════════════════════════════════ */
-    .article {
-      position: relative;
-      z-index: 2;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 96px 24px 100px;
-    }
-
-    .fn-header {
-      margin-bottom: 3.5rem;
-    }
-    .fn-kicker {
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.72rem;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-    .fn-title {
-      font-family: "Fraunces", Georgia, serif;
-      font-weight: 400;
-      color: var(--heading-color);
-      letter-spacing: -0.03em;
-      line-height: 1.02;
-      font-size: clamp(2.4rem, 1.8rem + 3.2vw, 4.4rem);
-      margin: 0.6rem 0 0.8rem;
-    }
-    .fn-title em { font-style: italic; color: var(--accent); }
-    .fn-lede {
-      font-size: clamp(1.2rem, 1.08rem + 0.6vw, 1.45rem);
-      line-height: 1.5;
-      color: var(--heading-color);
-      margin: 1.4rem 0;
-    }
-    .fn-byline {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 1.8rem;
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    p { margin-bottom: 1.35em; }
-    strong { color: var(--heading-color); font-weight: 600; }
-
-    h2, h3 {
-      font-family: "Fraunces", Georgia, serif;
-      color: var(--heading-color);
-      font-weight: 500;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-    h2 {
-      font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
-      margin: 2.2em 0 0.5em;
-    }
-    h2[data-fn-num]::before {
-      content: attr(data-fn-num);
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    h3 {
-      font-size: 1.28rem;
-      margin: 1.8em 0 0.4em;
-    }
-
-    /* Pull quote */
-    .fn-pull {
-      font-family: "Fraunces", Georgia, serif;
-      font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2rem);
-      line-height: 1.25;
-      color: var(--heading-color);
-      border-left: 2px solid var(--accent);
-      padding-left: 1.3rem;
-      margin: 2em 0;
     }
 
     /* ── Demo sandbox styles ── */
@@ -313,148 +227,252 @@
     .gu-math__opt.wrong { background: var(--crimson); color: #fff; border-color: var(--crimson); }
     .gu-math__fb { font-family: var(--font-mono); font-size: 0.76rem; color: var(--muted); min-height: 1.2em; }
 
-    /* ── Re-integrated Comparison Matrix style ── */
-    .restored-matrix {
-      margin: 2.5rem 0;
-      border: 1px solid var(--line);
-      background: var(--surface-strong);
-      padding: 1.5rem;
-      border-radius: 6px;
-      box-shadow: 10px 10px 0 rgba(23, 32, 30, 0.06);
-    }
-    .restored-matrix h3 {
-      margin-top: 0;
-      margin-bottom: 1rem;
-      font-size: 1.35rem;
-    }
-    .rm-modes {
-      display: grid;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    .rm-mode {
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 1rem;
-    }
-    .rm-mode:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
-    }
-    .rm-mode h4 {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.35rem;
-    }
-    .rm-mode p {
-      font-size: 0.94rem;
-      line-height: 1.5;
-      margin-bottom: 0;
+    /* ═══════════════════════════════════════════
+       WIDE DARK MATRIX VISUALS
+       Break out of the 680px reading column like
+       Substack's wide-screen embeds
+       ═══════════════════════════════════════════ */
+    .wide-visual {
+      position: relative;
+      z-index: 2;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      padding: 0 clamp(24px, 4vw, 80px);
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
     }
 
-    .rm-detail {
-      font-size: 0.88rem;
-      margin-top: 0.8rem;
-    }
-    .rm-detail dl {
-      display: grid;
-      gap: 0.6rem;
-    }
-    .rm-detail dt {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--muted);
-    }
-    .rm-detail dd {
-      margin-left: 0;
-      color: var(--text);
-      line-height: 1.45;
+    .matrix-card {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: linear-gradient(145deg, #0c1a1e 0%, #122028 40%, #0e1820 100%);
+      border-radius: 12px;
+      border: 1px solid rgba(229, 215, 187, 0.08);
+      overflow: hidden;
+      box-shadow:
+        0 4px 24px rgba(0,0,0,0.18),
+        0 1px 0 rgba(229, 215, 187, 0.06) inset;
     }
 
-    .rm-journeys {
-      margin-top: 2rem;
-      border-top: 1px solid var(--line);
-      padding-top: 1.5rem;
+    .matrix-card__header {
+      padding: 2rem 2.5rem 1.2rem;
+      border-bottom: 1px solid rgba(229, 215, 187, 0.08);
     }
-    .rm-journey {
-      margin-bottom: 1.5rem;
-    }
-    .rm-journey h4 {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.2rem;
-    }
-    .rm-journey h5 {
-      font-size: 1.05rem;
-      font-family: var(--font-sans);
-      font-weight: 600;
-      color: var(--heading-color);
-      margin-bottom: 0.4rem;
-    }
-    .rm-j-grid {
-      display: grid;
-      gap: 0.8rem;
-      margin-top: 0.6rem;
-      font-size: 0.86rem;
-      line-height: 1.45;
-    }
-    .rm-j-cell {
-      padding: 0.6rem 0.8rem;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      background: var(--surface-slate);
-    }
-    .rm-j-cell.winner {
-      border-color: var(--accent);
-      background: rgba(184, 98, 50, 0.04);
-    }
-    .rm-j-cell b {
+    .matrix-card__kicker {
       font-family: var(--font-mono);
       font-size: 0.64rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--accent);
-      display: block;
-      margin-bottom: 0.25rem;
+      color: rgba(229, 215, 187, 0.4);
+      margin-bottom: 0.5rem;
+    }
+    .matrix-card__title {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: #e5d7bb;
+      line-height: 1.2;
+    }
+    .matrix-card__subtitle {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 0.92rem;
+      color: rgba(229, 215, 187, 0.5);
+      margin-top: 0.4rem;
+      line-height: 1.45;
     }
 
-    @media(min-width: 600px) {
+    /* Three-column mode definitions */
+    .mode-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .mode-col {
+      padding: 1.8rem 2rem;
+      border-bottom: 1px solid rgba(229, 215, 187, 0.06);
+      position: relative;
+    }
+
+    .mode-col::before {
+      content: '';
+      position: absolute;
+      top: 1.8rem;
+      left: 0;
+      width: 3px;
+      height: calc(100% - 3.6rem);
+      border-radius: 2px;
+      opacity: 0.6;
+    }
+    .mode-col[data-mode="gui"]::before    { background: var(--c-gui); }
+    .mode-col[data-mode="agent"]::before  { background: var(--c-agent); }
+    .mode-col[data-mode="genui"]::before  { background: var(--c-genui); }
+
+    .mode-col__name {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .mode-col[data-mode="gui"] .mode-col__name    { color: var(--c-gui); }
+    .mode-col[data-mode="agent"] .mode-col__name  { color: var(--c-agent); }
+    .mode-col[data-mode="genui"] .mode-col__name  { color: var(--c-genui); }
+
+    .mode-col__desc {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 0.94rem;
+      color: rgba(229, 215, 187, 0.75);
+      line-height: 1.55;
+      margin-bottom: 1.2rem;
+    }
+
+    .mode-col dl {
+      display: grid;
+      gap: 0.7rem;
+    }
+    .mode-col dt {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(229, 215, 187, 0.35);
+    }
+    .mode-col dd {
+      margin: 0;
+      font-size: 0.86rem;
+      color: rgba(229, 215, 187, 0.65);
+      line-height: 1.5;
+    }
+
+    /* Journey comparison grid */
+    .journey-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .journey-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-bottom: 1px solid rgba(229, 215, 187, 0.06);
+    }
+    .journey-row:last-child { border-bottom: 0; }
+
+    .journey-row__header {
+      padding: 1.4rem 2rem 0.6rem;
+      grid-column: 1 / -1;
+    }
+    .journey-row__num {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(229, 215, 187, 0.3);
+      margin-bottom: 0.2rem;
+    }
+    .journey-row__title {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.08rem;
+      font-weight: 400;
+      color: #e5d7bb;
+      letter-spacing: -0.01em;
+    }
+
+    .journey-cells {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .journey-cell {
+      padding: 0.9rem 2rem;
+      position: relative;
+    }
+    .journey-cell__label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .journey-cell[data-fit="gui"] .journey-cell__label    { color: var(--c-gui); }
+    .journey-cell[data-fit="agent"] .journey-cell__label  { color: var(--c-agent); }
+    .journey-cell[data-fit="genui"] .journey-cell__label  { color: var(--c-genui); }
+
+    .journey-cell__winner {
+      font-size: 0.5rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+    .journey-cell[data-fit="gui"] .journey-cell__winner {
+      background: rgba(165, 80, 39, 0.15);
+      color: var(--c-gui);
+    }
+    .journey-cell[data-fit="agent"] .journey-cell__winner {
+      background: rgba(43, 108, 176, 0.15);
+      color: var(--c-agent);
+    }
+    .journey-cell[data-fit="genui"] .journey-cell__winner {
+      background: rgba(107, 70, 193, 0.15);
+      color: var(--c-genui);
+    }
+
+    .journey-cell__text {
+      font-size: 0.84rem;
+      color: rgba(229, 215, 187, 0.55);
+      line-height: 1.5;
+    }
+    .journey-cell.is-winner .journey-cell__text {
+      color: rgba(229, 215, 187, 0.85);
+    }
+    .journey-cell.is-winner {
+      background: rgba(229, 215, 187, 0.03);
+    }
+
+    /* ── Responsive: Desktop (3-column layouts) ── */
+    @media (min-width: 700px) {
       .genui__chips {
         flex-direction: row;
       }
       .genui__chip {
         text-align: center;
       }
-      .rm-modes {
+      .mode-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
       }
-      .rm-mode {
+      .mode-col {
         border-bottom: 0;
-        padding-bottom: 0;
-        border-right: 1px solid var(--line);
-        padding-right: 0.8rem;
+        border-right: 1px solid rgba(229, 215, 187, 0.06);
       }
-      .rm-mode:last-child {
-        border-right: 0;
-        padding-right: 0;
+      .mode-col:last-child { border-right: 0; }
+      .mode-col::before {
+        top: 0;
+        height: 3px;
+        width: calc(100% - 4rem);
+        left: 2rem;
       }
-      .rm-j-grid {
+
+      .journey-cells {
         grid-template-columns: repeat(3, 1fr);
       }
+      .journey-cell {
+        border-right: 1px solid rgba(229, 215, 187, 0.04);
+      }
+      .journey-cell:last-child { border-right: 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .genui__skeleton span { animation: none; }
       .genui__building { transition: none; }
-      .matrix-svg circle, .matrix-svg text, .matrix-svg line, .matrix-svg path { transition: none; }
+      .venn-svg circle, .venn-svg text { transition: none; }
     }
   </style>
 </head>
@@ -477,36 +495,49 @@
   </header>
 
   <!-- ═══════════════════════════════════════════
-       INTERACTIVE MATRIX BACKGROUND SVG
+       FIXED VENN DIAGRAM BACKGROUND
+       Three overlapping circles: GUI · Agent · GenUI
        ═══════════════════════════════════════════ -->
-  <div class="matrix-bg" aria-hidden="true">
-    <svg class="matrix-svg" viewBox="0 0 500 320" id="matrixSvg">
-      <!-- Connection lines -->
-      <line x1="250" y1="70" x2="140" y2="250" stroke="#cfc7b7" stroke-width="1.5" stroke-dasharray="4 4" />
-      <line x1="250" y1="70" x2="360" y2="250" stroke="#cfc7b7" stroke-width="1.5" stroke-dasharray="4 4" />
-      <line x1="140" y1="250" x2="360" y2="250" stroke="#cfc7b7" stroke-width="1.5" stroke-dasharray="4 4" />
+  <div class="venn-bg" aria-hidden="true">
+    <svg class="venn-svg" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg" id="vennSvg">
+      <defs>
+        <radialGradient id="gGui" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#a55027" stop-opacity="0.22"/>
+          <stop offset="85%" stop-color="#a55027" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#a55027" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="gAgent" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#2B6CB0" stop-opacity="0.22"/>
+          <stop offset="85%" stop-color="#2B6CB0" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#2B6CB0" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="gGenui" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#6B46C1" stop-opacity="0.20"/>
+          <stop offset="85%" stop-color="#6B46C1" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#6B46C1" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
 
-      <!-- Nodes -->
-      <!-- Node 1: Direct GUI -->
-      <g id="node-gui">
-        <circle cx="250" cy="70" r="28" fill="#faf8f5" stroke="#17201e" stroke-width="1.5" />
-        <circle cx="250" cy="70" r="4" fill="#b86232" />
-        <text x="250" y="32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#17201e">DIRECT GUI</text>
-      </g>
+      <!-- Circle fills -->
+      <circle id="cGuiF" cx="250" cy="110" r="95" fill="url(#gGui)"/>
+      <circle id="cAgentF" cx="175" cy="220" r="90" fill="url(#gAgent)"/>
+      <circle id="cGenuiF" cx="325" cy="220" r="90" fill="url(#gGenui)"/>
 
-      <!-- Node 2: Headless Agent -->
-      <g id="node-agent">
-        <circle cx="140" cy="250" r="28" fill="#faf8f5" stroke="#17201e" stroke-width="1.5" />
-        <circle cx="140" cy="250" r="4" fill="#b86232" />
-        <text x="140" y="294" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#17201e">HEADLESS AGENT</text>
-      </g>
+      <!-- Circle strokes -->
+      <circle id="cGuiS" cx="250" cy="110" r="95" fill="none" stroke="#a55027" stroke-width="1.2" opacity="0.25"/>
+      <circle id="cAgentS" cx="175" cy="220" r="90" fill="none" stroke="#2B6CB0" stroke-width="1.2" opacity="0.25"/>
+      <circle id="cGenuiS" cx="325" cy="220" r="90" fill="none" stroke="#6B46C1" stroke-width="1.2" opacity="0.25"/>
 
-      <!-- Node 3: Generative UI -->
-      <g id="node-genui">
-        <circle cx="360" cy="250" r="28" fill="#faf8f5" stroke="#17201e" stroke-width="1.5" />
-        <circle cx="360" cy="250" r="4" fill="#b86232" />
-        <text x="360" y="294" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#17201e">GENERATIVE UI</text>
-      </g>
+      <!-- Labels -->
+      <text id="tGui" x="250" y="68" text-anchor="middle"
+        font-size="10" font-family="'JetBrains Mono', monospace"
+        fill="#a55027" opacity="0.5" font-weight="600" letter-spacing="0.14em">DIRECT GUI</text>
+      <text id="tAgent" x="130" y="260" text-anchor="middle"
+        font-size="10" font-family="'JetBrains Mono', monospace"
+        fill="#2B6CB0" opacity="0.5" font-weight="600" letter-spacing="0.14em">HEADLESS AGENT</text>
+      <text id="tGenui" x="370" y="260" text-anchor="middle"
+        font-size="10" font-family="'JetBrains Mono', monospace"
+        fill="#6B46C1" opacity="0.5" font-weight="600" letter-spacing="0.14em">GENERATIVE UI</text>
     </svg>
   </div>
 
@@ -526,6 +557,10 @@
         </div>
       </div>
     </header>
+
+    <div class="fn-summary">
+      <p><strong>TL;DR</strong> — Not every AI interaction should be a chatbot. Real work sorts into three interface shapes: <strong>Direct GUI</strong> (point and click), <strong>Headless Agent</strong> (runs in the background), and <strong>Generative UI</strong> (builds a bespoke screen per question). The skill is matching the shape to the task. This note includes an interactive demo and a 3×3 decision matrix.</p>
+    </div>
 
     <div data-section="0">
       <p>
@@ -629,79 +664,145 @@
         We must distinguish between three distinct product interfaces, choosing the correct shape for the cognitive overhead of the target workload.
       </p>
     </div>
+  </main>
 
-    <!-- Restored Comparison Matrix (Beautifully aligned vertical/grid flow) -->
-    <div class="restored-matrix">
-      <h3>The 3x3 Journey Matrix</h3>
-      <div class="rm-modes">
-        <div class="rm-mode" data-mode-highlight="1">
-          <h4>Direct GUI</h4>
-          <p>The user points at and manipulates known objects. Best when the action is small and the context is clear.</p>
-          <div class="rm-detail">
-            <dl>
-              <dt>Strong at</dt> <dd>Editing, approving, selecting, scanning.</dd>
-              <dt>Breaks when</dt> <dd>Stitching together multiple systems/policies.</dd>
-              <dt>Executive test</dt> <dd>If they can say "change this line," give them the line.</dd>
-            </dl>
-          </div>
-        </div>
-        <div class="rm-mode" data-mode-highlight="2">
-          <h4>Headless Agent</h4>
-          <p>The work runs in the background. Best when tasks are long, multi-step, and procedural.</p>
-          <div class="rm-detail">
-            <dl>
-              <dt>Strong at</dt> <dd>Running tool chains, tracing data, retrying steps.</dd>
-              <dt>Breaks when</dt> <dd>Comparing tradeoffs or steering paths visually.</dd>
-              <dt>Executive test</dt> <dd>If the job is "do the analysis, show errors," hide the screen.</dd>
-            </dl>
-          </div>
-        </div>
-        <div class="rm-mode" data-mode-highlight="3">
-          <h4>Generative UI</h4>
-          <p>The layout adapts to the question. Best when teams need to see planning constraints dynamically.</p>
-          <div class="rm-detail">
-            <dl>
-              <dt>Strong at</dt> <dd>Temporary surfaces for messy planning/tradeoffs.</dd>
-              <dt>Breaks when</dt> <dd>Rebuilding layouts adds reading time instead of saving it.</dd>
-              <dt>Executive test</dt> <dd>If each team needs a different lens on the same plan, generate it.</dd>
-            </dl>
-          </div>
-        </div>
+  <!-- ═══════════════════════════════════════════
+       WIDE VISUAL 1: THE THREE MODES
+       Breaks out of 680px column into wide dark card
+       ═══════════════════════════════════════════ -->
+  <div class="wide-visual" data-mode-highlight="1">
+    <div class="matrix-card">
+      <div class="matrix-card__header">
+        <div class="matrix-card__kicker">The 3×3 Journey Matrix · Part I</div>
+        <div class="matrix-card__title">Three Interface Shapes</div>
+        <div class="matrix-card__subtitle">Each mode has a sweet spot — and a point where it breaks.</div>
       </div>
-
-      <div class="rm-journeys">
-        <h4>Journey Comparison</h4>
-        <h5>How the winner changes based on workload context</h5>
-        
-        <div class="rm-journey" data-journey-trigger="1">
-          <h6>1. Edit the launch brief (Known Object)</h6>
-          <div class="rm-j-grid">
-            <div class="rm-j-cell winner"><b>Direct GUI (Winner)</b>Low overhead, high control. User touches the line directly.</div>
-            <div class="rm-j-cell"><b>Agent</b>Poor fit. Turning visible edits into conversations adds reading work.</div>
-            <div class="rm-j-cell"><b>Generative UI</b>Workable. Overbuilt for line edits; only useful for complex compliance reviews.</div>
-          </div>
+      <div class="mode-grid">
+        <div class="mode-col" data-mode="gui">
+          <h4 class="mode-col__name">Direct GUI</h4>
+          <p class="mode-col__desc">The user points at and manipulates known objects. Best when the action is small and the context is clear.</p>
+          <dl>
+            <dt>Strong at</dt>
+            <dd>Editing, approving, selecting, scanning.</dd>
+            <dt>Breaks when</dt>
+            <dd>Stitching together multiple systems/policies.</dd>
+            <dt>Executive test</dt>
+            <dd>If they can say "change this line," give them the line.</dd>
+          </dl>
         </div>
-
-        <div class="rm-journey" data-journey-trigger="2">
-          <h6>2. Run the market analysis (Analysis Loop)</h6>
-          <div class="rm-j-grid">
-            <div class="rm-j-cell"><b>Direct GUI</b>Poor fit. Exposes every export step but does not execute the actual process.</div>
-            <div class="rm-j-cell winner"><b>Agent (Winner)</b>Best fit. Agent pulls, tests, and compiles; human inspects evidence.</div>
-            <div class="rm-j-cell"><b>Generative UI</b>Workable. Excellent for visualizing final scenarios, weak as the loop engine.</div>
-          </div>
+        <div class="mode-col" data-mode="agent">
+          <h4 class="mode-col__name">Headless Agent</h4>
+          <p class="mode-col__desc">The work runs in the background. Best when tasks are long, multi-step, and procedural.</p>
+          <dl>
+            <dt>Strong at</dt>
+            <dd>Running tool chains, tracing data, retrying steps.</dd>
+            <dt>Breaks when</dt>
+            <dd>Comparing tradeoffs or steering paths visually.</dd>
+            <dt>Executive test</dt>
+            <dd>If the job is "do the analysis, show errors," hide the screen.</dd>
+          </dl>
         </div>
-
-        <div class="rm-journey" data-journey-trigger="3">
-          <h6>3. Align roadmap and marketing (Team Decision)</h6>
-          <div class="rm-j-grid">
-            <div class="rm-j-cell"><b>Direct GUI</b>Workable. SaaS grid structures are too rigid for cross-department dependencies.</div>
-            <div class="rm-j-cell"><b>Agent</b>Poor fit. Black-box recommendations compress critical tradeoffs into text.</div>
-            <div class="rm-j-cell winner"><b>Generative UI (Winner)</b>Best fit. Bespoke, interactive canvas adjusts layout to the planning question.</div>
-          </div>
+        <div class="mode-col" data-mode="genui">
+          <h4 class="mode-col__name">Generative UI</h4>
+          <p class="mode-col__desc">The layout adapts to the question. Best when teams need to see planning constraints dynamically.</p>
+          <dl>
+            <dt>Strong at</dt>
+            <dd>Temporary surfaces for messy planning/tradeoffs.</dd>
+            <dt>Breaks when</dt>
+            <dd>Rebuilding layouts adds reading time instead of saving it.</dd>
+            <dt>Executive test</dt>
+            <dd>If each team needs a different lens on the same plan, generate it.</dd>
+          </dl>
         </div>
       </div>
     </div>
+  </div>
 
+  <!-- ═══════════════════════════════════════════
+       WIDE VISUAL 2: JOURNEY COMPARISON
+       Three workloads, three verdicts
+       ═══════════════════════════════════════════ -->
+  <div class="wide-visual" data-journey-section="1">
+    <div class="matrix-card">
+      <div class="matrix-card__header">
+        <div class="matrix-card__kicker">The 3×3 Journey Matrix · Part II</div>
+        <div class="matrix-card__title">Journey Comparison</div>
+        <div class="matrix-card__subtitle">How the winner changes based on workload context.</div>
+      </div>
+      <div class="journey-grid">
+
+        <!-- Journey 1 -->
+        <div class="journey-row" data-journey-trigger="1">
+          <div class="journey-row__header">
+            <div class="journey-row__num">Workload 01</div>
+            <div class="journey-row__title">Edit the launch brief <span style="opacity:0.45;font-size:0.85em;">(Known Object)</span></div>
+          </div>
+          <div class="journey-cells">
+            <div class="journey-cell is-winner" data-fit="gui">
+              <div class="journey-cell__label">Direct GUI <span class="journey-cell__winner">WINNER</span></div>
+              <div class="journey-cell__text">Low overhead, high control. User touches the line directly.</div>
+            </div>
+            <div class="journey-cell" data-fit="agent">
+              <div class="journey-cell__label">Agent</div>
+              <div class="journey-cell__text">Poor fit. Turning visible edits into conversations adds reading work.</div>
+            </div>
+            <div class="journey-cell" data-fit="genui">
+              <div class="journey-cell__label">Generative UI</div>
+              <div class="journey-cell__text">Workable. Overbuilt for line edits; only useful for complex compliance reviews.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Journey 2 -->
+        <div class="journey-row" data-journey-trigger="2">
+          <div class="journey-row__header">
+            <div class="journey-row__num">Workload 02</div>
+            <div class="journey-row__title">Run the market analysis <span style="opacity:0.45;font-size:0.85em;">(Analysis Loop)</span></div>
+          </div>
+          <div class="journey-cells">
+            <div class="journey-cell" data-fit="gui">
+              <div class="journey-cell__label">Direct GUI</div>
+              <div class="journey-cell__text">Poor fit. Exposes every export step but does not execute the actual process.</div>
+            </div>
+            <div class="journey-cell is-winner" data-fit="agent">
+              <div class="journey-cell__label">Agent <span class="journey-cell__winner">WINNER</span></div>
+              <div class="journey-cell__text">Best fit. Agent pulls, tests, and compiles; human inspects evidence.</div>
+            </div>
+            <div class="journey-cell" data-fit="genui">
+              <div class="journey-cell__label">Generative UI</div>
+              <div class="journey-cell__text">Workable. Excellent for visualizing final scenarios, weak as the loop engine.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Journey 3 -->
+        <div class="journey-row" data-journey-trigger="3">
+          <div class="journey-row__header">
+            <div class="journey-row__num">Workload 03</div>
+            <div class="journey-row__title">Align roadmap and marketing <span style="opacity:0.45;font-size:0.85em;">(Team Decision)</span></div>
+          </div>
+          <div class="journey-cells">
+            <div class="journey-cell" data-fit="gui">
+              <div class="journey-cell__label">Direct GUI</div>
+              <div class="journey-cell__text">Workable. SaaS grid structures are too rigid for cross-department dependencies.</div>
+            </div>
+            <div class="journey-cell" data-fit="agent">
+              <div class="journey-cell__label">Agent</div>
+              <div class="journey-cell__text">Poor fit. Black-box recommendations compress critical tradeoffs into text.</div>
+            </div>
+            <div class="journey-cell is-winner" data-fit="genui">
+              <div class="journey-cell__label">Generative UI <span class="journey-cell__winner">WINNER</span></div>
+              <div class="journey-cell__text">Best fit. Bespoke, interactive canvas adjusts layout to the planning question.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Resume reading column -->
+  <div class="article" style="padding-top: 0;">
     <h2 data-fn-num="04">What it means if you build things</h2>
 
     <div data-section="0">
@@ -718,8 +819,7 @@
         can build is the boring screen that was always the right answer.
       </p>
     </div>
-
-  </main>
+  </div>
 
   <!-- ═══════════════════════════════════════════
        CTA & FOOTER CHROME
@@ -738,91 +838,66 @@
     (() => {
       "use strict";
 
-      // ── Scroll-reactive background matrix highlighting ──
-      const matrixSvg = document.getElementById("matrixSvg");
-      const nodeGui = document.getElementById("node-gui");
-      const nodeAgent = document.getElementById("node-agent");
-      const nodeGenui = document.getElementById("node-genui");
+      // ── Scroll-reactive Venn diagram background ──
+      const svg = document.getElementById("vennSvg");
+      const els = {
+        gui:   { fill: document.getElementById("cGuiF"),   stroke: document.getElementById("cGuiS"),   text: document.getElementById("tGui") },
+        agent: { fill: document.getElementById("cAgentF"), stroke: document.getElementById("cAgentS"), text: document.getElementById("tAgent") },
+        genui: { fill: document.getElementById("cGenuiF"), stroke: document.getElementById("cGenuiS"), text: document.getElementById("tGenui") }
+      };
 
-      const updateMatrixBg = () => {
+      const updateVenn = () => {
         const vh = window.innerHeight;
         const trigger = vh * 0.45;
-        let mode = 0; // 0 = all active/neutral, 1 = GUI, 2 = Agent, 3 = GenUI
+        let mode = 0; // 0 = neutral, 1 = GUI, 2 = Agent, 3 = GenUI
 
-        // Check data-section positions
-        const sections = document.querySelectorAll("[data-section]");
-        sections.forEach(sec => {
-          if (sec.getBoundingClientRect().top <= trigger) {
-            mode = parseInt(sec.dataset.section) || 0;
+        // Check mode highlights
+        document.querySelectorAll("[data-mode-highlight]").forEach(el => {
+          if (el.getBoundingClientRect().top <= trigger && el.getBoundingClientRect().bottom >= 0) {
+            mode = parseInt(el.dataset.modeHighlight) || 0;
           }
         });
 
-        // Or check matrix mode highlights
-        const highlightModes = [
-          { selector: "[data-mode-highlight='1']", mode: 1 },
-          { selector: "[data-mode-highlight='2']", mode: 2 },
-          { selector: "[data-mode-highlight='3']", mode: 3 },
-          { selector: "[data-journey-trigger='1']", mode: 1 },
-          { selector: "[data-journey-trigger='2']", mode: 2 },
-          { selector: "[data-journey-trigger='3']", mode: 3 }
-        ];
-
-        highlightModes.forEach(h => {
-          const el = document.querySelector(h.selector);
-          if (el && el.getBoundingClientRect().top <= trigger && el.getBoundingClientRect().bottom >= trigger) {
-            mode = h.mode;
+        // Check journey triggers (more specific, overrides mode)
+        document.querySelectorAll("[data-journey-trigger]").forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= trigger && rect.bottom >= trigger) {
+            mode = parseInt(el.dataset.journeyTrigger) || 0;
           }
         });
 
-        // Highlight nodes accordingly
-        const nodes = [
-          { group: nodeGui, id: 1 },
-          { group: nodeAgent, id: 2 },
-          { group: nodeGenui, id: 3 }
-        ];
+        const mapping = { 1: 'gui', 2: 'agent', 3: 'genui' };
+        const active = mapping[mode];
 
-        nodes.forEach(n => {
-          if (!n.group) return;
-          const circle = n.group.querySelector("circle");
-          const innerCircle = n.group.querySelectorAll("circle")[1];
-          const text = n.group.querySelector("text");
-          const isActive = mode === 0 || mode === n.id;
-          const isFocused = mode === n.id;
+        Object.entries(els).forEach(([key, { fill, stroke, text }]) => {
+          if (!fill) return;
+          const isFocused = key === active;
+          const isNeutral = mode === 0;
 
           if (isFocused) {
-            circle.setAttribute("stroke", "#b86232");
-            circle.setAttribute("stroke-width", "2.5");
-            circle.setAttribute("r", "32");
-            innerCircle.setAttribute("fill", "#b86232");
-            text.setAttribute("fill", "#b86232");
-            text.setAttribute("font-size", "11");
-            n.group.setAttribute("opacity", "1");
-          } else if (isActive) {
-            circle.setAttribute("stroke", "#17201e");
-            circle.setAttribute("stroke-width", "1.5");
-            circle.setAttribute("r", "28");
-            innerCircle.setAttribute("fill", "#b86232");
-            text.setAttribute("fill", "#17201e");
+            stroke.setAttribute("opacity", "0.55");
+            stroke.setAttribute("stroke-width", "2");
+            text.setAttribute("opacity", "0.85");
+            text.setAttribute("font-size", "11.5");
+            fill.querySelector && fill.setAttribute("opacity", "1");
+          } else if (isNeutral) {
+            stroke.setAttribute("opacity", "0.25");
+            stroke.setAttribute("stroke-width", "1.2");
+            text.setAttribute("opacity", "0.5");
             text.setAttribute("font-size", "10");
-            n.group.setAttribute("opacity", "0.9");
           } else {
-            circle.setAttribute("stroke", "#cfc7b7");
-            circle.setAttribute("stroke-width", "1");
-            circle.setAttribute("r", "26");
-            innerCircle.setAttribute("fill", "#cfc7b7");
-            text.setAttribute("fill", "#cfc7b7");
+            stroke.setAttribute("opacity", "0.1");
+            stroke.setAttribute("stroke-width", "0.8");
+            text.setAttribute("opacity", "0.18");
             text.setAttribute("font-size", "9");
-            n.group.setAttribute("opacity", "0.28");
           }
         });
       };
 
       window.addEventListener("scroll", () => {
-        requestAnimationFrame(updateMatrixBg);
+        requestAnimationFrame(updateVenn);
       }, { passive: true });
-
-      // Init background
-      updateMatrixBg();
+      updateVenn();
 
       // ── Prompt sandbox simulator logic ──
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -866,7 +941,7 @@
             </label>
             <p style="margin:0;font-size:0.85rem;color:var(--text);line-height:1.45;">Each branch splits into two smaller copies of itself. That's a fractal — the same shape, all the way down.</p>
           </div>`;
-        const svg = document.getElementById("gu-tree");
+        const svgEl = document.getElementById("gu-tree");
         const slider = document.getElementById("gu-depth");
         const val = document.getElementById("gu-depth-val");
         const accent = getComputedStyle(document.documentElement).getPropertyValue("--vermillion-light").trim() || "#d68a5a";
@@ -883,7 +958,7 @@
             branch(x2, y2, len * 0.74, ang + 0.42, d - 1);
           };
           branch(160, 222, 52, -Math.PI / 2, depth);
-          svg.innerHTML = parts.join("");
+          svgEl.innerHTML = parts.join("");
         };
         draw(+slider.value);
         slider.addEventListener("input", () => { val.textContent = slider.value; draw(+slider.value); });

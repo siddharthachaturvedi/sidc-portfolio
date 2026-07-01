@@ -1,10 +1,12 @@
 /* ═══════════════════════════════════════════
-   ESSAY SHARED CHROME
-   Minimal nav header + footer for essay pages.
+   ESSAY SHARED CHROME & ARTICLE TYPOGRAPHY
+   Minimal nav header + footer + standardised
+   article primitives for all Field Notes.
    Loaded alongside each essay's inline styles.
    Consumes design tokens from css/tokens.css (loaded first in <head>).
    ═══════════════════════════════════════════ */
 
+/* ── Navigation bar ── */
 .essay-header {
   position: fixed;
   top: 0;
@@ -78,6 +80,124 @@
   max-width: 40vw;
 }
 
+/* ── Centered reading column ── */
+.article {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 96px 24px 100px;
+}
+
+/* ── Article header: kicker, title, lede, byline ── */
+.fn-header {
+  margin-bottom: 3.5rem;
+}
+.fn-kicker {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  color: var(--vermillion);
+  margin-bottom: 0.6rem;
+}
+.fn-title {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  font-size: clamp(2.4rem, 1.8rem + 3.2vw, 4.4rem);
+  margin: 0.6rem 0 0.8rem;
+}
+.fn-title em {
+  font-style: italic;
+  color: var(--vermillion);
+}
+.fn-lede {
+  font-size: clamp(1.2rem, 1.08rem + 0.6vw, 1.45rem);
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 1.4rem 0;
+}
+.fn-byline {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-top: 1.8rem;
+  display: flex;
+  gap: 1.5rem;
+}
+.fn-byline__bar {
+  width: 48px;
+  height: 2px;
+  background: var(--ink);
+  margin-top: 1.2rem;
+}
+
+/* ── TL;DR summary box (dark, matching FOW's meta-box) ── */
+.fn-summary {
+  padding: 1.5rem 1.8rem;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 2px;
+  color: #c8ccd4;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  font-style: italic;
+  border-left: 3px solid var(--vermillion);
+}
+.fn-summary p {
+  margin: 0;
+}
+.fn-summary strong {
+  color: #e5d7bb;
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* ── Section headings ── */
+.article h2,
+.article h3 {
+  font-family: "Fraunces", Georgia, serif;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.article h2 {
+  font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
+  margin: 2.2em 0 0.5em;
+}
+.article h2[data-fn-num]::before {
+  content: attr(data-fn-num);
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: var(--vermillion);
+  margin-bottom: 0.5rem;
+}
+.article h3 {
+  font-size: 1.28rem;
+  margin: 1.8em 0 0.4em;
+}
+
+/* ── Pull quote ── */
+.fn-pull {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2rem);
+  line-height: 1.25;
+  color: var(--ink);
+  border-left: 2px solid var(--vermillion);
+  padding-left: 1.3rem;
+  margin: 2em 0;
+}
+
+/* ── Footer ── */
 .essay-footer {
   position: relative;
   z-index: 2;

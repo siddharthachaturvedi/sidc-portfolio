@@ -67,7 +67,9 @@
       --heading-color: var(--ink);
       --muted: var(--ink-muted);
       --accent: var(--vermillion);
-      --line: var(--line);
+      --c-resonance: #a55027;
+      --c-relevance: #2B6CB0;
+      --c-response:  #6B46C1;
     }
 
     html { scroll-behavior: smooth; }
@@ -84,9 +86,10 @@
     }
 
     /* ═══════════════════════════════════════════
-       FIXED VALUE FUNCTION BACKGROUND SVG
+       FIXED VENN DIAGRAM BACKGROUND
+       Three overlapping circles: Resonance · Relevance · Response
        ═══════════════════════════════════════════ */
-    .vf-bg {
+    .venn-bg {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
@@ -97,7 +100,7 @@
       z-index: 0;
     }
 
-    .vf-bg::after {
+    .venn-bg::after {
       content: '';
       position: absolute;
       inset: 0;
@@ -105,105 +108,24 @@
       z-index: 1;
     }
 
-    .vf-svg {
-      width: min(500px, 80vw);
+    .venn-svg {
+      width: min(640px, 88vw);
       height: auto;
-      opacity: 0.45;
+      opacity: 0.5;
     }
 
-    .vf-svg circle, .vf-svg text, .vf-svg line, .vf-svg path {
+    .venn-svg circle, .venn-svg text {
       transition: all 1.6s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     /* ═══════════════════════════════════════════
-       ARTICLE CONTENT (Centered flow)
+       PAGE-SPECIFIC STYLES
+       (.article, .fn-*, h2, h3, .fn-pull shared via essay-shared.css)
        ═══════════════════════════════════════════ */
-    .article {
-      position: relative;
-      z-index: 2;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 96px 24px 100px;
-    }
 
-    .fn-header {
-      margin-bottom: 3.5rem;
-    }
-    .fn-kicker {
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.72rem;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-    .fn-title {
-      font-family: "Fraunces", Georgia, serif;
-      font-weight: 400;
-      color: var(--heading-color);
-      letter-spacing: -0.03em;
-      line-height: 1.02;
-      font-size: clamp(2.4rem, 1.8rem + 3.2vw, 4.4rem);
-      margin: 0.6rem 0 0.8rem;
-    }
-    .fn-title em { font-style: italic; color: var(--accent); }
-    .fn-lede {
-      font-size: clamp(1.2rem, 1.08rem + 0.6vw, 1.45rem);
-      line-height: 1.5;
-      color: var(--heading-color);
-      margin: 1.4rem 0;
-    }
-    .fn-byline {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 1.8rem;
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    p { margin-bottom: 1.35em; }
-    strong { color: var(--heading-color); font-weight: 600; }
-
-    h2, h3 {
-      font-family: "Fraunces", Georgia, serif;
-      color: var(--heading-color);
-      font-weight: 500;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-    h2 {
-      font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
-      margin: 2.2em 0 0.5em;
-    }
-    h2[data-fn-num]::before {
-      content: attr(data-fn-num);
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    h3 {
-      font-size: 1.28rem;
-      margin: 1.8em 0 0.4em;
-    }
-
-    /* Pull quote */
-    .fn-pull {
-      font-family: "Fraunces", Georgia, serif;
-      font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2rem);
-      line-height: 1.25;
-      color: var(--heading-color);
-      border-left: 2px solid var(--accent);
-      padding-left: 1.3rem;
-      margin: 2em 0;
-    }
+    /* Lists */
+    ul { padding-left: 1.5em; margin-bottom: 1.35em; }
+    li { margin-bottom: 0.4em; }
 
     /* Worksheet card list */
     .worksheet-preview {
@@ -286,41 +208,49 @@
   </header>
 
   <!-- ═══════════════════════════════════════════
-       VALUE FUNCTION VECTOR EQUILIBRIUM BACKGROUND
+       FIXED VENN DIAGRAM BACKGROUND
+       Three overlapping circles: Resonance · Relevance · Response
        ═══════════════════════════════════════════ -->
-  <div class="vf-bg" aria-hidden="true">
-    <svg class="vf-svg" viewBox="0 0 400 350" id="vfSvg">
-      <!-- Triangle skeleton -->
-      <path d="M200 50 L50 300 L350 300 Z" stroke="#cfc7b7" stroke-width="1.5" stroke-dasharray="4 4" fill="none" />
-      <line x1="200" y1="50" x2="200" y2="200" stroke="#cfc7b7" stroke-width="1" stroke-dasharray="2 2" />
-      <line x1="50" y1="300" x2="200" y2="200" stroke="#cfc7b7" stroke-width="1" stroke-dasharray="2 2" />
-      <line x1="350" y1="300" x2="200" y2="200" stroke="#cfc7b7" stroke-width="1" stroke-dasharray="2 2" />
+  <div class="venn-bg" aria-hidden="true">
+    <svg class="venn-svg" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg" id="vennSvg">
+      <defs>
+        <radialGradient id="gResonance" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#a55027" stop-opacity="0.22"/>
+          <stop offset="85%" stop-color="#a55027" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#a55027" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="gRelevance" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#2B6CB0" stop-opacity="0.22"/>
+          <stop offset="85%" stop-color="#2B6CB0" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#2B6CB0" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="gResponse" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#6B46C1" stop-opacity="0.20"/>
+          <stop offset="85%" stop-color="#6B46C1" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#6B46C1" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
 
-      <!-- Nodes -->
-      <!-- Node 1: Resonance -->
-      <g id="node-resonance">
-        <circle cx="200" cy="50" r="28" fill="#faf8f5" stroke="#17201e" stroke-width="1.5" />
-        <circle cx="200" cy="50" r="4" fill="#b86232" />
-        <text x="200" y="14" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#17201e">RESONANCE</text>
-      </g>
+      <!-- Circle fills -->
+      <circle id="cResonanceF" cx="250" cy="110" r="95" fill="url(#gResonance)"/>
+      <circle id="cRelevanceF" cx="175" cy="220" r="90" fill="url(#gRelevance)"/>
+      <circle id="cResponseF" cx="325" cy="220" r="90" fill="url(#gResponse)"/>
 
-      <!-- Node 2: Relevance -->
-      <g id="node-relevance">
-        <circle cx="50" cy="300" r="28" fill="#faf8f5" stroke="#17201e" stroke-width="1.5" />
-        <circle cx="50" cy="300" r="4" fill="#b86232" />
-        <text x="50" y="342" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#17201e">RELEVANCE</text>
-      </g>
+      <!-- Circle strokes -->
+      <circle id="cResonanceS" cx="250" cy="110" r="95" fill="none" stroke="#a55027" stroke-width="1.2" opacity="0.25"/>
+      <circle id="cRelevanceS" cx="175" cy="220" r="90" fill="none" stroke="#2B6CB0" stroke-width="1.2" opacity="0.25"/>
+      <circle id="cResponseS" cx="325" cy="220" r="90" fill="none" stroke="#6B46C1" stroke-width="1.2" opacity="0.25"/>
 
-      <!-- Node 3: Response -->
-      <g id="node-response">
-        <circle cx="350" cy="300" r="28" fill="#faf8f5" stroke="#17201e" stroke-width="1.5" />
-        <circle cx="350" cy="300" r="4" fill="#b86232" />
-        <text x="350" y="342" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#17201e">RESPONSE</text>
-      </g>
-
-      <!-- Equilibrium circle -->
-      <circle id="node-eq" cx="200" cy="200" r="32" fill="none" stroke="#b86232" stroke-width="1.5" stroke-dasharray="3 3" />
-      <circle cx="200" cy="200" r="5" fill="#17201e" />
+      <!-- Labels -->
+      <text id="tResonance" x="250" y="68" text-anchor="middle"
+        font-size="10" font-family="'JetBrains Mono', monospace"
+        fill="#a55027" opacity="0.5" font-weight="600" letter-spacing="0.14em">RESONANCE</text>
+      <text id="tRelevance" x="130" y="260" text-anchor="middle"
+        font-size="10" font-family="'JetBrains Mono', monospace"
+        fill="#2B6CB0" opacity="0.5" font-weight="600" letter-spacing="0.14em">RELEVANCE</text>
+      <text id="tResponse" x="370" y="260" text-anchor="middle"
+        font-size="10" font-family="'JetBrains Mono', monospace"
+        fill="#6B46C1" opacity="0.5" font-weight="600" letter-spacing="0.14em">RESPONSE</text>
     </svg>
   </div>
 
@@ -338,6 +268,10 @@
         </div>
       </div>
     </header>
+
+    <div class="fn-summary">
+      <p><strong>TL;DR</strong> — Useful AI balances three vectors: <strong>Resonance</strong> (does it sound like us?), <strong>Relevance</strong> (is it grounded in real evidence?), and <strong>Response</strong> (does it actually do something useful?). Most systems over-index on one and neglect the others. This note maps the tradeoffs and links to a printable worksheet for auditing your own setup.</p>
+    </div>
 
     <div data-section="0">
       <p>
@@ -508,14 +442,15 @@
     (() => {
       "use strict";
 
-      // ── Scroll-reactive background SVG circles ──
-      const vfSvg = document.getElementById("vfSvg");
-      const nodeResonance = document.getElementById("node-resonance");
-      const nodeRelevance = document.getElementById("node-relevance");
-      const nodeResponse = document.getElementById("node-response");
-      const nodeEq = document.getElementById("node-eq");
+      // ── Scroll-reactive Venn diagram background ──
+      const svg = document.getElementById("vennSvg");
+      const els = {
+        resonance: { fill: document.getElementById("cResonanceF"), stroke: document.getElementById("cResonanceS"), text: document.getElementById("tResonance") },
+        relevance: { fill: document.getElementById("cRelevanceF"), stroke: document.getElementById("cRelevanceS"), text: document.getElementById("tRelevance") },
+        response:  { fill: document.getElementById("cResponseF"),  stroke: document.getElementById("cResponseS"),  text: document.getElementById("tResponse") }
+      };
 
-      const updateVfBg = () => {
+      const updateVenn = () => {
         const vh = window.innerHeight;
         const trigger = vh * 0.45;
         let activePillar = 0; // 0 = balance/all, 1 = Resonance, 2 = Relevance, 3 = Response
@@ -528,7 +463,7 @@
           }
         });
 
-        // Or check checklist targets
+        // Or check checklist targets / highlights
         const highlights = [
           { selector: "[data-section-trigger='1']", id: 1 },
           { selector: "[data-section-trigger='2']", id: 2 },
@@ -545,76 +480,40 @@
           }
         });
 
-        // Update SVG group opacities and transformations
-        const nodes = [
-          { group: nodeResonance, id: 1, cx: 200, cy: 50 },
-          { group: nodeRelevance, id: 2, cx: 50, cy: 300 },
-          { group: nodeResponse, id: 3, cx: 350, cy: 300 }
-        ];
+        const mapping = { 1: 'resonance', 2: 'relevance', 3: 'response' };
+        const active = mapping[activePillar];
 
-        nodes.forEach(n => {
-          if (!n.group) return;
-          const circle = n.group.querySelector("circle");
-          const innerCircle = n.group.querySelectorAll("circle")[1];
-          const text = n.group.querySelector("text");
-          const isFocused = activePillar === n.id;
+        Object.entries(els).forEach(([key, { fill, stroke, text }]) => {
+          if (!fill) return;
+          const isFocused = key === active;
           const isNeutral = activePillar === 0;
 
           if (isFocused) {
-            circle.setAttribute("stroke", "#b86232");
-            circle.setAttribute("stroke-width", "2.5");
-            circle.setAttribute("r", "32");
-            innerCircle.setAttribute("fill", "#b86232");
-            text.setAttribute("fill", "#b86232");
-            text.setAttribute("font-size", "11");
-            n.group.setAttribute("opacity", "1");
+            stroke.setAttribute("opacity", "0.55");
+            stroke.setAttribute("stroke-width", "2");
+            text.setAttribute("opacity", "0.85");
+            text.setAttribute("font-size", "11.5");
+            fill.querySelector && fill.setAttribute("opacity", "1");
           } else if (isNeutral) {
-            circle.setAttribute("stroke", "#17201e");
-            circle.setAttribute("stroke-width", "1.5");
-            circle.setAttribute("r", "28");
-            innerCircle.setAttribute("fill", "#b86232");
-            text.setAttribute("fill", "#17201e");
+            stroke.setAttribute("opacity", "0.25");
+            stroke.setAttribute("stroke-width", "1.2");
+            text.setAttribute("opacity", "0.5");
             text.setAttribute("font-size", "10");
-            n.group.setAttribute("opacity", "0.9");
           } else {
-            circle.setAttribute("stroke", "#cfc7b7");
-            circle.setAttribute("stroke-width", "1");
-            circle.setAttribute("r", "26");
-            innerCircle.setAttribute("fill", "#cfc7b7");
-            text.setAttribute("fill", "#cfc7b7");
+            stroke.setAttribute("opacity", "0.1");
+            stroke.setAttribute("stroke-width", "0.8");
+            text.setAttribute("opacity", "0.18");
             text.setAttribute("font-size", "9");
-            n.group.setAttribute("opacity", "0.28");
           }
         });
-
-        // Shift equilibrium circle towards active node
-        if (nodeEq) {
-          if (activePillar === 1) { // Resonance (Top)
-            nodeEq.setAttribute("cx", "200");
-            nodeEq.setAttribute("cy", "150");
-            nodeEq.setAttribute("stroke", "#b86232");
-          } else if (activePillar === 2) { // Relevance (Bottom-Left)
-            nodeEq.setAttribute("cx", "150");
-            nodeEq.setAttribute("cy", "230");
-            nodeEq.setAttribute("stroke", "#b86232");
-          } else if (activePillar === 3) { // Response (Bottom-Right)
-            nodeEq.setAttribute("cx", "250");
-            nodeEq.setAttribute("cy", "230");
-            nodeEq.setAttribute("stroke", "#b86232");
-          } else {
-            nodeEq.setAttribute("cx", "200");
-            nodeEq.setAttribute("cy", "200");
-            nodeEq.setAttribute("stroke", "rgba(184, 98, 50, 0.45)");
-          }
-        }
       };
 
       window.addEventListener("scroll", () => {
-        requestAnimationFrame(updateVfBg);
+        requestAnimationFrame(updateVenn);
       }, { passive: true });
 
       // Initialize positions
-      updateVfBg();
+      updateVenn();
     })();
   </script>
 </body>
