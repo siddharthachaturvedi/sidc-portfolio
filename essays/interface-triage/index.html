@@ -393,6 +393,10 @@
     .journey-cell {
       padding: 0.9rem 2rem;
       position: relative;
+      border-bottom: 1px solid rgba(229, 215, 187, 0.05);
+    }
+    .journey-cell:last-child {
+      border-bottom: 0;
     }
     .journey-cell__label {
       font-family: var(--font-mono);
@@ -860,7 +864,8 @@
         grid-template-columns: repeat(3, 1fr);
       }
       .journey-cell {
-        border-right: 1px solid rgba(229, 215, 187, 0.04);
+        border-right: 1px solid rgba(229, 215, 187, 0.06);
+        border-bottom: 0;
       }
       .journey-cell:last-child { border-right: 0; }
     }
