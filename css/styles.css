@@ -711,6 +711,8 @@ h1, h2, h3, h4 {
 .field-note-card p {
   margin: 0;
   color: var(--ink-soft);
+  line-height: 1.62;
+  min-height: calc(4 * 1.62em);
 }
 
 .field-note-card__link {
