@@ -1,0 +1,70 @@
+{
+  "name": "SIDC.AI Agent Codex",
+  "description": "Exposes Siddhartha's profile, essays, and value function validator.",
+  "version": "1.0.0",
+  "tools": [
+    {
+      "name": "fetch_professional_profile",
+      "description": "Returns Siddhartha Chaturvedi's professional bio, verified proof credentials, active board/venture roles, and connect channels.",
+      "parameters": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "fetch_field_note_summaries",
+      "description": "Returns the complete index of all active Field Notes essays published on SIDC.AI with links and TL;DR summaries.",
+      "parameters": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "triage_workload_interface",
+      "description": "Evaluates a proposed workload and recommends the optimal interface shape: Direct GUI, Headless Agent, or Generative UI.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "workloadType": {
+            "type": "string",
+            "enum": ["known-object", "analysis-loop", "team-decision"],
+            "description": "Categorization of the workload: 'known-object' (simple editing/approving), 'analysis-loop' (procedural data checks), 'team-decision' (messy multi-variant alignment)."
+          },
+          "description": {
+            "type": "string",
+            "description": "Natural language description of what the user wants to accomplish."
+          }
+        },
+        "required": ["workloadType"]
+      }
+    },
+    {
+      "name": "evaluate_system_equilibrium",
+      "description": "Evaluates an AI deployment across the three Value Function vectors: Resonance, Relevance, and Response. Outputs warnings for common alignment errors.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "resonance": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10,
+            "description": "Voice, style, and brand aesthetics score (1=Robotic, 10=Custom & local)."
+          },
+          "relevance": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10,
+            "description": "Grounding, citations, and evidence score (1=Unverified/hallucination, 10=Deterministic citations)."
+          },
+          "response": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10,
+            "description": "Execution, API action, and task-completion score (1=Drops text summary, 10=Executes native action)."
+          }
+        },
+        "required": ["resonance", "relevance", "response"]
+      }
+    }
+  ]
+}
