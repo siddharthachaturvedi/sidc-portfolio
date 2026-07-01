@@ -217,15 +217,19 @@
     .gu-fractal__ctl { display: flex; align-items: center; gap: 0.8rem; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text); }
     .gu-fractal__ctl input { flex: 1; accent-color: var(--accent); }
 
-    /* Generated math */
-    .gu-math { display: grid; gap: 0.8rem; justify-items: start; }
-    .gu-math__q { font-family: "Fraunces", serif; font-size: 2.2rem; letter-spacing: -0.02em; color: var(--heading-color); }
-    .gu-math__opts { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .gu-math__opt { font-family: var(--font-mono); font-size: 0.9rem; min-width: 3rem; padding: 0.5rem 0.7rem; border: 1px solid var(--heading-color); background: var(--surface-strong); cursor: pointer; }
-    .gu-math__opt:hover { border-color: var(--accent); }
-    .gu-math__opt.correct { background: var(--void); color: var(--void-text); border-color: var(--void); }
-    .gu-math__opt.wrong { background: var(--crimson); color: #fff; border-color: var(--crimson); }
-    .gu-math__fb { font-family: var(--font-mono); font-size: 0.76rem; color: var(--muted); min-height: 1.2em; }
+    /* Generated db simulator */
+    .gu-db { display: flex; flex-direction: column; gap: 0.8rem; padding: 0.4rem; font-family: var(--font-sans); }
+    .gu-db__ctl { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .gu-db__ctl label { display: flex; flex-direction: column; font-size: 0.72rem; color: var(--muted); font-weight: 500; gap: 0.25rem; }
+    .gu-db__ctl span { font-family: var(--font-mono); font-size: 0.78rem; color: var(--heading-color); font-weight: 700; }
+    .gu-db__ctl input[type="range"] { width: 100%; height: 4px; background: var(--line); border-radius: 2px; appearance: none; outline: none; margin-top: 0.2rem; }
+    .gu-db__ctl input[type="range"]::-webkit-slider-thumb { appearance: none; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); cursor: pointer; }
+    .gu-db__results { display: grid; gap: 0.4rem; }
+    .gu-db__row { display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--line); padding: 0.5rem 0.7rem; border-radius: 4px; background: var(--surface-slate); font-size: 0.82rem; color: var(--text); transition: all 0.2s ease; }
+    .gu-db__row.winner { border-color: var(--accent); background: rgba(184, 98, 50, 0.05); color: var(--heading-color); font-weight: 600; }
+    .gu-db__row .badge { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); border: 1px solid var(--line); padding: 0.1rem 0.35rem; border-radius: 3px; background: rgba(0,0,0,0.02); }
+    .gu-db__row .recommend { display: none; font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); }
+    .gu-db__row.winner .recommend { display: inline-block; }
 
     /* ═══════════════════════════════════════════
        WIDE DARK MATRIX VISUALS
@@ -966,9 +970,8 @@
         Because not every question wants a paragraph. Ask a model to help you dress for a winter
         wedding and a wall of text is a downgrade from a page you could actually <em>look</em> at.
         Ask it to explain fractals to a curious ten-year-old and the right answer is something they
-        can drag a slider on. Ask it to drill you on multiplication and you want buttons, not prose.
+        can drag a slider on. Ask it to compare database options for your workload and you want a dynamic simulator, not prose.
       </p>
-
       <p>
         That is the bet behind <strong>generative UI</strong>: instead of returning content, the
         model generates the <em>interface</em> — a small, custom, interactive application built for
@@ -998,7 +1001,7 @@
           <div class="genui__chips" role="group" aria-label="Example prompts">
             <button type="button" class="genui__chip" data-gu="fashion" aria-pressed="false">Style me for a winter wedding</button>
             <button type="button" class="genui__chip" data-gu="fractal" aria-pressed="false">Explain fractals to a 10-year-old</button>
-            <button type="button" class="genui__chip" data-gu="math" aria-pressed="false">Drill me on multiplication</button>
+            <button type="button" class="genui__chip" data-gu="db" aria-pressed="false">Compare database options for my workload</button>
           </div>
           <div class="genui__screen" id="genui-screen" aria-live="polite">
             <div class="genui__building" id="genui-building">
@@ -1512,53 +1515,75 @@
         slider.addEventListener("input", () => { val.textContent = slider.value; draw(+slider.value); });
       };
 
-      // Generated interface #3: math drill
-      const math = () => {
-        const roll = () => {
-          const a = 2 + Math.floor(Math.random() * 8);
-          const b = 2 + Math.floor(Math.random() * 8);
-          const ans = a * b;
-          const opts = new Set([ans]);
-          while (opts.size < 4) {
-            const d = ans + (Math.floor(Math.random() * 11) - 5) || ans + 3;
-            if (d > 0) opts.add(d);
-          }
-          return { a, b, ans, opts: [...opts].sort(() => Math.random() - 0.5) };
-        };
-        const render = () => {
-          const q = roll();
-          out.innerHTML = `
-            <div class="gu-math">
-              <div class="gu-math__q">${q.a} × ${q.b}</div>
-              <div class="gu-math__opts" role="group" aria-label="Choose the answer">
-                ${q.opts.map((o) => `<button type="button" class="gu-math__opt" data-a="${o}">${o}</button>`).join("")}
+      // Generated interface #3: database comparison simulator
+      const db = () => {
+        out.innerHTML = `
+          <div class="gu-db">
+            <div class="gu-db__ctl">
+              <label>Writes/sec: <span id="val-writes">5,000</span>
+                <input type="range" id="slider-writes" min="500" max="50000" step="500" value="5000">
+              </label>
+              <label>Storage: <span id="val-storage">200 GB</span>
+                <input type="range" id="slider-storage" min="10" max="2000" step="10" value="200">
+              </label>
+            </div>
+            <div class="gu-db__results">
+              <div class="gu-db__row" id="row-postgres">
+                <span>PostgreSQL</span>
+                <span class="badge">Relational SQL</span>
+                <span class="recommend">Recommended Option</span>
               </div>
-              <div class="gu-math__fb" id="gu-fb" aria-live="polite"></div>
-            </div>`;
-          const fb = document.getElementById("gu-fb");
-          out.querySelectorAll(".gu-math__opt").forEach((btn) => {
-            btn.addEventListener("click", () => {
-              const pick = +btn.dataset.a;
-              if (pick === q.ans) {
-                btn.classList.add("correct");
-                fb.textContent = "Correct — next one loading…";
-                out.querySelectorAll(".gu-math__opt").forEach((b) => (b.disabled = true));
-                setTimeout(render, 900);
-              } else {
-                btn.classList.add("wrong");
-                fb.textContent = `Not ${pick}. Try again.`;
-              }
-            });
-          });
+              <div class="gu-db__row" id="row-dynamo">
+                <span>DynamoDB</span>
+                <span class="badge">NoSQL Scaled</span>
+                <span class="recommend">Recommended Option</span>
+              </div>
+              <div class="gu-db__row" id="row-redis">
+                <span>Redis</span>
+                <span class="badge">In-Memory Cache</span>
+                <span class="recommend">Recommended Option</span>
+              </div>
+            </div>
+          </div>`;
+
+        const sWrites = document.getElementById("slider-writes");
+        const sStorage = document.getElementById("slider-storage");
+        const vWrites = document.getElementById("val-writes");
+        const vStorage = document.getElementById("val-storage");
+        const rPostgres = document.getElementById("row-postgres");
+        const rDynamo = document.getElementById("row-dynamo");
+        const rRedis = document.getElementById("row-redis");
+
+        const update = () => {
+          const writes = +sWrites.value;
+          const storage = +sStorage.value;
+
+          vWrites.textContent = writes.toLocaleString();
+          vStorage.textContent = storage >= 1000 ? (storage / 1000).toFixed(1) + " TB" : storage + " GB";
+
+          rPostgres.classList.remove("winner");
+          rDynamo.classList.remove("winner");
+          rRedis.classList.remove("winner");
+
+          if (writes >= 25000) {
+            rRedis.classList.add("winner");
+          } else if (storage >= 1000 || writes >= 8000) {
+            rDynamo.classList.add("winner");
+          } else {
+            rPostgres.classList.add("winner");
+          }
         };
-        render();
+
+        sWrites.addEventListener("input", update);
+        sStorage.addEventListener("input", update);
+        update();
       };
 
-      const RENDERERS = { fashion, fractal, math };
+      const RENDERERS = { fashion, fractal, db };
       const LABELS = {
         fashion: "Style me for a winter wedding",
         fractal: "Explain fractals to a curious 10-year-old",
-        math: "Drill me on multiplication",
+        db: "Compare database options for my workload",
       };
 
       const generate = (key) => {
