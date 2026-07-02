@@ -1,7 +1,7 @@
 {
   "name": "SIDC.AI Agent Codex",
   "description": "Exposes Siddhartha's profile, essays, and value function validator.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "tools": [
     {
       "name": "fetch_professional_profile",
