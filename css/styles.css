@@ -423,6 +423,7 @@ h1, h2, h3, h4 {
 
 /* Left Narrative Column */
 .hero__narrative {
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
@@ -437,7 +438,10 @@ h1, h2, h3, h4 {
 }
 
 .hero__title {
-  font-size: clamp(3rem, 8.5vw, 6.4rem);
+  font-size: min(clamp(3rem, 8.5vw, 6.4rem), 15cqi);
+  /* Preserve the explicit name break and keep the final dot attached,
+     including when motion.js splits the letters into inline blocks. */
+  white-space: nowrap;
   line-height: 0.92;
   font-family: var(--font-display);
   font-weight: 400;
@@ -452,7 +456,7 @@ h1, h2, h3, h4 {
 }
 
 /* Per-character split injected by motion.js for the kinetic weight-morph.
-   The "Chaturvedi" run inherits the ochre accent colour. */
+   The "Chaturvedi" run inherits the forest-green accent colour. */
 .hero__title-line {
   display: block;
 }
@@ -653,8 +657,8 @@ h1, h2, h3, h4 {
 }
 
 .field-note-card__visual .fn-accent-soft {
-  fill: rgba(165, 80, 39, 0.1);
-  stroke: rgba(165, 80, 39, 0.58);
+  fill: rgb(var(--vermillion-rgb) / 0.1);
+  stroke: rgb(var(--vermillion-rgb) / 0.58);
 }
 
 .field-note-card__visual .fn-accent-fill {
@@ -673,8 +677,8 @@ h1, h2, h3, h4 {
 }
 
 .field-note-card__visual .fn-purpose {
-  fill: rgba(165, 80, 39, 0.08);
-  stroke: rgba(165, 80, 39, 0.35);
+  fill: rgb(var(--vermillion-rgb) / 0.08);
+  stroke: rgb(var(--vermillion-rgb) / 0.35);
 }
 
 .field-note-card__visual .fn-system {

@@ -19,9 +19,10 @@
   --line-dark: #17201e;
 
   /* ─ Accent signals ─ */
-  --vermillion: #a55027;     /* Oxide Ochre — AA-safe primary accent */
-  --vermillion-light: #d68a5a;
-  --vermillion-rgb: 165 80 39;
+  /* Historical token names retained for existing page compatibility. */
+  --vermillion: #24543d;     /* Forest green — primary accent */
+  --vermillion-light: #8bb99b;
+  --vermillion-rgb: 36 84 61;
   --crimson: #9d3c30;        /* Biothreat Crimson — emphasis */
   --void: #08262d;           /* River Void — dark surfaces */
   --void-text: #e5d7bb;
