@@ -21,6 +21,7 @@
   --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
   --radius: 22px;
   --shadow: 0 18px 50px rgba(19, 27, 22, 0.14);
+  --drop: drop-shadow(0 14px 22px rgba(19, 27, 22, 0.18));  /* follows a screenshot's own corners */
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -35,6 +36,7 @@
     --matcha-dark: #A9BCA1;
     --matcha-pale: #2E3C31;
     --shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
+    --drop: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.5));
   }
 }
 
@@ -104,12 +106,18 @@ em { font-style: italic; }
 }
 .chip b { color: #8FBF83; margin-right: 4px; }
 .phones { position: relative; height: 560px; align-self: end; }
-.phone {
-  position: absolute; width: 260px; border-radius: 40px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.06);
+.phone, .tablet {
+  position: absolute;
+  /* Screenshots carry the device's own display mask; the shadow and hairline follow it. */
+  filter: drop-shadow(0 0 0.6px rgba(255, 255, 255, 0.35)) drop-shadow(0 24px 32px rgba(0, 0, 0, 0.5));
 }
+.phone { width: 260px; }
 .phone.front { left: 38%; bottom: -40px; z-index: 2; }
-.phone.back { left: 2%; bottom: -110px; transform: rotate(-5deg); opacity: 0.92; }
+/* iPad and iPhone together wherever there's room; the phone alone on a phone. Sized as a share
+   of the column, so the phone always covers about a third of the iPad. */
+.tablet { width: 82%; max-width: 420px; right: -2%; bottom: -60px; }
+.phones:has(.tablet) .phone.front { left: 0; bottom: -110px; width: 46%; max-width: 240px; }
+@media (min-width: 901px) { .phones:has(.tablet) { height: 500px; } }
 
 /* Sections */
 section { padding: 88px 0 0; }
@@ -130,7 +138,7 @@ section { padding: 88px 0 0; }
 }
 .gallery { display: flex; gap: 22px; overflow-x: auto; padding: 6px 4px 28px; scroll-snap-type: x mandatory; }
 .gallery figure { margin: 0; flex: 0 0 250px; scroll-snap-align: start; }
-.gallery img { width: 100%; border-radius: 34px; box-shadow: var(--shadow); display: block; }
+.gallery img { width: 100%; filter: var(--drop); display: block; }
 .gallery figcaption { text-align: center; color: var(--muted); font-size: 14px; margin-top: 12px; }
 .band { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .stat { font: 400 44px/1 var(--serif); color: var(--ink); }
@@ -157,6 +165,8 @@ footer a:hover { color: var(--ink); }
   .phones { height: 470px; }
   .phone { width: 220px; }
   .phone.front { left: 42%; }
+  .tablet { width: 340px; right: calc(50% - 250px); }  /* a centred pair, overlapping by 60px */
+  .phones:has(.tablet) .phone.front { left: calc(50% - 250px); width: 220px; }
   .grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 600px) {
@@ -167,8 +177,8 @@ footer a:hover { color: var(--ink); }
   .cta { margin-bottom: 8px; }
   .phones { height: 300px; }
   .phone { width: 230px; }
-  .phone.back { display: none; }
-  .phone.front { left: 50%; transform: translateX(-50%); bottom: -190px; }
+  .tablet { display: none; }
+  .phone.front, .phones:has(.tablet) .phone.front { left: 50%; transform: translateX(-50%); bottom: -190px; width: 230px; }
   .grid, .band { grid-template-columns: 1fr; }
   .top nav { gap: 14px; }
   section { padding-top: 64px; }
