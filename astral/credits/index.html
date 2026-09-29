@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Credits · Astral Journey</title>
+  <meta name="description" content="The data and software Astral Journey is built on.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/icon-180.png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="../"><img src="../assets/icon-180.png" alt=""><span>Astral Journey</span></a>
+      <nav><a href="../support/">Support</a><a href="../privacy/">Privacy</a></nav>
+    </header>
+    <main class="doc">
+      <div class="eyebrow">Credits</div>
+      <h1>Built on good science.</h1>
+      <p class="updated">The data and software inside the app.</p>
+      <div class="card"><h3>Planetary positions</h3><p>NASA JPL's DE440 ephemeris (Park, Folkner, Williams &amp; Boggs, 2021), read by <a href="https://github.com/nirayana/nirayana">Nirayana</a> (MIT licence).</p></div>
+      <div class="card"><h3>Earth orientation</h3><p>ERFA, derived from the International Astronomical Union's SOFA software (BSD 3-clause licence).</p></div>
+      <div class="card"><h3>Places</h3><p>Place names and coordinates from <a href="https://www.geonames.org">GeoNames</a>, under a Creative Commons Attribution 4.0 licence.</p></div>
+      <h2>Licences</h2>
+      <p class="updated">The notices these licences ask us to reproduce, as they appear in the app under Settings → Acknowledgements.</p>
+      <pre class="notices">Astral Journey is built on the following. Thank you to their authors.
+
+NIRAYANA
+Planetary positions, sidereal time, rise and set, eclipses.
+https://github.com/nirayana/nirayana
+
+MIT License
+
+Copyright (c) 2026 The Nirayana authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+NASA JPL DE440 EPHEMERIS
+The bundled kernel de440s.bsp is from NASA&#x27;s Jet Propulsion Laboratory.
+Park, R. S., Folkner, W. M., Williams, J. G., and Boggs, D. H. (2021), The JPL Planetary and Lunar
+Ephemerides DE440 and DE441, The Astronomical Journal 161:105. https://doi.org/10.3847/1538-3881/abd414
+
+ERFA (ESSENTIAL ROUTINES FOR FUNDAMENTAL ASTRONOMY) 2.0.1
+Parts of ERFA are included in Nirayana. ERFA is derived from the IAU&#x27;s SOFA library; this app uses
+a library derived from SOFA, not SOFA itself.
+
+Copyright (C) 2013-2021, NumFOCUS Foundation.
+All rights reserved.
+
+This library is derived, with permission, from the International
+Astronomical Union&#x27;s &quot;Standards of Fundamental Astronomy&quot; library,
+available from http://www.iausofa.org.
+
+The ERFA version is intended to retain identical
+functionality to the SOFA library, but made distinct through
+different function and file names, as set out in the SOFA license
+conditions. The SOFA original has a role as a reference standard
+for the IAU and IERS, and consequently redistribution is permitted only
+in its unaltered state. The ERFA version is not subject to this
+restriction and therefore can be included in distributions which do not
+support the concept of &quot;read only&quot; software.
+
+Although the intent is to replicate the SOFA API (other than replacement of
+prefix names) and results (with the exception of bugs; any that are
+discovered will be fixed), SOFA is not responsible for any errors found
+in this version of the library.
+
+If you wish to acknowledge the SOFA heritage, please acknowledge that
+you are using a library derived from SOFA, rather than SOFA itself.
+
+
+TERMS AND CONDITIONS
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1 Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+
+2 Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+
+3 Neither the name of the Standards Of Fundamental Astronomy Board, the
+   International Astronomical Union nor the names of its contributors
+   may be used to endorse or promote products derived from this software
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS
+IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+DELTA T
+Historical Delta T spline coefficients: L. V. Morrison, F. R. Stephenson, C. Y. Hohenkerk and
+M. Zawilski, Addendum 2020 to Measurement of the Earth&#x27;s rotation: 720 BC to AD 2015, Proceedings
+of the Royal Society A 477:20200776 (2021), https://doi.org/10.1098/rspa.2020.0776. Numerical dataset
+version 2 (https://doi.org/10.6084/m9.figshare.13885863.v2), licensed under Creative Commons
+Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). Converted to program
+literals without changing any epoch bounds or coefficients.
+Modern monthly Delta T values: U.S. Naval Observatory, IERS Rapid Service/Prediction Center
+(https://maia.usno.navy.mil/products/deltaT), approved for public release, distribution unlimited.
+
+GEONAMES
+Place names, coordinates and time zones for offline search from GeoNames (https://www.geonames.org),
+licensed under Creative Commons Attribution 4.0 International
+(https://creativecommons.org/licenses/by/4.0/). Changed: filtered to places of 15,000 or more
+people and reduced to name, region, country, coordinates and time zone.
+</pre>
+    </main>
+  </div>
+  <footer>
+    <div class="wrap">
+      <div><a href="../privacy/">Privacy</a><a href="../support/">Support</a><a href="../credits/">Credits</a></div>
+      <div>© 2026 Astral Journey</div>
+    </div>
+  </footer>
+</body>
+</html>
