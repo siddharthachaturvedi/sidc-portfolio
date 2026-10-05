@@ -31,3 +31,6 @@ todelete/
 AGENTS.md
 CLAUDE.md
 CLAUDE.local.md
+
+# Local resume source collection and extraction workspace
+/resume-tmp/
