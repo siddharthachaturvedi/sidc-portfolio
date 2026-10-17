@@ -35,6 +35,10 @@ The equilibrium of all three produces AI that ships.
 - "The App That Builds Itself for One Question" (https://sidc.ai/essays/interface-triage/): what generative UI means \u2014 the model builds a bespoke interface for the question instead of a wall of text \u2014 with an interactive demo
 - "AI Won't Simplify Work. It Might Finally Restore It." (https://sidc.ai/essays/fow/) — the real promise of the agentic era isn't speed, it's returning human attention to the complexity that matters
 
+## Doodles
+Short, sourced visual stories about public work worth celebrating. Index: https://sidc.ai/doodles/
+- "Project Wolbachia at ten" (https://sidc.ai/doodles/wolbachia/): an animated timeline of Singapore's National Environment Agency releasing male Wolbachia-carrying mosquitoes since 18 October 2016, from the first field study to the randomised trial and the households reached. Every number is sourced; data at https://sidc.ai/doodles/wolbachia/data.json and data.csv. Independent tribute, not affiliated with NEA.
+
 ## Agentic Capabilities (WebMCP)
 This site implements the emerging, evolving W3C Web Model Context Protocol (WebMCP) standard to allow AI agents to interact with our strategic frameworks directly.
 - **Static Discovery Manifest**: Exposed at `https://sidc.ai/.well-known/webmcp` and `https://sidc.ai/.well-known/webmcp.json`.

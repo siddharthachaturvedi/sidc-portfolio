@@ -1,0 +1,441 @@
+{
+  "meta": {
+    "title": "Project Wolbachia at ten",
+    "version": "1.0",
+    "checked": "2026-10-16",
+    "published": "2026-10-18",
+    "canonical": "https://sidc.ai/doodles/wolbachia/",
+    "ogImage": "https://sidc.ai/doodles/wolbachia/og.png",
+    "householdsPerSquare": 8000,
+    "targetHouseholds": 800000,
+    "author": "Siddhartha Chaturvedi",
+    "site": "sidc.ai",
+    "correctionsUrl": "https://linkedin.com/in/sidcai"
+  },
+  "note": "Every number shown in the Project Wolbachia at ten doodle, with its source. Coverage is in households unless the note says otherwise.",
+  "beats": [
+    {
+      "year": null,
+      "headline": "Fight mosquitoes with mosquitoes.",
+      "text": "Male mosquitoes carrying Wolbachia don’t bite. When they mate with wild females, the eggs don’t hatch.",
+      "sources": [
+        "neaStrategy"
+      ],
+      "coverage": {
+        "value": "800,000",
+        "note": "households targeted by end-2026: half of Singapore’s households",
+        "sources": [
+          "mse2026"
+        ]
+      },
+      "released": {
+        "value": "None yet",
+        "note": "first release on 18 October 2016",
+        "sources": [
+          "nea2016"
+        ]
+      }
+    },
+    {
+      "year": 2016,
+      "headline": "Day one.",
+      "text": "On 18 October, NEA’s Environmental Health Institute releases about 3,000 males at Braddell Heights.",
+      "sources": [
+        "nea2016"
+      ],
+      "coverage": {
+        "value": "4,200",
+        "note": "households across three study sites",
+        "sources": [
+          "nea2016"
+        ]
+      },
+      "released": {
+        "value": "About 3,000",
+        "note": "on day one",
+        "sources": [
+          "nea2016"
+        ]
+      }
+    },
+    {
+      "year": 2017,
+      "headline": "Half isn’t enough.",
+      "text": "Phase 1 halves mosquito numbers. But mosquitoes from next door move in, and a few females slip through sorting.",
+      "sources": [
+        "neaPhase1"
+      ],
+      "coverage": {
+        "value": "3",
+        "note": "study sites, not counted in households",
+        "sources": [
+          "nea2016"
+        ]
+      },
+      "released": {
+        "value": "No figure",
+        "note": "no published weekly total found",
+        "sources": []
+      }
+    },
+    {
+      "year": 2018,
+      "headline": "New partner.",
+      "text": "Phase 2 begins in April. In September, Verily’s Debug team joins as a collaborator.",
+      "sources": [
+        "neaReleases",
+        "mseSummit"
+      ],
+      "coverage": {
+        "value": "2",
+        "note": "Phase 2 study sites",
+        "sources": [
+          "neaPhase2"
+        ]
+      },
+      "released": {
+        "value": "No figure",
+        "note": "no published weekly total found",
+        "sources": []
+      }
+    },
+    {
+      "year": 2019,
+      "headline": "Past 90%.",
+      "text": "Phase 3 cuts the urban Aedes aegypti population by more than 90% across 144 residential blocks.",
+      "sources": [
+        "nea2019"
+      ],
+      "coverage": {
+        "value": "144",
+        "note": "residential blocks in Phase 3",
+        "sources": [
+          "nea2019"
+        ]
+      },
+      "released": {
+        "value": "No figure",
+        "note": "no published weekly total found",
+        "sources": []
+      }
+    },
+    {
+      "year": 2020,
+      "headline": "The worst year.",
+      "text": "Singapore’s largest dengue outbreak: 35,000+ cases. Releases cover about 8% of HDB blocks. Too few to bend the curve.",
+      "sources": [
+        "mseSummit",
+        "malaymail",
+        "nea2020"
+      ],
+      "coverage": {
+        "value": "~8%",
+        "note": "of HDB blocks covered",
+        "sources": [
+          "malaymail"
+        ]
+      },
+      "released": {
+        "value": "No figure",
+        "note": "no published weekly total found",
+        "sources": []
+      }
+    },
+    {
+      "year": 2021,
+      "headline": "Fewer cases.",
+      "text": "Study sites in four towns: up to 98% fewer mosquitoes and up to 88% fewer dengue cases. Observational, not yet randomised.",
+      "sources": [
+        "nea2021"
+      ],
+      "coverage": {
+        "value": "860",
+        "note": "HDB blocks in Yishun and Tampines by June 2021",
+        "sources": [
+          "nea2021"
+        ]
+      },
+      "released": {
+        "value": "No figure",
+        "note": "no published weekly total found",
+        "sources": []
+      }
+    },
+    {
+      "year": 2022,
+      "headline": "The trial.",
+      "text": "15 areas, about 724,000 residents. Eight are picked at random for releases. Seven get none.",
+      "sources": [
+        "nejm",
+        "malaymail"
+      ],
+      "coverage": {
+        "value": "About 300,000",
+        "note": "households after the 2022 expansion",
+        "sources": [
+          "malaymail"
+        ]
+      },
+      "released": {
+        "value": "2 million",
+        "note": "produced a week",
+        "sources": [
+          "mseSummit"
+        ]
+      }
+    },
+    {
+      "year": 2023,
+      "headline": "A million residents.",
+      "text": "Releases now reach more than 300,000 households and about 30% of HDB blocks.",
+      "sources": [
+        "mse2023",
+        "debug2024"
+      ],
+      "coverage": {
+        "value": "300,000+",
+        "note": "households, about 30% of HDB blocks",
+        "sources": [
+          "mse2023"
+        ]
+      },
+      "released": {
+        "value": "7 million",
+        "note": "a week: capacity",
+        "sources": [
+          "debug2024"
+        ]
+      }
+    },
+    {
+      "year": 2024,
+      "headline": "96% say yes.",
+      "text": "In community surveys, 96% of residents accept releases in their neighbourhood. The trial ends in September.",
+      "sources": [
+        "mse2024a",
+        "mse2024b",
+        "debug2024",
+        "nejm"
+      ],
+      "coverage": {
+        "value": "480,000",
+        "note": "households from March 2024",
+        "sources": [
+          "mse2024b"
+        ]
+      },
+      "released": {
+        "value": "11 million",
+        "note": "a week: capacity",
+        "sources": [
+          "debug2024"
+        ]
+      }
+    },
+    {
+      "year": 2025,
+      "headline": "Quietest since 2018.",
+      "text": "4,036 dengue cases nationwide. MSE credits no major outbreak, a global dip and mosquito control by everyone.",
+      "sources": [
+        "mse2026"
+      ],
+      "coverage": {
+        "value": "580,000",
+        "note": "households from April 2025",
+        "sources": [
+          "mse2026"
+        ]
+      },
+      "released": {
+        "value": "11 million",
+        "note": "a week: capacity, latest published (2024)",
+        "sources": [
+          "debug2024"
+        ]
+      }
+    },
+    {
+      "year": 2026,
+      "headline": "The verdict.",
+      "text": "71–72% lower dengue risk in release areas. 6% of tests positive, vs 21% in control areas.",
+      "sources": [
+        "nejm"
+      ],
+      "coverage": {
+        "value": "580,000",
+        "note": "households (April 2025). 740,000 planned by March 2026.",
+        "sources": [
+          "mse2026"
+        ]
+      },
+      "released": {
+        "value": "10 million+",
+        "note": "Debug’s weekly releases (May 2026)",
+        "sources": [
+          "debug2026"
+        ]
+      }
+    },
+    {
+      "year": 2026,
+      "headline": null,
+      "text": "2,351 estimated dengue cases averted during the trial (95% CI 1,968–2,735). Same trial, second analysis.",
+      "sources": [
+        "ebiom"
+      ],
+      "coverage": null,
+      "released": null
+    }
+  ],
+  "evidence": [
+    {
+      "label": "Field study",
+      "year": "2016",
+      "src": [
+        "nea2016"
+      ]
+    },
+    {
+      "label": "Fewer mosquitoes",
+      "year": "2017",
+      "src": [
+        "neaPhase1"
+      ]
+    },
+    {
+      "label": "Fewer cases, observational",
+      "year": "2020",
+      "src": [
+        "nea2020"
+      ]
+    },
+    {
+      "label": "Synthetic-control studies",
+      "year": "2024",
+      "src": [
+        "synth"
+      ]
+    },
+    {
+      "label": "Randomised trial",
+      "year": "2026",
+      "src": [
+        "nejm"
+      ]
+    }
+  ],
+  "sources": {
+    "neaStrategy": {
+      "short": "NEA, Project Wolbachia",
+      "title": "NEA: Wolbachia-Aedes mosquito suppression strategy (programme page, updated 13 Aug 2026)",
+      "url": "https://www.nea.gov.sg/corporate-functions/resources/research/wolbachia-aedes-mosquito-suppression-strategy"
+    },
+    "nea2016": {
+      "short": "NEA, 18 Oct 2016",
+      "title": "NEA media release, 18 Oct 2016: small-scale field study begins at Braddell Heights",
+      "url": "https://www.nea.gov.sg/media/news/news/index/nea-commences-small-scale-field-study-with-release-of-male-wolbachia-carrying-aedes-aegypti-at-braddell-heights"
+    },
+    "neaPhase1": {
+      "short": "NEA, Phase 1 results",
+      "title": "NEA: Phase 1 small-scale field study, results and lessons",
+      "url": "https://www.nea.gov.sg/corporate-functions/resources/research/environmental_health_institute/wolbachia-aedes-mosquito-suppression-strategy/phase-1-small-scale-field-study"
+    },
+    "neaPhase2": {
+      "short": "NEA, Phase 2",
+      "title": "NEA: Phase 2 field study, carried out in Tampines West and Nee Soon East",
+      "url": "https://www.nea.gov.sg/corporate-functions/resources/research/environmental_health_institute/wolbachia-aedes-mosquito-suppression-strategy/phase-2-field-study"
+    },
+    "neaReleases": {
+      "short": "NEA, 18 Sep 2018",
+      "title": "NEA media release, 18 Sep 2018: Verily joins the ongoing Phase 2 field study, which started in April 2018",
+      "url": "https://www.nea.gov.sg/media/news/news/index/project-wolbachia-singapore-welcomes-new-collaborator-for-ongoing-phase-2-field-study"
+    },
+    "mseSummit": {
+      "short": "MSE, 2022",
+      "title": "MSE: Minister Grace Fu at the 5th Asia Dengue Summit, 15 Jun 2022 (2020 outbreak, Verily partnership, production of 2 million a week)",
+      "url": "https://www.mse.gov.sg/latest-news/speech-by-minister-grace-fu-at-5th-asia-dengue-summit/"
+    },
+    "nea2019": {
+      "short": "NEA, 7 Oct 2019",
+      "title": "NEA media release, 7 Oct 2019: more than 90% suppression in Phase 3",
+      "url": "https://www.nea.gov.sg/media/news/news/index/successful-study-paves-the-way-for-doubling-the-size-of-male-wolbachia-aedes-mosquito-release"
+    },
+    "malaymail": {
+      "short": "NEA via Malay Mail, 2022",
+      "title": "Malay Mail, 15 Jun 2022, quoting NEA: 2020 study sites covered about 8% of HDB blocks; 2022 expansion to 31% of blocks or 300,000 homes",
+      "url": "https://www.malaymail.com/news/singapore/2022/06/15/as-dengue-cases-soar-singapores-mosquito-suppressing-project-wolbachia-to-be-expanded-to-about-a-third-of-hdb-flats/12554"
+    },
+    "nea2020": {
+      "short": "NEA, 17 Jul 2020",
+      "title": "NEA media release, 17 Jul 2020: 65–80% fewer dengue cases at Yishun and Tampines study sites in 2019 (preliminary); releases to cover both towns",
+      "url": "https://www.nea.gov.sg/media/news/news/index/male-wolbachia-aedes-mosquito-releases-to-cover-entire-yishun-and-tampines-hdb-towns"
+    },
+    "nea2021": {
+      "short": "NEA, 5 Jul 2021",
+      "title": "NEA media release, 5 Jul 2021: up to 98% suppression and 88% fewer dengue cases at study sites",
+      "url": "https://www.nea.gov.sg/media/news/news/index/project-wolbachia-singapore-suppresses-aedes-aegypti-mosquito-population-and-reduces-dengue-cases-at-release-sites"
+    },
+    "nejm": {
+      "short": "NEJM, 11 Feb 2026",
+      "title": "Lim JT et al. Dengue suppression by male Wolbachia-infected mosquitoes. N Engl J Med 2026;394:1175–83",
+      "url": "https://doi.org/10.1056/NEJMoa2503304"
+    },
+    "mse2023": {
+      "short": "MSE, 8 May 2023",
+      "title": "MSE written reply, 8 May 2023: more than 300,000 households, about 30% of HDB blocks, 1 million residents",
+      "url": "https://www.mse.gov.sg/latest-news/written-reply-to-pq-on-project-wolbachia/"
+    },
+    "debug2024": {
+      "short": "Debug, 2024",
+      "title": "Debug blog, 15 Apr 2024: weekly capacity from 7 million (2023) to 11 million (2024)",
+      "url": "https://blog.debug.com/2024/04/expansion-of-project-wolbachia-in.html"
+    },
+    "mse2024a": {
+      "short": "MSE, Feb 2024",
+      "title": "MSE written reply, 16 Feb 2024: 96% of residents accept releases",
+      "url": "https://www.mse.gov.sg/latest-news/written-reply-to-pq-on-project-wolbachia-phase-5/"
+    },
+    "mse2024b": {
+      "short": "MSE, 2024",
+      "title": "MSE written reply, 2024: 480,000 households covered since March 2024",
+      "url": "https://www.mse.gov.sg/latest-news/written-reply-to-pqs-on-dengues/"
+    },
+    "mse2026": {
+      "short": "MSE, 13 Jan 2026",
+      "title": "MSE oral reply, 13 Jan 2026: 4,036 cases in 2025; 580,000, 740,000 and 800,000 households",
+      "url": "https://www.mse.gov.sg/latest-news/oral-reply-to-parliamentary-question-on-dengue-and-project-wolbachia/"
+    },
+    "ebiom": {
+      "short": "eBioMedicine, 10 Sep 2026",
+      "title": "Impact of Wolbachia-mediated incompatible and sterile insect techniques on dengue incidence: a large-scale cluster randomised controlled trial. eBioMedicine, 10 Sep 2026",
+      "url": "https://doi.org/10.1016/j.ebiom.2026.106476"
+    },
+    "debug2026": {
+      "short": "Debug, May 2026",
+      "title": "Debug blog, May 2026: over 10 million released weekly from its Singapore facility",
+      "url": "https://blog.debug.com/2026/05/"
+    },
+    "synth": {
+      "short": "Lancet Microbe; Lancet Planet Health, 2024",
+      "title": "Lim JT et al., Lancet Microbe 2024, and Bansal S et al., Lancet Planetary Health 2024: synthetic-control studies, as cited in the NEJM paper",
+      "url": "https://www.nea.gov.sg/docs/default-source/project-wolbachia/nejm_project-wolbachia.pdf"
+    },
+    "nejmPdf": {
+      "short": "NEJM full text",
+      "title": "NEJM full text with acknowledgements, hosted by NEA",
+      "url": "https://www.nea.gov.sg/docs/default-source/project-wolbachia/nejm_project-wolbachia.pdf"
+    },
+    "neaAuto": {
+      "short": "NEA, partners",
+      "title": "NEA: automation and partnerships to scale capacity (Orinno, Verily)",
+      "url": "https://www.nea.gov.sg/corporate-functions/resources/research/environmental_health_institute/wolbachia-aedes-mosquito-suppression-strategy/automation-and-partnerships-to-scale-capacity"
+    }
+  },
+  "corrections": [
+    {
+      "version": "1.0",
+      "date": "2026-10-18",
+      "note": "First published. Figures checked on 16 October 2026."
+    }
+  ]
+}

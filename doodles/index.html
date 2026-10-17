@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doodles | Siddhartha Chaturvedi</title>
+  <meta name="description" content="Short, sourced visual stories about public work worth celebrating. Every number links to its source.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#f4f1ea">
+  <link rel="canonical" href="https://sidc.ai/doodles/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Doodles | Siddhartha Chaturvedi">
+  <meta property="og:description" content="Short, sourced visual stories about public work worth celebrating. Every number links to its source.">
+  <meta property="og:url" content="https://sidc.ai/doodles/">
+  <meta property="og:image" content="https://sidc.ai/doodles/wolbachia/og.png">
+  <meta property="og:image:alt" content="Project Wolbachia at ten: a grid of mosquitoes filling in as Singapore's releases reach more households.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Public+Sans:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/favicons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/public/favicons/favicon-64.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="/public/favicons/favicon.png">
+
+  <!-- Shared site system: tokens first, then the essay chrome (header, CTA, footer). -->
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/essay-shared.css">
+  <style>
+    /* Page styles only. Everything references css/tokens.css. */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      color: var(--ink);
+      background-color: var(--bg-washi);
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+        var(--paper-texture);
+      background-size: 16px 16px, 16px 16px, auto;
+    }
+    :focus-visible { outline: 2px solid var(--vermillion); outline-offset: 4px; }
+
+    .doodles {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: calc(3rem + var(--space-3xl)) 24px var(--space-2xl);
+    }
+    .doodles__kicker {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--vermillion);
+    }
+    .doodles__title {
+      margin: var(--space-xs) 0 var(--space-md);
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(2.8rem, 2rem + 4vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+    }
+    .doodles__title span { color: var(--vermillion); }
+    .doodles__lede {
+      max-width: 38rem;
+      margin: 0 0 var(--space-2xl);
+      font-size: clamp(1.1rem, 1.02rem + 0.4vw, 1.3rem);
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+
+    /* Doodle card: the field-note card, widened for a share image. */
+    .doodle-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      border: 1px solid var(--ink);
+      background: var(--surface-strong);
+      color: inherit;
+      text-decoration: none;
+      transition: transform var(--transition-premium), border-color var(--transition-premium), background-color var(--transition-premium);
+    }
+    .doodle-card:hover,
+    .doodle-card:focus-visible { transform: translateY(-3px); border-color: var(--vermillion); background: #fffdfa; }
+    .doodle-card__visual { border-bottom: 1px solid var(--ink); background: var(--bg-washi); overflow: hidden; }
+    /* The share image carries its own 2px frame; a slight zoom tucks it under the card's border. */
+    .doodle-card__visual img { display: block; width: 100%; height: auto; transform: scale(1.02); }
+    .doodle-card__body { display: grid; align-content: start; gap: var(--space-xs); padding: var(--space-md); }
+    .doodle-card__eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--vermillion);
+    }
+    .doodle-card h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+    }
+    .doodle-card p { margin: 0; color: var(--ink-soft); line-height: 1.62; }
+    .doodle-card__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2xs) var(--space-md);
+      margin-top: var(--space-xs);
+      padding-top: var(--space-sm);
+      border-top: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .doodle-card__link {
+      margin-top: var(--space-xs);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .doodle-card:hover .doodle-card__link,
+    .doodle-card:focus-visible .doodle-card__link { color: var(--vermillion); }
+
+    @media (min-width: 860px) {
+      /* Feature card: full share image on top, then the text in two columns. */
+      .doodle-card__body { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); column-gap: var(--space-xl); padding: var(--space-lg); }
+      .doodle-card__eyebrow, .doodle-card h2, .doodle-card p { grid-column: 1; }
+      .doodle-card__meta { grid-column: 2; grid-row: 1 / span 3; align-self: end; flex-direction: column; margin-top: 0; padding-top: 0; padding-left: var(--space-md); border-top: 0; border-left: 1px solid var(--line); }
+      .doodle-card__link { grid-column: 2; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .doodle-card { transition: none; }
+      .doodle-card:hover, .doodle-card:focus-visible { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="essay-header">
+    <nav class="essay-nav" aria-label="Site">
+      <a class="essay-nav__brand" href="/" aria-label="sidc.ai home">
+        <span class="essay-nav__dot"></span>
+      </a>
+      <span class="essay-nav__sep" aria-hidden="true">/</span>
+      <span class="essay-nav__current">Doodles</span>
+    </nav>
+  </header>
+
+  <main class="doodles" id="main-content">
+    <p class="doodles__kicker">Doodles // MMXXVI</p>
+    <h1 class="doodles__title">Doodles<span>.</span></h1>
+    <p class="doodles__lede">Short visual stories about public work worth celebrating. Every number on screen links to its source.</p>
+
+    <a class="doodle-card" href="/doodles/wolbachia/">
+      <div class="doodle-card__visual">
+        <img src="/doodles/wolbachia/og.png" width="1200" height="630" alt="Project Wolbachia at ten: a grid of mosquitoes filling in as Singapore's releases reach more households, with outlined squares for the end-2026 target.">
+      </div>
+      <div class="doodle-card__body">
+        <span class="doodle-card__eyebrow">Doodle 01 // Public health, Singapore</span>
+        <h2>Project Wolbachia at ten</h2>
+        <p>On 18 October 2016, Singapore released its first male mosquitoes carrying Wolbachia. A one-minute timeline of the decade since: the setbacks, the randomised trial and the households reached.</p>
+        <div class="doodle-card__meta"><span>18 October 2026</span><span>One-minute film</span><span>Data and sources</span></div>
+        <span class="doodle-card__link">Open the doodle &rarr;</span>
+      </div>
+    </a>
+  </main>
+
+  <aside class="essay-cta">
+    <p>Spotted an error, or know a public programme worth a doodle?</p>
+    <a class="essay-cta__link" href="https://linkedin.com/in/sidcai" target="_blank" rel="noopener noreferrer">Tell me on LinkedIn &rarr;</a>
+  </aside>
+
+  <footer class="essay-footer">
+    <a href="/">&larr; sidc.ai</a>
+    <p>&copy; 2026 Siddhartha Chaturvedi</p>
+  </footer>
+</body>
+</html>
