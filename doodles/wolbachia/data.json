@@ -28,7 +28,7 @@
           "mse2026"
         ]
       },
-      "released": {
+      "mosquitoes": {
         "value": "None yet",
         "note": "first release on 18 October 2016",
         "sources": [
@@ -50,7 +50,7 @@
           "nea2016"
         ]
       },
-      "released": {
+      "mosquitoes": {
         "value": "About 3,000",
         "note": "on day one",
         "sources": [
@@ -72,7 +72,7 @@
           "nea2016"
         ]
       },
-      "released": {
+      "mosquitoes": {
         "value": "No figure",
         "note": "no published weekly total found",
         "sources": []
@@ -93,7 +93,7 @@
           "neaPhase2"
         ]
       },
-      "released": {
+      "mosquitoes": {
         "value": "No figure",
         "note": "no published weekly total found",
         "sources": []
@@ -113,7 +113,7 @@
           "nea2019"
         ]
       },
-      "released": {
+      "mosquitoes": {
         "value": "No figure",
         "note": "no published weekly total found",
         "sources": []
@@ -135,7 +135,7 @@
           "malaymail"
         ]
       },
-      "released": {
+      "mosquitoes": {
         "value": "No figure",
         "note": "no published weekly total found",
         "sources": []
@@ -155,7 +155,7 @@
           "nea2021"
         ]
       },
-      "released": {
+      "mosquitoes": {
         "value": "No figure",
         "note": "no published weekly total found",
         "sources": []
@@ -176,7 +176,7 @@
           "malaymail"
         ]
       },
-      "released": {
+      "mosquitoes": {
         "value": "2 million",
         "note": "produced a week",
         "sources": [
@@ -199,7 +199,7 @@
           "mse2023"
         ]
       },
-      "released": {
+      "mosquitoes": {
         "value": "7 million",
         "note": "a week: capacity",
         "sources": [
@@ -224,7 +224,7 @@
           "mse2024b"
         ]
       },
-      "released": {
+      "mosquitoes": {
         "value": "11 million",
         "note": "a week: capacity",
         "sources": [
@@ -246,7 +246,7 @@
           "mse2026"
         ]
       },
-      "released": {
+      "mosquitoes": {
         "value": "11 million",
         "note": "a week: capacity, latest published (2024)",
         "sources": [
@@ -268,7 +268,7 @@
           "mse2026"
         ]
       },
-      "released": {
+      "mosquitoes": {
         "value": "10 million+",
         "note": "Debug’s weekly releases (May 2026)",
         "sources": [
@@ -284,7 +284,7 @@
         "ebiom"
       ],
       "coverage": null,
-      "released": null
+      "mosquitoes": null
     }
   ],
   "evidence": [
