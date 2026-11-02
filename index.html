@@ -20,7 +20,10 @@
   >
   <meta property="og:url" content="https://sidc.ai/">
   <meta property="og:image" content="https://sidc.ai/public/images/og/home.png">
-  <meta property="og:image:alt" content="Portrait of Siddhartha Chaturvedi">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Siddhartha Chaturvedi: I help organizations put AI to work, and prove that it works.">
+  <meta property="og:site_name" content="sidc.ai">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Siddhartha Chaturvedi | AI systems for organizations">
@@ -29,6 +32,7 @@
     content="I help organizations put AI to work, and prove that it works. AI systems for organizations and validation of health AI."
   >
   <meta name="twitter:image" content="https://sidc.ai/public/images/og/home.png">
+  <meta name="twitter:image:alt" content="Siddhartha Chaturvedi: I help organizations put AI to work, and prove that it works.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,12 +55,18 @@
       "@type": "Person",
       "name": "Siddhartha Chaturvedi",
       "url": "https://sidc.ai/",
+      "email": "mailto:hello@sidc.ai",
       "image": "https://sidc.ai/public/images/sidc.jpeg",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Atlassian",
+        "url": "https://www.atlassian.com/"
+      },
       "description": "Builds AI systems for organizations and validates health AI. Founder of VeriScience. Former Microsoft Director of Product Management, INSEAD MBA.",
       "jobTitle": "Founder & AI Systems Builder",
       "sameAs": [
         "https://linkedin.com/in/sidcai",
-        "https://github.com/siddharth",
+        "https://github.com/siddharthachaturvedi",
         "https://veriscience.ai/",
         "https://unfreeze.org/",
         "https://stratcorp.ai/",
@@ -134,7 +144,7 @@
     }
   </script>
 </head>
-<body>
+<body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <div class="site">
@@ -165,7 +175,7 @@
       <div class="rail-action">
         <ul class="logos" aria-label="Where I've worked and studied">
           <li><img class="logo-microsoft" src="/public/images/organizations/microsoft.png" alt="Microsoft" width="216" height="46" loading="lazy"></li>
-          <li><img class="logo-veriscience" src="/public/images/organizations/veriscience.png" alt="VeriScience" width="7653" height="2085" loading="lazy"></li>
+          <li><img class="logo-veriscience" src="/public/images/organizations/veriscience-sm.png" alt="VeriScience" width="440" height="120" loading="lazy"></li>
           <li><img class="logo-atlassian" src="/public/images/organizations/atlassian-logo.svg" alt="Atlassian" width="297" height="48" loading="lazy"></li>
           <li><img class="logo-mitx" src="/public/images/organizations/mitx.svg" alt="MITx" width="166" height="50" loading="lazy"></li>
           <li><img class="logo-insead" src="/public/images/organizations/insead.png" alt="INSEAD" width="100" height="100" loading="lazy"></li>
@@ -181,39 +191,40 @@
 
     <main id="main">
 
-      <section class="hero" aria-labelledby="hero-title">
-        <span class="kicker">AI systems for organizations · Health AI validation</span>
+      <!-- Old anchor names from the previous homepage (home, theses, field-notes, proof, connect) are kept so shared links still land -->
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <span class="kicker">For boards, CIO<span class="keep-case">s</span> and health AI teams</span>
         <h1 id="hero-title">I help organizations put AI to work, and prove that it works.</h1>
-        <p class="lede">I design everything around the model: what it remembers, how teams check its answers, and where a person stays in the loop.</p>
+        <p class="lede">I design everything around the <strong>outcome</strong>: what drives <strong>value</strong>, how teams build <strong>trust</strong>, and where technology plays its part.</p>
         <div class="actions">
           <a class="btn" href="#notes">Read the field notes</a>
         </div>
         <ul class="proof" aria-label="Highlights">
           <li><b>$60M</b><span>AI for Health program, 200+ grantees</span></li>
-          <li><b>300+</b><span>GenAI use cases through evaluation gates, US federal</span></li>
-          <li><b>2021</b><span>World Changing Ideas, Microsoft Premonition</span></li>
-          <li><b>2026</b><span>Speaker, Google Cloud Next</span></li>
+          <li><b>Premonition</b><span>Robots that catch mosquitoes to spot outbreaks early. Fast Company World Changing Ideas Award Winner, 2021</span></li>
+          <li><b>1M+</b><span><abbr title="Monthly active users">MAU</abbr> on Atlassian's Rovo MCP</span></li>
         </ul>
       </section>
 
       <section id="bets" aria-labelledby="bets-title">
+        <span class="anchor-alias" id="theses"></span>
         <span class="kicker">Three bets</span>
         <h2 id="bets-title">What I'm betting on</h2>
         <ol class="bets">
           <li class="bet">
             <span class="n" aria-hidden="true">01</span>
             <p>The future of health AI is not prediction. It is <em>evidence</em>.</p>
-            <a href="/essays/value-function/">→ The Value Function</a>
+            <a href="/essays/value-function/"><span aria-hidden="true">→ </span>The Value Function</a>
           </li>
           <li class="bet">
             <span class="n" aria-hidden="true">02</span>
             <p>AI's hardest problem now is getting agents, people and systems to <em>work together</em>, not generating more content.</p>
-            <a href="/essays/interface-triage/">→ The App That Builds Itself</a>
+            <a href="/essays/interface-triage/"><span aria-hidden="true">→ </span>The App That Builds Itself</a>
           </li>
           <li class="bet">
             <span class="n" aria-hidden="true">03</span>
             <p>Software will have to work equally well for <em>the person clicking</em> and the agent acting on their behalf.</p>
-            <a href="/essays/fow/">→ AI Won't Simplify Work</a>
+            <a href="/essays/fow/"><span aria-hidden="true">→ </span>AI Won't Simplify Work</a>
           </li>
         </ol>
       </section>
@@ -224,27 +235,19 @@
         <h2 id="work-title">Three ways to work together</h2>
         <ul class="services">
           <li class="card">
-            <div class="card-head">
-              <span class="kicker">A · Enterprise</span>
-              <img class="card-logo" src="/public/images/organizations/stratcorp.png" alt="Stratified" width="814" height="198" loading="lazy">
-            </div>
+            <span class="kicker">A · Enterprise</span>
             <h3>Putting agents into real work</h3>
             <p>Through <a href="https://stratcorp.ai/" target="_blank" rel="noopener noreferrer">Stratified</a>: deciding what to hand to an agent, where human review belongs, and how to test generated work before customers rely on it.</p>
             <span class="for">For: boards, CIOs, product and platform leads</span>
           </li>
           <li class="card">
-            <div class="card-head">
-              <span class="kicker">B · Health</span>
-              <img class="card-logo" src="/public/images/organizations/veriscience.png" alt="VeriScience" width="7653" height="2085" loading="lazy">
-            </div>
+            <span class="kicker">B · Health</span>
             <h3>Validating AI for women's health</h3>
             <p>Through <a href="https://veriscience.ai/" target="_blank" rel="noopener noreferrer">VeriScience</a>, independent evidence that a health AI tool does what it claims.</p>
             <span class="for">For: health AI builders, clinicians, funders</span>
           </li>
           <li class="card">
-            <div class="card-head">
-              <span class="kicker">C · Stage</span>
-            </div>
+            <span class="kicker">C · Stage</span>
             <h3>Talks and workshops</h3>
             <p>Enterprise agents, AI in health, and how teams review AI output, drawn from Microsoft, Atlassian and NHS advisory work.</p>
             <span class="for">For: conference and offsite organizers</span>
@@ -253,10 +256,11 @@
       </section>
 
       <section id="notes" aria-labelledby="notes-title">
+        <span class="anchor-alias" id="field-notes"></span>
         <span class="kicker">Field notes</span>
         <h2 id="notes-title">Notes on building AI into everyday work</h2>
         <div class="notes">
-          <a class="note note-wide note-feature" href="/essays/justai/">
+          <a class="note note-wide note-feature" href="/essays/justai/" aria-labelledby="note-justai-title" aria-describedby="note-justai-desc">
             <div class="note-visual" aria-hidden="true"><svg viewBox="0 0 320 180">
                 <path class="fn-axis" d="M34 132H286" />
                 <path class="fn-axis" d="M70 150V34" />
@@ -273,12 +277,12 @@
                 </svg></div>
             <div class="note-body">
               <span class="kicker">Start here · Software 3.0</span>
-              <h3>The Enterprise Refactor</h3>
-              <p>For leaders deciding how much work to hand to an agent: where human review belongs, and how to test generated work before customers depend on it.</p>
-              <span class="note-link">Read the essay →</span>
+              <h3 id="note-justai-title">The Enterprise Refactor</h3>
+              <p id="note-justai-desc">For leaders deciding how much work to hand to an agent: where human review belongs, and how to test generated work before customers depend on it.</p>
+              <span class="note-link">Read the essay <span aria-hidden="true">→</span></span>
             </div>
           </a>
-          <a class="note" href="/essays/value-function/">
+          <a class="note" href="/essays/value-function/" aria-labelledby="note-value-title" aria-describedby="note-value-desc">
             <div class="note-visual" aria-hidden="true"><svg viewBox="0 0 320 180">
                 <path class="fn-triangle" d="M160 34L70 138H250Z" />
                 <path class="fn-dash" d="M116 124H204M160 34V138" />
@@ -293,12 +297,12 @@
                 </svg></div>
             <div class="note-body">
               <span class="kicker">Framework</span>
-              <h3>The Value Function</h3>
-              <p>A worksheet for reviewing AI with your team: spot convincing language with weak evidence.</p>
-              <span class="note-link">Open the framework →</span>
+              <h3 id="note-value-title">The Value Function</h3>
+              <p id="note-value-desc">A worksheet for reviewing AI with your team: spot convincing language with weak evidence.</p>
+              <span class="note-link">Open the framework <span aria-hidden="true">→</span></span>
             </div>
           </a>
-          <a class="note" href="/essays/interface-triage/">
+          <a class="note" href="/essays/interface-triage/" aria-labelledby="note-genui-title" aria-describedby="note-genui-desc">
             <div class="note-visual" aria-hidden="true"><svg viewBox="0 0 320 180">
                 <rect x="24" y="28" width="272" height="124" />
                 <path d="M115 28V152M205 28V152M24 70H296M24 112H296" />
@@ -313,12 +317,12 @@
                 </svg></div>
             <div class="note-body">
               <span class="kicker">Generative UI</span>
-              <h3>The App That Builds Itself</h3>
-              <p>Edit a brief on screen or ask an agent? Worked examples with live interface demos.</p>
-              <span class="note-link">Try the demos →</span>
+              <h3 id="note-genui-title">The App That Builds Itself</h3>
+              <p id="note-genui-desc">Edit a brief on screen or ask an agent? Worked examples with live interface demos.</p>
+              <span class="note-link">Try the demos <span aria-hidden="true">→</span></span>
             </div>
           </a>
-          <a class="note" href="/essays/fow/">
+          <a class="note" href="/essays/fow/" aria-labelledby="note-fow-title" aria-describedby="note-fow-desc">
             <div class="note-visual" aria-hidden="true"><svg viewBox="0 0 320 180">
                 <path class="fn-faint" d="M48 126H272" />
                 <circle class="fn-purpose" cx="128" cy="88" r="52" />
@@ -332,12 +336,12 @@
                 </svg></div>
             <div class="note-body">
               <span class="kicker">Future of work</span>
-              <h3>AI Won't Simplify Work</h3>
-              <p>Where AI could take on the paperwork that competes with doctors' and researchers' attention.</p>
-              <span class="note-link">Read the argument →</span>
+              <h3 id="note-fow-title">AI Won't Simplify Work</h3>
+              <p id="note-fow-desc">Where AI could take on the paperwork that competes with doctors' and researchers' attention.</p>
+              <span class="note-link">Read the argument <span aria-hidden="true">→</span></span>
             </div>
           </a>
-          <a class="note note-wide note-doodle" href="/doodles/wolbachia/">
+          <a class="note note-wide note-doodle" href="/doodles/wolbachia/" aria-labelledby="note-doodle-title" aria-describedby="note-doodle-desc">
             <div class="note-visual" aria-hidden="true"><svg viewBox="0 0 320 180">
                 <path class="fn-axis" d="M24 143H296" />
                 <path class="fn-faint" d="M30 140V146" /><path class="fn-faint" d="M56 140V146" /><path class="fn-faint" d="M82 140V146" /><path class="fn-faint" d="M108 140V146" /><path class="fn-faint" d="M134 140V146" /><path class="fn-faint" d="M160 140V146" /><path class="fn-faint" d="M186 140V146" /><path class="fn-faint" d="M212 140V146" /><path class="fn-faint" d="M238 140V146" /><path class="fn-faint" d="M264 140V146" /><path class="fn-faint" d="M290 140V146" />
@@ -349,16 +353,17 @@
                 </svg></div>
             <div class="note-body">
               <span class="kicker">Doodle · Public health</span>
-              <h3>Project Wolbachia at ten</h3>
-              <p>Singapore has released mosquitoes on purpose for ten years, and cut dengue risk by 70%+. An animated, fully sourced timeline of how they did it.</p>
+              <h3 id="note-doodle-title">Project Wolbachia at ten</h3>
+              <p id="note-doodle-desc">Singapore has released mosquitoes on purpose for ten years, and cut dengue risk by 70%+. An animated, fully sourced timeline of how they did it.</p>
               <p class="note-aside">I spent years at Microsoft helping build robots that catch mosquitoes, so this one is personal.</p>
-              <span class="note-link">Open the doodle →</span>
+              <span class="note-link">Open the doodle <span aria-hidden="true">→</span></span>
             </div>
           </a>
         </div>
       </section>
 
       <section id="experience" aria-labelledby="exp-title">
+        <span class="anchor-alias" id="proof"></span>
         <div class="two">
           <div>
             <span class="kicker">Experience</span>
@@ -370,12 +375,12 @@
               <li><span class="when">2019–2021 · Microsoft</span>Helped build AI for Health: $60M for 200+ grantees working on child mortality, infectious disease and health equity. Led product strategy for <a href="https://www.fastcompany.com/90623897/see-34-ingenious-inspirational-winners-of-the-2021-world-changing-ideas-awards" target="_blank" rel="noopener noreferrer">Microsoft Premonition</a>, robots that catch mosquitoes and test what they carry for disease before outbreaks start (2021 World Changing Ideas). Advisory group for the <a href="https://www.healthinnovationyh.org.uk/wp-content/uploads/2020/08/AHSN-Network-AI-Report.pdf#page=31" target="_blank" rel="noopener noreferrer">AHSN Network's AI Initiative</a> with NHS England.</li>
               <li><span class="when">2021–2025 · Microsoft, Director of Product Management</span>Generative AI for US federal health agencies, including NIH, ARPA-H, CDC and FDA, from the day ChatGPT launched. 300+ use cases went through evaluation gates and 11 passed. The demos were the easy part; getting agencies to sign off was the job.</li>
               <li><span class="when">2025 · VeriScience</span>Founded <a href="https://veriscience.ai/" target="_blank" rel="noopener noreferrer">VeriScience</a>, a scientific AI venture for women's health evidence, starting with endometriosis: finding where models fail and making those failures visible.</li>
-              <li><span class="when">2025 → now · Atlassian and Stratified Advisory</span>Leading technical go-to-market for Rovo MCP, which has served 1M+ monthly active users, and led the Rovo and Google Gemini agent-to-agent integration shown at Google Cloud Next 2026. Operating partner at <a href="https://stratcorp.ai/" target="_blank" rel="noopener noreferrer">Stratified Advisory</a>, helping boards and PE-backed companies learn what AI can and can't do.</li>
+              <li><span class="when">Since 2025 · Atlassian and Stratified Advisory</span>Leading technical go-to-market for Rovo MCP, which has served 1M+ monthly active users, and led the Rovo and Google Gemini agent-to-agent integration shown at Google Cloud Next 2026. Operating partner at <a href="https://stratcorp.ai/" target="_blank" rel="noopener noreferrer">Stratified Advisory</a>, helping boards and PE-backed companies learn what AI can and can't do.</li>
             </ol>
             <!-- Shown when the rail's logo grid is hidden (mobile, short screens) -->
             <ul class="logos logos-inline" aria-label="Where I've worked and studied">
               <li><img class="logo-microsoft" src="/public/images/organizations/microsoft.png" alt="Microsoft" width="216" height="46" loading="lazy"></li>
-              <li><img class="logo-veriscience" src="/public/images/organizations/veriscience.png" alt="VeriScience" width="7653" height="2085" loading="lazy"></li>
+              <li><img class="logo-veriscience" src="/public/images/organizations/veriscience-sm.png" alt="VeriScience" width="440" height="120" loading="lazy"></li>
               <li><img class="logo-atlassian" src="/public/images/organizations/atlassian-logo.svg" alt="Atlassian" width="297" height="48" loading="lazy"></li>
               <li><img class="logo-mitx" src="/public/images/organizations/mitx.svg" alt="MITx" width="166" height="50" loading="lazy"></li>
               <li><img class="logo-insead" src="/public/images/organizations/insead.png" alt="INSEAD" width="100" height="100" loading="lazy"></li>
@@ -399,6 +404,7 @@
       </section>
 
       <section id="contact" aria-labelledby="contact-title">
+        <span class="anchor-alias" id="connect"></span>
         <div class="two">
           <div>
             <span class="kicker">Contact</span>

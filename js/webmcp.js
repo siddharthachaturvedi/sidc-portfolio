@@ -14,20 +14,26 @@
 
   const emptyParameters = { type: "object", properties: {} };
 
+  // Kept in sync with the homepage (index.html) and llms.txt.
   const professionalProfile = {
     identity: {
       name: "Siddhartha Chaturvedi",
-      tagline: "AI Systems That Ship Outcomes, Not Drafts",
-      linkedin: "https://linkedin.com/in/sidcai"
+      tagline: "I help organizations put AI to work, and prove that it works.",
+      website: "https://sidc.ai/",
+      linkedin: "https://linkedin.com/in/sidcai",
+      email: "hello@sidc.ai"
     },
-    focus: "Advising CEOs and boards on AI systems that ship - in regulated, high-stakes, and infrastructure-heavy industries. Specializing in bridging the trust gap between generation and verification.",
+    focus: "AI systems for organizations and health AI validation: designing everything around the outcome, including what drives value, how teams build trust, and where technology plays its part.",
+    currentRoles: [
+      { entity: "Atlassian", role: "Technical go-to-market lead, Rovo MCP", since: 2025, details: "Rovo MCP has served 1M+ monthly active users. Led the Rovo and Google Gemini agent-to-agent integration shown at Google Cloud Next 2026." },
+      { entity: "Stratified Advisory (stratcorp.ai)", role: "Operating Partner", since: 2025, details: "Helps boards and PE-backed companies learn what AI can and can't do." }
+    ],
     proofPoints: [
-      { metric: "$60M investment", details: "Global Program Architect for Microsoft's AI for Health initiative addressing global child mortality, genomics, and health equity." },
-      { award: "World Changing Ideas 2021", details: "Product team for Microsoft Premonition, a biothreat detection platform securing multi-million government contracts." },
-      { scale: "300+ Use Cases", details: "Led Azure Gov GenAI program audits across US Federal civilian agencies." }
+      { metric: "$60M", details: "Helped build Microsoft's AI for Health program: 200+ grantees working on child mortality, infectious disease and health equity." },
+      { award: "Fast Company World Changing Ideas Award Winner, 2021", details: "Led product strategy for Microsoft Premonition, robots that catch mosquitoes and test what they carry for disease before outbreaks start." },
+      { scale: "11 of 300+", details: "GenAI use cases that passed evaluation gates for US federal health agencies (NIH, ARPA-H, CDC, FDA), as Microsoft Director of Product Management, 2021 to 2025." }
     ],
     advisoryAndVentures: [
-      { entity: "StratCorp.AI", role: "Partner", description: "Board Advisory & AI Governance" },
       { entity: "rpv.global", role: "Limited Partner", description: "Deep Tech VC" },
       { entity: "Loyal VC", role: "Advisor", description: "Pre-seed Mentorship" }
     ]

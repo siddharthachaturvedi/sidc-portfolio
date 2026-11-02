@@ -1,10 +1,8 @@
 # Organization marks
 
-Atlassian symbol SVG: Simple Icons, retrieved 2026-09-09 from https://cdn.simpleicons.org/atlassian/17201e.
+These identify the named organizations. Event names use text.
 
-These identify the named organizations. The Microsoft four-square symbol is inline HTML SVG. Event names use text.
-
-VeriScience: original transparent black horizontal wordmark, supplied in the owner's brand deliverables as `Logo pngs/Horizontal_black.png`. Copied without modification as `veriscience.png`. The founder confirmed the 2025 founding date; the current public website describes validation for women's health AI: https://veriscience.ai/ (checked 2026-09-09).
+VeriScience: original transparent black horizontal wordmark, supplied in the owner's brand deliverables as `Logo pngs/Horizontal_black.png`. Copied without modification as `veriscience.png` (7653 × 2085, the source of record). The homepage loads `veriscience-sm.png`, the same artwork scaled down to 440 × 120 with macOS `sips` (2026-11-01), because the original is 175 KB for a logo shown about 90px wide. The founder confirmed the 2025 founding date; the current public website describes validation for women's health AI: https://veriscience.ai/ (checked 2026-09-09).
 
 The Google link points to Sid Chaturvedi's official Next 2026 speaker profile, verified in the event directory and individual profile on 2026-09-09:
 https://www.googlecloudevents.com/next-vegas/speaker/2181006/sid-chaturvedi
@@ -22,5 +20,4 @@ Institutional artwork, retrieved 2026-09-09 and copied without modification. Ori
 Wordmark lockups, retrieved 2026-11-01 and copied without modification unless noted:
 
 - Microsoft: `microsoft.png`, 216 × 46, the header logo on https://www.microsoft.com/en-us/ (source file https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png).
-- Atlassian: `atlassian-logo.svg`, 297 × 48, the inline header logo on https://www.atlassian.com/ (markup copied as served; only the root width/height changed from 100% to 297 × 48 so it sizes as an image). `atlassian.svg` above is the older symbol-only mark and is no longer used on the homepage.
-- Stratified (StratCorp.AI): `stratcorp.png`, 814 × 198, from the owner's own site source (`stratcorpai/public/assets/logo.png`, served at https://stratcorp.ai/assets/logo.png). Transparent padding trimmed; artwork and colors unchanged.
+- Atlassian: `atlassian-logo.svg`, 297 × 48, the inline header logo on https://www.atlassian.com/ (markup copied as served; only the root width/height changed from 100% to 297 × 48 so it sizes as an image). It replaces the older symbol-only `atlassian.svg` from Simple Icons, which was removed when it stopped being used.
