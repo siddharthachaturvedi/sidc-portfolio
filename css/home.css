@@ -159,7 +159,7 @@ h3 {
 /* Portrait shrinks on short screens so the rail never needs its own scrollbar */
 .rail .portrait {
   flex: none;
-  width: clamp(88px, 100vh - 650px, 100%);
+  width: clamp(88px, 100vh - 560px, 100%);
   height: auto;
   aspect-ratio: 1;
   border: var(--rule);
@@ -198,44 +198,6 @@ h3 {
 
 .rail .tagline a:hover {
   text-decoration-color: currentColor;
-}
-
-/* "Now" status: the one live signal in the rail */
-.rail .now {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 10px 12px;
-  border: 1px solid rgb(var(--vermillion-rgb) / 0.35);
-  background: rgb(var(--vermillion-rgb) / 0.06);
-  font-size: 0.8rem;
-  line-height: 1.45;
-  color: var(--ink-soft);
-}
-
-.rail .now b {
-  margin-right: 4px;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--vermillion);
-}
-
-.now-dot {
-  flex: none;
-  width: 8px;
-  height: 8px;
-  margin-top: 0.42em;
-  border-radius: 50%;
-  background: var(--vermillion);
-  animation: now-pulse 2.4s ease-out infinite;
-}
-
-@keyframes now-pulse {
-  0% { box-shadow: 0 0 0 0 rgb(var(--vermillion-rgb) / 0.45); }
-  70%, 100% { box-shadow: 0 0 0 7px rgb(var(--vermillion-rgb) / 0); }
 }
 
 /* Section nav: a track with a marker that slides to the section in view */
@@ -494,6 +456,12 @@ main > section:first-of-type {
 }
 
 /* ── Work with me ── */
+.section-note {
+  max-width: 60ch;
+  margin: calc(var(--space-xs) - var(--space-md)) 0 var(--space-md);
+  color: var(--ink-soft);
+}
+
 .services {
   list-style: none;
   display: grid;
@@ -871,6 +839,20 @@ main > section:first-of-type {
 }
 
 /* ── Contact ── */
+.contact-reply {
+  margin-top: var(--space-sm);
+  color: var(--ink-soft);
+}
+
+.contact-direct {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+
 .contact-form {
   padding: var(--space-md);
   border: var(--rule);
@@ -992,11 +974,11 @@ main > section:first-of-type {
    RESPONSIVE
    ══════════════════════════════════════════════════════════════════ */
 
-/* Shorter desktop screens: logos move under the timeline, then the
-   "Now" box goes, so the rail never needs its own scrollbar. */
+/* Shorter desktop screens: logos move under the timeline and the portrait
+   takes the room, so the rail never needs its own scrollbar. */
 @media (max-height: 759px) {
   .rail .portrait {
-    width: clamp(88px, 100vh - 560px, 100%);
+    width: clamp(88px, 100vh - 470px, 100%);
   }
 }
 
@@ -1007,12 +989,6 @@ main > section:first-of-type {
 
   .logos-inline {
     display: grid;
-  }
-}
-
-@media (max-height: 680px) {
-  .rail .now {
-    display: none;
   }
 }
 
@@ -1056,7 +1032,6 @@ main > section:first-of-type {
   }
 
   .rail .tagline,
-  .rail .now,
   .rail nav,
   .rail .rail-foot {
     display: none;

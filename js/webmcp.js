@@ -26,7 +26,7 @@
     focus: "AI systems for organizations and health AI validation: designing everything around the outcome, including what drives value, how teams build trust, and where technology plays its part.",
     currentRoles: [
       { entity: "Atlassian", role: "Technical go-to-market lead, Rovo MCP", since: 2025, details: "Rovo MCP has served 1M+ monthly active users. Led the Rovo and Google Gemini agent-to-agent integration shown at Google Cloud Next 2026." },
-      { entity: "Stratified Advisory (stratcorp.ai)", role: "Operating Partner", since: 2025, details: "Helps boards and PE-backed companies learn what AI can and can't do." }
+      { entity: "StratCorp.AI", url: "https://stratcorp.ai/", role: "Co-founder and Partner", since: 2025, details: "Advisory runs through StratCorp.AI: working sessions with leadership teams to pick the first agent use cases worth doing, decide where people review the work, and agree how they'll know it's working." }
     ],
     proofPoints: [
       { metric: "$60M", details: "Helped build Microsoft's AI for Health program: 200+ grantees working on child mortality, infectious disease and health equity." },

@@ -1,7 +1,7 @@
 # Siddhartha Chaturvedi — sidc.ai
 
 ## Who
-Siddhartha Chaturvedi helps organizations put AI to work, and prove that it works. He leads technical go-to-market for Atlassian's Rovo MCP and is an operating partner at Stratified Advisory (https://stratcorp.ai). Former Microsoft Director of Product Management (2016–2025), INSEAD MBA. Fast Company World Changing Ideas Award winner (2021, Microsoft Premonition).
+Siddhartha Chaturvedi helps organizations put AI to work, and prove that it works. He leads technical go-to-market for Atlassian's Rovo MCP and is co-founder and partner at StratCorp.AI (https://stratcorp.ai). Former Microsoft Director of Product Management (2016–2025), INSEAD MBA. Fast Company World Changing Ideas Award winner (2021, Microsoft Premonition).
 
 ## What He Built
 - Microsoft Premonition: robots that catch mosquitoes and test what they carry for disease before outbreaks start
@@ -25,14 +25,15 @@ The equilibrium of all three produces AI that ships.
 3. Software will have to work equally well for the person clicking and the agent acting on their behalf. (AI Won't Simplify Work: https://sidc.ai/essays/fow/)
 
 ## Work With Him
-- Enterprise, through Stratified Advisory: deciding what to hand to an agent, where human review belongs, and how to test generated work before customers rely on it. For boards, CIOs, product and platform leads.
+Advisory runs through StratCorp.AI. Talks and workshops come to him directly.
+- Enterprise, through StratCorp.AI: working sessions with your leadership team to pick the first agent use cases worth doing, decide where people review the work, and agree how you'll know it's working. For boards, CIOs, product and platform leads.
 - Health, through VeriScience: independent evidence that a health AI tool does what it claims. For health AI builders, clinicians, funders.
 - Stage: talks and workshops on enterprise agents, AI in health, and how teams review AI output. For conference and offsite organizers.
 
 ## Ventures
 - VeriScience.AI (https://veriscience.ai) — evidence-grade AI for women's health
 - Unfreeze.org (https://unfreeze.org) — career transition intelligence
-- Stratified Advisory (https://stratcorp.ai) — board-as-a-service for the GenAI era
+- StratCorp.AI (https://stratcorp.ai): board-as-a-service for the GenAI era
 - JustAI.fyi (https://justai.fyi) — full Software 3.0 paper
 
 ## Field Notes
