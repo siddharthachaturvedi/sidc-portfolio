@@ -18,3 +18,9 @@ Institutional artwork, retrieved 2026-09-09 and copied without modification. Ori
 - MITx: `mitx.svg`, 166 × 50, from https://learn.mit.edu/images/unit_logos/mitx.svg. Displayed on the official MITx unit page: https://learn.mit.edu/c/unit/mitx. This is the MITx lockup, including its MIT symbol and MITx lettering.
 - INSEAD: `insead.png`, 100 × 100 transparent roundel, from https://clubs.insead.edu/globalleadership/files/2019/11/roundel_digital_media-small-100.png. Used in the official Global Leadership Club header: https://clubs.insead.edu/globalleadership/.
 - BITS Pilani: `bits-pilani.webp`, 290 × 96 transparent horizontal logo, from https://www.bits-pilani.ac.in/wp-content/uploads/bits-pillani-2-1.webp. Used on the official homepage: https://www.bits-pilani.ac.in/.
+
+Wordmark lockups, retrieved 2026-11-01 and copied without modification unless noted:
+
+- Microsoft: `microsoft.png`, 216 × 46, the header logo on https://www.microsoft.com/en-us/ (source file https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png).
+- Atlassian: `atlassian-logo.svg`, 297 × 48, the inline header logo on https://www.atlassian.com/ (markup copied as served; only the root width/height changed from 100% to 297 × 48 so it sizes as an image). `atlassian.svg` above is the older symbol-only mark and is no longer used on the homepage.
+- Stratified (StratCorp.AI): `stratcorp.png`, 814 × 198, from the owner's own site source (`stratcorpai/public/assets/logo.png`, served at https://stratcorp.ai/assets/logo.png). Transparent padding trimmed; artwork and colors unchanged.
