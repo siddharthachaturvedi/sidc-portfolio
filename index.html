@@ -152,7 +152,7 @@
 
     <!-- Sticky identity rail (desktop) / slim top bar (mobile) -->
     <aside class="rail" aria-label="About and navigation">
-      <img class="portrait" src="/public/images/sidc.jpeg" alt="Siddhartha Chaturvedi" width="800" height="800" fetchpriority="high" decoding="async">
+      <img class="portrait" src="/public/images/sidc.jpeg" alt="Siddhartha Chaturvedi" width="800" height="800" decoding="async">
       <a class="name" href="/">Siddhartha Chaturvedi</a>
       <ul class="tagline">
         <li>AI systems builder</li>
@@ -164,6 +164,7 @@
           <li><a href="#bets">What I'm betting on</a></li>
           <li><a href="#work">Ways to work together</a></li>
           <li><a href="#notes">Field notes</a></li>
+          <li><a href="#shelf">Prompts and skills</a></li>
           <li><a href="#experience">Experience</a></li>
         </ul>
         <span class="nav-marker" aria-hidden="true"></span>
@@ -188,9 +189,13 @@
     <main id="main">
 
       <!-- Old anchor names from the previous homepage (home, theses, field-notes, proof, connect) are kept so shared links still land -->
-      <section class="hero" id="home" aria-labelledby="hero-title">
-        <span class="kicker">For boards, CIO<span class="keep-case">s</span> and health AI teams</span>
-        <h1 id="hero-title">I help organizations put AI to work, and prove that it works.</h1>
+      <section class="hero field-hero" id="home" aria-labelledby="hero-title">
+        <div class="field-stage">
+          <img src="/public/images/story/lab.jpg" alt="Siddhartha, arms folded, in a netted insect lab beside a mosquito trap" width="1800" height="1201" fetchpriority="high">
+          <p class="field-caption"><span>In the Premonition mosquito lab.</span> <span>Redmond, Washington, 2021.</span> <span>Photo: Dr. Ethan Jackson.</span></p>
+          <span class="kicker">For boards, CIO<span class="keep-case">s</span> and health AI teams</span>
+          <h1 id="hero-title">I help organizations put AI to work, and prove that it works.</h1>
+        </div>
         <p class="lede">I design everything around the <strong>outcome</strong>: what drives <strong>value</strong>, how teams build <strong>trust</strong>, and where technology plays its part.</p>
         <div class="actions">
           <a class="btn" href="#notes">Read the field notes</a>
@@ -200,6 +205,29 @@
           <li><b>Premonition</b><span>Robots that catch mosquitoes to spot outbreaks early. Fast Company World Changing Ideas Award Winner, 2021</span></li>
           <li><b>1M+</b><span><abbr title="Monthly active users">MAU</abbr> on Atlassian's Rovo MCP</span></li>
         </ul>
+        <!-- Track record. Logos cover employers and schools; these rows carry what a logo cannot:
+             public bodies (NHS, ITU and UN marks are restricted, so they stay as text) and recognition. -->
+        <div class="record">
+          <!-- Shown when the rail's logo grid is hidden (mobile, short screens) -->
+          <ul class="logos logos-inline" aria-label="Where I've worked and studied">
+            <li><img class="logo-microsoft" src="/public/images/organizations/microsoft.png" alt="Microsoft" width="216" height="46" loading="lazy"></li>
+            <li><img class="logo-veriscience" src="/public/images/organizations/veriscience-sm.png" alt="VeriScience" width="440" height="120" loading="lazy"></li>
+            <li><img class="logo-atlassian" src="/public/images/organizations/atlassian-logo.svg" alt="Atlassian" width="297" height="48" loading="lazy"></li>
+            <li><img class="logo-mitx" src="/public/images/organizations/mitx.svg" alt="MITx" width="166" height="50" loading="lazy"></li>
+            <li><img class="logo-insead" src="/public/images/organizations/insead.png" alt="INSEAD" width="100" height="100" loading="lazy"></li>
+            <li><img class="logo-bits" src="/public/images/organizations/bits-pilani.webp" alt="BITS Pilani" width="290" height="96" loading="lazy"></li>
+          </ul>
+          <dl>
+            <div class="record-row">
+              <dt>Public bodies</dt>
+              <dd><a href="https://www.healthinnovationyh.org.uk/wp-content/uploads/2020/08/AHSN-Network-AI-Report.pdf#page=31" target="_blank" rel="noopener noreferrer">NHS England</a> <small>AI advisory group</small> · <a href="https://www.broadbandcommission.org/download/2738/" target="_blank" rel="noopener noreferrer">Broadband Commission</a> <small>ITU and UNESCO, report contributor</small></dd>
+            </div>
+            <div class="record-row">
+              <dt>Recognised</dt>
+              <dd><a href="https://www.insead.edu/alumni/inseader-of-the-month" target="_blank" rel="noopener noreferrer">INSEADer of the Month</a> <small>April 2022</small> · Atlassian Employee Award <small>2026</small></dd>
+            </div>
+          </dl>
+        </div>
       </section>
 
       <section id="bets" aria-labelledby="bets-title">
@@ -225,34 +253,41 @@
       </section>
 
       <section id="work" aria-labelledby="work-title">
-        <span class="kicker">Work with me</span>
         <h2 id="work-title">Three ways to work together</h2>
         <p class="section-note">Advisory runs through StratCorp.AI. Talks and workshops come to me directly.</p>
-        <ul class="services">
-          <li class="card">
-            <span class="kicker">A · Enterprise</span>
-            <h3>Putting agents into real work</h3>
-            <p>Through <a href="https://stratcorp.ai/" target="_blank" rel="noopener noreferrer">StratCorp.AI</a>: working sessions with your leadership team to pick the first agent use cases worth doing, decide where people review the work, and agree how you'll know it's working.</p>
+        <ol class="ways">
+          <li class="way">
+            <span class="n" aria-hidden="true">A</span>
+            <div>
+              <span class="kicker">Enterprise</span>
+              <h3>Putting agents into real work</h3>
+              <p>Through <a href="https://stratcorp.ai/" target="_blank" rel="noopener noreferrer">StratCorp.AI</a>: working sessions with your leadership team to pick the first agent use cases worth doing, decide where people review the work, and agree how you'll know it's working.</p>
+            </div>
             <span class="for">For: boards, CIOs, product and platform leads</span>
           </li>
-          <li class="card">
-            <span class="kicker">B · Health</span>
-            <h3>Validating AI for women's health</h3>
-            <p>Through <a href="https://veriscience.ai/" target="_blank" rel="noopener noreferrer">VeriScience</a>, independent evidence that a health AI tool does what it claims.</p>
+          <li class="way">
+            <span class="n" aria-hidden="true">B</span>
+            <div>
+              <span class="kicker">Health</span>
+              <h3>Validating AI for women's health</h3>
+              <p>Through <a href="https://veriscience.ai/" target="_blank" rel="noopener noreferrer">VeriScience</a>, independent evidence that a health AI tool does what it claims.</p>
+            </div>
             <span class="for">For: health AI builders, clinicians, funders</span>
           </li>
-          <li class="card">
-            <span class="kicker">C · Stage</span>
-            <h3>Talks and workshops</h3>
-            <p>Enterprise agents, AI in health, and how teams review AI output, drawn from Microsoft, Atlassian and NHS advisory work.</p>
+          <li class="way">
+            <span class="n" aria-hidden="true">C</span>
+            <div>
+              <span class="kicker">Stage</span>
+              <h3>Talks and workshops</h3>
+              <p>Enterprise agents, AI in health, and how teams review AI output, drawn from Microsoft, Atlassian and NHS advisory work.</p>
+            </div>
             <span class="for">For: conference and offsite organizers</span>
           </li>
-        </ul>
+        </ol>
       </section>
 
       <section id="notes" aria-labelledby="notes-title">
         <span class="anchor-alias" id="field-notes"></span>
-        <span class="kicker">Field notes</span>
         <h2 id="notes-title">Notes on building AI into everyday work</h2>
         <div class="notes">
           <a class="note note-wide note-feature" href="/essays/justai/" aria-labelledby="note-justai-title" aria-describedby="note-justai-desc">
@@ -357,11 +392,59 @@
         </div>
       </section>
 
+      <!-- Prompts and skills live in their own repo and site (prompts.sidc.ai).
+           Counts and the install line mirror that site: update here when they change there. -->
+      <section id="shelf" aria-labelledby="shelf-title">
+        <div class="shelf">
+          <h2 id="shelf-title">Prompts and skills to take with you</h2>
+          <p class="shelf-lede">The prompts and agent skills I use with teams. Free to copy and adapt.</p>
+          <div class="shelf-doors">
+            <a class="shelf-door" href="https://prompts.sidc.ai/" aria-labelledby="shelf-prompts-title" aria-describedby="shelf-prompts-desc">
+              <h3 id="shelf-prompts-title">Prompts</h3>
+              <p id="shelf-prompts-desc">42 prompts in eight moves, in the order a venture meets them.</p>
+              <ol class="shelf-moves" aria-label="The eight moves">
+                <li>Think</li><li>Discover</li><li>Size up</li><li>Build</li><li>Sell</li><li>Fund</li><li>Run</li><li>Decide</li>
+              </ol>
+              <span class="shelf-link">Browse the prompts <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="shelf-door" href="https://prompts.sidc.ai/skills/" aria-labelledby="shelf-skills-title" aria-describedby="shelf-skills-desc">
+              <h3 id="shelf-skills-title">Skills</h3>
+              <p id="shelf-skills-desc">Longer workflows for agents. One engine holds the method. Adapters plug it into a system.</p>
+              <ul class="shelf-moves shelf-parts" aria-label="The skills">
+                <li>Grooming engine</li><li>Confluence adapter</li><li>Prompt library adapter</li>
+              </ul>
+              <span class="shelf-link">Open the skills <span aria-hidden="true">→</span></span>
+            </a>
+          </div>
+          <div class="shelf-install">
+            <p class="shelf-install-label">Or give this line to your agent. It installs every skill, then asks how you work.</p>
+            <div class="shelf-install-row">
+              <code id="install-line">Read https://prompts.sidc.ai/skills/install.md and follow it: install every skill it lists on my system, then ask me questions to adapt them to my tools and my work.</code>
+              <button type="button" class="shelf-copy" data-copy="#install-line">Copy</button>
+            </div>
+            <p class="shelf-copy-status" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
       <section id="experience" aria-labelledby="exp-title">
         <span class="anchor-alias" id="proof"></span>
+        <!-- Album: owner-supplied photographs in date order. Sources in public/images/story/SOURCES.md -->
+        <div class="album" aria-label="Photographs along the way">
+          <div class="album-row">
+            <figure style="--r: 1.545"><img src="/public/images/story/lufthansa.jpg" alt="Siddhartha in a TV studio, captioned Co-Founder and CEO, Tathaastu" width="595" height="385" loading="lazy"><figcaption><b>2014 · Tathaastu</b>Pitching rural health on Lufthansa's Runway to Success</figcaption></figure>
+            <figure style="--r: 0.742"><img src="/public/images/story/insead.jpg" alt="Siddhartha in a suit in an INSEAD amphitheatre" width="890" height="1200" loading="lazy"><figcaption><b>2015 · INSEAD</b>MBA, class 15D</figcaption></figure>
+            <figure style="--r: 1"><img src="/public/images/story/tee.jpg" alt="Siddhartha pulling open a hoodie to show a vintage Microsoft T-shirt" width="1200" height="1200" loading="lazy"><figcaption><b>2016 · Microsoft</b>Nine years, UK then US</figcaption></figure>
+            <figure style="--r: 1.5"><img src="/public/images/story/mit.jpg" alt="Siddhartha on an MIT Bootcamps alumni panel, seated under a slide that lists him in Class 1" width="960" height="640" loading="lazy"><figcaption><b>2018 · MIT Bootcamps</b>Alumni panel, Cambridge. Class 1</figcaption></figure>
+          </div>
+          <div class="album-row">
+            <figure class="album-sketch" style="--r: 1.97"><a href="https://www.linkedin.com/pulse/malaria-disease-disparity-siddhartha-chaturvedi/" target="_blank" rel="noopener noreferrer"><img src="/public/images/story/sketch.jpg" alt="Hand-drawn chart on a napkin: costs stay flat until the first mosquito bite, then climb through symptoms at twenty days and aggregated data months later; preventive interventions sit before the bite" width="1280" height="649" loading="lazy"></a><figcaption><b>2022 · Malaria: Disease Disparity (?)</b>An oversimplified view of the knowledge and impact curve, on a napkin. <a href="https://www.linkedin.com/pulse/malaria-disease-disparity-siddhartha-chaturvedi/" target="_blank" rel="noopener noreferrer">Read the essay</a></figcaption></figure>
+            <figure style="--r: 0.59"><img src="/public/images/story/grove.jpg" alt="Siddhartha in a blazer and tie, smiling, holding the Atlassian Employee Award" width="390" height="660" loading="lazy"><figcaption><b>2026 · Atlassian</b>Employee Award</figcaption></figure>
+          </div>
+        </div>
+        <p class="album-line">Still the <em>same goal</em> - different path.</p>
         <div class="two">
           <div>
-            <span class="kicker">Experience</span>
             <h2 id="exp-title">Where this comes from</h2>
             <!-- Facts match the public LinkedIn profile (checked 2026-11-01) -->
             <ol class="timeline">
@@ -372,18 +455,8 @@
               <li><span class="when">2025 · VeriScience</span>Founded <a href="https://veriscience.ai/" target="_blank" rel="noopener noreferrer">VeriScience</a>, a scientific AI venture for women's health evidence.</li>
               <li><span class="when">Since 2025 · Atlassian and StratCorp.AI</span>Rovo MCP go-to-market (1M+ <abbr title="monthly active users">MAU</abbr>). Co-founder and partner at <a href="https://stratcorp.ai/" target="_blank" rel="noopener noreferrer">StratCorp.AI</a>.</li>
             </ol>
-            <!-- Shown when the rail's logo grid is hidden (mobile, short screens) -->
-            <ul class="logos logos-inline" aria-label="Where I've worked and studied">
-              <li><img class="logo-microsoft" src="/public/images/organizations/microsoft.png" alt="Microsoft" width="216" height="46" loading="lazy"></li>
-              <li><img class="logo-veriscience" src="/public/images/organizations/veriscience-sm.png" alt="VeriScience" width="440" height="120" loading="lazy"></li>
-              <li><img class="logo-atlassian" src="/public/images/organizations/atlassian-logo.svg" alt="Atlassian" width="297" height="48" loading="lazy"></li>
-              <li><img class="logo-mitx" src="/public/images/organizations/mitx.svg" alt="MITx" width="166" height="50" loading="lazy"></li>
-              <li><img class="logo-insead" src="/public/images/organizations/insead.png" alt="INSEAD" width="100" height="100" loading="lazy"></li>
-              <li><img class="logo-bits" src="/public/images/organizations/bits-pilani.webp" alt="BITS Pilani" width="290" height="96" loading="lazy"></li>
-            </ul>
           </div>
           <div>
-            <span class="kicker">Speaking &amp; writing</span>
             <h2 id="talks-title">Selected talks and writing</h2>
             <ul class="talks" aria-labelledby="talks-title">
               <li><a href="https://www.googlecloudevents.com/next-vegas/speaker/2181006/sid-chaturvedi" target="_blank" rel="noopener noreferrer">Google Cloud Next 2026<small>Talk · Enterprise agents with Gemini and Atlassian Rovo</small></a></li>
@@ -398,11 +471,23 @@
         </div>
       </section>
 
+      <!-- Closing band: the essay's own title and opening line -->
+      <section class="river" aria-labelledby="river-title">
+        <a class="river-band" href="https://www.linkedin.com/pulse/exploring-interdependence-world-obsessed-independence-chaturvedi/" target="_blank" rel="noopener noreferrer">
+          <img src="/public/images/story/river.jpg" alt="Siddhartha sitting on rocks beside a turquoise river, looking downstream" width="1223" height="689" loading="lazy">
+          <div class="river-text">
+            <span class="kicker">Off the clock</span>
+            <h2 id="river-title">Exploring interdependence in a world obsessed with independence</h2>
+            <p>Two weeks without a computer, alongside the Ganges in the foothills of the Himalayas.</p>
+            <span class="note-link">Read the essay, January 2021 <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </section>
+
       <section id="contact" aria-labelledby="contact-title">
         <span class="anchor-alias" id="connect"></span>
         <div class="two">
           <div>
-            <span class="kicker">Contact</span>
             <h2 id="contact-title">Let's talk</h2>
             <p>Tell me what you're working on: the problem, your timeline, and who's involved.</p>
             <p class="contact-reply">I reply to every message, usually within a week.</p>
@@ -433,7 +518,7 @@
           <p>&copy; 2026 Siddhartha Chaturvedi</p>
           <p>Advisory &amp; investment: <a href="https://stratcorp.ai/" target="_blank" rel="noopener noreferrer">stratcorp.ai</a> · <a href="https://rpv.global/" target="_blank" rel="noopener noreferrer">rpv.global</a> · <a href="https://loyal.vc/" target="_blank" rel="noopener noreferrer">loyal.vc</a></p>
         </div>
-        <p><a href="/doodles/">Doodles</a> · <a href="https://linkedin.com/in/sidcai" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="mailto:hello@sidc.ai">Email</a></p>
+        <p><a href="https://prompts.sidc.ai/">Prompts</a> · <a href="https://prompts.sidc.ai/skills/">Skills</a> · <a href="/doodles/">Doodles</a> · <a href="https://linkedin.com/in/sidcai" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="mailto:hello@sidc.ai">Email</a></p>
       </footer>
     </main>
   </div>

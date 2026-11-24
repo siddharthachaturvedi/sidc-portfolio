@@ -42,6 +42,41 @@
     if (document.fonts) document.fonts.ready.then(() => setCurrent(current));
   }
 
+  /* ── Copy buttons (the install line on the shelf) ── */
+  document.querySelectorAll("[data-copy]").forEach((button) => {
+    const source = document.querySelector(button.dataset.copy);
+    const status = button.closest(".shelf-install")?.querySelector(".shelf-copy-status");
+    if (!source || !navigator.clipboard) {
+      button.hidden = true;
+      return;
+    }
+    const label = button.textContent;
+    let timer;
+    button.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(source.textContent.trim());
+        button.textContent = "Copied";
+        button.classList.add("is-copied");
+        if (status) status.textContent = "Install line copied";
+      } catch {
+        // Clipboard blocked: select the line so the visitor can copy it by hand
+        const range = document.createRange();
+        range.selectNodeContents(source);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        button.textContent = "Selected";
+        if (status) status.textContent = "Line selected. Copy it with your keyboard.";
+      }
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        button.textContent = label;
+        button.classList.remove("is-copied");
+        if (status) status.textContent = "";
+      }, 1800);
+    });
+  });
+
   /* ── Contact form ──
      No backend: open the visitor's own email app with a formatted message to
      data-mailto. Their address comes from their mail app, so we only ask for a name. */

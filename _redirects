@@ -10,3 +10,9 @@
 /rovodev/install /rovodev 301
 /rovodev/uninstall https://raw.githubusercontent.com/siddharthachaturvedi/rovodev/main/rovodev-uninstall.command 200
 /rovodev-uninstall /rovodev/uninstall 301
+
+# Prompts and skills live on their own site (separate repo). 302 so the target can move.
+/prompts   https://prompts.sidc.ai/          302
+/prompts/  https://prompts.sidc.ai/          302
+/skills    https://prompts.sidc.ai/skills/   302
+/skills/   https://prompts.sidc.ai/skills/   302
