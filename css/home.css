@@ -958,8 +958,8 @@ main > section:first-of-type {
   border: 1px solid var(--shelf-line);
 }
 
-/* The engine is the filled chip: adapters need it beside them */
-.shelf-parts li:first-child {
+/* Engines are the filled chips: each one carries its adapters */
+.shelf-parts .is-engine {
   border-color: var(--vermillion-light);
   background: var(--vermillion-light);
   color: var(--ink);

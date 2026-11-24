@@ -52,9 +52,18 @@ Decision-grade prompts for MBA students, executives and startup operators. Own s
 - Each prompt stands alone when copied. MIT licensed. Source: https://github.com/siddharthachaturvedi/prompts
 
 ## Skills
-Longer, tool-using workflows for agents. Index: https://prompts.sidc.ai/skills/ (short link https://sidc.ai/skills).
-- grooming-engine: the shared method for grooming any body of content.
-- confluence-distill-archive and prompt-library-grooming: adapters that plug the engine into a system.
+Longer, tool-using workflows for agents. 11 skills in three kinds. Index: https://prompts.sidc.ai/skills/ (short link https://sidc.ai/skills).
+- Standalone. Each works by itself.
+  - handoff: the brief that moves work to another agent, and the report that comes back.
+  - fresh-agent-test: tests any written instruction by giving it to an agent that knows nothing else, then fixes the instruction where the agent stumbles.
+  - claims-audit: checks each claim in a CV, bio, website or pitch against a public source, then words it by what the source supports.
+  - plainspoken: clear, natural writing that keeps depth, evidence and the writer's voice.
+- Engines. Each holds one method.
+  - full-context-backbone: the standing setup that gives every agent full context before it acts.
+  - grooming-engine: the shared method for grooming any body of content.
+- Adapters. Each needs its engine.
+  - backbone-claude-code, backbone-codex and backbone-vibe: run one agent tool inside the backbone.
+  - confluence-distill-archive and prompt-library-grooming: plug the grooming engine into a system.
 - Install guide for agents: https://prompts.sidc.ai/skills/install.md. It installs every skill, then asks the person questions to fit them to their tools.
 
 ## Agentic Capabilities (WebMCP)
